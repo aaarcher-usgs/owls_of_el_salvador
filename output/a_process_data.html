@@ -217,6 +217,7 @@ library(devtools) # documentation-related
 
 # analysis-related
 library(readxl)
+library(lubridate)
 </code></pre>
 
 <p>Clear environment and set seed</p>
@@ -234,7 +235,7 @@ set.seed(2583722)
 
 <h2>Load Data</h2>
 
-<p><strong>Route Table</strong></p>
+<h3>Route Table</h3>
 
 <p>Routes are the six unique transects or routes with two per protected area (Forest).
 There are unique IDs that correspond with protected area, and six unique route
@@ -256,7 +257,7 @@ tab.route
 ## 6       N2              Sector 2 Nancuchiname          NA
 </code></pre>
 
-<p><strong>Stations Table</strong></p>
+<h3>Stations Table</h3>
 
 <p>Each route consists of 10 stations. There is no table with information about 
 the 60 total stations. Instead, this stations table has each station repeated 
@@ -339,6 +340,144 @@ the origin date of 1899-12-31. The correct date will come from the Survey Table,
 ## [5] &quot;1899-12-31 19:55:00 UTC&quot; &quot;1899-12-31 20:18:00 UTC&quot;
 </code></pre>
 
+<h3>Survey Table</h3>
+
+<p>This includes 2002 surveys that have to be deleted from analysis.</p>
+
+<pre><code class="r">tab.survey &lt;- read_xlsx(path = &quot;data/raw_data/Survey_Table.xlsx&quot;,
+                       sheet = &quot;Survey_Table&quot;)
+table(tab.survey$Route_ID)
+</code></pre>
+
+<pre><code>## 
+## EI1 EI2  M1  M2  N1  N2 
+##  18  13   7  12  20  20
+</code></pre>
+
+<p>Remove data for year = 2002</p>
+
+<pre><code class="r">tab.survey$year &lt;- lubridate::year(tab.survey$Survey_Date)
+tab.survey &lt;- tab.survey[tab.survey$year &gt; 2003,]
+table(tab.survey$year)
+</code></pre>
+
+<pre><code>## 
+## 2004 2005 2007 2008 2009 2010 2011 2012 2013 2017 
+##    9   11    9   10    5    8   10    8    4    2
+</code></pre>
+
+<p>Two surveys were written in as 2017, but should be 2009</p>
+
+<pre><code class="r"># Figure out what dates correspond with the 2017 records
+tab.survey$Survey_Date[tab.survey$year == 2017]
+</code></pre>
+
+<pre><code>## [1] &quot;2017-05-04 UTC&quot; &quot;2017-05-11 UTC&quot;
+</code></pre>
+
+<pre><code class="r"># Replace them with correct dates
+tab.survey$Survey_Date[tab.survey$Survey_Date == &quot;2017-05-04 UTC&quot;] &lt;- &quot;2009-05-04 UTC&quot;
+tab.survey$Survey_Date[tab.survey$Survey_Date == &quot;2017-05-11 UTC&quot;] &lt;- &quot;2009-05-11 UTC&quot;
+# Recalculate year and double check with table that there are no 2017 records
+tab.survey$year &lt;- lubridate::year(tab.survey$Survey_Date)
+table(tab.survey$year)
+</code></pre>
+
+<pre><code>## 
+## 2004 2005 2007 2008 2009 2010 2011 2012 2013 
+##    9   11    9   10    7    8   10    8    4
+</code></pre>
+
+<h3>Owls Table</h3>
+
+<p>This table has all observed owls.</p>
+
+<pre><code class="r">tab.owls &lt;- read_xlsx(path = &quot;data/raw_data/Owls_Table.xlsx&quot;,
+                      sheet = &quot;Owls_Table&quot;)
+# Dimensions of owls table (rows, columns)
+dim(tab.owls)
+</code></pre>
+
+<pre><code>## [1] 1065   10
+</code></pre>
+
+<pre><code class="r"># Head of owls table
+head(tab.owls)
+</code></pre>
+
+<pre><code>## # A tibble: 6 x 10
+##   Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2
+##    &lt;dbl&gt;       &lt;dbl&gt;          &lt;chr&gt;      &lt;chr&gt;    &lt;lgl&gt;    &lt;lgl&gt;
+## 1     17          12          Mottd          1     TRUE     TRUE
+## 2     18          12          Mottd          2    FALSE    FALSE
+## 3     19          13          PacSc          1    FALSE     TRUE
+## 4     20          13          Mottd          2    FALSE    FALSE
+## 5     21          13          Mottd          3    FALSE    FALSE
+## 6     22          14          Mottd          1     TRUE     TRUE
+## # ... with 4 more variables: `Minute_6-12` &lt;lgl&gt;, Owl_Distance &lt;dbl&gt;,
+## #   Owl_Direction &lt;chr&gt;, Owl_Comments &lt;chr&gt;
+</code></pre>
+
+<p>Owl Number is character, but should be numerical</p>
+
+<pre><code class="r"># Is it a character because it has any letter values? 
+table(tab.owls$Owl_Number)
+</code></pre>
+
+<pre><code>## 
+##   1   2   3   4   5   6   7   8   9 
+## 562 279 123  68  22   5   1   1   1
+</code></pre>
+
+<pre><code class="r"># No.... In that case, convert to numeric
+tab.owls$Owl_Number &lt;- as.numeric(tab.owls$Owl_Number)
+summary(tab.owls$Owl_Number)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   1.000   1.000   1.000   1.813   2.000   9.000       3
+</code></pre>
+
+<p>How many of each species of owl are there?</p>
+
+<pre><code class="r">table(tab.owls$Owl_Species_ID)
+</code></pre>
+
+<pre><code>## 
+##              Barn             FerPy           Fulvous             GrHor 
+##                11               194                19                 6 
+##        GuarBarred        GuatBarred             Mottd              None 
+##                 1                12               601                 3 
+##             PacSc             Specd               Ukn      Unidentified 
+##                32               159                 2                 2 
+##           Unknown             WhiSc Whiskered Screech 
+##                 2                 2                 2
+</code></pre>
+
+<pre><code class="r"># There are many unknown classifications. Let&#39;s make those consistent
+tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;None&quot; |
+                                    tab.owls$Owl_Species_ID == &quot;Ukn&quot; |
+                                    tab.owls$Owl_Species_ID == &quot;Unidentified&quot; |
+                                    tab.owls$Owl_Species_ID == &quot;Unknown&quot;,
+                                  yes = &quot;Unknown&quot;,
+                                  no = tab.owls$Owl_Species_ID)
+# There are some misspelled owls
+tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;GuarBarred&quot;,
+                                  yes = &quot;GuatBarred&quot;,
+                                  no = tab.owls$Owl_Species_ID)
+tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;Whiskered Screech&quot;,
+                                  yes = &quot;WhiSc&quot;,
+                                  no = tab.owls$Owl_Species_ID)
+sort(table(tab.owls$Owl_Species_ID))
+</code></pre>
+
+<pre><code>## 
+##      WhiSc      GrHor    Unknown       Barn GuatBarred    Fulvous 
+##          4          6          9         11         13         19 
+##      PacSc      Specd      FerPy      Mottd 
+##         32        159        194        601
+</code></pre>
+
 <hr/>
 
 <h2>Scale the covariates</h2>
@@ -346,17 +485,6 @@ the origin date of 1899-12-31. The correct date will come from the Survey Table,
 <hr/>
 
 <h2>Save files</h2>
-
-<p><em>Note: For reproducibility sake, it&#39;s important to save the processed files
-into the data folder and then load them into the subsequent R programs.</em></p>
-
-<p>Save the processed irisdata</p>
-
-<pre><code class="r">save(irisdata, file = &quot;data/processed_data/iris.Rdata&quot;)
-</code></pre>
-
-<pre><code>## Error in save(irisdata, file = &quot;data/processed_data/iris.Rdata&quot;): object &#39;irisdata&#39; not found
-</code></pre>
 
 <hr/>
 
@@ -377,7 +505,7 @@ into the data folder and then load them into the subsequent R programs.</em></p>
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       &lt;NA&gt;                        
-##  date     2020-07-08
+##  date     2020-07-11
 </code></pre>
 
 <pre><code>## Packages -----------------------------------------------------------------
@@ -393,9 +521,10 @@ into the data folder and then load them into the subsequent R programs.</em></p>
 ##  ezknitr     * 0.6     2016-09-16 CRAN (R 3.3.0)
 ##  graphics    * 3.3.2   2016-10-31 local         
 ##  grDevices   * 3.3.2   2016-10-31 local         
-##  highr         0.6     2016-05-09 CRAN (R 3.3.0)
 ##  knitr       * 1.17    2017-08-10 CRAN (R 3.3.2)
+##  lubridate   * 1.6.0   2016-09-13 CRAN (R 3.3.0)
 ##  magrittr      1.5     2014-11-22 CRAN (R 3.3.0)
+##  markdown      0.8     2017-04-20 CRAN (R 3.3.2)
 ##  memoise       1.1.0   2017-04-21 CRAN (R 3.3.2)
 ##  methods     * 3.3.2   2016-10-31 local         
 ##  R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.3.0)
@@ -403,7 +532,7 @@ into the data folder and then load them into the subsequent R programs.</em></p>
 ##  R.utils       2.5.0   2016-11-07 CRAN (R 3.3.0)
 ##  Rcpp          0.12.13 2017-09-28 CRAN (R 3.3.2)
 ##  readxl      * 1.1.0   2018-04-20 CRAN (R 3.3.2)
-##  rlang         0.1.2   2017-08-09 CRAN (R 3.3.2)
+##  rlang         0.1.6   2017-12-21 CRAN (R 3.3.2)
 ##  rstudioapi    0.7     2017-09-07 CRAN (R 3.3.2)
 ##  stats       * 3.3.2   2016-10-31 local         
 ##  stringi       1.1.5   2017-04-07 CRAN (R 3.3.2)

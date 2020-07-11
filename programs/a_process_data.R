@@ -15,6 +15,8 @@ library(devtools) # documentation-related
 
 # analysis-related
 library(readxl)
+library(lubridate)
+library(dplyr)
 
 #' Clear environment and set seed
 #' 
@@ -29,7 +31,7 @@ set.seed(2583722)
 #' ## Load Data
 #' 
 #' 
-#' **Route Table**
+#' ### Route Table
 #' 
 #' Routes are the six unique transects or routes with two per protected area (Forest).
 #' There are unique IDs that correspond with protected area, and six unique route
@@ -38,7 +40,7 @@ tab.route <- read_xlsx(path = "data/raw_data/Route_Table.xlsx",
                        sheet = "Route_Table")
 tab.route
 
-#' **Stations Table**
+#' ### Stations Table
 #' 
 #' Each route consists of 10 stations. There is no table with information about 
 #' the 60 total stations. Instead, this stations table has each station repeated 
@@ -63,13 +65,106 @@ unique(tab.stations$Station)
 #' the origin date of 1899-12-31. The correct date will come from the Survey Table, below.
 head(tab.stations$Station_Start_Time)
 
+#' ### Survey Table
+#' 
+#' This includes 2002 surveys that have to be deleted from analysis.
+tab.survey <- read_xlsx(path = "data/raw_data/Survey_Table.xlsx",
+                       sheet = "Survey_Table")
+table(tab.survey$Route_ID)
+
+#' Remove data for year = 2002
+tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
+tab.survey <- tab.survey[tab.survey$year > 2003,]
+table(tab.survey$year)
+
+#' Two surveys were written in as 2017, but should be 2009
+# Figure out what dates correspond with the 2017 records
+tab.survey$Survey_Date[tab.survey$year == 2017]
+# Replace them with correct dates
+tab.survey$Survey_Date[tab.survey$Survey_Date == "2017-05-04 UTC"] <- "2009-05-04 UTC"
+tab.survey$Survey_Date[tab.survey$Survey_Date == "2017-05-11 UTC"] <- "2009-05-11 UTC"
+# Recalculate year and double check with table that there are no 2017 records
+tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
+table(tab.survey$year)
+
+#' ### Owls Table
+#' 
+#' This table has all observed owls.
+tab.owls <- read_xlsx(path = "data/raw_data/Owls_Table.xlsx",
+                      sheet = "Owls_Table")
+# Dimensions of owls table (rows, columns)
+dim(tab.owls)
+# Head of owls table
+head(tab.owls)
+
+#' Owl Number is character, but should be numerical
+# Is it a character because it has any letter values? 
+table(tab.owls$Owl_Number)
+# No.... In that case, convert to numeric
+tab.owls$Owl_Number <- as.numeric(tab.owls$Owl_Number)
+summary(tab.owls$Owl_Number)
+
+#' How many of each species of owl are there?
+table(tab.owls$Owl_Species_ID)
+# There are many unknown classifications. Let's make those consistent
+tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "None" |
+                                    tab.owls$Owl_Species_ID == "Ukn" |
+                                    tab.owls$Owl_Species_ID == "Unidentified" |
+                                    tab.owls$Owl_Species_ID == "Unknown",
+                                  yes = "Unknown",
+                                  no = tab.owls$Owl_Species_ID)
+# There are some misspelled owls
+tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "GuarBarred",
+                                  yes = "GuatBarred",
+                                  no = tab.owls$Owl_Species_ID)
+tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "Whiskered Screech",
+                                  yes = "WhiSc",
+                                  no = tab.owls$Owl_Species_ID)
+sort(table(tab.owls$Owl_Species_ID))
 
 
 
 #' _____________________________________________________________________________
-#' ## Scale the covariates
+#' ## Prepare for JAGS
 #' 
+#' ### Begin with survey data, order and clean
+#' 
+#' Sort survey data by Route then survey date
+data.jags <- dplyr::arrange(tab.survey, Route_ID, Survey_Date)
 
+#' Drop unneccessary columns
+colnames(data.jags)
+temp.names.keep <- c("Survey_ID", "Route_ID", "Survey_Date", "year")
+data.jags <- data.jags[,temp.names.keep]
+
+#' Add year index
+data.jags$yearIndex <- 
+  ifelse(test = data.jags$year == 2004,
+         yes = 1,
+         no = ifelse(data.jags$year == 2005,
+                     yes = 2,
+                     no = ifelse(data.jags$year == 2006,
+                                 yes = 3,
+                                 no = ifelse(data.jags$year == 2007,
+                                             yes = 4,
+                                             no = ifelse(data.jags$year == 2008,
+                                                         yes = 5,
+                                                         no = data.jags$year)))))
+data.jags$yearIndex <- 
+  ifelse(data.jags$year == 2009,
+         yes = 6, 
+         no = ifelse(data.jags$year == 2010, 
+                     yes = 7,
+                     no = ifelse(data.jags$year == 2011,
+                                 yes = 8,
+                                 no = ifelse(data.jags$year == 2012,
+                                             yes = 9,
+                                             no = ifelse(data.jags$year == 2013,
+                                                         yes = 10,
+                                                         no = data.jags$yearIndex)))))
+# Double check that year counts match
+table(data.jags$year)
+table(data.jags$yearIndex)
 
 #' _____________________________________________________________________________
 #' ## Save files
