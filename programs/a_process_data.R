@@ -74,8 +74,16 @@ table(tab.survey$Route_ID)
 
 #' Remove data for year = 2002
 tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
-tab.survey <- tab.survey[tab.survey$year > 2003,]
+(survey_id_2002 <- tab.survey$Survey_ID[tab.survey$year==2002])
+tab.survey <- tab.survey[tab.survey$year >= 2003,]
 table(tab.survey$year)
+
+#' Also remove 2002 surveys from stations data
+table(tab.stations$Survey_ID)
+(station_id_2002 <- tab.stations$Stations_ID[tab.stations$Survey_ID %in% survey_id_2002])
+tab.stations <- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
+table(tab.stations$Survey_ID)
+
 
 #' Two surveys were written in as 2017, but should be 2009
 # Figure out what dates correspond with the 2017 records
@@ -96,6 +104,10 @@ tab.owls <- read_xlsx(path = "data/raw_data/Owls_Table.xlsx",
 dim(tab.owls)
 # Head of owls table
 head(tab.owls)
+
+#' Remove data for year = 2002 from owls table
+#' 
+tab.owls <- tab.owls[! tab.owls$Stations_ID %in% station_id_2002,]
 
 #' Owl Number is character, but should be numerical
 # Is it a character because it has any letter values? 
@@ -165,6 +177,25 @@ data.jags$yearIndex <-
 # Double check that year counts match
 table(data.jags$year)
 table(data.jags$yearIndex)
+
+#' ### Merge all stations, survey, and owl data together
+#' 
+#' 
+master.data <- left_join(x = tab.owls, y = tab.stations, by = "Stations_ID")
+master.data <- left_join(x = master.data, y = tab.survey, by = "Survey_ID")
+
+#' _____________________________________________________________________________
+#' ## Process by species of owl
+#' 
+columns.to.keep <- c("Owl_ID", "Stations_ID", "Owl_Species_ID", 
+                     "Owl_Number", "Minute_1", "Minute_2", "Minute_6-12")
+#' 
+#' ### Mottled Owl
+#' 
+#' Duplicate data set up
+mottd.jags <- data.jags
+tab.owls.mottd <- tab.owls[tab.owls$Owl_Species_ID=="Mottd",columns.to.keep]
+
 
 #' _____________________________________________________________________________
 #' ## Save files
