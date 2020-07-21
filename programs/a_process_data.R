@@ -124,28 +124,30 @@ data.jags <- data.jags[,temp.names.keep]
 
 #' Add year index
 data.jags$yearIndex <- 
-  ifelse(test = data.jags$year == 2004,
+  ifelse(test = data.jags$year == 2003,
          yes = 1,
-         no = ifelse(data.jags$year == 2005,
+         no = ifelse(test = data.jags$year == 2004,
                      yes = 2,
-                     no = ifelse(data.jags$year == 2006,
+                     no = ifelse(data.jags$year == 2005,
                                  yes = 3,
-                                 no = ifelse(data.jags$year == 2007,
+                                 no = ifelse(data.jags$year == 2006,
                                              yes = 4,
-                                             no = ifelse(data.jags$year == 2008,
+                                             no = ifelse(data.jags$year == 2007,
                                                          yes = 5,
-                                                         no = data.jags$year)))))
+                                                         no = ifelse(data.jags$year == 2008,
+                                                                     yes = 6,
+                                                                     no = data.jags$year))))))
 data.jags$yearIndex <- 
   ifelse(data.jags$year == 2009,
-         yes = 6, 
+         yes = 7, 
          no = ifelse(data.jags$year == 2010, 
-                     yes = 7,
+                     yes = 8,
                      no = ifelse(data.jags$year == 2011,
-                                 yes = 8,
+                                 yes = 9,
                                  no = ifelse(data.jags$year == 2012,
-                                             yes = 9,
+                                             yes = 10,
                                              no = ifelse(data.jags$year == 2013,
-                                                         yes = 10,
+                                                         yes = 11,
                                                          no = data.jags$yearIndex)))))
 # Double check that year counts match
 table(data.jags$year)
