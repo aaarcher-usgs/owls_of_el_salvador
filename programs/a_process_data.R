@@ -54,13 +54,6 @@ dim(tab.stations)
 head(tab.stations)
 unique(tab.stations$Station)
 
-#' Since there are some records that have NA for Station, I double checked on those
-#' Survey_ID records, and these are extra lines without any information and should be
-#' deleted. (deleting 7 rows, so dim should end up 872 by 11)
-tab.stations <- tab.stations[!is.na(tab.stations$Station),]
-dim(tab.stations)
-unique(tab.stations$Station)
-
 #' The Station_Start_Time did not read in correctly because in Excel it is assuming 
 #' the origin date of 1899-12-31. The correct date will come from the Survey Table, below.
 head(tab.stations$Station_Start_Time)
@@ -74,6 +67,7 @@ table(tab.survey$Route_ID)
 
 #' Remove data for year = 2002
 tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
+table(tab.survey$year)
 (survey_id_2002 <- tab.survey$Survey_ID[tab.survey$year==2002])
 tab.survey <- tab.survey[tab.survey$year >= 2003,]
 table(tab.survey$year)
@@ -85,16 +79,6 @@ tab.stations <- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
 table(tab.stations$Survey_ID)
 
 
-#' Two surveys were written in as 2017, but should be 2009
-# Figure out what dates correspond with the 2017 records
-tab.survey$Survey_Date[tab.survey$year == 2017]
-# Replace them with correct dates
-tab.survey$Survey_Date[tab.survey$Survey_Date == "2017-05-04 UTC"] <- "2009-05-04 UTC"
-tab.survey$Survey_Date[tab.survey$Survey_Date == "2017-05-11 UTC"] <- "2009-05-11 UTC"
-# Recalculate year and double check with table that there are no 2017 records
-tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
-table(tab.survey$year)
-
 #' ### Owls Table
 #' 
 #' This table has all observed owls.
@@ -105,9 +89,12 @@ dim(tab.owls)
 # Head of owls table
 head(tab.owls)
 
+
 #' Remove data for year = 2002 from owls table
 #' 
+#' 
 tab.owls <- tab.owls[! tab.owls$Stations_ID %in% station_id_2002,]
+dim(tab.owls)
 
 #' Owl Number is character, but should be numerical
 # Is it a character because it has any letter values? 
@@ -118,21 +105,7 @@ summary(tab.owls$Owl_Number)
 
 #' How many of each species of owl are there?
 table(tab.owls$Owl_Species_ID)
-# There are many unknown classifications. Let's make those consistent
-tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "None" |
-                                    tab.owls$Owl_Species_ID == "Ukn" |
-                                    tab.owls$Owl_Species_ID == "Unidentified" |
-                                    tab.owls$Owl_Species_ID == "Unknown",
-                                  yes = "Unknown",
-                                  no = tab.owls$Owl_Species_ID)
-# There are some misspelled owls
-tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "GuarBarred",
-                                  yes = "GuatBarred",
-                                  no = tab.owls$Owl_Species_ID)
-tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "Whiskered Screech",
-                                  yes = "WhiSc",
-                                  no = tab.owls$Owl_Species_ID)
-sort(table(tab.owls$Owl_Species_ID))
+
 
 
 
