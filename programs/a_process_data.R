@@ -206,8 +206,11 @@ mottd.master <- left_join(x = tab.owls.mottd, y = tab.stations, by = "Stations_I
 
 #' Process observations for each station and survey night and survey period
 #' 
-# remove Owl observations for Station ID 99, which doesn't exist in station table
-mottd.master <- mottd.master[!is.na(mottd.master$Station),]
+#' Can delete next command after data is cleaned 7/28/2020
+  # remove Owl observations for Station ID 99, which doesn't exist in station table
+  mottd.master <- mottd.master[!is.na(mottd.master$Station),]
+  
+#' Create for-loop to convert owl observations into binary data
 for(rr in 1:nrow(mottd.jags)){
   ii <- mottd.jags$Survey_ID[rr] # Unique Survey ID
   hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
@@ -240,7 +243,7 @@ for(rr in 1:nrow(mottd.jags)){
   }
 }
 
-#owls.observed <- owls.observed[!is.na(owls.observed$Owl_ID),]
+
 
 #' ### Merge all stations, survey, and owl data together
 #' 
