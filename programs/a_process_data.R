@@ -243,6 +243,8 @@ for(rr in 1:nrow(mottd.jags)){
 summary(mottd.jags)
 head(mottd.jags)
 
+
+
 #' ### Merge all stations, survey, and owl data together
 #' 
 #' 
