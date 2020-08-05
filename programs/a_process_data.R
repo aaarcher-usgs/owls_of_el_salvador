@@ -245,6 +245,22 @@ head(mottd.jags)
 
 
 
+#' ## Process broadcast species data
+#' 
+#' Each station should always have the same broadcast species, which are listed
+#' in "tab.stations"
+#' 
+#' 
+stationIDs <- unique(tab.stations$Station)
+for(jj in 1:length(stationIDs)){
+  temp.ks <- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
+  if(length(temp.ks)==1){
+    print(paste0("Station ", stationIDs[jj], " had broadcast species ", temp.ks))
+  }else{
+    print(paste0("Station ", stationIDs[jj], " has >1 broadcast species listed:", temp.ks))
+  }
+}
+
 #' ### Merge all stations, survey, and owl data together
 #' 
 #' 
