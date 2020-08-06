@@ -273,7 +273,7 @@ master.data <- left_join(x = master.data, y = tab.survey, by = "Survey_ID")
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-
+save(mottd.jags, file = "data/processed_data/mottd_jags_input.Rdata")
 
 
 #' _____________________________________________________________________________
