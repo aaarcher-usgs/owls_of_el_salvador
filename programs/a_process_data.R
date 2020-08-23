@@ -58,6 +58,17 @@ unique(tab.stations$Station)
 #' the origin date of 1899-12-31. The correct date will come from the Survey Table, below.
 head(tab.stations$Station_Start_Time)
 
+#' Fix a couple incorrectly coded broadcast species in stations table
+#' 
+tab.stations$Broadcast_Species[tab.stations$Broadcast_Species == "Black and White Owl" &
+                                 tab.stations$Station == "M2.4"] <- "Stygian Owl"
+
+#' There are some stations that didn't get surveyed on a couple dates, delete those
+#' instances
+#' 
+tab.stations[is.na(tab.stations$Broadcast_Species),]
+tab.stations <- tab.stations[!is.na(tab.stations$Broadcast_Species),]
+
 #' ### Survey Table
 #' 
 #' This includes 2002 surveys that have to be deleted from analysis.
