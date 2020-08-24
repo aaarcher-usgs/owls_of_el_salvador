@@ -63,11 +63,7 @@ head(tab.stations$Station_Start_Time)
 tab.stations$Broadcast_Species[tab.stations$Broadcast_Species == "Black and White Owl" &
                                  tab.stations$Station == "M2.4"] <- "Stygian Owl"
 
-#' There are some stations that didn't get surveyed on a couple dates, delete those
-#' instances
-#' 
-tab.stations[is.na(tab.stations$Broadcast_Species),]
-tab.stations <- tab.stations[!is.na(tab.stations$Broadcast_Species),]
+
 
 #' ### Survey Table
 #' 
@@ -123,7 +119,38 @@ table(tab.owls$Owl_Species_ID)
 #' _____________________________________________________________________________
 #' ## Prepare for JAGS
 #' 
+#' For surveys that happened multiple times per year, determine the order of
+#' those surveys with new variable "order"
 #' 
+# Create a unique identifier for eacy route per year
+tab.survey$hRt_tYr <- paste(tab.survey$Route_ID, tab.survey$year, sep = ".")
+route.year <- sort(unique(tab.survey$hRt_tYr))
+
+# Create new blank column and then populate based on the order of surveys per
+# route and year.
+tab.survey$order <- NA
+for(ht in 1:length(route.year)){
+  order.dates.per.survey.per.yr <- 
+    order(tab.survey$Survey_Date[tab.survey$hRt_tYr == route.year[ht]])
+  tab.survey$order[tab.survey$hRt_tYr == route.year[ht]] <- order.dates.per.survey.per.yr
+}
+
+# Concatenate that order index with route/year column to create unique identifier
+# for each different survey
+tab.survey$hRt_tYr_iSvy <- paste(tab.survey$hRt_tYr, tab.survey$order, sep = ".")
+head(tab.survey$hRt_tYr_iSvy)
+
+
+#' 
+#' Create an array of Ys (detections/non-detections) for each of the 84 different
+#' surveys
+#' 
+
+
+
+
+
+
 
 #' ### Begin with survey data, order and clean
 #' 
@@ -132,7 +159,8 @@ data.jags <- dplyr::arrange(tab.survey, Route_ID, Survey_Date)
 
 #' Drop unneccessary columns
 colnames(data.jags)
-temp.names.keep <- c("Survey_ID", "Route_ID", "Survey_Date", "year")
+temp.names.keep <- c("Survey_ID", "Route_ID", "Survey_Date", 
+                     "year", "hRt_tYr", "order", "hRt_tYr_iSvy")
 data.jags <- data.jags[,temp.names.keep]
 head(data.jags)
 
@@ -253,6 +281,7 @@ for(rr in 1:nrow(mottd.jags)){
 }
 summary(mottd.jags)
 head(mottd.jags)
+
 
 
 
