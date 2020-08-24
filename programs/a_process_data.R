@@ -195,37 +195,17 @@ data.jags$yearIndex <-
 table(data.jags$year)
 table(data.jags$yearIndex)
 
-
-#' Add a column for each Station ID
-#' 
-data.jags$station.1 <- paste(data.jags$Route_ID, 1, sep = ".")
-data.jags$station.2 <- paste(data.jags$Route_ID, 2, sep = ".")
-data.jags$station.3 <- paste(data.jags$Route_ID, 3, sep = ".")
-data.jags$station.4 <- paste(data.jags$Route_ID, 4, sep = ".")
-data.jags$station.5 <- paste(data.jags$Route_ID, 5, sep = ".")
-data.jags$station.6 <- paste(data.jags$Route_ID, 6, sep = ".")
-data.jags$station.7 <- paste(data.jags$Route_ID, 7, sep = ".")
-data.jags$station.8 <- paste(data.jags$Route_ID, 8, sep = ".")
-data.jags$station.9 <- paste(data.jags$Route_ID, 9, sep = ".")
-data.jags$station.10 <- paste(data.jags$Route_ID, 10, sep = ".")
-
 #' Create blank fields for all of observed presences
 #' 
-#' There will be 20 total columns, one for each station and one for each survey period 
-#' (before and after broadcast).
+#' There will be 84 total matrices, each with 10 rows (j, stations) and 2 columns 
+#' (k, before or after broadcast)
 #' 
-ys <- as.data.frame(matrix(NA, nrow = nrow(data.jags), ncol = 20))
-iter.index <- matrix(1:20, nrow = 10, ncol = 2, byrow = T)
-for(jj in 1:10){ #loops over stations
-  for(kk in 1:2){ #loops over broadcast periods
-    colnames(ys)[iter.index[jj,kk]] <- paste("y", jj, kk, sep = ".")
-  }
+#' 
+ys <- list(NA)
+for(hti in 1:nrow(data.jags)){
+  ys[[hti]] <- matrix(NA, ncol = 2, nrow = 10)
 }
-head(ys)
-
-#' Attach to data.jags
-#' 
-data.jags <- cbind(data.jags, ys)
+names(ys) <- data.jags$hRt_tYr_iSvy
 
 
 #' _____________________________________________________________________________
@@ -241,8 +221,95 @@ mottd.jags <- data.jags
 
 
 #' Separate out only Mottled Owls data and join with stations table
+#' 
 tab.owls.mottd <- tab.owls[tab.owls$Owl_Species_ID=="Mottd",columns.to.keep]
 mottd.master <- left_join(x = tab.owls.mottd, y = tab.stations, by = "Stations_ID")
+
+#' Process observations for each station and survey night and survey period
+#' 
+#' Create for-loop to convert owl observations into binary data
+for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
+  ii <- mottd.jags$Survey_ID[rr] # Unique Survey ID
+  hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
+  
+  # Select all owl observations made during each survey (ii)
+  survey_data <- mottd.master[mottd.master$Survey_ID==ii,]
+  
+  for(jj in 1:10){ # across all 10 stations
+    # Were there any owls observed at each station (jj)?
+    
+    # Set up logical test with a length statement
+    # If = 0, no observations for that station
+    # If >= 1, there were observations for that station 
+    test.y <- sum(survey_data$Station == paste0(hh,".",jj), na.rm = T)
+    if(test.y == 0){
+      mottd.jags[rr,paste0("y.",jj,".1")] <- 0 #before broadcast
+      mottd.jags[rr,paste0("y.",jj,".2")] <- 0 #and after broadcast are 0s
+    }else{
+      owls.observed <- survey_data[survey_data$Station == paste0(hh,".",jj),]
+      # Was observation before or after broadcast?
+      # kk = 1 for before broadcast
+      # kk = 2 for after broadcast
+      logic.prebroadcast <- c(owls.observed$Minute_1,owls.observed$Minute_2)
+      logic.postbroadcast <- c(owls.observed$`Minute_6-12`)
+      mottd.jags[rr,paste0("y.",jj,".1")] <- ifelse(sum(logic.prebroadcast>0),
+                                                    yes = 1, no = 0)
+      mottd.jags[rr,paste0("y.",jj,".2")] <- ifelse(sum(logic.postbroadcast>0),
+                                                    yes = 1, no = 0)
+    }
+  }
+}
+summary(mottd.jags)
+head(mottd.jags)
+
+
+
+
+
+
+# ' ###################################
+#       old code below
+
+
+
+
+
+
+
+ys <- matrix(NA, nrow = nrow(data.jags), ncol = 20)
+iter.index <- matrix(1:20, nrow = 10, ncol = 2, byrow = T)
+for(jj in 1:10){ #loops over stations
+  for(kk in 1:2){ #loops over broadcast periods
+    colnames(ys)[iter.index[jj,kk]] <- paste("y", jj, kk, sep = ".")
+  }
+}
+head(ys)
+
+
+
+
+
+#' Add a column for each Station ID
+#' 
+data.jags$station.1 <- paste(data.jags$Route_ID, 1, sep = ".")
+data.jags$station.2 <- paste(data.jags$Route_ID, 2, sep = ".")
+data.jags$station.3 <- paste(data.jags$Route_ID, 3, sep = ".")
+data.jags$station.4 <- paste(data.jags$Route_ID, 4, sep = ".")
+data.jags$station.5 <- paste(data.jags$Route_ID, 5, sep = ".")
+data.jags$station.6 <- paste(data.jags$Route_ID, 6, sep = ".")
+data.jags$station.7 <- paste(data.jags$Route_ID, 7, sep = ".")
+data.jags$station.8 <- paste(data.jags$Route_ID, 8, sep = ".")
+data.jags$station.9 <- paste(data.jags$Route_ID, 9, sep = ".")
+data.jags$station.10 <- paste(data.jags$Route_ID, 10, sep = ".")
+
+
+
+#' Attach to data.jags
+#' 
+#data.jags <- cbind(data.jags, ys)
+
+
+
 
 
 #' Process observations for each station and survey night and survey period
