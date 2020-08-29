@@ -141,11 +141,6 @@ tab.survey$hRt_tYr_iSvy <- paste(tab.survey$hRt_tYr, tab.survey$order, sep = "."
 head(tab.survey$hRt_tYr_iSvy)
 
 
-#' 
-#' Create an array of Ys (detections/non-detections) for each of the 84 different
-#' surveys
-#' 
-
 
 
 
@@ -195,7 +190,14 @@ data.jags$yearIndex <-
 table(data.jags$year)
 table(data.jags$yearIndex)
 
-#' Create blank fields for all of observed presences
+
+#' _____________________________________________________________________________
+#' ## Create tables for Ys and Broad Cast species covariates
+#' 
+#' 
+#' Create an array of Ys (detections/non-detections) for each of the 84 different
+#' surveys
+#' 
 #' 
 #' There will be 84 total matrices, each with 10 rows (j, stations) and 2 columns 
 #' (k, before or after broadcast)
@@ -208,16 +210,83 @@ for(hti in 1:nrow(data.jags)){
 names(ys) <- data.jags$hRt_tYr_iSvy
 
 
+#' Process broadcast species data
+#' 
+#' Each station should always have the same broadcast species, which are listed
+#' in "tab.stations"
+#' 
+#' 
+stationIDs <- unique(tab.stations$Station)
+for(jj in 1:length(stationIDs)){
+  temp.ks <- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
+  if(length(temp.ks)==1){
+    print(paste0("Station ", stationIDs[jj], " had broadcast species ", temp.ks))
+  }else{
+    print(paste0("Station ", stationIDs[jj], " has >1 broadcast species listed:", temp.ks))
+  }
+}
+
+#' Stations N2.6, N2.8, and N2.9 were not surveyed on a couple occasions, 
+#' and got values of "NA" for those broadcast species. 
+#' 
+surveys.NAs <- tab.stations$Survey_ID[is.na(tab.stations$Broadcast_Species)]
+(stations.NAs <- tab.stations$Station[is.na(tab.stations$Broadcast_Species)])
+# Note: These stations will need to be replaced with NAs in the Ys below, NOT ZEROS
+#' 
+#' Now, replace NAs with "correct" broadcast species for covariate purposes
+#' 
+for(xx in 1:length(stations.NAs)){
+  owlnames <- tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]]
+  temp.k <- unique(owlnames[!is.na(owlnames)])
+  tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]] <- temp.k
+}
+unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
+
+#' Create matrices for covariate of broadcast species (shared intercept)
+#'
+#' 
+(route.Names <- unique(tab.route$Route_ID))
+(route.Index <- 1:length(route.Names))
+
+(k.full <- unique(tab.stations$Broadcast_Species)) # full name of k species
+(k.index <- letters[1:length(k.full)]) # index for k species in letters
+(k.factor <- as.factor(k.index))
+
+ks <- NULL
+for(hh in 1:length(route.Names)){ # across 6 routes
+  
+  # Create blank 10 x 2 matrix in for each route
+  ks[[route.Names[hh]]] <- matrix(NA, ncol = 2, nrow = 10)
+  
+  for(jj in 1:10){ # across 10 stations per route
+    # station name (rr.jj)
+    temp.station.name <- paste0(route.Names[hh], ".", jj)
+    
+    # determine species name (full)
+    temp.species <- unique(
+      tab.stations$Broadcast_Species[tab.stations$Station == temp.station.name]
+    )
+    
+    # fill in 0, 
+    ks[[route.Names[hh]]][jj,] <- c(1, k.factor[k.full == temp.species])
+  }
+}
+
+
+
+
 #' _____________________________________________________________________________
 #' ## Process by species of owl
 #' 
 columns.to.keep <- c("Owl_ID", "Stations_ID", "Owl_Species_ID", 
                      "Owl_Number", "Minute_1", "Minute_2", "Minute_6-12")
+
 #' 
 #' ### Mottled Owl
 #' 
 #' Duplicate data set up
 mottd.jags <- data.jags
+mottd.ys <- ys
 
 
 #' Separate out only Mottled Owls data and join with stations table
@@ -247,8 +316,8 @@ for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
       # If >= 1, there were observations for that station 
     test.y <- sum(survey_data$Station == paste0(hh,".",jj), na.rm = T)
     if(test.y == 0){
-      ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0 #before broadcast
-      ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 0 #and after broadcast are 0s
+      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0 #before broadcast
+      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 0 #and after broadcast are 0s
     }else{
       owls.observed <- survey_data[survey_data$Station == paste0(hh,".",jj),]
       # Was observation before or after broadcast?
@@ -257,18 +326,31 @@ for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
       logic.prebroadcast <- c(owls.observed$Minute_1,owls.observed$Minute_2)
       logic.postbroadcast <- c(owls.observed$`Minute_6-12`)
       
-      ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- #look up rt.year.survey 
+      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- #look up rt.year.survey 
         ifelse(sum(logic.prebroadcast>0), yes = 1, no = 0)
-      ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- #look up rt.year.survey 
+      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- #look up rt.year.survey 
         ifelse(sum(logic.postbroadcast>0), yes = 1, no = 0)
       
     }
   }
 }
-summary(ys$EI1.2003.1)
-head(ys$EI1.2003.1)
+summary(mottd.ys$EI1.2003.1)
+head(mottd.ys$EI1.2003.1)
 
-
+#' Remove stations that were not actually surveyed and replace with NAs for Y
+#' 
+stations.NAs
+# data for those specific records are from these surveys
+surveys.NAs
+data.jags$hRt_tYr_iSvy[data.jags$Survey_ID %in% surveys.NAs]
+for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
+  hRt_tYr_iSvy <- data.jags$hRt_tYr_iSvy[data.jags$Survey_ID == surveys.NAs[xx]]
+  tempstation <- stations.NAs[xx] # ID of specific station # to convert to NA
+  # strip off station number, which is same as row number of ys
+  temp.split <- unlist(strsplit(tempstation, split = "[.]"))
+  mottd.ys[[hRt_tYr_iSvy]][as.numeric(temp.split[2]),] <- NA
+  print(mottd.ys[[hRt_tYr_iSvy]])
+}
 
 
 
@@ -358,21 +440,7 @@ head(mottd.jags)
 
 
 
-#' ## Process broadcast species data
-#' 
-#' Each station should always have the same broadcast species, which are listed
-#' in "tab.stations"
-#' 
-#' 
-stationIDs <- unique(tab.stations$Station)
-for(jj in 1:length(stationIDs)){
-  temp.ks <- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
-  if(length(temp.ks)==1){
-    print(paste0("Station ", stationIDs[jj], " had broadcast species ", temp.ks))
-  }else{
-    print(paste0("Station ", stationIDs[jj], " has >1 broadcast species listed:", temp.ks))
-  }
-}
+
 
 #' ### Merge all stations, survey, and owl data together
 #' 
