@@ -296,8 +296,8 @@ mottd.master <- left_join(x = tab.owls.mottd, y = tab.stations, by = "Stations_I
 #' Process observations for each station and survey night and survey period
 #' 
 #' Create for-loop to convert owl observations into binary data
-for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
-  ii <- mottd.jags$Survey_ID[rr] # Unique Survey ID
+for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
+  ii <- data.jags$Survey_ID[rr] # Unique Survey ID
   hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
   tt <- tab.survey$year[tab.survey$Survey_ID == ii] # year of survey
   ii.order <- data.jags$order[data.jags$Survey_ID==ii]
@@ -353,14 +353,32 @@ for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
 
 
 
-
-
+#' Create new table for looking up how many surveys per route (rows) per year (cols)
+#' 
+surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
+                                       ncol = length(unique(data.jags$year))))
+colnames(surveys.lookup) <- unique(data.jags$year)
+year.names <- colnames(surveys.lookup)
+rownames(surveys.lookup) <- route.Names
+for(hh in 1:nrow(surveys.lookup)){
+  for(tt in 1:ncol(surveys.lookup)){
+    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
+                            data.jags$year == year.names[tt],]
+    if(nrow(tempdata)==0){
+      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
+    }else{
+      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
+    }
+  }
+}
 
 
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
 save(data.jags, mottd.ys, ks, file = "data/processed_data/mottd_jags_input.Rdata")
+
+
 
 
 #' _____________________________________________________________________________
