@@ -272,7 +272,25 @@ for(hh in 1:length(route.Names)){ # across 6 routes
   }
 }
 
-
+#' Create new table for looking up how many surveys per route (rows) per year (cols)
+#' 
+surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
+                                       ncol = length(unique(data.jags$year))))
+colnames(surveys.lookup) <- unique(data.jags$year)
+year.names <- colnames(surveys.lookup)
+rownames(surveys.lookup) <- route.Names
+for(hh in 1:nrow(surveys.lookup)){
+  for(tt in 1:ncol(surveys.lookup)){
+    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
+                            data.jags$year == year.names[tt],]
+    if(nrow(tempdata)==0){
+      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
+    }else{
+      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
+    }
+  }
+}
+surveys.lookup
 
 
 #' _____________________________________________________________________________
@@ -336,6 +354,28 @@ for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
 summary(mottd.ys$EI1.2003.1)
 head(mottd.ys$EI1.2003.1)
 
+#' _____________________________________________________________________________
+#' ## Balance survey design 
+#' 
+#' As shown above, there are going to be some Route/years that were not surveyed
+#' at all. Those will not have a y-matrix of NAs, so we must add in y-matrices of
+#' NAs for those in order to be able to cycle through JAGS model
+#' 
+(mottd.surveys.lookup <- surveys.lookup)
+
+for(hh in 1:nrow(surveys.lookup)){
+  for(tt in 1:ncol(surveys.lookup)){
+    if(is.na(surveys.lookup[hh,tt])){
+      mottd.ys[[paste0(route.Names[hh],".",year.names[tt],".1")]] <- 
+        matrix(NA, ncol = 2, nrow = 10)
+      mottd.surveys.lookup[hh,tt] <- 1
+    }
+  }
+}
+(mottd.surveys.lookup)
+sum(mottd.surveys.lookup, na.rm = T)
+length(mottd.ys)
+
 #' Remove stations that were not actually surveyed and replace with NAs for Y
 #' 
 stations.NAs
@@ -353,30 +393,15 @@ for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
 
 
 
-#' Create new table for looking up how many surveys per route (rows) per year (cols)
-#' 
-surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
-                                       ncol = length(unique(data.jags$year))))
-colnames(surveys.lookup) <- unique(data.jags$year)
-year.names <- colnames(surveys.lookup)
-rownames(surveys.lookup) <- route.Names
-for(hh in 1:nrow(surveys.lookup)){
-  for(tt in 1:ncol(surveys.lookup)){
-    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
-                            data.jags$year == year.names[tt],]
-    if(nrow(tempdata)==0){
-      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
-    }else{
-      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
-    }
-  }
-}
+
+
+
 
 
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(data.jags, mottd.ys, ks, surveys.lookup,
+save(data.jags, mottd.ys, ks, mottd.surveys.lookup,
      file = "data/processed_data/mottd_jags_input.Rdata")
 
 
