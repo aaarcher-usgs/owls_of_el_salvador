@@ -285,7 +285,6 @@ columns.to.keep <- c("Owl_ID", "Stations_ID", "Owl_Species_ID",
 #' ### Mottled Owl
 #' 
 #' Duplicate data set up
-mottd.jags <- data.jags
 mottd.ys <- ys
 
 
@@ -361,7 +360,7 @@ for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(mottd.jags, file = "data/processed_data/mottd_jags_input.Rdata")
+save(data.jags, mottd.ys, ks, file = "data/processed_data/mottd_jags_input.Rdata")
 
 
 #' _____________________________________________________________________________
