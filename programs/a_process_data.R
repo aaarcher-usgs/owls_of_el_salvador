@@ -268,7 +268,7 @@ for(hh in 1:length(route.Names)){ # across 6 routes
     )
     
     # fill in 0, 
-    ks[[route.Names[hh]]][jj,] <- c(1, k.factor[k.full == temp.species])
+    ks[[route.Names[hh]]][jj,] <- c(0, k.factor[k.full == temp.species])
   }
 }
 
