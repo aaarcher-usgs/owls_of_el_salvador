@@ -376,7 +376,8 @@ for(hh in 1:nrow(surveys.lookup)){
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(data.jags, mottd.ys, ks, file = "data/processed_data/mottd_jags_input.Rdata")
+save(data.jags, mottd.ys, ks, surveys.lookup,
+     file = "data/processed_data/mottd_jags_input.Rdata")
 
 
 
