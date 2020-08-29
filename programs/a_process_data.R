@@ -231,20 +231,24 @@ mottd.master <- left_join(x = tab.owls.mottd, y = tab.stations, by = "Stations_I
 for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
   ii <- mottd.jags$Survey_ID[rr] # Unique Survey ID
   hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
+  tt <- tab.survey$year[tab.survey$Survey_ID == ii] # year of survey
+  ii.order <- data.jags$order[data.jags$Survey_ID==ii]
   
   # Select all owl observations made during each survey (ii)
   survey_data <- mottd.master[mottd.master$Survey_ID==ii,]
+  
+
   
   for(jj in 1:10){ # across all 10 stations
     # Were there any owls observed at each station (jj)?
     
     # Set up logical test with a length statement
-    # If = 0, no observations for that station
-    # If >= 1, there were observations for that station 
+      # If = 0, no observations for that station
+      # If >= 1, there were observations for that station 
     test.y <- sum(survey_data$Station == paste0(hh,".",jj), na.rm = T)
     if(test.y == 0){
-      mottd.jags[rr,paste0("y.",jj,".1")] <- 0 #before broadcast
-      mottd.jags[rr,paste0("y.",jj,".2")] <- 0 #and after broadcast are 0s
+      ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0 #before broadcast
+      ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 0 #and after broadcast are 0s
     }else{
       owls.observed <- survey_data[survey_data$Station == paste0(hh,".",jj),]
       # Was observation before or after broadcast?
@@ -252,15 +256,17 @@ for(rr in 1:nrow(mottd.jags)){ # go over each row of owl observations
       # kk = 2 for after broadcast
       logic.prebroadcast <- c(owls.observed$Minute_1,owls.observed$Minute_2)
       logic.postbroadcast <- c(owls.observed$`Minute_6-12`)
-      mottd.jags[rr,paste0("y.",jj,".1")] <- ifelse(sum(logic.prebroadcast>0),
-                                                    yes = 1, no = 0)
-      mottd.jags[rr,paste0("y.",jj,".2")] <- ifelse(sum(logic.postbroadcast>0),
-                                                    yes = 1, no = 0)
+      
+      ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- #look up rt.year.survey 
+        ifelse(sum(logic.prebroadcast>0), yes = 1, no = 0)
+      ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- #look up rt.year.survey 
+        ifelse(sum(logic.postbroadcast>0), yes = 1, no = 0)
+      
     }
   }
 }
-summary(mottd.jags)
-head(mottd.jags)
+summary(ys$EI1.2003.1)
+head(ys$EI1.2003.1)
 
 
 
