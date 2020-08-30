@@ -204,10 +204,13 @@ table(data.jags$yearIndex)
 #' 
 #' 
 ys <- list(NA)
+ks <- list(NA)
 for(hti in 1:nrow(data.jags)){
-  ys[[hti]] <- matrix(NA, ncol = 2, nrow = 10)
+  ys[[hti]] <- 
+  ks[[hti]] <- matrix(NA, ncol = 2, nrow = 10)
 }
 names(ys) <- data.jags$hRt_tYr_iSvy
+names(ks) <- data.jags$hRt_tYr_iSvy
 
 
 #' Process broadcast species data
@@ -252,25 +255,50 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 (k.index <- letters[1:length(k.full)]) # index for k species in letters
 (k.factor <- as.factor(k.index))
 
-ks <- NULL
-for(hh in 1:length(route.Names)){ # across 6 routes
+for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
+  ii <- data.jags$Survey_ID[rr] # Unique Survey ID
+  hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
+  tt <- tab.survey$year[tab.survey$Survey_ID == ii] # year of survey
+  ii.order <- data.jags$order[data.jags$Survey_ID==ii]
   
-  # Create blank 10 x 2 matrix in for each route
-  ks[[route.Names[hh]]] <- matrix(NA, ncol = 2, nrow = 10)
   
-  for(jj in 1:10){ # across 10 stations per route
-    # station name (rr.jj)
-    temp.station.name <- paste0(route.Names[hh], ".", jj)
+  for(jj in 1:10){ # across all 10 stations
+    
+    # Fill in broadcast species
+    # unique station id
+    temp.station <- tab.stations$Stations_ID[tab.stations$Survey_ID==ii & 
+                                               tab.stations$Station == paste0(hh,".",jj)]
     
     # determine species name (full)
     temp.species <- unique(
-      tab.stations$Broadcast_Species[tab.stations$Station == temp.station.name]
+      tab.stations$Broadcast_Species[tab.stations$Station == temp.station]
     )
     
-    # fill in 0, 
-    ks[[route.Names[hh]]][jj,] <- c(0, k.factor[k.full == temp.species])
+    ks[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0
+    ks[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 
+      tab.stations$Broadcast_Species[tab.stations$Stations_ID == temp.station]
   }
 }
+
+# ks <- NULL
+# for(hh in 1:length(route.Names)){ # across 6 routes
+#   
+#   # Create blank 10 x 2 matrix in for each route
+#   ks[[route.Names[hh]]] <- matrix(NA, ncol = 2, nrow = 10)
+#   
+#   for(jj in 1:10){ # across 10 stations per route
+#     # station name (rr.jj)
+#     temp.station.name <- paste0(route.Names[hh], ".", jj)
+#     
+#     # determine species name (full)
+#     temp.species <- unique(
+#       tab.stations$Broadcast_Species[tab.stations$Station == temp.station.name]
+#     )
+#     
+#     # fill in 0, 
+#     ks[[route.Names[hh]]][jj,] <- c(0, k.factor[k.full == temp.species])
+#   }
+# }
 
 #' Create new table for looking up how many surveys per route (rows) per year (cols)
 #' 
@@ -326,6 +354,7 @@ for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
 
   
   for(jj in 1:10){ # across all 10 stations
+    
     # Were there any owls observed at each station (jj)?
     
     # Set up logical test with a length statement

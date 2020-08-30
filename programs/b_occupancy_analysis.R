@@ -85,18 +85,20 @@ ks.array <- array(as.numeric(unlist(ks)), dim = c(10,2,6))
 #' 
 model.occ <- function(){
   # Priors
-  alpha.p ~ dnorm(0,10)
-  beta.p ~ dnorm(0,10)
+  alpha.p ~  dt(0, pow(2.5, -2), 1)
+  for(kk in (k+1)){
+    beta.p[kk] ~ dt(0, pow(2.5, -2), 1)
+  }
+ 
   for(hh in 1:n.route){
     for(tt in 1:n.year){
       psi[hh,tt] ~ dunif(0,1)
     }
   }
   
-  for(jj in 1:10){
-    for(kk in 1:2){
-      eff.p[jj,kk] ~ dunif(0,1)
-    }
+  eff.p[1] <- 0
+  for(kk in 2:10){
+    eff.p[kk]
   }
   
   
@@ -110,7 +112,7 @@ model.occ <- function(){
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
-            y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ dbin(eff.p[jj,kk],1)
+            y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ dbern(eff.p[])
             
             
             
@@ -158,7 +160,7 @@ mottd.jag.data <- list(
 #' 
 jagsout <- jags(data = mottd.jag.data, 
                 #inits = , 
-                parameters.to.save = c("alpha.p","beta.p","z"), 
+                parameters.to.save = c("alpha.p","beta.p"), 
                 model.file = model.occ, 
                 n.chains = 3,
                 n.iter = 1000,
