@@ -53,6 +53,7 @@ tab.stations <- read_xlsx(path = "data/raw_data/Stations_Table.xlsx",
 dim(tab.stations)
 head(tab.stations)
 unique(tab.stations$Station)
+length(unique(tab.stations$Station))
 
 #' The Station_Start_Time did not read in correctly because in Excel it is assuming 
 #' the origin date of 1899-12-31. The correct date will come from the Survey Table, below.
@@ -122,7 +123,7 @@ table(tab.owls$Owl_Species_ID)
 #' For surveys that happened multiple times per year, determine the order of
 #' those surveys with new variable "order"
 #' 
-# Create a unique identifier for eacy route per year
+# Create a unique identifier for each route per year
 tab.survey$hRt_tYr <- paste(tab.survey$Route_ID, tab.survey$year, sep = ".")
 route.year <- sort(unique(tab.survey$hRt_tYr))
 
@@ -160,32 +161,14 @@ data.jags <- data.jags[,temp.names.keep]
 head(data.jags)
 
 #' Add year index
-data.jags$yearIndex <- 
-  ifelse(test = data.jags$year == 2003,
-         yes = 1,
-         no = ifelse(test = data.jags$year == 2004,
-                     yes = 2,
-                     no = ifelse(data.jags$year == 2005,
-                                 yes = 3,
-                                 no = ifelse(data.jags$year == 2006,
-                                             yes = 4,
-                                             no = ifelse(data.jags$year == 2007,
-                                                         yes = 5,
-                                                         no = ifelse(data.jags$year == 2008,
-                                                                     yes = 6,
-                                                                     no = data.jags$year))))))
-data.jags$yearIndex <- 
-  ifelse(data.jags$year == 2009,
-         yes = 7, 
-         no = ifelse(data.jags$year == 2010, 
-                     yes = 8,
-                     no = ifelse(data.jags$year == 2011,
-                                 yes = 9,
-                                 no = ifelse(data.jags$year == 2012,
-                                             yes = 10,
-                                             no = ifelse(data.jags$year == 2013,
-                                                         yes = 11,
-                                                         no = data.jags$yearIndex)))))
+#' 
+#' 
+years.analysis <- min(data.jags$year):max(data.jags$year)
+data.jags$yearIndex <- NA
+for(tt in 1:length(years.analysis)){
+  data.jags$yearIndex[data.jags$year == years.analysis[tt]] <- tt
+}
+
 # Double check that year counts match
 table(data.jags$year)
 table(data.jags$yearIndex)
@@ -195,22 +178,38 @@ table(data.jags$yearIndex)
 #' ## Create tables for Ys and Broad Cast species covariates
 #' 
 #' 
-#' Create an array of Ys (detections/non-detections) for each of the 84 different
+#' Create an array of Ys (detections/non-detections) for each of the **possible**
 #' surveys
 #' 
+#' Specifically: 6 routes (hh), 10 stations (jj), up to 3 surveys per year (ii), 
+#' 11 total years (tt)
+#' and 2 broadcast times (kk)
 #' 
-#' There will be 84 total matrices, each with 10 rows (j, stations) and 2 columns 
+#' 
+#' There will be 198 total matrices, each with 10 rows (j, stations) and 2 columns 
 #' (k, before or after broadcast)
 #' 
 #' 
+# Create blank lists
 ys <- list(NA)
 ks <- list(NA)
-for(hti in 1:nrow(data.jags)){
-  ys[[hti]] <- 
+
+# How many total matrices should there be?
+(total.num.hti <- nrow(tab.route)* #6, number of routes h
+  max(tab.survey$order)*    #3, max number of surveys i per year
+  length(min(tab.survey$year):max(tab.survey$year))) #11, number of total years
+
+# Create lists of blank matrices and name them appropriately
+for(hti in 1:total.num.hti){
+  ys[[hti]] <- matrix(NA, ncol = 2, nrow = 10)
   ks[[hti]] <- matrix(NA, ncol = 2, nrow = 10)
 }
-names(ys) <- data.jags$hRt_tYr_iSvy
-names(ks) <- data.jags$hRt_tYr_iSvy
+names(ys) <- names(ks) <- 
+  paste(rep(tab.route$Route_ID, each = 33), 
+        rep(rep(min(tab.survey$year):max(tab.survey$year), each = 3),6),
+        rep(1:3, 66),
+        sep=".")
+names(ys)[1:20]
 
 
 #' Process broadcast species data
@@ -245,80 +244,33 @@ for(xx in 1:length(stations.NAs)){
 }
 unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 
+
 #' Create matrices for covariate of broadcast species (shared intercept)
 #'
 #' 
 (route.Names <- unique(tab.route$Route_ID))
-(route.Index <- 1:length(route.Names))
-
-(k.full <- unique(tab.stations$Broadcast_Species)) # full name of k species
-(k.index <- letters[1:length(k.full)]) # index for k species in letters
-(k.factor <- as.factor(k.index))
-
-for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
-  ii <- data.jags$Survey_ID[rr] # Unique Survey ID
-  hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
-  tt <- tab.survey$year[tab.survey$Survey_ID == ii] # year of survey
-  ii.order <- data.jags$order[data.jags$Survey_ID==ii]
+for(hh in 1:length(route.Names)){
   
-  
-  for(jj in 1:10){ # across all 10 stations
+  for(ht in 1:length(grep(pattern = route.Names[hh], names(ks)))){
     
-    # Fill in broadcast species
-    # unique station id
-    temp.station <- tab.stations$Stations_ID[tab.stations$Survey_ID==ii & 
-                                               tab.stations$Station == paste0(hh,".",jj)]
-    
-    # determine species name (full)
-    temp.species <- unique(
-      tab.stations$Broadcast_Species[tab.stations$Station == temp.station]
-    )
-    
-    ks[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0
-    ks[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 
-      tab.stations$Broadcast_Species[tab.stations$Stations_ID == temp.station]
-  }
-}
-
-# ks <- NULL
-# for(hh in 1:length(route.Names)){ # across 6 routes
-#   
-#   # Create blank 10 x 2 matrix in for each route
-#   ks[[route.Names[hh]]] <- matrix(NA, ncol = 2, nrow = 10)
-#   
-#   for(jj in 1:10){ # across 10 stations per route
-#     # station name (rr.jj)
-#     temp.station.name <- paste0(route.Names[hh], ".", jj)
-#     
-#     # determine species name (full)
-#     temp.species <- unique(
-#       tab.stations$Broadcast_Species[tab.stations$Station == temp.station.name]
-#     )
-#     
-#     # fill in 0, 
-#     ks[[route.Names[hh]]][jj,] <- c(0, k.factor[k.full == temp.species])
-#   }
-# }
-
-#' Create new table for looking up how many surveys per route (rows) per year (cols)
-#' 
-surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
-                                       ncol = length(unique(data.jags$year))))
-colnames(surveys.lookup) <- unique(data.jags$year)
-year.names <- colnames(surveys.lookup)
-rownames(surveys.lookup) <- route.Names
-for(hh in 1:nrow(surveys.lookup)){
-  for(tt in 1:ncol(surveys.lookup)){
-    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
-                            data.jags$year == year.names[tt],]
-    if(nrow(tempdata)==0){
-      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
-    }else{
-      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
+    for(jj in 1:10){ # across all 10 stations per route
+      
+      # Find all the tables in the ks list with correct Route and fill in intercept
+      ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,1] <- 0 #intercept pre-broadcast
+      
+      # Find all the tables in the ks list with correct Route and fill in intercept
+      ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2] <- unique(
+        tab.stations$Broadcast_Species[tab.stations$Station == paste0(route.Names[hh],".",jj)]
+      )
+      
     }
+    
   }
+  
 }
-surveys.lookup
+
+
+
 
 
 #' _____________________________________________________________________________
@@ -342,46 +294,97 @@ mottd.master <- left_join(x = tab.owls.mottd, y = tab.stations, by = "Stations_I
 #' Process observations for each station and survey night and survey period
 #' 
 #' Create for-loop to convert owl observations into binary data
-for(rr in 1:nrow(data.jags)){ # go over each row of owl observations
-  ii <- data.jags$Survey_ID[rr] # Unique Survey ID
-  hh <- tab.survey$Route_ID[tab.survey$Survey_ID == ii] # Unique Route ID
-  tt <- tab.survey$year[tab.survey$Survey_ID == ii] # year of survey
-  ii.order <- data.jags$order[data.jags$Survey_ID==ii]
-  
-  # Select all owl observations made during each survey (ii)
-  survey_data <- mottd.master[mottd.master$Survey_ID==ii,]
-  
-
-  
-  for(jj in 1:10){ # across all 10 stations
-    
-    # Were there any owls observed at each station (jj)?
-    
-    # Set up logical test with a length statement
-      # If = 0, no observations for that station
-      # If >= 1, there were observations for that station 
-    test.y <- sum(survey_data$Station == paste0(hh,".",jj), na.rm = T)
-    if(test.y == 0){
-      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- 0 #before broadcast
-      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- 0 #and after broadcast are 0s
-    }else{
-      owls.observed <- survey_data[survey_data$Station == paste0(hh,".",jj),]
-      # Was observation before or after broadcast?
-      # kk = 1 for before broadcast
-      # kk = 2 for after broadcast
-      logic.prebroadcast <- c(owls.observed$Minute_1,owls.observed$Minute_2)
-      logic.postbroadcast <- c(owls.observed$`Minute_6-12`)
+for(hh in 1:length(route.Names)){ # across routes
+  for(tt in 1:length(min(tab.survey$year):max(tab.survey$year))){ # across years
+    for(ii in 1:max(tab.survey$order)){ # across surveys per year
       
-      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,1] <- #look up rt.year.survey 
-        ifelse(sum(logic.prebroadcast>0), yes = 1, no = 0)
-      mottd.ys[[paste0(hh,".",tt,".",ii.order)]][jj,2] <- #look up rt.year.survey 
-        ifelse(sum(logic.postbroadcast>0), yes = 1, no = 0)
+      temp.route <- route.Names[hh]
+      temp.year <- c(min(tab.survey$year):max(tab.survey$year))[tt]
+      temp.survey <- ii
+      temp.survey_ID <- tab.survey$Survey_ID[tab.survey$Route_ID == temp.route &
+                                               tab.survey$year == temp.year &
+                                               tab.survey$order == ii]
+      survey.notexist.test <- length(temp.survey_ID) == 0
+      if(survey.notexist.test == FALSE){
+        for(jj in 1:10){ # across stations
+          owls_observed <- mottd.master[mottd.master$Survey_ID==temp.survey_ID &
+                                        mottd.master$Station == paste0(temp.route,".",jj),]
+          
+          
+          # Was observation before or after broadcast?
+          # kk = 1 for before broadcast
+          # kk = 2 for after broadcast
+          logic.prebroadcast <- c(owls_observed$Minute_1, owls_observed$Minute_2)
+          logic.postbroadcast <- c(owls_observed$`Minute_6-12`)
+          
+          mottd.ys[[paste0(temp.route,".",temp.year,".",temp.survey)]][jj,1] <- #look up rt.year.survey 
+            ifelse(sum(logic.prebroadcast>0), yes = 1, no = 0)
+          mottd.ys[[paste0(temp.route,".",temp.year,".",temp.survey)]][jj,2] <- #look up rt.year.survey 
+            ifelse(sum(logic.postbroadcast>0), yes = 1, no = 0)
+        }
+        
+      }
+      
+      
       
     }
   }
 }
-summary(mottd.ys$EI1.2003.1)
-head(mottd.ys$EI1.2003.1)
+
+
+
+
+
+
+
+
+
+
+
+
+#' _____________________________________________________________________________
+#' ## Save files
+#' 
+save(data.jags, mottd.ys, ks, 
+     file = "data/processed_data/mottd_jags_input.Rdata")
+
+
+
+
+#' _____________________________________________________________________________
+#' ### Footer
+#' 
+#' Session Info
+devtools::session_info()
+#' This document was "spun" with:
+#' 
+#' ezspin(file = "programs/a_process_data.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' 
+#' 
+#' 
+#' Old code archive
+#' Create new table for looking up how many surveys per route (rows) per year (cols)
+#' 
+surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
+                                       ncol = length(unique(data.jags$year))))
+colnames(surveys.lookup) <- unique(data.jags$year)
+year.names <- colnames(surveys.lookup)
+rownames(surveys.lookup) <- route.Names
+for(hh in 1:nrow(surveys.lookup)){
+  for(tt in 1:ncol(surveys.lookup)){
+    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
+                            data.jags$year == year.names[tt],]
+    if(nrow(tempdata)==0){
+      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
+    }else{
+      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
+    }
+  }
+}
+surveys.lookup
+
+
+
 
 #' _____________________________________________________________________________
 #' ## Balance survey design 
@@ -419,29 +422,3 @@ for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
   mottd.ys[[hRt_tYr_iSvy]][as.numeric(temp.split[2]),] <- NA
   print(mottd.ys[[hRt_tYr_iSvy]])
 }
-
-
-
-
-
-
-
-
-#' _____________________________________________________________________________
-#' ## Save files
-#' 
-save(data.jags, mottd.ys, ks, mottd.surveys.lookup,
-     file = "data/processed_data/mottd_jags_input.Rdata")
-
-
-
-
-#' _____________________________________________________________________________
-#' ### Footer
-#' 
-#' Session Info
-devtools::session_info()
-#' This document was "spun" with:
-#' 
-#' ezspin(file = "programs/a_process_data.R", out_dir = "output", fig_dir = "figures", keep_md = F)
-#' 
