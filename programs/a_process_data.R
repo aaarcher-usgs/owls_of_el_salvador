@@ -249,6 +249,9 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 #'
 #' 
 (route.Names <- unique(tab.route$Route_ID))
+(broadcast.species <- unique(tab.stations$Broadcast_Species))
+(broadcast.species.index <- 1:length(broadcast.species))
+ks.index.numb <- ks
 for(hh in 1:length(route.Names)){
   
   for(ht in 1:length(grep(pattern = route.Names[hh], names(ks)))){
@@ -257,11 +260,15 @@ for(hh in 1:length(route.Names)){
       
       # Find all the tables in the ks list with correct Route and fill in intercept
       ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,1] <- 0 #intercept pre-broadcast
+      ks.index.numb[[grep(pattern = route.Names[hh], 
+                          names(ks.index.numb))[ht]]][jj,1] <- 0 #intercept pre-broadcast
       
       # Find all the tables in the ks list with correct Route and fill in intercept
       ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2] <- unique(
         tab.stations$Broadcast_Species[tab.stations$Station == paste0(route.Names[hh],".",jj)]
       )
+      ks.index.numb[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2] <- 
+        broadcast.species.index[broadcast.species == ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2]]
       
     }
     
@@ -345,7 +352,7 @@ for(hh in 1:length(route.Names)){ # across routes
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(data.jags, mottd.ys, ks, 
+save(data.jags, mottd.ys, ks, ks.index.numb,
      file = "data/processed_data/mottd_jags_input.Rdata")
 
 
