@@ -39,45 +39,55 @@ load(file = "data/processed_data/mottd_jags_input.Rdata")
 n.route <- length(unique(data.jags$Route_ID)) # hh
 route.names <- unique(data.jags$Route_ID)
 
-n.year <- length(unique(data.jags$year)) # tt
-year.names <- unique(data.jags$year)
+n.year <- length(min(data.jags$year):max(data.jags$year)) # tt
+year.names <- min(data.jags$year):max(data.jags$year)
 
 n.survey <- max(data.jags$order) # ii
-n.station <- n.route*10 # jj
+n.station <- 10 # jj
 n.broadcast <- 2 # kk
-ks.levels <- 0:9 # all levels possible of k
 
-#' Look up the name of the y-matrix for each possible route/year/survey
-lookup.hhttii <- NULL
-for(ii in 1:3){
-  lookup.hhttii[[ii]] <- matrix(NA, nrow = n.route, ncol = n.year)
+
+
+
+#' Create a lookup table to link the route.year.survey dataset of Ys with a numerical index 1:198
+
+lookup.hhttii.names <- names(mottd.ys)
+lookup.hhttii.numb <- 1:length(lookup.hhttii.names)
+lookup.hhttii.array <- array(NA, dim = c(n.route, n.year, n.survey))
+
+for(ii in 1:n.survey){
   for(hh in 1:n.route){
     for(tt in 1:n.year){
-      lookup.hhttii[[ii]][hh,tt] <- paste0(route.names[hh],".",year.names[tt],".",ii)
+      
+      temp.record <- 
+        lookup.hhttii.numb[lookup.hhttii.names == paste0(route.names[hh],".",year.names[tt],".",ii)]
+      
+      lookup.hhttii.array[hh,tt,ii] <- temp.record
+      
     }
   }
 }
-names.mottd.ys <- names(mottd.ys)
-index.mottd.ys <- 1:length(names.mottd.ys)
-lookup.hhttii.array <- array(NA, dim = c(n.route,n.year,n.survey))
-for(ii in 1:3){
-  for(hh in 1:n.route){
-    for(tt in 1:n.year){
-      if(length(index.mottd.ys[names.mottd.ys == lookup.hhttii[[ii]][hh,tt]]) == 0){
-        lookup.hhttii.array[hh,tt,ii] <- NA
-      }else{
-        lookup.hhttii.array[hh,tt,ii] <- 
-          index.mottd.ys[names.mottd.ys == lookup.hhttii[[ii]][hh,tt]]
-      }
-    }
-  }
-}
+lookup.hhttii.array
+
 
 #' Turn ys and ks into arrays
-ys.array <- array(as.numeric(unlist(mottd.ys)), dim = c(10, 2, length(mottd.ys)))
-ks.array <- array(as.numeric(unlist(ks)), dim = c(10,2,6))
+ys.array <- array(as.numeric(unlist(mottd.ys)), dim = c(10, 2, length(lookup.hhttii.names)))
+ks.array <- array(unlist(ks), dim = c(10, 2, length(lookup.hhttii.names)))
+ks.array.index <- array(as.numeric(unlist(ks.index.numb)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+#' Demonstrate that in Route 1, year 1, and survey 1, 
+#' Ys pull up stations*broadcast presence/absence data and
+#' Ks pull up stations*broadcast covariate data
+#' 
+ys.array[,,lookup.hhttii.array[1,1,1]]
+ks.array[,,lookup.hhttii.array[1,1,1]]
+ks.array.index[,,lookup.hhttii.array[1,1,1]]
 
 
+#' All levels of k
+#' 
+k.names <- unique(as.character(ks.array[,2,]))
+ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 
 
 #' _____________________________________________________________________________
@@ -85,8 +95,8 @@ ks.array <- array(as.numeric(unlist(ks)), dim = c(10,2,6))
 #' 
 model.occ <- function(){
   # Priors
-  alpha.p ~  dt(0, pow(2.5, -2), 1)
-  for(kk in (k+1)){
+  #alpha.p ~  dt(0, pow(2.5, -2), 1)
+  for(kk in 1:length(ks.levels)){
     beta.p[kk] ~ dt(0, pow(2.5, -2), 1)
   }
  
@@ -96,10 +106,7 @@ model.occ <- function(){
     }
   }
   
-  eff.p[1] <- 0
-  for(kk in 2:10){
-    eff.p[kk]
-  }
+
   
   
   # Likelihood
@@ -108,25 +115,32 @@ model.occ <- function(){
       # Occupancy by route and year
       z[hh,tt] ~ dbern(psi[hh,tt]) 
       
-      for(ii in 1:surveys.lookup[hh,tt]){ # 1 to 3 surveys per year
+      # Detection by route, year, survey station, and broadcast
+      for(ii in 1:n.survey){ # 1 to 3 surveys per year
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
-            y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ dbern(eff.p[])
+            y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
+              dbern(eff.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1])
+            
+            # effective probability of detection based on presence
+            eff.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1] <- 
+              z[hh,tt]*p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]
+            
+            logit(p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]) <-
+              beta.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]*
+              ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
             
             
             
+            # p based on broadcast species
+            # logit.p[jj,kk,lookup.hhttii.array[hh,tt,ii]] <- 
+            #   beta.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]* #slope (10 levels, means)
+            #   ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]    #covariate (categorical)
+            # p[jj,kk,lookup.hhttii.array[hh,tt,ii]] <- exp(logit.p[jj,kk,lookup.hhttii.array[hh,tt,ii]])/
+            #   (1+exp(p[jj,kk,lookup.hhttii.array[hh,tt,ii]]))
             
-            # # p varies by station broadcast species
-            # eff.p[jj,kk,hh,tt] <- 
-            #   z[hh,tt]*p[jj,kk,hh,tt]
-            # 
-            # logit.p[jj,kk,hh,tt] <- 
-            #   alpha.p + beta.p*k[ks1[jj,kk,hh]]
-            # 
-            # p[jj,kk,hh,tt] <- 
-            #   exp(logit.p[jj,kk,hh,tt])/
-            #   (1+exp(logit.p[jj,kk,hh,tt]))
+
             
           }
         }
@@ -140,19 +154,15 @@ model.occ <- function(){
 #' ## Compile data for model
 #' 
 mottd.jag.data <- list(
-  k = ks.levels, # 0 if pre-broadcast, 1-9 if after broadcast (0:9)
-  #k1 = ks.levels+1, # Index for p (1:10)
-  #ks = ks.array, # Look up for k value
-  ks1 = ks.array + 1, # Look up for k1 value
+  ks.levels = ks.levels, # 0 if pre-broadcast, 1-9 if after broadcast (0:9)
+  ks.array = ks.array, # Look up for k1 character
+  ks.array.index = ks.array.index, #array, 0 if pre-broadcast, 1-9 if after broadcast
   y = ys.array,
   n.route = n.route,
-  #route.names = route.names,
   n.year = n.year,
-  #year.names = year.names,
-  #n.survey = n.survey,
-  surveys.lookup = mottd.surveys.lookup,
+  n.survey = n.survey,
   lookup.hhttii.array = lookup.hhttii.array,
-  #n.station = n.station,
+  n.station = n.station,
   n.broadcast = n.broadcast
 )
 
