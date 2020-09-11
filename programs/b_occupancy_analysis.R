@@ -95,17 +95,19 @@ ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 #' 
 model.occ <- function(){
   # Priors
-  #alpha.p ~  dt(0, pow(2.5, -2), 1)
-  for(kk in 1:length(ks.levels)){
-    beta.p[kk] ~ dt(0, pow(2.5, -2), 1)
-  }
+  alpha.p ~  dt(0, pow(2.5, -2), 1)
+  beta.p ~ dt(0, pow(2.5, -2), 1)
+  #for(kk in 1:length(ks.levels)){
+  #  beta.p[kk] ~ dt(0, pow(2.5, -2), 1)
+  #}
  
   for(hh in 1:n.route){
     for(tt in 1:n.year){
       psi[hh,tt] ~ dunif(0,1)
+
+      p[hh,tt] ~ dunif(0.01,0.99)
     }
   }
-  
 
   
   
@@ -115,22 +117,22 @@ model.occ <- function(){
       # Occupancy by route and year
       z[hh,tt] ~ dbern(psi[hh,tt]) 
       
+      # effective probability of detection based on presence
+      eff.p[hh,tt]<- 
+        z[hh,tt]*p[hh,tt]
+      
       # Detection by route, year, survey station, and broadcast
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
             y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
-              dbern(eff.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1])
+              dbern(eff.p[hh,tt])
             
-            # effective probability of detection based on presence
-            eff.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1] <- 
-              z[hh,tt]*p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]
-            
-            logit(p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]) <-
-              beta.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]*
-              ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
-            
+
+            #logit(p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]) <-
+            #  beta.p*
+            #  ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
             
             
             # p based on broadcast species
