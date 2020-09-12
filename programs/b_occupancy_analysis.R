@@ -117,9 +117,7 @@ model.occ <- function(){
       # Occupancy by route and year
       z[hh,tt] ~ dbern(psi[hh,tt]) 
       
-      # effective probability of detection based on presence
-      eff.p[hh,tt]<- 
-        z[hh,tt]*p[hh,tt]
+
       
       # Detection by route, year, survey station, and broadcast
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
@@ -127,9 +125,11 @@ model.occ <- function(){
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
             y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
-              dbern(eff.p[hh,tt])
+              dbern(p[hh,tt])
             
 
+
+            
             #logit(p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]) <-
             #  beta.p*
             #  ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
@@ -147,8 +147,11 @@ model.occ <- function(){
           }
         }
       }
+      
+      
     }
   }
+
 }
 
 
@@ -172,7 +175,7 @@ mottd.jag.data <- list(
 #' 
 jagsout <- jags(data = mottd.jag.data, 
                 #inits = , 
-                parameters.to.save = c("alpha.p","beta.p"), 
+                parameters.to.save = c("alpha.p","beta.p", "z", "y1"), 
                 model.file = model.occ, 
                 n.chains = 3,
                 n.iter = 1000,
