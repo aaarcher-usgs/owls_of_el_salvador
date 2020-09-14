@@ -104,8 +104,14 @@ model.occ <- function(){
   for(hh in 1:n.route){
     for(tt in 1:n.year){
       psi[hh,tt] ~ dunif(0,1)
+      for(ii in 1:n.survey){ # 1 to 3 surveys per year
 
-      p[hh,tt] ~ dunif(0.01,0.99)
+        for(jj in 1:10){ # 10 stations per route
+          for(kk in 1:n.broadcast){ # before or after broadcast
+        p[hh,tt,ii,jj,kk] ~ dunif(0.01,0.99)
+          }
+        }
+      }
     }
   }
 
@@ -114,33 +120,21 @@ model.occ <- function(){
   # Likelihood
   for(hh in 1:n.route){ # 6 routes
     for(tt in 1:n.year){ # all years
-      # Occupancy by route and year
-      z[hh,tt] ~ dbern(psi[hh,tt]) 
+
       
 
       
       # Detection by route, year, survey station, and broadcast
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
+        
+        # Occupancy by route and year and survey
+        z[hh,tt,ii] ~ dbern(psi[hh,tt]) 
+        
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
             y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
-              dbern(p[hh,tt])
-            
-
-
-            
-            #logit(p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]) <-
-            #  beta.p*
-            #  ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
-            
-            
-            # p based on broadcast species
-            # logit.p[jj,kk,lookup.hhttii.array[hh,tt,ii]] <- 
-            #   beta.p[ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]+1]* #slope (10 levels, means)
-            #   ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]    #covariate (categorical)
-            # p[jj,kk,lookup.hhttii.array[hh,tt,ii]] <- exp(logit.p[jj,kk,lookup.hhttii.array[hh,tt,ii]])/
-            #   (1+exp(p[jj,kk,lookup.hhttii.array[hh,tt,ii]]))
+              dbern(p[hh,tt,ii,jj,kk])
             
 
             
@@ -175,7 +169,7 @@ mottd.jag.data <- list(
 #' 
 jagsout <- jags(data = mottd.jag.data, 
                 #inits = , 
-                parameters.to.save = c("alpha.p","beta.p", "z", "y1"), 
+                parameters.to.save = c("alpha.p","beta.p", "z", "psi"), 
                 model.file = model.occ, 
                 n.chains = 3,
                 n.iter = 1000,
