@@ -105,10 +105,14 @@ model.occ <- function(){
     for(tt in 1:n.year){
       psi[hh,tt] ~ dunif(0,1)
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
-
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
-        p[hh,tt,ii,jj,kk] ~ dunif(0.01,0.99)
+            
+            
+            p[hh,tt,ii,jj,kk] <- exp(logit.p[hh,tt,ii,jj,kk])/(1+exp(logit.p[hh,tt,ii,jj,kk]))
+            
+            logit.p[hh,tt,ii,jj,kk] <- alpha.p + beta.p*ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
+            
           }
         }
       }
