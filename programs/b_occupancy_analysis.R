@@ -83,6 +83,38 @@ ys.array[,,lookup.hhttii.array[1,1,1]]
 ks.array[,,lookup.hhttii.array[1,1,1]]
 ks.array.index[,,lookup.hhttii.array[1,1,1]]
 
+#' Convert ks into a series of 10 model matrices
+#' 
+#' For example means parameterization, w/ 1s for Pacific screech owl in one matrix, etc
+#' 
+ks.pacific.list <- rapply(ks, function(x) ifelse(x == "Pacific Screech Owl", 1, 0), how = "replace")
+ks.pacific <- array(as.numeric(unlist(ks.pacific.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.mottled.list <- rapply(ks, function(x) ifelse(x == "Mottled Owl", 1, 0), how = "replace")
+ks.mottled <- array(as.numeric(unlist(ks.mottled.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.crested.list <- rapply(ks, function(x) ifelse(x == "Crested Owl", 1, 0), how = "replace")
+ks.crested <- array(as.numeric(unlist(ks.crested.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.bw.list <- rapply(ks, function(x) ifelse(x == "Black and White Owl", 1, 0), how = "replace")
+ks.bw <- array(as.numeric(unlist(ks.bw.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.spectacled.list <- rapply(ks, function(x) ifelse(x == "Spectacled Owl", 1, 0), how = "replace")
+ks.spectacled <- array(as.numeric(unlist(ks.spectacled.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.whiskered.list <- rapply(ks, function(x) ifelse(x == "Whiskered", 1, 0), how = "replace")
+ks.whiskered <- array(as.numeric(unlist(ks.whiskered.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.gbarred.list <- rapply(ks, function(x) ifelse(x == "Guat. Barred Owl", 1, 0), how = "replace")
+ks.gbarred <- array(as.numeric(unlist(ks.gbarred.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.stygian.list <- rapply(ks, function(x) ifelse(x == "Stygian Owl", 1, 0), how = "replace")
+ks.stygian <- array(as.numeric(unlist(ks.stygian.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.ghorned.list <- rapply(ks, function(x) ifelse(x == "Great Horned Owl", 1, 0), how = "replace")
+ks.ghorned <- array(as.numeric(unlist(ks.ghorned.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+
 
 #' All levels of k
 #' 
@@ -95,12 +127,17 @@ ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 #' 
 model.occ <- function(){
   # Priors
-  alpha.p ~  dt(0, pow(2.5, -2), 1)
-  beta.p ~ dt(0, pow(2.5, -2), 1)
-  #for(kk in 1:length(ks.levels)){
-  #  beta.p[kk] ~ dt(0, pow(2.5, -2), 1)
-  #}
- 
+  beta.pacific ~  dt(0, pow(2.5, -2), 1)
+  beta.mottled ~ dt(0, pow(2.5, -2), 1)
+  beta.crested ~ dt(0, pow(2.5, -2), 1)
+  beta.bw ~ dt(0, pow(2.5, -2), 1)
+  beta.spectacled ~ dt(0, pow(2.5, -2), 1)
+  beta.whiskered ~ dt(0, pow(2.5, -2), 1)
+  beta.gbarred ~ dt(0, pow(2.5, -2), 1)
+  beta.stygian ~ dt(0, pow(2.5, -2), 1)
+  beta.ghorned ~ dt(0, pow(2.5, -2), 1)
+  
+  
   for(hh in 1:n.route){
     for(tt in 1:n.year){
       psi[hh,tt] ~ dunif(0,1)
@@ -111,7 +148,16 @@ model.occ <- function(){
             
             p[hh,tt,ii,jj,kk] <- exp(logit.p[hh,tt,ii,jj,kk])/(1+exp(logit.p[hh,tt,ii,jj,kk]))
             
-            logit.p[hh,tt,ii,jj,kk] <- alpha.p + beta.p*ks.array.index[jj,kk,lookup.hhttii.array[hh,tt,ii]]
+            logit.p[hh,tt,ii,jj,kk] <- 
+              beta.pacific*ks.pacific[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.mottled*ks.mottled[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.crested*ks.crested[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.bw*ks.bw[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.spectacled*ks.spectacled[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.whiskered*ks.whiskered[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.gbarred*ks.gbarred[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.stygian*ks.stygian[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
+              beta.ghorned*ks.ghorned[jj,kk,lookup.hhttii.array[hh,tt,ii]]
             
           }
         }
@@ -158,8 +204,15 @@ model.occ <- function(){
 #' 
 mottd.jag.data <- list(
   ks.levels = ks.levels, # 0 if pre-broadcast, 1-9 if after broadcast (0:9)
-  ks.array = ks.array, # Look up for k1 character
-  ks.array.index = ks.array.index, #array, 0 if pre-broadcast, 1-9 if after broadcast
+  ks.pacific = ks.pacific,
+  ks.mottled = ks.mottled,
+  ks.crested = ks.crested,
+  ks.bw = ks.bw,
+  ks.spectacled = ks.spectacled,
+  ks.whiskered = ks.whiskered,
+  ks.gbarred = ks.gbarred,
+  ks.stygian = ks.stygian,
+  ks.ghorned = ks.ghorned,
   y = ys.array,
   n.route = n.route,
   n.year = n.year,
@@ -173,7 +226,16 @@ mottd.jag.data <- list(
 #' 
 jagsout <- jags(data = mottd.jag.data, 
                 #inits = , 
-                parameters.to.save = c("alpha.p","beta.p", "z", "psi"), 
+                parameters.to.save = c("psi",
+                                       "beta.pacific",
+                                       "beta.mottled",
+                                       "beta.crested",
+                                       "beta.bw",
+                                       "beta.spectacled",
+                                       "beta.whiskered",
+                                       "beta.gbarred",
+                                       "beta.stygian",
+                                       "beta.ghorned"), 
                 model.file = model.occ, 
                 n.chains = 3,
                 n.iter = 1000,
