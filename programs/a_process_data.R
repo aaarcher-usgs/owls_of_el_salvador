@@ -17,6 +17,7 @@ library(devtools) # documentation-related
 library(readxl)
 library(lubridate)
 library(dplyr)
+library(ImportExport)
 
 #' Clear environment and set seed
 #' 
@@ -29,6 +30,10 @@ set.seed(2583722)
 
 #' _____________________________________________________________________________
 #' ## Load Data
+#' 
+#' Extract tables from Access
+access_import(file = "data/raw_data/El_Salvador_Owls_Database_Final_2020_09_14.mdb", 
+              table_names = c("Owl_Species_Table"))
 #' 
 #' 
 #' ### Route Table
