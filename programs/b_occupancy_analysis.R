@@ -87,6 +87,10 @@ ks.array.index[,,lookup.hhttii.array[1,1,1]]
 #' 
 #' For example means parameterization, w/ 1s for Pacific screech owl in one matrix, etc
 #' 
+#' Pre-broadcast
+ks.prebroad <- array(as.numeric(rep(c(1,0), each = 10)), dim = c(10,2, length(lookup.hhttii.names)))
+ks.prebroad[,,1]
+#' 
 ks.pacific.list <- rapply(ks, function(x) ifelse(x == "Pacific Screech Owl", 1, 0), how = "replace")
 ks.pacific <- array(as.numeric(unlist(ks.pacific.list)), dim = c(10, 2, length(lookup.hhttii.names)))
 
@@ -127,6 +131,7 @@ ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 #' 
 model.occ <- function(){
   # Priors
+  beta.prebroad ~ dt(0, pow(2.5, -2), 1)
   beta.pacific ~  dt(0, pow(2.5, -2), 1)
   beta.mottled ~ dt(0, pow(2.5, -2), 1)
   beta.crested ~ dt(0, pow(2.5, -2), 1)
@@ -149,6 +154,7 @@ model.occ <- function(){
             p[hh,tt,ii,jj,kk] <- exp(logit.p[hh,tt,ii,jj,kk])/(1+exp(logit.p[hh,tt,ii,jj,kk]))
             
             logit.p[hh,tt,ii,jj,kk] <- 
+              beta.prebroad*ks.prebroad[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
               beta.pacific*ks.pacific[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
               beta.mottled*ks.mottled[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
               beta.crested*ks.crested[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
@@ -204,6 +210,7 @@ model.occ <- function(){
 #' 
 mottd.jag.data <- list(
   ks.levels = ks.levels, # 0 if pre-broadcast, 1-9 if after broadcast (0:9)
+  ks.prebroad = ks.prebroad,
   ks.pacific = ks.pacific,
   ks.mottled = ks.mottled,
   ks.crested = ks.crested,
@@ -227,6 +234,7 @@ mottd.jag.data <- list(
 jagsout <- jags(data = mottd.jag.data, 
                 #inits = , 
                 parameters.to.save = c("psi",
+                                       "beta.prebroad",
                                        "beta.pacific",
                                        "beta.mottled",
                                        "beta.crested",
