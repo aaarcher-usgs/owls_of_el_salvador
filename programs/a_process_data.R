@@ -433,6 +433,7 @@ ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 #' 
 save(data.jags, mottd.ys, file = "data/processed_data/owl_data.Rdata")
 save(
+  lookup.hhttii.names, lookup.hhttii.array,
   ks, ks.index.numb, ks.array.index, 
   k.names, ks.levels, 
   ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled, 
