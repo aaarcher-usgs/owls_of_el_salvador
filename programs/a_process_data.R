@@ -358,7 +358,8 @@ n.survey <- max(data.jags$order) # ii
 n.station <- 10 # jj
 n.broadcast <- 2 # kk
 
-#' Create a lookup table to link the route.year.survey dataset of Ys with a numerical index 1:198
+#' Create a lookup table to link the route.year.survey 
+#' dataset of Ys with a numerical index 1:198
 
 lookup.hhttii.names <- names(mottd.ys)
 lookup.hhttii.numb <- 1:length(lookup.hhttii.names)
@@ -369,7 +370,8 @@ for(ii in 1:n.survey){
     for(tt in 1:n.year){
       
       temp.record <- 
-        lookup.hhttii.numb[lookup.hhttii.names == paste0(route.names[hh],".",year.names[tt],".",ii)]
+        lookup.hhttii.numb[
+          lookup.hhttii.names == paste0(route.names[hh],".",year.names[tt],".",ii)]
       
       lookup.hhttii.array[hh,tt,ii] <- temp.record
       
