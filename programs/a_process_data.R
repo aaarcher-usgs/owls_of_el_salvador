@@ -31,9 +31,6 @@ set.seed(2583722)
 #' _____________________________________________________________________________
 #' ## Load Data
 #' 
-#' Extract tables from Access
-access_import(file = "data/raw_data/El_Salvador_Owls_Database_Final_2020_09_14.mdb", 
-              table_names = c("Owl_Species_Table"))
 #' 
 #' 
 #' ### Route Table
@@ -63,11 +60,6 @@ length(unique(tab.stations$Station))
 #' The Station_Start_Time did not read in correctly because in Excel it is assuming 
 #' the origin date of 1899-12-31. The correct date will come from the Survey Table, below.
 head(tab.stations$Station_Start_Time)
-
-#' Fix a couple incorrectly coded broadcast species in stations table
-#' 
-tab.stations$Broadcast_Species[tab.stations$Broadcast_Species == "Black and White Owl" &
-                                 tab.stations$Station == "M2.4"] <- "Stygian Owl"
 
 
 
@@ -343,12 +335,94 @@ for(hh in 1:length(route.Names)){ # across routes
   }
 }
 
+#' Verify that it looks correct: 
+#' 
+mottd.ys[[1]]
+mottd.master[mottd.master$Survey_ID==20,1:9]
 
 
 
+#' ## Prepare data for saving
+#' 
+#' _____________________________________________________________________________
+#' ## Define variables
+#' 
+#' Observations
+n.route <- length(unique(data.jags$Route_ID)) # hh
+route.names <- unique(data.jags$Route_ID)
+
+n.year <- length(min(data.jags$year):max(data.jags$year)) # tt
+year.names <- min(data.jags$year):max(data.jags$year)
+
+n.survey <- max(data.jags$order) # ii
+n.station <- 10 # jj
+n.broadcast <- 2 # kk
+
+#' Create a lookup table to link the route.year.survey dataset of Ys with a numerical index 1:198
+
+lookup.hhttii.names <- names(mottd.ys)
+lookup.hhttii.numb <- 1:length(lookup.hhttii.names)
+lookup.hhttii.array <- array(NA, dim = c(n.route, n.year, n.survey))
+
+for(ii in 1:n.survey){
+  for(hh in 1:n.route){
+    for(tt in 1:n.year){
+      
+      temp.record <- 
+        lookup.hhttii.numb[lookup.hhttii.names == paste0(route.names[hh],".",year.names[tt],".",ii)]
+      
+      lookup.hhttii.array[hh,tt,ii] <- temp.record
+      
+    }
+  }
+}
+lookup.hhttii.array
+
+#' Turn ks into arrays
+ks.array <- array(unlist(ks), dim = c(10, 2, length(lookup.hhttii.names)))
+ks.array.index <- array(as.numeric(unlist(ks.index.numb)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+#' Convert ks into a series of 10 model matrices
+#' 
+#' For example means parameterization, w/ 1s for Pacific screech owl in one matrix, etc
+#' 
+#' Pre-broadcast
+ks.prebroad <- array(as.numeric(rep(c(1,0), each = 10)), dim = c(10,2, length(lookup.hhttii.names)))
+ks.prebroad[,,1]
+#' 
+ks.pacific.list <- rapply(ks, function(x) ifelse(x == "Pacific Screech Owl", 1, 0), how = "replace")
+ks.pacific <- array(as.numeric(unlist(ks.pacific.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.mottled.list <- rapply(ks, function(x) ifelse(x == "Mottled Owl", 1, 0), how = "replace")
+ks.mottled <- array(as.numeric(unlist(ks.mottled.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.crested.list <- rapply(ks, function(x) ifelse(x == "Crested Owl", 1, 0), how = "replace")
+ks.crested <- array(as.numeric(unlist(ks.crested.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.bw.list <- rapply(ks, function(x) ifelse(x == "Black and White Owl", 1, 0), how = "replace")
+ks.bw <- array(as.numeric(unlist(ks.bw.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.spectacled.list <- rapply(ks, function(x) ifelse(x == "Spectacled Owl", 1, 0), how = "replace")
+ks.spectacled <- array(as.numeric(unlist(ks.spectacled.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.whiskered.list <- rapply(ks, function(x) ifelse(x == "Whiskered", 1, 0), how = "replace")
+ks.whiskered <- array(as.numeric(unlist(ks.whiskered.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.gbarred.list <- rapply(ks, function(x) ifelse(x == "Guat. Barred Owl", 1, 0), how = "replace")
+ks.gbarred <- array(as.numeric(unlist(ks.gbarred.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.stygian.list <- rapply(ks, function(x) ifelse(x == "Stygian Owl", 1, 0), how = "replace")
+ks.stygian <- array(as.numeric(unlist(ks.stygian.list)), dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.ghorned.list <- rapply(ks, function(x) ifelse(x == "Great Horned Owl", 1, 0), how = "replace")
+ks.ghorned <- array(as.numeric(unlist(ks.ghorned.list)), dim = c(10, 2, length(lookup.hhttii.names)))
 
 
 
+#' All levels of k
+#' 
+k.names <- unique(as.character(ks.array[,2,]))
+ks.levels <- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
 
 
 
@@ -357,8 +431,16 @@ for(hh in 1:length(route.Names)){ # across routes
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(data.jags, mottd.ys, ks, ks.index.numb,
-     file = "data/processed_data/mottd_jags_input.Rdata")
+save(data.jags, mottd.ys, file = "data/processed_data/owl_data.Rdata")
+save(
+  ks, ks.index.numb, ks.array.index, 
+  k.names, ks.levels, 
+  ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled, 
+  ks.whiskered, ks.gbarred, ks.stygian, ks.ghorned,
+  file = "data/processed_data/ks_jags_input.Rdata")
+     
+     
+
 
 
 
@@ -374,63 +456,3 @@ devtools::session_info()
 #' 
 #' 
 #' 
-#' Old code archive
-#' Create new table for looking up how many surveys per route (rows) per year (cols)
-#' 
-surveys.lookup <- as.data.frame(matrix(NA, nrow = length(route.Names), 
-                                       ncol = length(unique(data.jags$year))))
-colnames(surveys.lookup) <- unique(data.jags$year)
-year.names <- colnames(surveys.lookup)
-rownames(surveys.lookup) <- route.Names
-for(hh in 1:nrow(surveys.lookup)){
-  for(tt in 1:ncol(surveys.lookup)){
-    tempdata <- data.jags[data.jags$Route_ID==route.Names[hh] &
-                            data.jags$year == year.names[tt],]
-    if(nrow(tempdata)==0){
-      surveys.lookup[route.Names[hh],year.names[tt]] <- NA
-    }else{
-      surveys.lookup[route.Names[hh],year.names[tt]] <- max(tempdata$order)
-    }
-  }
-}
-surveys.lookup
-
-
-
-
-#' _____________________________________________________________________________
-#' ## Balance survey design 
-#' 
-#' As shown above, there are going to be some Route/years that were not surveyed
-#' at all. Those will not have a y-matrix of NAs, so we must add in y-matrices of
-#' NAs for those in order to be able to cycle through JAGS model
-#' 
-(mottd.surveys.lookup <- surveys.lookup)
-
-for(hh in 1:nrow(surveys.lookup)){
-  for(tt in 1:ncol(surveys.lookup)){
-    if(is.na(surveys.lookup[hh,tt])){
-      mottd.ys[[paste0(route.Names[hh],".",year.names[tt],".1")]] <- 
-        matrix(NA, ncol = 2, nrow = 10)
-      mottd.surveys.lookup[hh,tt] <- 1
-    }
-  }
-}
-(mottd.surveys.lookup)
-sum(mottd.surveys.lookup, na.rm = T)
-length(mottd.ys)
-
-#' Remove stations that were not actually surveyed and replace with NAs for Y
-#' 
-stations.NAs
-# data for those specific records are from these surveys
-surveys.NAs
-data.jags$hRt_tYr_iSvy[data.jags$Survey_ID %in% surveys.NAs]
-for(xx in 1:length(stations.NAs)){ #loop over three stations to modify
-  hRt_tYr_iSvy <- data.jags$hRt_tYr_iSvy[data.jags$Survey_ID == surveys.NAs[xx]]
-  tempstation <- stations.NAs[xx] # ID of specific station # to convert to NA
-  # strip off station number, which is same as row number of ys
-  temp.split <- unlist(strsplit(tempstation, split = "[.]"))
-  mottd.ys[[hRt_tYr_iSvy]][as.numeric(temp.split[2]),] <- NA
-  print(mottd.ys[[hRt_tYr_iSvy]])
-}
