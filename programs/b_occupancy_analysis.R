@@ -84,11 +84,23 @@ model.occ <- function(){
   beta.stygian ~ dt(0, pow(2.5, -2), 1)
   beta.ghorned ~ dt(0, pow(2.5, -2), 1)
   
+
   
   for(hh in 1:n.route){
     for(tt in 1:n.year){
-      psi[hh,tt] ~ dunif(0,1)
+      mu.psi[hh,tt] ~ dunif(0.01,0.99)
+      lnrho.psi[hh,tt] ~ dnorm(5,1)%_%T(0.01,10)
+      rho.psi[hh,tt] <- exp(lnrho.psi[hh,tt])
+      a.psi[hh,tt] <- mu.psi[hh,tt]*rho.psi[hh,tt]
+      b.psi[hh,tt] <- rho.psi[hh,tt]-(mu.psi[hh,tt]*rho.psi[hh,tt])
+      
+
+      
+      psi[hh,tt] ~ dbeta(a.psi[hh,tt], b.psi[hh,tt])%_%T(0.0001,0.99)
+      
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
+
+        
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
             
@@ -125,23 +137,28 @@ model.occ <- function(){
       # Detection by route, year, survey station, and broadcast
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
         
-        # Occupancy by route and year and survey
-        z[hh,tt,ii] ~ dbern(psi[hh,tt]) 
+
         
         for(jj in 1:n.station){ # 10 stations per route
+          # Occupancy by route and year and survey
+          z[hh,tt,ii,jj] ~ dbern(psi[hh,tt]) 
+          
           for(kk in 1:n.broadcast){ # before or after broadcast
             # observations by route, year, survey, station, pre/post broadcast
             y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
-              dbern(p[hh,tt,ii,jj,kk])
+              dbern(eff.p[hh,tt,ii,jj,kk])
             
-
+            eff.p[hh,tt,ii,jj,kk] <- p[hh,tt,ii,jj,kk]*z[hh,tt,ii,jj]
             
           }
         }
+        
+        
+
       }
       
-      
     }
+
   }
 
 }
@@ -169,11 +186,13 @@ mottd.jag.data <- list(
   lookup.hhttii.array = lookup.hhttii.array,
   n.broadcast = n.broadcast
 )
+z.init <- array(as.numeric(1), 
+                dim = c(n.route, n.year, n.survey, n.station))
 
 #' ## Run model
 #' 
 mottd.jagsout <- jags(data = mottd.jag.data, 
-                      #inits = , 
+                      inits = function(){list(z = z.init)}, 
                       parameters.to.save = c("psi",
                                              "beta.prebroad",
                                              "beta.pacific",
