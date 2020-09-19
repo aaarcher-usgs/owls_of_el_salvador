@@ -514,7 +514,7 @@ ferpy.master[ferpy.master$Survey_ID==20,1:9]
 specd.ys <- ys
 
 
-#' Separate out only FerPy Owls data and join with stations table
+#' Separate out only Specd Owls data and join with stations table
 #' 
 tab.owls.specd <- tab.owls[tab.owls$Owl_Species_ID=="Specd",columns.to.keep]
 specd.master <- left_join(x = tab.owls.specd, y = tab.stations, by = "Stations_ID")
@@ -569,7 +569,11 @@ specd.master[specd.master$Survey_ID==16,1:9]
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-save(data.jags, mottd.ys, file = "data/processed_data/owl_data.Rdata")
+#' Processed Owl Data
+save(data.jags, mottd.ys, ferpy.ys, specd.ys,
+     file = "data/processed_data/owl_data.Rdata")
+
+#' Processed Support data
 save(
   lookup.hhttii.names, lookup.hhttii.array,
   ks, ks.index.numb, ks.array.index, 
