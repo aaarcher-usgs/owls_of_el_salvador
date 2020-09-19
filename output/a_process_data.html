@@ -218,6 +218,8 @@ library(devtools) # documentation-related
 # analysis-related
 library(readxl)
 library(lubridate)
+library(dplyr)
+library(ImportExport)
 </code></pre>
 
 <p>Clear environment and set seed</p>
@@ -247,14 +249,14 @@ tab.route
 </code></pre>
 
 <pre><code>## # A tibble: 6 x 4
-##   Route_ID            Route_Name       Forest Coordinates
-##      &lt;chr&gt;                 &lt;chr&gt;        &lt;chr&gt;       &lt;lgl&gt;
-## 1      EI1          Lomo de Paja El Imposible          NA
-## 2      EI2            La Cascada El Imposible          NA
-## 3       M1       Bosque Nebuloso  Montecristo          NA
-## 4       M2 Bosque Pinos y Robles  Montecristo          NA
-## 5       N1                 Borda Nancuchiname          NA
-## 6       N2              Sector 2 Nancuchiname          NA
+##   Route_ID Route_Name            Forest       Coordinates
+##   &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;        &lt;lgl&gt;      
+## 1 EI1      Lomo de Paja          El Imposible NA         
+## 2 EI2      La Cascada            El Imposible NA         
+## 3 M1       Bosque Nebuloso       Montecristo  NA         
+## 4 M2       Bosque Pinos y Robles Montecristo  NA         
+## 5 N1       Borda                 Nancuchiname NA         
+## 6 N2       Sector 2              Nancuchiname NA
 </code></pre>
 
 <h3>Stations Table</h3>
@@ -270,63 +272,39 @@ link between these stations and the actual individual surveys is the field &ldqu
 dim(tab.stations)
 </code></pre>
 
-<pre><code>## [1] 879  11
+<pre><code>## [1] 859  11
 </code></pre>
 
 <pre><code class="r">head(tab.stations)
 </code></pre>
 
 <pre><code>## # A tibble: 6 x 11
-##   Stations_ID Survey_ID Station  Station_Start_Time Temperature Barometer
-##         &lt;dbl&gt;     &lt;dbl&gt;   &lt;chr&gt;              &lt;dttm&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-## 1          12        11   EI1.1 1899-12-31 18:30:00          28     34.94
-## 2          13        11   EI1.2 1899-12-31 18:58:00          27     34.94
-## 3          14        11   EI1.3 1899-12-31 19:16:00          27     34.94
-## 4          15        11   EI1.4 1899-12-31 19:36:00          27     34.96
-## 5          16        11   EI1.5 1899-12-31 19:55:00          26     34.96
-## 6          17        11   EI1.6 1899-12-31 20:18:00          27     34.85
-## # ... with 5 more variables: Fog &lt;dbl&gt;, Wind_Speed &lt;dbl&gt;,
-## #   Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;,
-## #   Station_Comments &lt;chr&gt;
+##   Stations_ID Survey_ID Station Station_Start_Time  Temperature Barometer   Fog Wind_Speed
+##         &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dttm&gt;                    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+## 1          12        11 EI1.1   1899-12-31 18:30:00          28      34.9     0          0
+## 2          13        11 EI1.2   1899-12-31 18:58:00          27      34.9     0          0
+## 3          14        11 EI1.3   1899-12-31 19:16:00          27      34.9     0          0
+## 4          15        11 EI1.4   1899-12-31 19:36:00          27      35.0     0          0
+## 5          16        11 EI1.5   1899-12-31 19:55:00          26      35.0     0          0
+## 6          17        11 EI1.6   1899-12-31 20:18:00          27      34.8     0          0
+## # … with 3 more variables: Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;, Station_Comments &lt;chr&gt;
 </code></pre>
 
 <pre><code class="r">unique(tab.stations$Station)
 </code></pre>
 
-<pre><code>##  [1] &quot;EI1.1&quot;  &quot;EI1.2&quot;  &quot;EI1.3&quot;  &quot;EI1.4&quot;  &quot;EI1.5&quot;  &quot;EI1.6&quot;  &quot;EI1.7&quot; 
-##  [8] &quot;EI1.8&quot;  &quot;EI1.9&quot;  &quot;EI1.10&quot; &quot;EI2.1&quot;  &quot;EI2.2&quot;  &quot;EI2.3&quot;  &quot;EI2.4&quot; 
-## [15] &quot;EI2.5&quot;  &quot;EI2.6&quot;  &quot;EI2.7&quot;  &quot;EI2.8&quot;  &quot;EI2.9&quot;  &quot;EI2.10&quot; &quot;N1.1&quot;  
-## [22] &quot;N1.2&quot;   &quot;N1.3&quot;   &quot;N1.4&quot;   &quot;N1.5&quot;   &quot;N1.6&quot;   &quot;N1.7&quot;   &quot;N1.8&quot;  
-## [29] &quot;N1.9&quot;   &quot;N1.10&quot;  &quot;N2.1&quot;   &quot;N2.2&quot;   &quot;N2.3&quot;   &quot;N2.4&quot;   &quot;N2.5&quot;  
-## [36] &quot;N2.6&quot;   &quot;N2.7&quot;   &quot;N2.8&quot;   &quot;N2.9&quot;   &quot;N2.10&quot;  &quot;M2.4&quot;   &quot;M1.1&quot;  
-## [43] &quot;M1.2&quot;   &quot;M1.3&quot;   &quot;M1.4&quot;   &quot;M1.5&quot;   &quot;M1.6&quot;   &quot;M1.7&quot;   &quot;M1.8&quot;  
-## [50] &quot;M1.9&quot;   &quot;M1.10&quot;  &quot;M2.1&quot;   &quot;M2.2&quot;   &quot;M2.3&quot;   &quot;M2.5&quot;   &quot;M2.6&quot;  
-## [57] &quot;M2.7&quot;   &quot;M2.8&quot;   &quot;M2.9&quot;   &quot;M2.10&quot;  NA
+<pre><code>##  [1] &quot;EI1.1&quot;  &quot;EI1.2&quot;  &quot;EI1.3&quot;  &quot;EI1.4&quot;  &quot;EI1.5&quot;  &quot;EI1.6&quot;  &quot;EI1.7&quot;  &quot;EI1.8&quot;  &quot;EI1.9&quot;  &quot;EI1.10&quot;
+## [11] &quot;EI2.1&quot;  &quot;EI2.2&quot;  &quot;EI2.3&quot;  &quot;EI2.4&quot;  &quot;EI2.5&quot;  &quot;EI2.6&quot;  &quot;EI2.7&quot;  &quot;EI2.8&quot;  &quot;EI2.9&quot;  &quot;EI2.10&quot;
+## [21] &quot;N1.1&quot;   &quot;N1.2&quot;   &quot;N1.3&quot;   &quot;N1.4&quot;   &quot;N1.5&quot;   &quot;N1.6&quot;   &quot;N1.7&quot;   &quot;N1.8&quot;   &quot;N1.9&quot;   &quot;N1.10&quot; 
+## [31] &quot;N2.1&quot;   &quot;N2.2&quot;   &quot;N2.3&quot;   &quot;N2.4&quot;   &quot;N2.5&quot;   &quot;N2.6&quot;   &quot;N2.7&quot;   &quot;N2.8&quot;   &quot;N2.9&quot;   &quot;N2.10&quot; 
+## [41] &quot;M1.1&quot;   &quot;M1.2&quot;   &quot;M1.3&quot;   &quot;M1.4&quot;   &quot;M1.5&quot;   &quot;M1.6&quot;   &quot;M1.7&quot;   &quot;M1.8&quot;   &quot;M1.9&quot;   &quot;M1.10&quot; 
+## [51] &quot;M2.1&quot;   &quot;M2.2&quot;   &quot;M2.3&quot;   &quot;M2.4&quot;   &quot;M2.5&quot;   &quot;M2.6&quot;   &quot;M2.7&quot;   &quot;M2.8&quot;   &quot;M2.9&quot;   &quot;M2.10&quot;
 </code></pre>
 
-<p>Since there are some records that have NA for Station, I double checked on those
-Survey_ID records, and these are extra lines without any information and should be
-deleted. (deleting 7 rows, so dim should end up 872 by 11)</p>
-
-<pre><code class="r">tab.stations &lt;- tab.stations[!is.na(tab.stations$Station),]
-dim(tab.stations)
+<pre><code class="r">length(unique(tab.stations$Station))
 </code></pre>
 
-<pre><code>## [1] 872  11
-</code></pre>
-
-<pre><code class="r">unique(tab.stations$Station)
-</code></pre>
-
-<pre><code>##  [1] &quot;EI1.1&quot;  &quot;EI1.2&quot;  &quot;EI1.3&quot;  &quot;EI1.4&quot;  &quot;EI1.5&quot;  &quot;EI1.6&quot;  &quot;EI1.7&quot; 
-##  [8] &quot;EI1.8&quot;  &quot;EI1.9&quot;  &quot;EI1.10&quot; &quot;EI2.1&quot;  &quot;EI2.2&quot;  &quot;EI2.3&quot;  &quot;EI2.4&quot; 
-## [15] &quot;EI2.5&quot;  &quot;EI2.6&quot;  &quot;EI2.7&quot;  &quot;EI2.8&quot;  &quot;EI2.9&quot;  &quot;EI2.10&quot; &quot;N1.1&quot;  
-## [22] &quot;N1.2&quot;   &quot;N1.3&quot;   &quot;N1.4&quot;   &quot;N1.5&quot;   &quot;N1.6&quot;   &quot;N1.7&quot;   &quot;N1.8&quot;  
-## [29] &quot;N1.9&quot;   &quot;N1.10&quot;  &quot;N2.1&quot;   &quot;N2.2&quot;   &quot;N2.3&quot;   &quot;N2.4&quot;   &quot;N2.5&quot;  
-## [36] &quot;N2.6&quot;   &quot;N2.7&quot;   &quot;N2.8&quot;   &quot;N2.9&quot;   &quot;N2.10&quot;  &quot;M2.4&quot;   &quot;M1.1&quot;  
-## [43] &quot;M1.2&quot;   &quot;M1.3&quot;   &quot;M1.4&quot;   &quot;M1.5&quot;   &quot;M1.6&quot;   &quot;M1.7&quot;   &quot;M1.8&quot;  
-## [50] &quot;M1.9&quot;   &quot;M1.10&quot;  &quot;M2.1&quot;   &quot;M2.2&quot;   &quot;M2.3&quot;   &quot;M2.5&quot;   &quot;M2.6&quot;  
-## [57] &quot;M2.7&quot;   &quot;M2.8&quot;   &quot;M2.9&quot;   &quot;M2.10&quot;
+<pre><code>## [1] 60
 </code></pre>
 
 <p>The Station_Start_Time did not read in correctly because in Excel it is assuming 
@@ -335,9 +313,8 @@ the origin date of 1899-12-31. The correct date will come from the Survey Table,
 <pre><code class="r">head(tab.stations$Station_Start_Time)
 </code></pre>
 
-<pre><code>## [1] &quot;1899-12-31 18:30:00 UTC&quot; &quot;1899-12-31 18:58:00 UTC&quot;
-## [3] &quot;1899-12-31 19:16:00 UTC&quot; &quot;1899-12-31 19:36:00 UTC&quot;
-## [5] &quot;1899-12-31 19:55:00 UTC&quot; &quot;1899-12-31 20:18:00 UTC&quot;
+<pre><code>## [1] &quot;1899-12-31 18:30:00 UTC&quot; &quot;1899-12-31 18:58:00 UTC&quot; &quot;1899-12-31 19:16:00 UTC&quot;
+## [4] &quot;1899-12-31 19:36:00 UTC&quot; &quot;1899-12-31 19:55:00 UTC&quot; &quot;1899-12-31 20:18:00 UTC&quot;
 </code></pre>
 
 <h3>Survey Table</h3>
@@ -351,41 +328,72 @@ table(tab.survey$Route_ID)
 
 <pre><code>## 
 ## EI1 EI2  M1  M2  N1  N2 
-##  18  13   7  12  20  20
+##  17  14   7  12  20  20
 </code></pre>
 
 <p>Remove data for year = 2002</p>
 
 <pre><code class="r">tab.survey$year &lt;- lubridate::year(tab.survey$Survey_Date)
-tab.survey &lt;- tab.survey[tab.survey$year &gt; 2003,]
 table(tab.survey$year)
 </code></pre>
 
 <pre><code>## 
-## 2004 2005 2007 2008 2009 2010 2011 2012 2013 2017 
-##    9   11    9   10    5    8   10    8    4    2
+## 2002 2003 2004 2005 2007 2008 2009 2010 2011 2012 2013 
+##    6    8    9   11    9   10    7    8   10    8    4
 </code></pre>
 
-<p>Two surveys were written in as 2017, but should be 2009</p>
-
-<pre><code class="r"># Figure out what dates correspond with the 2017 records
-tab.survey$Survey_Date[tab.survey$year == 2017]
+<pre><code class="r">(survey_id_2002 &lt;- tab.survey$Survey_ID[tab.survey$year==2002])
 </code></pre>
 
-<pre><code>## [1] &quot;2017-05-04 UTC&quot; &quot;2017-05-11 UTC&quot;
+<pre><code>## [1] 28 29 30 31 32 33
 </code></pre>
 
-<pre><code class="r"># Replace them with correct dates
-tab.survey$Survey_Date[tab.survey$Survey_Date == &quot;2017-05-04 UTC&quot;] &lt;- &quot;2009-05-04 UTC&quot;
-tab.survey$Survey_Date[tab.survey$Survey_Date == &quot;2017-05-11 UTC&quot;] &lt;- &quot;2009-05-11 UTC&quot;
-# Recalculate year and double check with table that there are no 2017 records
-tab.survey$year &lt;- lubridate::year(tab.survey$Survey_Date)
+<pre><code class="r">tab.survey &lt;- tab.survey[tab.survey$year &gt;= 2003,]
 table(tab.survey$year)
 </code></pre>
 
 <pre><code>## 
-## 2004 2005 2007 2008 2009 2010 2011 2012 2013 
-##    9   11    9   10    7    8   10    8    4
+## 2003 2004 2005 2007 2008 2009 2010 2011 2012 2013 
+##    8    9   11    9   10    7    8   10    8    4
+</code></pre>
+
+<p>Also remove 2002 surveys from stations data</p>
+
+<pre><code class="r">table(tab.stations$Survey_ID)
+</code></pre>
+
+<pre><code>## 
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3  10 
+##  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61 
+##  10  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  62  63  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87 
+##  10  10  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10
+</code></pre>
+
+<pre><code class="r">(station_id_2002 &lt;- tab.stations$Stations_ID[tab.stations$Survey_ID %in% survey_id_2002])
+</code></pre>
+
+<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+## [25] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230 231 232
+## [49] 233 234 235 236 237
+</code></pre>
+
+<pre><code class="r">tab.stations &lt;- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
+table(tab.stations$Survey_ID)
+</code></pre>
+
+<pre><code>## 
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41  42 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10  10 
+##  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67 
+##  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93 
+##  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <h3>Owls Table</h3>
@@ -398,7 +406,7 @@ table(tab.survey$year)
 dim(tab.owls)
 </code></pre>
 
-<pre><code>## [1] 1065   10
+<pre><code>## [1] 939  10
 </code></pre>
 
 <pre><code class="r"># Head of owls table
@@ -406,16 +414,24 @@ head(tab.owls)
 </code></pre>
 
 <pre><code>## # A tibble: 6 x 10
-##   Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2
-##    &lt;dbl&gt;       &lt;dbl&gt;          &lt;chr&gt;      &lt;chr&gt;    &lt;lgl&gt;    &lt;lgl&gt;
-## 1     17          12          Mottd          1     TRUE     TRUE
-## 2     18          12          Mottd          2    FALSE    FALSE
-## 3     19          13          PacSc          1    FALSE     TRUE
-## 4     20          13          Mottd          2    FALSE    FALSE
-## 5     21          13          Mottd          3    FALSE    FALSE
-## 6     22          14          Mottd          1     TRUE     TRUE
-## # ... with 4 more variables: `Minute_6-12` &lt;lgl&gt;, Owl_Distance &lt;dbl&gt;,
-## #   Owl_Direction &lt;chr&gt;, Owl_Comments &lt;chr&gt;
+##   Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Owl_Distance
+##    &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;                &lt;dbl&gt;
+## 1     17          12 Mottd          1          TRUE     TRUE     TRUE                   400
+## 2     18          12 Mottd          2          FALSE    FALSE    TRUE                   300
+## 3     19          13 PacSc          1          FALSE    TRUE     TRUE                    20
+## 4     20          13 Mottd          2          FALSE    FALSE    TRUE                   200
+## 5     21          13 Mottd          3          FALSE    FALSE    TRUE                   200
+## 6     22          14 Mottd          1          TRUE     TRUE     FALSE                  400
+## # … with 2 more variables: Owl_Direction &lt;chr&gt;, Owl_Comments &lt;chr&gt;
+</code></pre>
+
+<p>Remove data for year = 2002 from owls table</p>
+
+<pre><code class="r">tab.owls &lt;- tab.owls[! tab.owls$Stations_ID %in% station_id_2002,]
+dim(tab.owls)
+</code></pre>
+
+<pre><code>## [1] 921  10
 </code></pre>
 
 <p>Owl Number is character, but should be numerical</p>
@@ -426,7 +442,7 @@ table(tab.owls$Owl_Number)
 
 <pre><code>## 
 ##   1   2   3   4   5   6   7   8   9 
-## 562 279 123  68  22   5   1   1   1
+## 468 248 120  59  19   4   1   1   1
 </code></pre>
 
 <pre><code class="r"># No.... In that case, convert to numeric
@@ -434,8 +450,8 @@ tab.owls$Owl_Number &lt;- as.numeric(tab.owls$Owl_Number)
 summary(tab.owls$Owl_Number)
 </code></pre>
 
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##   1.000   1.000   1.000   1.813   2.000   9.000       3
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.000   1.000   1.849   2.000   9.000
 </code></pre>
 
 <p>How many of each species of owl are there?</p>
@@ -444,47 +460,770 @@ summary(tab.owls$Owl_Number)
 </code></pre>
 
 <pre><code>## 
-##              Barn             FerPy           Fulvous             GrHor 
-##                11               194                19                 6 
-##        GuarBarred        GuatBarred             Mottd              None 
-##                 1                12               601                 3 
-##             PacSc             Specd               Ukn      Unidentified 
-##                32               159                 2                 2 
-##           Unknown             WhiSc Whiskered Screech 
-##                 2                 2                 2
-</code></pre>
-
-<pre><code class="r"># There are many unknown classifications. Let&#39;s make those consistent
-tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;None&quot; |
-                                    tab.owls$Owl_Species_ID == &quot;Ukn&quot; |
-                                    tab.owls$Owl_Species_ID == &quot;Unidentified&quot; |
-                                    tab.owls$Owl_Species_ID == &quot;Unknown&quot;,
-                                  yes = &quot;Unknown&quot;,
-                                  no = tab.owls$Owl_Species_ID)
-# There are some misspelled owls
-tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;GuarBarred&quot;,
-                                  yes = &quot;GuatBarred&quot;,
-                                  no = tab.owls$Owl_Species_ID)
-tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;Whiskered Screech&quot;,
-                                  yes = &quot;WhiSc&quot;,
-                                  no = tab.owls$Owl_Species_ID)
-sort(table(tab.owls$Owl_Species_ID))
-</code></pre>
-
-<pre><code>## 
-##      WhiSc      GrHor    Unknown       Barn GuatBarred    Fulvous 
-##          4          6          9         11         13         19 
-##      PacSc      Specd      FerPy      Mottd 
-##         32        159        194        601
+##    Barn   FerPy Fulvous   GrHor   Mottd    NoID    None   PacSc   Specd    Styg   Whisk 
+##      10     184      17       3     530       2       8      27     137       1       2
 </code></pre>
 
 <hr/>
 
-<h2>Scale the covariates</h2>
+<h2>Prepare for JAGS</h2>
+
+<p>For surveys that happened multiple times per year, determine the order of
+those surveys with new variable &ldquo;order&rdquo;</p>
+
+<pre><code class="r"># Create a unique identifier for each route per year
+tab.survey$hRt_tYr &lt;- paste(tab.survey$Route_ID, tab.survey$year, sep = &quot;.&quot;)
+route.year &lt;- sort(unique(tab.survey$hRt_tYr))
+
+# Create new blank column and then populate based on the order of surveys per
+# route and year.
+tab.survey$order &lt;- NA
+for(ht in 1:length(route.year)){
+  order.dates.per.survey.per.yr &lt;- 
+    order(tab.survey$Survey_Date[tab.survey$hRt_tYr == route.year[ht]])
+  tab.survey$order[tab.survey$hRt_tYr == route.year[ht]] &lt;- order.dates.per.survey.per.yr
+}
+</code></pre>
+
+<p>Concatenate that order index with route/year column to create unique identifier
+for each different survey</p>
+
+<pre><code class="r">tab.survey$hRt_tYr_iSvy &lt;- paste(tab.survey$hRt_tYr, tab.survey$order, sep = &quot;.&quot;)
+head(tab.survey$hRt_tYr_iSvy)
+</code></pre>
+
+<pre><code>## [1] &quot;EI1.2004.1&quot; &quot;EI1.2004.2&quot; &quot;EI2.2004.1&quot; &quot;EI2.2004.2&quot; &quot;N1.2004.1&quot;  &quot;N1.2004.2&quot;
+</code></pre>
+
+<p>Create table of all conducted surveys by route and year</p>
+
+<pre><code class="r">survey_list &lt;- sort(unique(tab.survey$hRt_tYr))
+</code></pre>
+
+<h3>Begin with survey data, order and clean</h3>
+
+<p>Sort survey data by Route then survey date</p>
+
+<pre><code class="r">data.jags &lt;- dplyr::arrange(tab.survey, Route_ID, Survey_Date)
+</code></pre>
+
+<p>Drop unneccessary columns</p>
+
+<pre><code class="r">colnames(data.jags)
+</code></pre>
+
+<pre><code>##  [1] &quot;Survey_ID&quot;               &quot;Route_ID&quot;                &quot;Surveyor_ID&quot;            
+##  [4] &quot;Surveyor_Assistant_ID_1&quot; &quot;Surveyor_Assistant_ID_2&quot; &quot;Survey_Date&quot;            
+##  [7] &quot;Survey_Start_Time&quot;       &quot;Survey_Finish_Time&quot;      &quot;Cloud_Cover_Start&quot;      
+## [10] &quot;Cloud_Cover_Finish&quot;      &quot;Precipitation&quot;           &quot;Moon_Phase&quot;             
+## [13] &quot;Survey_Comments&quot;         &quot;year&quot;                    &quot;hRt_tYr&quot;                
+## [16] &quot;order&quot;                   &quot;hRt_tYr_iSvy&quot;
+</code></pre>
+
+<pre><code class="r">temp.names.keep &lt;- c(&quot;Survey_ID&quot;, &quot;Route_ID&quot;, &quot;Survey_Date&quot;, 
+                     &quot;year&quot;, &quot;hRt_tYr&quot;, &quot;order&quot;, &quot;hRt_tYr_iSvy&quot;)
+data.jags &lt;- data.jags[,temp.names.keep]
+head(data.jags)
+</code></pre>
+
+<pre><code>## # A tibble: 6 x 7
+##   Survey_ID Route_ID Survey_Date          year hRt_tYr  order hRt_tYr_iSvy
+##       &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;       
+## 1        20 EI1      2003-04-27 00:00:00  2003 EI1.2003     1 EI1.2003.1  
+## 2        21 EI1      2003-04-30 00:00:00  2003 EI1.2003     2 EI1.2003.2  
+## 3        11 EI1      2004-03-28 00:00:00  2004 EI1.2004     1 EI1.2004.1  
+## 4        13 EI1      2004-03-30 00:00:00  2004 EI1.2004     2 EI1.2004.2  
+## 5        39 EI1      2005-03-29 00:00:00  2005 EI1.2005     1 EI1.2005.1  
+## 6        41 EI1      2005-03-31 00:00:00  2005 EI1.2005     2 EI1.2005.2
+</code></pre>
+
+<p>Add year index</p>
+
+<pre><code class="r">years.analysis &lt;- min(data.jags$year):max(data.jags$year)
+data.jags$yearIndex &lt;- NA
+for(tt in 1:length(years.analysis)){
+  data.jags$yearIndex[data.jags$year == years.analysis[tt]] &lt;- tt
+}
+
+# Double check that year counts match
+table(data.jags$year)
+</code></pre>
+
+<pre><code>## 
+## 2003 2004 2005 2007 2008 2009 2010 2011 2012 2013 
+##    8    9   11    9   10    7    8   10    8    4
+</code></pre>
+
+<pre><code class="r">table(data.jags$yearIndex)
+</code></pre>
+
+<pre><code>## 
+##  1  2  3  5  6  7  8  9 10 11 
+##  8  9 11  9 10  7  8 10  8  4
+</code></pre>
+
+<hr/>
+
+<h2>Create tables for Ys and Broad Cast species covariates</h2>
+
+<p>Create an array of Ys (detections/non-detections) for each of the <strong>possible</strong>
+surveys</p>
+
+<p>Specifically: 6 routes (hh), 10 stations (jj), up to 3 surveys per year (ii), 
+11 total years (tt)
+and 2 broadcast times (kk)</p>
+
+<p>There will be 198 total matrices, each with 10 rows (j, stations) and 2 columns 
+(k, before or after broadcast)</p>
+
+<pre><code class="r"># Create blank lists
+ys &lt;- list(NA)
+ks &lt;- list(NA)
+
+# How many total matrices should there be?
+(total.num.hti &lt;- nrow(tab.route)* #6, number of routes h
+  max(tab.survey$order)*    #3, max number of surveys i per year
+  length(min(tab.survey$year):max(tab.survey$year))) #11, number of total years
+</code></pre>
+
+<pre><code>## [1] 198
+</code></pre>
+
+<pre><code class="r"># Create lists of blank matrices and name them appropriately
+for(hti in 1:total.num.hti){
+  ys[[hti]] &lt;- matrix(NA, ncol = 2, nrow = 10)
+  ks[[hti]] &lt;- matrix(NA, ncol = 2, nrow = 10)
+}
+names(ys) &lt;- names(ks) &lt;- 
+  paste(rep(tab.route$Route_ID, each = 33), 
+        rep(rep(min(tab.survey$year):max(tab.survey$year), each = 3),6),
+        rep(1:3, 66),
+        sep=&quot;.&quot;)
+names(ys)[1:20]
+</code></pre>
+
+<pre><code>##  [1] &quot;EI1.2003.1&quot; &quot;EI1.2003.2&quot; &quot;EI1.2003.3&quot; &quot;EI1.2004.1&quot; &quot;EI1.2004.2&quot; &quot;EI1.2004.3&quot; &quot;EI1.2005.1&quot;
+##  [8] &quot;EI1.2005.2&quot; &quot;EI1.2005.3&quot; &quot;EI1.2006.1&quot; &quot;EI1.2006.2&quot; &quot;EI1.2006.3&quot; &quot;EI1.2007.1&quot; &quot;EI1.2007.2&quot;
+## [15] &quot;EI1.2007.3&quot; &quot;EI1.2008.1&quot; &quot;EI1.2008.2&quot; &quot;EI1.2008.3&quot; &quot;EI1.2009.1&quot; &quot;EI1.2009.2&quot;
+</code></pre>
+
+<p>Process broadcast species data</p>
+
+<p>Each station should always have the same broadcast species, which are listed
+in &ldquo;tab.stations&rdquo;</p>
+
+<pre><code class="r">stationIDs &lt;- unique(tab.stations$Station)
+for(jj in 1:length(stationIDs)){
+  temp.ks &lt;- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
+  if(length(temp.ks)==1){
+    print(paste0(&quot;Station &quot;, stationIDs[jj], &quot; had broadcast species &quot;, temp.ks))
+  }else{
+    print(paste0(&quot;Station &quot;, stationIDs[jj], &quot; has &gt;1 broadcast species listed:&quot;, temp.ks))
+  }
+}
+</code></pre>
+
+<pre><code>## [1] &quot;Station EI1.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI1.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI1.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI1.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI1.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI1.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI1.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI1.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI2.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI2.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI2.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI2.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI2.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI2.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI2.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI2.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N1.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N1.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N1.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N1.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N1.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N1.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N1.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N1.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N2.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N2.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N2.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N2.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N2.6 has &gt;1 broadcast species listed:Pacific Screech Owl&quot;
+## [2] &quot;Station N2.6 has &gt;1 broadcast species listed:NA&quot;                 
+## [1] &quot;Station N2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N2.8 has &gt;1 broadcast species listed:Crested Owl&quot;
+## [2] &quot;Station N2.8 has &gt;1 broadcast species listed:NA&quot;         
+## [1] &quot;Station N2.9 has &gt;1 broadcast species listed:Black and White Owl&quot;
+## [2] &quot;Station N2.9 has &gt;1 broadcast species listed:NA&quot;                 
+## [1] &quot;Station N2.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station M2.1 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M2.3 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M2.4 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M2.5 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M2.6 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M2.8 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M2.9 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M2.10 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M1.1 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M1.3 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M1.4 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M1.5 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M1.6 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M1.8 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M1.9 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M1.10 had broadcast species Great Horned Owl&quot;
+</code></pre>
+
+<p>Stations N2.6, N2.8, and N2.9 were not surveyed on a couple occasions, 
+and got values of &ldquo;NA&rdquo; for those broadcast species. </p>
+
+<pre><code class="r">surveys.NAs &lt;- tab.stations$Survey_ID[is.na(tab.stations$Broadcast_Species)]
+(stations.NAs &lt;- tab.stations$Station[is.na(tab.stations$Broadcast_Species)])
+</code></pre>
+
+<pre><code>## [1] &quot;N2.8&quot; &quot;N2.9&quot; &quot;N2.6&quot;
+</code></pre>
+
+<pre><code class="r"># Note: These stations will need to be replaced with NAs in the Ys below, NOT ZEROS
+</code></pre>
+
+<p>Now, replace NAs with &ldquo;correct&rdquo; broadcast species for covariate purposes</p>
+
+<pre><code class="r">for(xx in 1:length(stations.NAs)){
+  owlnames &lt;- tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]]
+  temp.k &lt;- unique(owlnames[!is.na(owlnames)])
+  tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]] &lt;- temp.k
+}
+unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
+</code></pre>
+
+<pre><code>## [1] &quot;Pacific Screech Owl&quot; &quot;Crested Owl&quot;         &quot;Black and White Owl&quot;
+</code></pre>
+
+<p>Create matrices for covariate of broadcast species (shared intercept)</p>
+
+<pre><code class="r">(route.Names &lt;- unique(tab.route$Route_ID))
+</code></pre>
+
+<pre><code>## [1] &quot;EI1&quot; &quot;EI2&quot; &quot;M1&quot;  &quot;M2&quot;  &quot;N1&quot;  &quot;N2&quot;
+</code></pre>
+
+<pre><code class="r">(broadcast.species &lt;- unique(tab.stations$Broadcast_Species))
+</code></pre>
+
+<pre><code>## [1] &quot;Pacific Screech Owl&quot;   &quot;Mottled Owl&quot;           &quot;Crested Owl&quot;           &quot;Black and White Owl&quot;  
+## [5] &quot;Spectacled Owl&quot;        &quot;Whiskered Screech Owl&quot; &quot;Guat. Barred Owl&quot;      &quot;Stygian Owl&quot;          
+## [9] &quot;Great Horned Owl&quot;
+</code></pre>
+
+<pre><code class="r">(broadcast.species.index &lt;- 1:length(broadcast.species))
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4 5 6 7 8 9
+</code></pre>
+
+<pre><code class="r">ks.index.numb &lt;- ks
+for(hh in 1:length(route.Names)){
+
+  for(ht in 1:length(grep(pattern = route.Names[hh], names(ks)))){
+
+    for(jj in 1:10){ # across all 10 stations per route
+
+      # Find all the tables in the ks list with correct Route and fill in intercept
+      ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,1] &lt;- 0 #intercept pre-broadcast
+      ks.index.numb[[grep(pattern = route.Names[hh], 
+                          names(ks.index.numb))[ht]]][jj,1] &lt;- 0 #intercept pre-broadcast
+
+      # Find all the tables in the ks list with correct Route and fill in intercept
+      ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2] &lt;- unique(
+        tab.stations$Broadcast_Species[tab.stations$Station == paste0(route.Names[hh],&quot;.&quot;,jj)]
+      )
+      ks.index.numb[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2] &lt;- 
+        broadcast.species.index[broadcast.species == ks[[grep(pattern = route.Names[hh], names(ks))[ht]]][jj,2]]
+
+    }
+
+  }
+
+}
+</code></pre>
+
+<h2>Prepare support data for saving</h2>
+
+<hr/>
+
+<h2>Define variables</h2>
+
+<p>Observations</p>
+
+<pre><code class="r">n.route &lt;- length(unique(data.jags$Route_ID)) # hh
+route.names &lt;- unique(data.jags$Route_ID)
+
+n.year &lt;- length(min(data.jags$year):max(data.jags$year)) # tt
+year.names &lt;- min(data.jags$year):max(data.jags$year)
+
+n.survey &lt;- max(data.jags$order) # ii
+n.station &lt;- 10 # jj
+n.broadcast &lt;- 2 # kk
+</code></pre>
+
+<p>Create a lookup table to link the route.year.survey 
+dataset of Ys with a numerical index 1:198</p>
+
+<pre><code class="r">lookup.hhttii.names &lt;- names(ys)
+lookup.hhttii.numb &lt;- 1:length(lookup.hhttii.names)
+lookup.hhttii.array &lt;- array(NA, dim = c(n.route, n.year, n.survey))
+
+for(ii in 1:n.survey){
+  for(hh in 1:n.route){
+    for(tt in 1:n.year){
+
+      temp.record &lt;- 
+        lookup.hhttii.numb[
+          lookup.hhttii.names == paste0(route.names[hh],&quot;.&quot;,year.names[tt],&quot;.&quot;,ii)]
+
+      lookup.hhttii.array[hh,tt,ii] &lt;- temp.record
+
+    }
+  }
+}
+lookup.hhttii.array
+</code></pre>
+
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
+## [1,]    1    4    7   10   13   16   19   22   25    28    31
+## [2,]   34   37   40   43   46   49   52   55   58    61    64
+## [3,]   67   70   73   76   79   82   85   88   91    94    97
+## [4,]  100  103  106  109  112  115  118  121  124   127   130
+## [5,]  133  136  139  142  145  148  151  154  157   160   163
+## [6,]  166  169  172  175  178  181  184  187  190   193   196
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
+## [1,]    2    5    8   11   14   17   20   23   26    29    32
+## [2,]   35   38   41   44   47   50   53   56   59    62    65
+## [3,]   68   71   74   77   80   83   86   89   92    95    98
+## [4,]  101  104  107  110  113  116  119  122  125   128   131
+## [5,]  134  137  140  143  146  149  152  155  158   161   164
+## [6,]  167  170  173  176  179  182  185  188  191   194   197
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
+## [1,]    3    6    9   12   15   18   21   24   27    30    33
+## [2,]   36   39   42   45   48   51   54   57   60    63    66
+## [3,]   69   72   75   78   81   84   87   90   93    96    99
+## [4,]  102  105  108  111  114  117  120  123  126   129   132
+## [5,]  135  138  141  144  147  150  153  156  159   162   165
+## [6,]  168  171  174  177  180  183  186  189  192   195   198
+</code></pre>
+
+<p>Turn ks into arrays</p>
+
+<pre><code class="r">ks.array &lt;- array(unlist(ks), dim = c(10, 2, length(lookup.hhttii.names)))
+ks.array.index &lt;- array(as.numeric(unlist(ks.index.numb)), 
+                        dim = c(10, 2, length(lookup.hhttii.names)))
+</code></pre>
+
+<p>Convert ks into a series of 10 model matrices</p>
+
+<p>For example means parameterization, w/ 1s for Pacific screech owl in one matrix, etc</p>
+
+<p>Pre-broadcast</p>
+
+<pre><code class="r">ks.prebroad &lt;- array(as.numeric(rep(c(1,0), each = 10)), 
+                     dim = c(10,2, length(lookup.hhttii.names)))
+ks.prebroad[,,1]
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+##  [1,]    1    0
+##  [2,]    1    0
+##  [3,]    1    0
+##  [4,]    1    0
+##  [5,]    1    0
+##  [6,]    1    0
+##  [7,]    1    0
+##  [8,]    1    0
+##  [9,]    1    0
+## [10,]    1    0
+</code></pre>
+
+<pre><code class="r">ks.pacific.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Pacific Screech Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.pacific &lt;- array(as.numeric(unlist(ks.pacific.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.mottled.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Mottled Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.mottled &lt;- array(as.numeric(unlist(ks.mottled.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.crested.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Crested Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.crested &lt;- array(as.numeric(unlist(ks.crested.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.bw.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Black and White Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.bw &lt;- array(as.numeric(unlist(ks.bw.list)), 
+               dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.spectacled.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Spectacled Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.spectacled &lt;- array(as.numeric(unlist(ks.spectacled.list)), 
+                       dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.whiskered.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Whiskered&quot;, 1, 0), how = &quot;replace&quot;)
+ks.whiskered &lt;- array(as.numeric(unlist(ks.whiskered.list)), 
+                      dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.gbarred.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Guat. Barred Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.gbarred &lt;- array(as.numeric(unlist(ks.gbarred.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.stygian.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Stygian Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.stygian &lt;- array(as.numeric(unlist(ks.stygian.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+
+ks.ghorned.list &lt;- 
+  rapply(ks, function(x) ifelse(x == &quot;Great Horned Owl&quot;, 1, 0), how = &quot;replace&quot;)
+ks.ghorned &lt;- array(as.numeric(unlist(ks.ghorned.list)), 
+                    dim = c(10, 2, length(lookup.hhttii.names)))
+</code></pre>
+
+<p>All levels of k</p>
+
+<pre><code class="r">k.names &lt;- unique(as.character(ks.array[,2,]))
+ks.levels &lt;- c(0, 1:length(k.names)) # 0 if pre-broadcast, 1:9 if post-broadcast
+</code></pre>
+
+<hr/>
+
+<h2>Process by species of owl</h2>
+
+<pre><code class="r">columns.to.keep &lt;- c(&quot;Owl_ID&quot;, &quot;Stations_ID&quot;, &quot;Owl_Species_ID&quot;, 
+                     &quot;Owl_Number&quot;, &quot;Minute_1&quot;, &quot;Minute_2&quot;, &quot;Minute_6-12&quot;)
+</code></pre>
+
+<h3>Mottled Owl</h3>
+
+<p>Duplicate data set up</p>
+
+<pre><code class="r">mottd.ys &lt;- ys
+</code></pre>
+
+<p>Separate out only Mottled Owls data and join with stations table</p>
+
+<pre><code class="r">tab.owls.mottd &lt;- tab.owls[tab.owls$Owl_Species_ID==&quot;Mottd&quot;,columns.to.keep]
+mottd.master &lt;- left_join(x = tab.owls.mottd, y = tab.stations, by = &quot;Stations_ID&quot;)
+</code></pre>
+
+<p>Process observations for each station and survey night and survey period</p>
+
+<p>Create for-loop to convert owl observations into binary data</p>
+
+<pre><code class="r">for(hh in 1:length(route.Names)){ # across routes
+  for(tt in 1:length(min(tab.survey$year):max(tab.survey$year))){ # across years
+    for(ii in 1:max(tab.survey$order)){ # across surveys per year
+
+      temp.route &lt;- route.Names[hh]
+      temp.year &lt;- c(min(tab.survey$year):max(tab.survey$year))[tt]
+      temp.survey &lt;- ii
+      temp.survey_ID &lt;- tab.survey$Survey_ID[tab.survey$Route_ID == temp.route &amp;
+                                               tab.survey$year == temp.year &amp;
+                                               tab.survey$order == ii]
+      survey.notexist.test &lt;- length(temp.survey_ID) == 0
+      if(survey.notexist.test == FALSE){
+        for(jj in 1:10){ # across stations
+          owls_observed &lt;- mottd.master[mottd.master$Survey_ID==temp.survey_ID &amp;
+                                          mottd.master$Station == paste0(temp.route,&quot;.&quot;,jj),]
+
+
+          # Was observation before or after broadcast?
+          # kk = 1 for before broadcast
+          # kk = 2 for after broadcast
+          logic.prebroadcast &lt;- c(owls_observed$Minute_1, owls_observed$Minute_2)
+          logic.postbroadcast &lt;- c(owls_observed$`Minute_6-12`)
+
+          mottd.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,1] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.prebroadcast&gt;0), yes = 1, no = 0)
+          mottd.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,2] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.postbroadcast&gt;0), yes = 1, no = 0)
+        }
+
+      }
+
+
+
+    }
+  }
+}
+</code></pre>
+
+<p>Verify that it looks correct: </p>
+
+<pre><code class="r">mottd.ys[[1]]
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+##  [1,]    0    0
+##  [2,]    0    1
+##  [3,]    0    0
+##  [4,]    0    1
+##  [5,]    1    0
+##  [6,]    1    1
+##  [7,]    1    0
+##  [8,]    1    1
+##  [9,]    1    1
+## [10,]    1    0
+</code></pre>
+
+<pre><code class="r">mottd.master[mottd.master$Survey_ID==20,1:9]
+</code></pre>
+
+<pre><code>## # A tibble: 16 x 9
+##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID Station
+##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;  
+##  1    142          93 Mottd                   1 FALSE    FALSE    TRUE                 20 EI1.2  
+##  2    143          93 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.2  
+##  3    144          95 Mottd                   1 FALSE    FALSE    TRUE                 20 EI1.4  
+##  4    145          95 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.4  
+##  5    146          96 Mottd                   1 TRUE     FALSE    FALSE                20 EI1.5  
+##  6    152          98 Mottd                   1 TRUE     FALSE    FALSE                20 EI1.7  
+##  7    157         100 Mottd                   1 FALSE    TRUE     TRUE                 20 EI1.9  
+##  8    158         100 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.9  
+##  9    159         100 Mottd                   3 FALSE    FALSE    TRUE                 20 EI1.9  
+## 10    161         101 Mottd                   1 FALSE    TRUE     FALSE                20 EI1.10 
+## 11   1134          97 Mottd                   1 TRUE     TRUE     TRUE                 20 EI1.6  
+## 12   1135          97 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.6  
+## 13   1138         903 Mottd                   1 FALSE    TRUE     TRUE                 20 EI1.8  
+## 14   1139         903 Mottd                   2 FALSE    TRUE     FALSE                20 EI1.8  
+## 15   1140         903 Mottd                   3 FALSE    FALSE    TRUE                 20 EI1.8  
+## 16   1141         903 Mottd                   4 FALSE    FALSE    TRUE                 20 EI1.8
+</code></pre>
+
+<h3>FerPy</h3>
+
+<p>Duplicate data set up</p>
+
+<pre><code class="r">ferpy.ys &lt;- ys
+</code></pre>
+
+<p>Separate out only FerPy Owls data and join with stations table</p>
+
+<pre><code class="r">tab.owls.ferpy &lt;- tab.owls[tab.owls$Owl_Species_ID==&quot;FerPy&quot;,columns.to.keep]
+ferpy.master &lt;- left_join(x = tab.owls.ferpy, y = tab.stations, by = &quot;Stations_ID&quot;)
+</code></pre>
+
+<p>Process observations for each station and survey night and survey period</p>
+
+<p>Create for-loop to convert owl observations into binary data</p>
+
+<pre><code class="r">for(hh in 1:length(route.Names)){ # across routes
+  for(tt in 1:length(min(tab.survey$year):max(tab.survey$year))){ # across years
+    for(ii in 1:max(tab.survey$order)){ # across surveys per year
+
+      temp.route &lt;- route.Names[hh]
+      temp.year &lt;- c(min(tab.survey$year):max(tab.survey$year))[tt]
+      temp.survey &lt;- ii
+      temp.survey_ID &lt;- tab.survey$Survey_ID[tab.survey$Route_ID == temp.route &amp;
+                                               tab.survey$year == temp.year &amp;
+                                               tab.survey$order == ii]
+      survey.notexist.test &lt;- length(temp.survey_ID) == 0
+      if(survey.notexist.test == FALSE){
+        for(jj in 1:10){ # across stations
+          owls_observed &lt;- ferpy.master[ferpy.master$Survey_ID==temp.survey_ID &amp;
+                                          ferpy.master$Station == paste0(temp.route,&quot;.&quot;,jj),]
+
+
+          # Was observation before or after broadcast?
+          # kk = 1 for before broadcast
+          # kk = 2 for after broadcast
+          logic.prebroadcast &lt;- c(owls_observed$Minute_1, owls_observed$Minute_2)
+          logic.postbroadcast &lt;- c(owls_observed$`Minute_6-12`)
+
+          ferpy.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,1] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.prebroadcast&gt;0), yes = 1, no = 0)
+          ferpy.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,2] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.postbroadcast&gt;0), yes = 1, no = 0)
+        }
+
+      }
+
+
+
+    }
+  }
+}
+</code></pre>
+
+<p>Verify that it looks correct: </p>
+
+<pre><code class="r">ferpy.ys[[1]]
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+##  [1,]    1    1
+##  [2,]    0    0
+##  [3,]    0    0
+##  [4,]    0    0
+##  [5,]    0    0
+##  [6,]    0    0
+##  [7,]    0    0
+##  [8,]    0    0
+##  [9,]    0    0
+## [10,]    0    0
+</code></pre>
+
+<pre><code class="r">ferpy.master[ferpy.master$Survey_ID==20,1:9]
+</code></pre>
+
+<pre><code>## # A tibble: 2 x 9
+##   Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID Station
+##    &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;  
+## 1    140          92 FerPy                   1 TRUE     FALSE    TRUE                 20 EI1.1  
+## 2    141          92 FerPy                   2 FALSE    FALSE    TRUE                 20 EI1.1
+</code></pre>
+
+<h3>Specd</h3>
+
+<p>Duplicate data set up</p>
+
+<pre><code class="r">specd.ys &lt;- ys
+</code></pre>
+
+<p>Separate out only Specd Owls data and join with stations table</p>
+
+<pre><code class="r">tab.owls.specd &lt;- tab.owls[tab.owls$Owl_Species_ID==&quot;Specd&quot;,columns.to.keep]
+specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;Stations_ID&quot;)
+</code></pre>
+
+<p>Process observations for each station and survey night and survey period</p>
+
+<p>Create for-loop to convert owl observations into binary data</p>
+
+<pre><code class="r">for(hh in 1:length(route.Names)){ # across routes
+  for(tt in 1:length(min(tab.survey$year):max(tab.survey$year))){ # across years
+    for(ii in 1:max(tab.survey$order)){ # across surveys per year
+
+      temp.route &lt;- route.Names[hh]
+      temp.year &lt;- c(min(tab.survey$year):max(tab.survey$year))[tt]
+      temp.survey &lt;- ii
+      temp.survey_ID &lt;- tab.survey$Survey_ID[tab.survey$Route_ID == temp.route &amp;
+                                               tab.survey$year == temp.year &amp;
+                                               tab.survey$order == ii]
+      survey.notexist.test &lt;- length(temp.survey_ID) == 0
+      if(survey.notexist.test == FALSE){
+        for(jj in 1:10){ # across stations
+          owls_observed &lt;- specd.master[specd.master$Survey_ID==temp.survey_ID &amp;
+                                          specd.master$Station == paste0(temp.route,&quot;.&quot;,jj),]
+
+
+          # Was observation before or after broadcast?
+          # kk = 1 for before broadcast
+          # kk = 2 for after broadcast
+          logic.prebroadcast &lt;- c(owls_observed$Minute_1, owls_observed$Minute_2)
+          logic.postbroadcast &lt;- c(owls_observed$`Minute_6-12`)
+
+          specd.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,1] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.prebroadcast&gt;0), yes = 1, no = 0)
+          specd.ys[[paste0(temp.route,&quot;.&quot;,temp.year,&quot;.&quot;,temp.survey)]][jj,2] &lt;- #look up rt.year.survey 
+            ifelse(sum(logic.postbroadcast&gt;0), yes = 1, no = 0)
+        }
+
+      }
+
+
+
+    }
+  }
+}
+</code></pre>
+
+<p>Verify that it looks correct: </p>
+
+<pre><code class="r">specd.ys$N1.2004.1
+</code></pre>
+
+<pre><code>##       [,1] [,2]
+##  [1,]    0    1
+##  [2,]    0    1
+##  [3,]    0    0
+##  [4,]    0    0
+##  [5,]    0    0
+##  [6,]    0    0
+##  [7,]    0    0
+##  [8,]    0    1
+##  [9,]    1    1
+## [10,]    1    1
+</code></pre>
+
+<pre><code class="r">specd.master[specd.master$Survey_ID==16,1:9]
+</code></pre>
+
+<pre><code>## # A tibble: 12 x 9
+##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID Station
+##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;  
+##  1     84          52 Specd                   1 FALSE    FALSE    TRUE                 16 N1.1   
+##  2     88          59 Specd                   2 FALSE    FALSE    TRUE                 16 N1.8   
+##  3     89          59 Specd                   3 FALSE    FALSE    TRUE                 16 N1.8   
+##  4     91          60 Specd                   2 TRUE     TRUE     TRUE                 16 N1.9   
+##  5     92          60 Specd                   3 TRUE     TRUE     TRUE                 16 N1.9   
+##  6     93          60 Specd                   4 TRUE     TRUE     TRUE                 16 N1.9   
+##  7     94          61 Specd                   1 FALSE    TRUE     TRUE                 16 N1.10  
+##  8     95          61 Specd                   2 FALSE    TRUE     TRUE                 16 N1.10  
+##  9     96          61 Specd                   3 FALSE    TRUE     TRUE                 16 N1.10  
+## 10     97          61 Specd                   4 FALSE    TRUE     TRUE                 16 N1.10  
+## 11     98          61 Specd                   5 FALSE    TRUE     TRUE                 16 N1.10  
+## 12   1127          53 Specd                   1 FALSE    FALSE    TRUE                 16 N1.2
+</code></pre>
 
 <hr/>
 
 <h2>Save files</h2>
+
+<p>Processed Owl Data</p>
+
+<pre><code class="r">save(data.jags, mottd.ys, ferpy.ys, specd.ys,
+     file = &quot;data/processed_data/owl_data.Rdata&quot;)
+</code></pre>
+
+<p>Processed Support data</p>
+
+<pre><code class="r">save(
+  lookup.hhttii.names, lookup.hhttii.array,
+  ks, ks.index.numb, ks.array.index, 
+  k.names, ks.levels, 
+  ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled, 
+  ks.whiskered, ks.gbarred, ks.stygian, ks.ghorned,
+  file = &quot;data/processed_data/ks_jags_input.Rdata&quot;)
+</code></pre>
+
+<p>Complete list of surveys conducted by year and route</p>
+
+<pre><code class="r">save(survey_list, file = &quot;data/processed_data/survey_list.Rdata&quot;)
+</code></pre>
 
 <hr/>
 
@@ -495,52 +1234,122 @@ sort(table(tab.owls$Owl_Species_ID))
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## Session info -------------------------------------------------------------
-</code></pre>
-
-<pre><code>##  setting  value                       
-##  version  R version 3.3.2 (2016-10-31)
-##  system   x86_64, darwin13.4.0        
-##  ui       RStudio (1.0.143)           
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────
+##  setting  value                       
+##  version  R version 4.0.2 (2020-06-22)
+##  os       macOS Mojave 10.14.6        
+##  system   x86_64, darwin17.0          
+##  ui       RStudio                     
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
-##  tz       &lt;NA&gt;                        
-##  date     2020-07-11
-</code></pre>
-
-<pre><code>## Packages -----------------------------------------------------------------
-</code></pre>
-
-<pre><code>##  package     * version date       source        
-##  base        * 3.3.2   2016-10-31 local         
-##  cellranger    1.1.0   2016-07-27 CRAN (R 3.3.0)
-##  datasets    * 3.3.2   2016-10-31 local         
-##  devtools    * 1.13.3  2017-08-02 CRAN (R 3.3.2)
-##  digest        0.6.12  2017-01-27 CRAN (R 3.3.2)
-##  evaluate      0.10.1  2017-06-24 CRAN (R 3.3.2)
-##  ezknitr     * 0.6     2016-09-16 CRAN (R 3.3.0)
-##  graphics    * 3.3.2   2016-10-31 local         
-##  grDevices   * 3.3.2   2016-10-31 local         
-##  knitr       * 1.17    2017-08-10 CRAN (R 3.3.2)
-##  lubridate   * 1.6.0   2016-09-13 CRAN (R 3.3.0)
-##  magrittr      1.5     2014-11-22 CRAN (R 3.3.0)
-##  markdown      0.8     2017-04-20 CRAN (R 3.3.2)
-##  memoise       1.1.0   2017-04-21 CRAN (R 3.3.2)
-##  methods     * 3.3.2   2016-10-31 local         
-##  R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.3.0)
-##  R.oo          1.21.0  2016-11-01 CRAN (R 3.3.0)
-##  R.utils       2.5.0   2016-11-07 CRAN (R 3.3.0)
-##  Rcpp          0.12.13 2017-09-28 CRAN (R 3.3.2)
-##  readxl      * 1.1.0   2018-04-20 CRAN (R 3.3.2)
-##  rlang         0.1.6   2017-12-21 CRAN (R 3.3.2)
-##  rstudioapi    0.7     2017-09-07 CRAN (R 3.3.2)
-##  stats       * 3.3.2   2016-10-31 local         
-##  stringi       1.1.5   2017-04-07 CRAN (R 3.3.2)
-##  stringr       1.2.0   2017-02-18 CRAN (R 3.3.2)
-##  tibble        1.3.4   2017-08-22 CRAN (R 3.3.2)
-##  tools         3.3.2   2016-10-31 local         
-##  utils       * 3.3.2   2016-10-31 local         
-##  withr         2.0.0   2017-07-28 CRAN (R 3.3.2)
+##  ctype    en_US.UTF-8                 
+##  tz       America/Chicago             
+##  date     2020-09-19                  
+## 
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────
+##  package      * version date       lib source        
+##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
+##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
+##  backports      1.1.8   2020-06-17 [1] CRAN (R 4.0.2)
+##  base64enc      0.1-3   2015-07-28 [1] CRAN (R 4.0.2)
+##  boot           1.3-25  2020-04-26 [1] CRAN (R 4.0.2)
+##  callr          3.4.3   2020-03-28 [1] CRAN (R 4.0.2)
+##  cellranger     1.1.0   2016-07-27 [1] CRAN (R 4.0.2)
+##  checkmate      2.0.0   2020-02-06 [1] CRAN (R 4.0.2)
+##  chron        * 2.3-56  2020-08-18 [1] CRAN (R 4.0.2)
+##  cli            2.0.2   2020-02-28 [1] CRAN (R 4.0.2)
+##  cluster        2.1.0   2019-06-19 [1] CRAN (R 4.0.2)
+##  coda         * 0.19-3  2019-07-05 [1] CRAN (R 4.0.2)
+##  colorspace     1.4-1   2019-03-18 [1] CRAN (R 4.0.2)
+##  crayon         1.3.4   2017-09-16 [1] CRAN (R 4.0.2)
+##  data.table     1.13.0  2020-07-24 [1] CRAN (R 4.0.2)
+##  desc           1.2.0   2018-05-01 [1] CRAN (R 4.0.2)
+##  devtools     * 2.3.1   2020-07-21 [1] CRAN (R 4.0.2)
+##  digest         0.6.25  2020-02-23 [1] CRAN (R 4.0.2)
+##  dplyr        * 1.0.1   2020-07-31 [1] CRAN (R 4.0.2)
+##  ellipsis       0.3.1   2020-05-15 [1] CRAN (R 4.0.2)
+##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
+##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
+##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
+##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
+##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
+##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
+##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
+##  fs             1.5.0   2020-07-31 [1] CRAN (R 4.0.2)
+##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
+##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
+##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
+##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
+##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
+##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
+##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
+##  gtools         3.8.2   2020-03-31 [1] CRAN (R 4.0.2)
+##  haven          2.3.1   2020-06-01 [1] CRAN (R 4.0.2)
+##  highr          0.8     2019-03-20 [1] CRAN (R 4.0.2)
+##  Hmisc        * 4.4-1   2020-08-10 [1] CRAN (R 4.0.2)
+##  hms            0.5.3   2020-01-08 [1] CRAN (R 4.0.2)
+##  htmlTable      2.0.1   2020-07-05 [1] CRAN (R 4.0.2)
+##  htmltools      0.5.0   2020-06-16 [1] CRAN (R 4.0.2)
+##  htmlwidgets    1.5.1   2019-10-08 [1] CRAN (R 4.0.2)
+##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
+##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
+##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
+##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
+##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
+##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
+##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
+##  lubridate    * 1.7.9   2020-06-08 [1] CRAN (R 4.0.2)
+##  magrittr       1.5     2014-11-22 [1] CRAN (R 4.0.2)
+##  markdown       1.1     2019-08-07 [1] CRAN (R 4.0.2)
+##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
+##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
+##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
+##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
+##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
+##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
+##  pkgbuild       1.1.0   2020-07-13 [1] CRAN (R 4.0.2)
+##  pkgconfig      2.0.3   2019-09-22 [1] CRAN (R 4.0.2)
+##  pkgload        1.1.0   2020-05-29 [1] CRAN (R 4.0.2)
+##  png            0.1-7   2013-12-03 [1] CRAN (R 4.0.2)
+##  prettyunits    1.1.1   2020-01-24 [1] CRAN (R 4.0.2)
+##  processx       3.4.3   2020-07-05 [1] CRAN (R 4.0.2)
+##  ps             1.3.3   2020-05-08 [1] CRAN (R 4.0.2)
+##  purrr          0.3.4   2020-04-17 [1] CRAN (R 4.0.2)
+##  R.methodsS3    1.8.0   2020-02-14 [1] CRAN (R 4.0.2)
+##  R.oo           1.23.0  2019-11-03 [1] CRAN (R 4.0.2)
+##  R.utils        2.9.2   2019-12-08 [1] CRAN (R 4.0.2)
+##  R2jags       * 0.6-1   2020-04-27 [1] CRAN (R 4.0.2)
+##  R2WinBUGS      2.1-21  2015-07-30 [1] CRAN (R 4.0.2)
+##  R6             2.4.1   2019-11-12 [1] CRAN (R 4.0.2)
+##  RColorBrewer   1.1-2   2014-12-07 [1] CRAN (R 4.0.2)
+##  Rcpp           1.0.5   2020-07-06 [1] CRAN (R 4.0.2)
+##  readxl       * 1.3.1   2019-03-13 [1] CRAN (R 4.0.2)
+##  remotes        2.2.0   2020-07-21 [1] CRAN (R 4.0.2)
+##  rjags        * 4-10    2019-11-06 [1] CRAN (R 4.0.2)
+##  rJava          0.9-13  2020-07-06 [1] CRAN (R 4.0.2)
+##  rlang          0.4.7   2020-07-09 [1] CRAN (R 4.0.2)
+##  RODBC        * 1.3-17  2020-05-11 [1] CRAN (R 4.0.2)
+##  rpart          4.1-15  2019-04-12 [1] CRAN (R 4.0.2)
+##  rprojroot      1.3-2   2018-01-03 [1] CRAN (R 4.0.2)
+##  rstudioapi     0.11    2020-02-07 [1] CRAN (R 4.0.2)
+##  scales         1.1.1   2020-05-11 [1] CRAN (R 4.0.2)
+##  sessioninfo    1.1.1   2018-11-05 [1] CRAN (R 4.0.2)
+##  stringi        1.4.6   2020-02-17 [1] CRAN (R 4.0.2)
+##  stringr      * 1.4.0   2019-02-10 [1] CRAN (R 4.0.2)
+##  survival     * 3.1-12  2020-04-10 [1] CRAN (R 4.0.2)
+##  testthat       2.3.2   2020-03-02 [1] CRAN (R 4.0.2)
+##  tibble         3.0.3   2020-07-10 [1] CRAN (R 4.0.2)
+##  tidyr        * 1.1.1   2020-07-31 [1] CRAN (R 4.0.2)
+##  tidyselect     1.1.0   2020-05-11 [1] CRAN (R 4.0.2)
+##  usethis      * 1.6.1   2020-04-29 [1] CRAN (R 4.0.2)
+##  utf8           1.1.4   2018-05-24 [1] CRAN (R 4.0.2)
+##  vctrs          0.3.2   2020-07-15 [1] CRAN (R 4.0.2)
+##  withr          2.2.0   2020-04-20 [1] CRAN (R 4.0.2)
+##  xfun           0.16    2020-07-24 [1] CRAN (R 4.0.2)
+##  xlsx         * 0.6.4.2 2020-09-12 [1] CRAN (R 4.0.2)
+##  xlsxjars       0.6.1   2014-08-22 [1] CRAN (R 4.0.2)
+## 
+## [1] /Library/Frameworks/R.framework/Versions/4.0/Resources/library
 </code></pre>
 
 <p>This document was &ldquo;spun&rdquo; with:</p>

@@ -111,6 +111,7 @@ ggplot(data = p.det.posteriors, aes(y = p.det.50, x = Broadcast, group = Species
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+
   theme_minimal()
+
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
