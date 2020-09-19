@@ -84,6 +84,8 @@ tab.stations <- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
 table(tab.stations$Survey_ID)
 
 
+
+
 #' ### Owls Table
 #' 
 #' This table has all observed owls.
@@ -133,11 +135,14 @@ for(ht in 1:length(route.year)){
   tab.survey$order[tab.survey$hRt_tYr == route.year[ht]] <- order.dates.per.survey.per.yr
 }
 
-# Concatenate that order index with route/year column to create unique identifier
-# for each different survey
+#' Concatenate that order index with route/year column to create unique identifier
+#' for each different survey
 tab.survey$hRt_tYr_iSvy <- paste(tab.survey$hRt_tYr, tab.survey$order, sep = ".")
 head(tab.survey$hRt_tYr_iSvy)
 
+#' Create table of all conducted surveys by route and year
+#' 
+survey_list <- sort(unique(tab.survey$hRt_tYr))
 
 
 
@@ -581,6 +586,10 @@ save(
   ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled, 
   ks.whiskered, ks.gbarred, ks.stygian, ks.ghorned,
   file = "data/processed_data/ks_jags_input.Rdata")
+
+#' Complete list of surveys conducted by year and route
+#' 
+save(survey_list, file = "data/processed_data/survey_list.Rdata")
      
      
 
