@@ -56,12 +56,18 @@ n.broadcast <- 2 # kk
 #' Turn ys and ks into arrays
 mottd.ys.array <- array(as.numeric(unlist(mottd.ys)), 
                         dim = c(10, 2, length(lookup.hhttii.names)))
+ferpy.ys.array <- array(as.numeric(unlist(ferpy.ys)), 
+                        dim = c(10, 2, length(lookup.hhttii.names)))
+specd.ys.array <- array(as.numeric(unlist(specd.ys)), 
+                        dim = c(10, 2, length(lookup.hhttii.names)))
 
 #' Demonstrate that in Route 1, year 1, and survey 1, 
 #' Ys pull up stations*broadcast presence/absence data and
 #' Ks pull up stations*broadcast covariate data
 #' 
 mottd.ys.array[,,lookup.hhttii.array[1,1,1]]
+specd.ys.array[,,lookup.hhttii.array[1,1,1]]
+ferpy.ys.array[,,lookup.hhttii.array[1,1,1]]
 ks.prebroad[,,lookup.hhttii.array[1,1,1]]
 ks.bw[,,lookup.hhttii.array[1,1,1]]
 
@@ -84,7 +90,7 @@ model.occ <- function(){
   beta.stygian ~ dt(0, pow(2.5, -2), 1)
   beta.ghorned ~ dt(0, pow(2.5, -2), 1)
   
-
+  
   
   for(hh in 1:n.route){
     for(tt in 1:n.year){
@@ -94,12 +100,12 @@ model.occ <- function(){
       a.psi[hh,tt] <- mu.psi[hh,tt]*rho.psi[hh,tt]
       b.psi[hh,tt] <- rho.psi[hh,tt]-(mu.psi[hh,tt]*rho.psi[hh,tt])
       
-
+      
       
       psi[hh,tt] ~ dbeta(a.psi[hh,tt], b.psi[hh,tt])%_%T(0.0001,0.99)
       
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
-
+        
         
         for(jj in 1:10){ # 10 stations per route
           for(kk in 1:n.broadcast){ # before or after broadcast
@@ -124,20 +130,20 @@ model.occ <- function(){
       }
     }
   }
-
+  
   
   
   # Likelihood
   for(hh in 1:n.route){ # 6 routes
     for(tt in 1:n.year){ # all years
-
       
-
+      
+      
       
       # Detection by route, year, survey station, and broadcast
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
         
-
+        
         
         for(jj in 1:n.station){ # 10 stations per route
           # Occupancy by route and year and survey
@@ -154,18 +160,18 @@ model.occ <- function(){
         }
         
         
-
+        
       }
       
     }
-
+    
   }
-
+  
 }
 
 
 #' _____________________________________________________________________________
-#' ## Compile data for model
+#' ## Compile data for Mottd model
 #' 
 mottd.jag.data <- list(
   ks.prebroad = ks.prebroad,
@@ -186,12 +192,106 @@ mottd.jag.data <- list(
   lookup.hhttii.array = lookup.hhttii.array,
   n.broadcast = n.broadcast
 )
+
+#' _____________________________________________________________________________
+#' ## Compile data for Ferpy model
+#' 
+ferpy.jag.data <- list(
+  ks.prebroad = ks.prebroad,
+  ks.pacific = ks.pacific,
+  ks.mottled = ks.mottled,
+  ks.crested = ks.crested,
+  ks.bw = ks.bw,
+  ks.spectacled = ks.spectacled,
+  ks.whiskered = ks.whiskered,
+  ks.gbarred = ks.gbarred,
+  ks.stygian = ks.stygian,
+  ks.ghorned = ks.ghorned,
+  y = ferpy.ys.array,
+  n.route = n.route,
+  n.year = n.year,
+  n.survey = n.survey,
+  n.station = n.station,
+  lookup.hhttii.array = lookup.hhttii.array,
+  n.broadcast = n.broadcast
+)
+
+#' _____________________________________________________________________________
+#' ## Compile data for Specd model
+#' 
+specd.jag.data <- list(
+  ks.prebroad = ks.prebroad,
+  ks.pacific = ks.pacific,
+  ks.mottled = ks.mottled,
+  ks.crested = ks.crested,
+  ks.bw = ks.bw,
+  ks.spectacled = ks.spectacled,
+  ks.whiskered = ks.whiskered,
+  ks.gbarred = ks.gbarred,
+  ks.stygian = ks.stygian,
+  ks.ghorned = ks.ghorned,
+  y = specd.ys.array,
+  n.route = n.route,
+  n.year = n.year,
+  n.survey = n.survey,
+  n.station = n.station,
+  lookup.hhttii.array = lookup.hhttii.array,
+  n.broadcast = n.broadcast
+)
+
+
+#' Initial values have 1s for each obs of z
 z.init <- array(as.numeric(1), 
                 dim = c(n.route, n.year, n.survey, n.station))
 
-#' ## Run model
+#' ## Run models
 #' 
+#' Mottd
 mottd.jagsout <- jags(data = mottd.jag.data, 
+                      inits = function(){list(z = z.init)}, 
+                      parameters.to.save = c("psi",
+                                             "beta.prebroad",
+                                             "beta.pacific",
+                                             "beta.mottled",
+                                             "beta.crested",
+                                             "beta.bw",
+                                             "beta.spectacled",
+                                             "beta.whiskered",
+                                             "beta.gbarred",
+                                             "beta.stygian",
+                                             "beta.ghorned"), 
+                      model.file = model.occ, 
+                      n.chains = 3,
+                      n.iter = 1000,
+                      n.burnin = 100,
+                      n.thin = 1)
+
+
+#' 
+#' Ferpy
+ferpy.jagsout <- jags(data = ferpy.jag.data, 
+                      inits = function(){list(z = z.init)}, 
+                      parameters.to.save = c("psi",
+                                             "beta.prebroad",
+                                             "beta.pacific",
+                                             "beta.mottled",
+                                             "beta.crested",
+                                             "beta.bw",
+                                             "beta.spectacled",
+                                             "beta.whiskered",
+                                             "beta.gbarred",
+                                             "beta.stygian",
+                                             "beta.ghorned"), 
+                      model.file = model.occ, 
+                      n.chains = 3,
+                      n.iter = 1000,
+                      n.burnin = 100,
+                      n.thin = 1)
+
+
+#' 
+#' Specd
+specd.jagsout <- jags(data = specd.jag.data, 
                       inits = function(){list(z = z.init)}, 
                       parameters.to.save = c("psi",
                                              "beta.prebroad",
@@ -214,6 +314,16 @@ mottd.jagsout <- jags(data = mottd.jag.data,
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
+#' Jagsout Mottd
+save(mottd.jagsout, file = "data/output_data/mottd_jagsout.Rdata")
+
+#' Jagsout Ferpy
+#' 
+save(ferpy.jagsout, file = "data/output_data/ferpy_jagsout.Rdata")
+
+#' Jagsout Specd
+#' 
+save(specd.jagsout, file = "data/output_data/specd_jagsout.Rdata")
 
 
 
