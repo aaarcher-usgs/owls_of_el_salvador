@@ -216,11 +216,99 @@ for(hh in 1:length(route.names)){
 head(psi.means)
 
 #' _____________________________________________________________________________
+#' ## Probability of Detection
+#' 
+#' Probability of detection was a function of broadcast species
+#' 
+#' Create blank data frame to hold results
+p.det.posteriors <- as.data.frame(matrix(NA, nrow = 30, ncol = 5))
+colnames(p.det.posteriors) <- c("Species", "Broadcast", 
+                                "p.det.50", "p.det.05", "p.det.95")
+
+#' Populate species and broadcast species
+#' 
+p.det.posteriors$Species <- rep(c("Mottd", "FerPy", "Specd"), 10)
+p.det.posteriors$Broadcast <- rep(c("beta.prebroad", "beta.bw",
+                                    "beta.crested", "beta.gbarred",
+                                    "beta.ghorned", "beta.mottled",
+                                    "beta.pacific", "beta.spectacled",
+                                    "beta.stygian", "beta.whiskered"), 
+                                  each = 3)
+p.det.posteriors$Broadcast <- factor(p.det.posteriors$Broadcast, 
+                                     levels = c("beta.prebroad", "beta.bw",
+                                                "beta.crested", "beta.gbarred",
+                                                "beta.ghorned", "beta.mottled",
+                                                "beta.pacific", "beta.spectacled",
+                                                "beta.stygian", "beta.whiskered"),
+                                     labels = c("Prebroadcast", "BW", "Crested",
+                                                "Gbarred", "Ghorned", "Mottled",
+                                                "Pacific", "Specd", "Stygian", "Whiskered"))
+#' Extract posteriors as new dataframes for each owl species
+ferpy.posts <- ferpy.jagsout$BUGSoutput$sims.list
+mottd.posts <- mottd.jagsout$BUGSoutput$sims.list
+specd.posts <- specd.jagsout$BUGSoutput$sims.list
+
+#' Save parameters as characters for extracting
+parameters <- c("beta.prebroad", "beta.bw",
+                "beta.crested", "beta.gbarred",
+                "beta.ghorned", "beta.mottled",
+                "beta.pacific", "beta.spectacled",
+                "beta.stygian", "beta.whiskered")
+labels <- c("Prebroadcast", "BW", "Crested",
+            "Gbarred", "Ghorned", "Mottled",
+            "Pacific", "Specd", "Stygian", "Whiskered")
+
+#' Fill in table
+#' 
+for(kk in 1:length(parameters)){
+  temp.mottd.posteriors <- mottd.posts[[parameters[kk]]]
+  temp.ferpy.posteriors <- ferpy.posts[[parameters[kk]]]
+  temp.specd.posteriors <- specd.posts[[parameters[kk]]]
+
+  p.det.posteriors$p.det.50[p.det.posteriors$Species == "Mottd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(median(temp.mottd.posteriors))
+  p.det.posteriors$p.det.05[p.det.posteriors$Species == "Mottd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.mottd.posteriors, probs = 0.05))
+  p.det.posteriors$p.det.95[p.det.posteriors$Species == "Mottd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.mottd.posteriors, probs = 0.95))
+  
+  p.det.posteriors$p.det.50[p.det.posteriors$Species == "FerPy"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(median(temp.ferpy.posteriors))
+  p.det.posteriors$p.det.05[p.det.posteriors$Species == "FerPy"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.ferpy.posteriors, probs = 0.05))
+  p.det.posteriors$p.det.95[p.det.posteriors$Species == "FerPy"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.ferpy.posteriors, probs = 0.95))
+  
+  
+  p.det.posteriors$p.det.50[p.det.posteriors$Species == "Specd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(median(temp.specd.posteriors))
+  p.det.posteriors$p.det.05[p.det.posteriors$Species == "Specd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.specd.posteriors, probs = 0.05))
+  p.det.posteriors$p.det.95[p.det.posteriors$Species == "Specd"&
+                              p.det.posteriors$Broadcast == labels[kk]] <- 
+    plogis(quantile(temp.specd.posteriors, probs = 0.95))
+}
+
+#' _____________________________________________________________________________
 #' ## Save files
 #' 
 #' Psi Posteriors by year and route
 save(psi.posteriors, file = "data/output_data/psi_posteriors_RtYr.Rdata")
 
+#' Psi posteriors across years by species and route
+save(psi.means, file = "data/output_data/psi_posteriors_RtSpp.Rdata")
+
+#' Probability of detection by broadcast species and species of analysis
+#' 
+save(p.det.posteriors, file = "data/output_data/p_detection_posteriors.Rdata")
 
 
 #' _____________________________________________________________________________

@@ -96,7 +96,21 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.50, group = Species))+
   ylab("Probability of Occupancy")+
   xlab("Route")
 
-
+#' _____________________________________________________________________________
+#' ## p = Probability of detection
+#' 
+#' Probability of detection was a function of what broadcast species was used, 
+#' with a constant probability of detection for all pre-broadcast time periods.
+#' 
+#' 
+#+ p_detection, fig.width = 18
+ggplot(data = p.det.posteriors, aes(y = p.det.50, x = Broadcast, group = Species))+
+  geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
+  geom_linerange(aes(ymin = p.det.05, ymax = p.det.95), position = position_dodge(0.9))+
+  scale_fill_manual(values = c("blue", "darkgreen", "red"))+
+  ylab("Probability of Detection")+
+  xlab("Broadcast Species")+
+  theme_minimal()
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
