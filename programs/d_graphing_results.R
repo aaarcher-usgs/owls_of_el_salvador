@@ -1,7 +1,7 @@
 #' # Graphing Occupancy Analysis
 #' 
 #' Description: This program graphs occupancy analysis results for owls of El 
-#' Salvador.
+#' Salvador. Plots show the posteriors of Psi and P(detection). 
 #' 
 #' 
 #' ### Preamble
@@ -30,7 +30,7 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-save(psi.posteriors, file = "data/output_data/psi_posteriors_RtYr.Rdata")
+load(file = "data/output_data/psi_posteriors_RtYr.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
