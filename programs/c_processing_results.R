@@ -305,7 +305,18 @@ p.det.post$LL05.plogis <- plogis(p.det.post$LL05)
 p.det.post$median.plogis <- plogis(p.det.post$median)
 p.det.post$UL95.plogis <- plogis(p.det.post$UL95)
 
-
+#' Save broadcast species as a factor, ordered by confidence
+#' 
+p.det.post$Broadcast <- factor(p.det.post$broadcast.param,
+                                  levels = c("beta.prebroad", "beta.mottled",
+                                             "beta.pacific", "beta.crested",
+                                             "beta.bw", "beta.spectacled",
+                                             "beta.whiskered", "beta.g.barred",
+                                             "beta.stygian", "beta.ghorned"),
+                                  labels = c("Pre-broadcast", "Mottled",
+                                             "Pacific", "Crested", "Black and White",
+                                             "Spectacled", "Whiskered", "Guat Barred",
+                                             "Stygian", "Great Horned"))
 
 #' _____________________________________________________________________________
 #' ## Save files

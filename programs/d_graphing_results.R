@@ -110,11 +110,18 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = Species))+
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection, fig.width = 18
-ggplot(data = p.det.post, aes(y = median.plogis, x = broadcast.param, group = Species))+
+#+ p_detection
+ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
   scale_fill_manual(values = c("blue", "darkgreen", "red"))+
+  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = median.plogis))+
+  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = LL05.plogis), color = "grey")+
+  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = UL95.plogis), color = "grey")+
+  facet_wrap(~Species, nrow = 3)+
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+
   theme_minimal()
