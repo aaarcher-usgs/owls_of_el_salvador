@@ -183,9 +183,9 @@ specd.chains <- MCMCpstr(specd.jagsout,
 
 #' Calculate by species and route
 #' 
-psi.means <- as.data.frame(matrix(NA, ncol = 5, nrow = n.route*3))
+psi.means <- as.data.frame(matrix(NA, ncol = 5, nrow = 6*3))
 colnames(psi.means) <- c("Species", "Route", "Psi.LL05", "Psi.median", "Psi.UL95")
-psi.means$Species <- rep(c("Mottd", "FerPy", "Specd"), each = n.route)
+psi.means$Species <- rep(c("Mottd", "FerPy", "Specd"), each = 6)
 psi.means$Route <- rep(route.names, 3)
 
 #' Populate quantile results
@@ -318,7 +318,7 @@ save(psi.means, file = "data/output_data/psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-save(p.det.posteriors, file = "data/output_data/p_detection_posteriors.Rdata")
+save(p.det.post, file = "data/output_data/p_detection_posteriors.Rdata")
 
 
 #' _____________________________________________________________________________
