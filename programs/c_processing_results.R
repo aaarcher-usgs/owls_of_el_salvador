@@ -83,165 +83,161 @@ MCMCtrace(specd.jagsout,
 #' ### Calculate median, 95% quantile and 5% quantile of psi posteriors by route
 #' and year
 #' 
-#' Create blank tables
+#' For all analysis, remove years and routes that were not surveyed
+(exclude.byrow <- c(3,4,9,15,19:24,27,33,40,44,56,63,64))
+all.rows <- 1:66
+(include.byrow <- all.rows[!all.rows %in% exclude.byrow])
 #' 
-psi.posteriors <- as.data.frame(matrix(NA, 
-                                       nrow = length(survey_list)*3, #surveys for 3 species
-                                       ncol = 1))
+#' FerPy
+#' 
+psi.post.ferpy <- MCMCsummary(ferpy.jagsout, 
+                              params = "psi", 
+                              Rhat = TRUE,
+                              n.eff = TRUE,
+                              probs = c(0.05, 0.5, 0.95))
+psi.post.ferpy$Year <- rep(1:11, each = 6)
+psi.post.ferpy$Route <- rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), 11)
+psi.post.ferpy$Species <- "FerPy"
+psi.post.ferpy <- psi.post.ferpy[include.byrow,]
 
-#' Populate Survey List, repeated for each species
-colnames(psi.posteriors) <- c("Route.Year") 
-psi.posteriors$Route.Year <- rep(survey_list, 3)
+#' Mottd
+#' 
+psi.post.mottd <- MCMCsummary(mottd.jagsout, 
+                              params = "psi", 
+                              Rhat = TRUE,
+                              n.eff = TRUE,
+                              probs = c(0.05, 0.5, 0.95))
+psi.post.mottd$Year <- rep(1:11, each = 6)
+psi.post.mottd$Route <- rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), 11)
+psi.post.mottd$Species <- "Mottd"
+psi.post.mottd <- psi.post.mottd[include.byrow,]
 
-#' Populate Route 
-psi.posteriors$Route <- unlist(psi.posteriors %>% 
-                                 separate(Route.Year, c("Route"), extra = "drop"))
-table(psi.posteriors$Route)
+#' Specd
+#' 
+psi.post.specd <- MCMCsummary(specd.jagsout, 
+                              params = "psi", 
+                              Rhat = TRUE,
+                              n.eff = TRUE,
+                              probs = c(0.05, 0.5, 0.95))
+psi.post.specd$Year <- rep(1:11, each = 6)
+psi.post.specd$Route <- rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), 11)
+psi.post.specd$Species <- "Specd"
+psi.post.specd <- psi.post.specd[include.byrow,]
+
+psi.posteriors <- rbind(psi.post.ferpy, psi.post.mottd, psi.post.specd)
+
 
 #' Populate Region
 #' 
-psi.posteriors$Region[psi.posteriors$Route == "EI1" |
-                        psi.posteriors$Route == "EI2"] <- "El Imposible"
-psi.posteriors$Region[psi.posteriors$Route == "N1" |
-                        psi.posteriors$Route == "N2"] <- "Nancuchiname"
-psi.posteriors$Region[psi.posteriors$Route == "M1" |
-                        psi.posteriors$Route == "M2"] <- "Montecristo"
+psi.posteriors$Region[psi.posteriors$Route == "EI.1" |
+                        psi.posteriors$Route == "EI.2"] <- "El Imposible"
+psi.posteriors$Region[psi.posteriors$Route == "N.1" |
+                        psi.posteriors$Route == "N.2"] <- "Nancuchiname"
+psi.posteriors$Region[psi.posteriors$Route == "M.1" |
+                        psi.posteriors$Route == "M.2"] <- "Montecristo"
+colnames(psi.posteriors)
+colnames(psi.posteriors) <- c("Psi.mean", "Psi.sd", "Psi.LL05", "Psi.median",
+                              "Psi.UL95", "Psi.Rhat", "Psi.neff", "Year", "Route",
+                              "Species", "Region")
 
-#' Populate Year
+
 #' 
-psi.posteriors$Year <- as.numeric(unlist(psi.posteriors %>% 
-  separate(Route.Year, c("Route", "Year")) %>% # select both route and year
-  select("Year")))
-table(psi.posteriors$Year)
-
-
-#' Populate Species
-#'
-psi.posteriors$Species <- rep(c("Mottd", "Specd", "FerPy"), each = length(survey_list))
-
-#' Head of table
 #' 
-head(psi.posteriors)
-
-#' ### Populate Psi
 #' 
-for(ht in 1:length(survey_list)){
-  temp.survey <- survey_list[ht]
-  temp.route <- unique(psi.posteriors$Route[psi.posteriors$Route.Year==temp.survey])
-  hh <- route.index[route.names == temp.route]
-  temp.year <- unique(psi.posteriors$Year[psi.posteriors$Route.Year==temp.survey])
-  tt <- year.index[year.names == temp.year]
-  
-  # Mottd results
-  mottd.temp <- mottd.jagsout$BUGSoutput$sims.list$psi[,hh,tt]
-  psi.posteriors$Psi.50[
-    psi.posteriors$Route == temp.route &
-    psi.posteriors$Year == temp.year &
-    psi.posteriors$Species == "Mottd"
-    ] <- median(mottd.temp)
-  
-  psi.posteriors$Psi.05[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "Mottd"
-    ] <- quantile(mottd.temp, prob = 0.05)
-  
-  psi.posteriors$Psi.95[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "Mottd"
-    ] <- quantile(mottd.temp, prob = 0.95)
-  
-  # Ferpy results
-  ferpy.temp <- ferpy.jagsout$BUGSoutput$sims.list$psi[,hh,tt]
-  psi.posteriors$Psi.50[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "FerPy"
-    ] <- median(ferpy.temp)
-  
-  psi.posteriors$Psi.05[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "FerPy"
-    ] <- quantile(ferpy.temp, prob = 0.05)
-  
-  psi.posteriors$Psi.95[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "FerPy"
-    ] <- quantile(ferpy.temp, prob = 0.95)
-  
-  # Specd results
-  specd.temp <- specd.jagsout$BUGSoutput$sims.list$psi[,hh,tt]
-  psi.posteriors$Psi.50[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "Specd"
-    ] <- median(specd.temp)
-  
-  psi.posteriors$Psi.05[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "Specd"
-    ] <- quantile(specd.temp, prob = 0.05)
-  
-  psi.posteriors$Psi.95[
-    psi.posteriors$Route == temp.route &
-      psi.posteriors$Year == temp.year &
-      psi.posteriors$Species == "Specd"
-    ] <- quantile(specd.temp, prob = 0.95)
-  
-}
-
 #' ### Calculate average occupancy probability by route and species
 #' 
-#' Blank data frame to store data
-psi.means <- as.data.frame(matrix(NA, nrow = length(route.names)*3, ncol = 5))
-colnames(psi.means) <- c("Species", "Route", "Psi.50", "Psi.05", "Psi.95")
-psi.means$Species <- rep(c("Mottd", "Specd", "FerPy"), each = 6)
+#' 
+#' Need to delete a few years by route:
+#' 
+all.years <- 1:11
+exc.EI.1 <- 4
+inc.EI.1 <- all.years[!all.years %in% exc.EI.1]
+exc.EI.2 <- c(4,8,10)
+inc.EI.2 <- all.years[!all.years %in% exc.EI.2]
+exc.M.1 <- c(1:6,11)
+inc.M.1 <- all.years[!all.years %in% exc.M.1]
+exc.M.2 <- c(1,4,7,11)
+inc.M.2 <- all.years[!all.years %in% exc.M.2]
+exc.N.1 <- 4
+inc.N.1 <- all.years[!all.years %in% exc.N.1]
+exc.N.2 <- 4
+inc.N.2 <- all.years[!all.years %in% exc.N.2]
+#' 
+#' Psi posteriors for Ferpy
+#' 
+ferpy.chains <- MCMCpstr(ferpy.jagsout, 
+                         params = "psi",
+                         type = "chains")
+
+#' Psi posteriors for Mottd
+#' 
+mottd.chains <- MCMCpstr(mottd.jagsout, 
+                         params = "psi",
+                         type = "chains")
+
+#' Psi posteriors for Specd
+#' 
+specd.chains <- MCMCpstr(specd.jagsout, 
+                         params = "psi",
+                         type = "chains")
+
+#' Calculate by species and route
+#' 
+psi.means <- as.data.frame(matrix(NA, ncol = 5, nrow = n.route*3))
+colnames(psi.means) <- c("Species", "Route", "Psi.LL05", "Psi.median", "Psi.UL95")
+psi.means$Species <- rep(c("Mottd", "FerPy", "Specd"), each = n.route)
 psi.means$Route <- rep(route.names, 3)
-psi.means$Region <- rep(c("El Imposible", "Montecristo", "Nancuchiname"), each = 2)
 
+#' Populate quantile results
+#' 
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "EI1",3:5] <- 
+  quantile(mottd.chains$psi[1,inc.EI.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "EI2",3:5] <- 
+  quantile(mottd.chains$psi[2,inc.EI.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "M1",3:5] <- 
+  quantile(mottd.chains$psi[3,inc.M.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "M2",3:5] <- 
+  quantile(mottd.chains$psi[4,inc.M.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "N1",3:5] <- 
+  quantile(mottd.chains$psi[5,inc.N.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Mottd" & psi.means$Route == "N2",3:5] <- 
+  quantile(mottd.chains$psi[6,inc.N.2,], probs = c(0.05, 0.5, 0.95))
 
-for(hh in 1:length(route.names)){
-  temp.route <- route.names[hh]
-  
-  # Mottd
-  temp.mottd.posteriors <- mottd.jagsout$BUGSoutput$sims.list$psi[,hh,]
-  psi.means$Psi.50[psi.means$Species == "Mottd" & 
-                       psi.means$Route == temp.route] <- median(temp.mottd.posteriors)
-  psi.means$Psi.05[psi.means$Species == "Mottd" & 
-                      psi.means$Route == temp.route] <- 
-    quantile(temp.mottd.posteriors, probs = 0.05)
-  psi.means$Psi.95[psi.means$Species == "Mottd" & 
-                     psi.means$Route == temp.route] <- 
-    quantile(temp.mottd.posteriors, probs = 0.95)
-  
-  # Ferpy
-  temp.ferpy.posteriors <- ferpy.jagsout$BUGSoutput$sims.list$psi[,hh,]
-  psi.means$Psi.50[psi.means$Species == "FerPy" & 
-                       psi.means$Route == temp.route] <- median(temp.ferpy.posteriors)
-  psi.means$Psi.05[psi.means$Species == "FerPy" & 
-                      psi.means$Route == temp.route] <- 
-    quantile(temp.ferpy.posteriors, probs = 0.05)
-  psi.means$Psi.95[psi.means$Species == "FerPy" & 
-                     psi.means$Route == temp.route] <- 
-    quantile(temp.ferpy.posteriors, probs = 0.95)
-  
-  # Specd
-  temp.specd.posteriors <- specd.jagsout$BUGSoutput$sims.list$psi[,hh,]
-  psi.means$Psi.50[psi.means$Species == "Specd" & 
-                       psi.means$Route == temp.route] <- median(temp.specd.posteriors)
-  psi.means$Psi.05[psi.means$Species == "Specd" & 
-                      psi.means$Route == temp.route] <- 
-    quantile(temp.specd.posteriors, probs = 0.05)
-  psi.means$Psi.95[psi.means$Species == "Specd" & 
-                     psi.means$Route == temp.route] <- 
-    quantile(temp.specd.posteriors, probs = 0.95)
-  
-}
-head(psi.means)
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "EI1",3:5] <- 
+  quantile(ferpy.chains$psi[1,inc.EI.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "EI2",3:5] <- 
+  quantile(ferpy.chains$psi[2,inc.EI.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "M1",3:5] <- 
+  quantile(ferpy.chains$psi[3,inc.M.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "M2",3:5] <- 
+  quantile(ferpy.chains$psi[4,inc.M.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "N1",3:5] <- 
+  quantile(ferpy.chains$psi[5,inc.N.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "FerPy" & psi.means$Route == "N2",3:5] <- 
+  quantile(ferpy.chains$psi[6,inc.N.2,], probs = c(0.05, 0.5, 0.95))
+
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "EI1",3:5] <- 
+  quantile(specd.chains$psi[1,inc.EI.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "EI2",3:5] <- 
+  quantile(specd.chains$psi[2,inc.EI.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "M1",3:5] <- 
+  quantile(specd.chains$psi[3,inc.M.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "M2",3:5] <- 
+  quantile(specd.chains$psi[4,inc.M.2,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "N1",3:5] <- 
+  quantile(specd.chains$psi[5,inc.N.1,], probs = c(0.05, 0.5, 0.95))
+psi.means[psi.means$Species == "Specd" & psi.means$Route == "N2",3:5] <- 
+  quantile(specd.chains$psi[6,inc.N.2,], probs = c(0.05, 0.5, 0.95))
+
+#' Populate Region
+#' 
+psi.means$Region[psi.means$Route == "EI1" |
+                   psi.means$Route == "EI2"] <- "El Imposible"
+psi.means$Region[psi.means$Route == "N1" |
+                   psi.means$Route == "N2"] <- "Nancuchiname"
+psi.means$Region[psi.means$Route == "M1" |
+                   psi.means$Route == "M2"] <- "Montecristo"
+
 
 #' _____________________________________________________________________________
 #' ## Probability of Detection
