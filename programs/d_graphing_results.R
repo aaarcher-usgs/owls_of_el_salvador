@@ -32,6 +32,13 @@ set.seed(587453)
 #' Psi Posteriors by year and route
 load(file = "data/output_data/psi_posteriors_RtYr.Rdata")
 
+#' Psi posteriors across years by species and route
+load(file = "data/output_data/psi_posteriors_RtSpp.Rdata")
+
+#' Probability of detection by broadcast species and species of analysis
+#' 
+load(file = "data/output_data/p_detection_posteriors.Rdata")
+
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
 #' 
@@ -125,5 +132,5 @@ ggplot(data = p.det.posteriors, aes(y = p.det.50, x = Broadcast, group = Species
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/d_graphing_results.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/d_graphing_results.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

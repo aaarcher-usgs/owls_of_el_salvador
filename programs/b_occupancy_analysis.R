@@ -257,8 +257,8 @@ mottd.jagsout <- jags(data = mottd.jag.data,
                                              "beta.ghorned"), 
                       model.file = model.occ, 
                       n.chains = 3,
-                      n.iter = 1000,
-                      n.burnin = 100,
+                      n.iter = 10000,
+                      n.burnin = 1000,
                       n.thin = 1)
 
 
@@ -279,8 +279,8 @@ ferpy.jagsout <- jags(data = ferpy.jag.data,
                                              "beta.ghorned"), 
                       model.file = model.occ, 
                       n.chains = 3,
-                      n.iter = 1000,
-                      n.burnin = 100,
+                      n.iter = 10000,
+                      n.burnin = 1000,
                       n.thin = 1)
 
 
@@ -301,8 +301,8 @@ specd.jagsout <- jags(data = specd.jag.data,
                                              "beta.ghorned"), 
                       model.file = model.occ, 
                       n.chains = 3,
-                      n.iter = 1000,
-                      n.burnin = 100,
+                      n.iter = 10000,
+                      n.burnin = 1000,
                       n.thin = 1)
 
 
