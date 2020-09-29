@@ -111,9 +111,9 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.50, group = Species))+
 #' 
 #' 
 #+ p_detection, fig.width = 18
-ggplot(data = p.det.posteriors, aes(y = p.det.50, x = Broadcast, group = Species))+
+ggplot(data = p.det.post, aes(y = median.plogis, x = broadcast.param, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
-  geom_linerange(aes(ymin = p.det.05, ymax = p.det.95), position = position_dodge(0.9))+
+  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
   scale_fill_manual(values = c("blue", "darkgreen", "red"))+
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+

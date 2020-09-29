@@ -16,6 +16,7 @@ library(devtools) # documentation-related
 library(R2jags)
 library(tidyr)
 library(dplyr)
+library(MCMCvis)
 
 #' Clear environment and set seed
 #' 
@@ -48,6 +49,33 @@ survey_list
 route.index <- 1:length(route.names)
 (year.names <- 2003:2013)
 year.index <- 1:length(year.names)
+
+#' _____________________________________________________________________________
+#' ## Psi = Probability of occupancy
+#' 
+#' Create traceplots of parameters (creates PDF)
+#'
+#' FerPy
+MCMCtrace(ferpy.jagsout, 
+          pdf = TRUE,
+          open_pdf = FALSE,
+          filename = "ferpyTrace",
+          wd = "output")
+
+#' Mottd
+MCMCtrace(mottd.jagsout, 
+          pdf = TRUE,
+          open_pdf = FALSE,
+          filename = "mottdTrace",
+          wd = "output")
+
+#' Specd
+MCMCtrace(specd.jagsout, 
+          pdf = TRUE,
+          open_pdf = FALSE,
+          filename = "specdTrace",
+          wd = "output")
+
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
@@ -220,82 +248,68 @@ head(psi.means)
 #' 
 #' Probability of detection was a function of broadcast species
 #' 
-#' Create blank data frame to hold results
-p.det.posteriors <- as.data.frame(matrix(NA, nrow = 30, ncol = 5))
-colnames(p.det.posteriors) <- c("Species", "Broadcast", 
-                                "p.det.50", "p.det.05", "p.det.95")
-
-#' Populate species and broadcast species
+#' FerPy
 #' 
-p.det.posteriors$Species <- rep(c("Mottd", "FerPy", "Specd"), 10)
-p.det.posteriors$Broadcast <- rep(c("beta.prebroad", "beta.bw",
-                                    "beta.crested", "beta.gbarred",
-                                    "beta.ghorned", "beta.mottled",
-                                    "beta.pacific", "beta.spectacled",
-                                    "beta.stygian", "beta.whiskered"), 
-                                  each = 3)
-p.det.posteriors$Broadcast <- factor(p.det.posteriors$Broadcast, 
-                                     levels = c("beta.prebroad", "beta.bw",
-                                                "beta.crested", "beta.gbarred",
-                                                "beta.ghorned", "beta.mottled",
-                                                "beta.pacific", "beta.spectacled",
-                                                "beta.stygian", "beta.whiskered"),
-                                     labels = c("Prebroadcast", "BW", "Crested",
-                                                "Gbarred", "Ghorned", "Mottled",
-                                                "Pacific", "Specd", "Stygian", "Whiskered"))
-#' Extract posteriors as new dataframes for each owl species
-ferpy.posts <- ferpy.jagsout$BUGSoutput$sims.list
-mottd.posts <- mottd.jagsout$BUGSoutput$sims.list
-specd.posts <- specd.jagsout$BUGSoutput$sims.list
+p.det.post.ferpy <- MCMCsummary(ferpy.jagsout, 
+                                params = grep("^beta", 
+                                              ferpy.jagsout$parameters.to.save, 
+                                              value = T), 
+                                Rhat = TRUE,
+                                n.eff = TRUE,
+                                probs = c(0.05, 0.5, 0.95))
+p.det.post.ferpy$Species <- "FerPy"
+p.det.post.ferpy$broadcast.param <- grep("^beta", 
+                                         ferpy.jagsout$parameters.to.save, 
+                                         value = T)
+p.det.post.ferpy
 
-#' Save parameters as characters for extracting
-parameters <- c("beta.prebroad", "beta.bw",
-                "beta.crested", "beta.gbarred",
-                "beta.ghorned", "beta.mottled",
-                "beta.pacific", "beta.spectacled",
-                "beta.stygian", "beta.whiskered")
-labels <- c("Prebroadcast", "BW", "Crested",
-            "Gbarred", "Ghorned", "Mottled",
-            "Pacific", "Specd", "Stygian", "Whiskered")
-
-#' Fill in table
+#' Mottd
 #' 
-for(kk in 1:length(parameters)){
-  temp.mottd.posteriors <- mottd.posts[[parameters[kk]]]
-  temp.ferpy.posteriors <- ferpy.posts[[parameters[kk]]]
-  temp.specd.posteriors <- specd.posts[[parameters[kk]]]
+p.det.post.mottd <- MCMCsummary(mottd.jagsout, 
+                                params = grep("^beta", 
+                                              mottd.jagsout$parameters.to.save, 
+                                              value = T), 
+                                Rhat = TRUE,
+                                n.eff = TRUE,
+                                probs = c(0.05, 0.5, 0.95))
+p.det.post.mottd$Species <- "Mottd"
+p.det.post.mottd$broadcast.param <- grep("^beta", 
+                                         mottd.jagsout$parameters.to.save, 
+                                         value = T)
+p.det.post.mottd
 
-  p.det.posteriors$p.det.50[p.det.posteriors$Species == "Mottd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(median(temp.mottd.posteriors))
-  p.det.posteriors$p.det.05[p.det.posteriors$Species == "Mottd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.mottd.posteriors, probs = 0.05))
-  p.det.posteriors$p.det.95[p.det.posteriors$Species == "Mottd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.mottd.posteriors, probs = 0.95))
-  
-  p.det.posteriors$p.det.50[p.det.posteriors$Species == "FerPy"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(median(temp.ferpy.posteriors))
-  p.det.posteriors$p.det.05[p.det.posteriors$Species == "FerPy"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.ferpy.posteriors, probs = 0.05))
-  p.det.posteriors$p.det.95[p.det.posteriors$Species == "FerPy"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.ferpy.posteriors, probs = 0.95))
-  
-  
-  p.det.posteriors$p.det.50[p.det.posteriors$Species == "Specd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(median(temp.specd.posteriors))
-  p.det.posteriors$p.det.05[p.det.posteriors$Species == "Specd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.specd.posteriors, probs = 0.05))
-  p.det.posteriors$p.det.95[p.det.posteriors$Species == "Specd"&
-                              p.det.posteriors$Broadcast == labels[kk]] <- 
-    plogis(quantile(temp.specd.posteriors, probs = 0.95))
-}
+#' Specd
+#' 
+#' 
+p.det.post.specd <- MCMCsummary(specd.jagsout, 
+                                params = grep("^beta", 
+                                              specd.jagsout$parameters.to.save, 
+                                              value = T), 
+                                Rhat = TRUE,
+                                n.eff = TRUE,
+                                probs = c(0.05, 0.5, 0.95))
+p.det.post.specd$Species <- "Specd"
+p.det.post.specd$broadcast.param <- grep("^beta", 
+                                         specd.jagsout$parameters.to.save, 
+                                         value = T)
+
+#' Merge data together and change column names
+#' 
+p.det.post <- rbind(p.det.post.ferpy,
+                    p.det.post.mottd,
+                    p.det.post.specd)
+
+colnames(p.det.post)
+colnames(p.det.post) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
+                          "n.eff", "Species", "broadcast.param")
+
+#' Transform to probability scale
+#' 
+p.det.post$LL05.plogis <- plogis(p.det.post$LL05)
+p.det.post$median.plogis <- plogis(p.det.post$median)
+p.det.post$UL95.plogis <- plogis(p.det.post$UL95)
+
+
 
 #' _____________________________________________________________________________
 #' ## Save files
