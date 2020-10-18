@@ -206,7 +206,7 @@ save(data.jags,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/a_process_data.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/a_process_data_global.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
 #' 
 #' 
