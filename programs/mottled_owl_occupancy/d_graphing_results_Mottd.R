@@ -64,7 +64,7 @@ ggplot(data = psi.post.mottd,
 
 #' ### By Route, averages
 #'
-#+ psi_means
+#+ mottd_psi_means
 ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median, group = Species))+
   geom_bar(stat = "identity", aes(fill = Species), position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
@@ -82,7 +82,7 @@ ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median, group = Species))+
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection
+#+ mottd_p_detection
 ggplot(data = p.det.post.mottd, 
        aes(y = median.plogis, x = Broadcast, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
@@ -113,5 +113,5 @@ ggplot(data = p.det.post.mottd,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezknitr::ezspin(file = "programs/d_graphing_results.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/mottled_owl_occupancy/d_graphing_results_Mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
