@@ -104,6 +104,7 @@ tab.owls <- tab.owls[! tab.owls$Stations_ID %in% station_id_2002,]
 dim(tab.owls)
 
 #' Owl Number is character, but should be numerical
+
 # Is it a character because it has any letter values? 
 table(tab.owls$Owl_Number)
 # No.... In that case, convert to numeric
@@ -113,8 +114,13 @@ summary(tab.owls$Owl_Number)
 #' How many of each species of owl are there?
 table(tab.owls$Owl_Species_ID)
 
-
-
+#' Make "None" and "NoID" match
+#' 
+tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "None" |
+                                    tab.owls$Owl_Species_ID == "NoID",
+                                  yes = "Unk",
+                                  no = tab.owls$Owl_Species_ID)
+table(tab.owls$Owl_Species_ID)
 
 #' _____________________________________________________________________________
 #' ## Prepare for JAGS

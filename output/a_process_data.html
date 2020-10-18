@@ -287,7 +287,8 @@ dim(tab.stations)
 ## 4          15        11 EI1.4   1899-12-31 19:36:00          27      35.0     0          0
 ## 5          16        11 EI1.5   1899-12-31 19:55:00          26      35.0     0          0
 ## 6          17        11 EI1.6   1899-12-31 20:18:00          27      34.8     0          0
-## # … with 3 more variables: Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;, Station_Comments &lt;chr&gt;
+## # … with 3 more variables: Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;,
+## #   Station_Comments &lt;chr&gt;
 </code></pre>
 
 <pre><code class="r">unique(tab.stations$Station)
@@ -363,22 +364,22 @@ table(tab.survey$year)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3  10 
-##  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61 
-##  10  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  62  63  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87 
-##  10  10  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3 
+##  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59 
+##  10  10  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10 
+##  60  61  62  63  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84 
+##  10  10  10  10  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10 
+##  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <pre><code class="r">(station_id_2002 &lt;- tab.stations$Stations_ID[tab.stations$Survey_ID %in% survey_id_2002])
 </code></pre>
 
-<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
-## [25] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230 231 232
-## [49] 233 234 235 236 237
+<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199
+## [24] 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230
+## [47] 231 232 233 234 235 236 237
 </code></pre>
 
 <pre><code class="r">tab.stations &lt;- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
@@ -386,14 +387,14 @@ table(tab.stations$Survey_ID)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41  42 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10  10 
-##  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67 
-##  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93 
-##  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  94  95  96  97  98  99 100 101 102 
-##  10  10  10  10  10  10  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10 
+##  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65 
+##  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90 
+##  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  91  92  93  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <h3>Owls Table</h3>
@@ -462,6 +463,20 @@ summary(tab.owls$Owl_Number)
 <pre><code>## 
 ##    Barn   FerPy Fulvous   GrHor   Mottd    NoID    None   PacSc   Specd    Styg   Whisk 
 ##      10     184      17       3     530       2       8      27     137       1       2
+</code></pre>
+
+<p>Make &ldquo;None&rdquo; and &ldquo;NoID&rdquo; match</p>
+
+<pre><code class="r">tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;None&quot; |
+                                    tab.owls$Owl_Species_ID == &quot;NoID&quot;,
+                                  yes = &quot;Unk&quot;,
+                                  no = tab.owls$Owl_Species_ID)
+table(tab.owls$Owl_Species_ID)
+</code></pre>
+
+<pre><code>## 
+##    Barn   FerPy Fulvous   GrHor   Mottd   PacSc   Specd    Styg     Unk   Whisk 
+##      10     184      17       3     530      27     137       1      10       2
 </code></pre>
 
 <hr/>
@@ -725,9 +740,9 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 <pre><code class="r">(broadcast.species &lt;- unique(tab.stations$Broadcast_Species))
 </code></pre>
 
-<pre><code>## [1] &quot;Pacific Screech Owl&quot;   &quot;Mottled Owl&quot;           &quot;Crested Owl&quot;           &quot;Black and White Owl&quot;  
-## [5] &quot;Spectacled Owl&quot;        &quot;Whiskered Screech Owl&quot; &quot;Guat. Barred Owl&quot;      &quot;Stygian Owl&quot;          
-## [9] &quot;Great Horned Owl&quot;
+<pre><code>## [1] &quot;Pacific Screech Owl&quot;   &quot;Mottled Owl&quot;           &quot;Crested Owl&quot;          
+## [4] &quot;Black and White Owl&quot;   &quot;Spectacled Owl&quot;        &quot;Whiskered Screech Owl&quot;
+## [7] &quot;Guat. Barred Owl&quot;      &quot;Stygian Owl&quot;           &quot;Great Horned Owl&quot;
 </code></pre>
 
 <pre><code class="r">(broadcast.species.index &lt;- 1:length(broadcast.species))
@@ -1003,24 +1018,25 @@ mottd.master &lt;- left_join(x = tab.owls.mottd, y = tab.stations, by = &quot;St
 </code></pre>
 
 <pre><code>## # A tibble: 16 x 9
-##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID Station
-##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;  
-##  1    142          93 Mottd                   1 FALSE    FALSE    TRUE                 20 EI1.2  
-##  2    143          93 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.2  
-##  3    144          95 Mottd                   1 FALSE    FALSE    TRUE                 20 EI1.4  
-##  4    145          95 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.4  
-##  5    146          96 Mottd                   1 TRUE     FALSE    FALSE                20 EI1.5  
-##  6    152          98 Mottd                   1 TRUE     FALSE    FALSE                20 EI1.7  
-##  7    157         100 Mottd                   1 FALSE    TRUE     TRUE                 20 EI1.9  
-##  8    158         100 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.9  
-##  9    159         100 Mottd                   3 FALSE    FALSE    TRUE                 20 EI1.9  
-## 10    161         101 Mottd                   1 FALSE    TRUE     FALSE                20 EI1.10 
-## 11   1134          97 Mottd                   1 TRUE     TRUE     TRUE                 20 EI1.6  
-## 12   1135          97 Mottd                   2 FALSE    FALSE    TRUE                 20 EI1.6  
-## 13   1138         903 Mottd                   1 FALSE    TRUE     TRUE                 20 EI1.8  
-## 14   1139         903 Mottd                   2 FALSE    TRUE     FALSE                20 EI1.8  
-## 15   1140         903 Mottd                   3 FALSE    FALSE    TRUE                 20 EI1.8  
-## 16   1141         903 Mottd                   4 FALSE    FALSE    TRUE                 20 EI1.8
+##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID
+##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt;
+##  1    142          93 Mottd                   1 FALSE    FALSE    TRUE                 20
+##  2    143          93 Mottd                   2 FALSE    FALSE    TRUE                 20
+##  3    144          95 Mottd                   1 FALSE    FALSE    TRUE                 20
+##  4    145          95 Mottd                   2 FALSE    FALSE    TRUE                 20
+##  5    146          96 Mottd                   1 TRUE     FALSE    FALSE                20
+##  6    152          98 Mottd                   1 TRUE     FALSE    FALSE                20
+##  7    157         100 Mottd                   1 FALSE    TRUE     TRUE                 20
+##  8    158         100 Mottd                   2 FALSE    FALSE    TRUE                 20
+##  9    159         100 Mottd                   3 FALSE    FALSE    TRUE                 20
+## 10    161         101 Mottd                   1 FALSE    TRUE     FALSE                20
+## 11   1134          97 Mottd                   1 TRUE     TRUE     TRUE                 20
+## 12   1135          97 Mottd                   2 FALSE    FALSE    TRUE                 20
+## 13   1138         903 Mottd                   1 FALSE    TRUE     TRUE                 20
+## 14   1139         903 Mottd                   2 FALSE    TRUE     FALSE                20
+## 15   1140         903 Mottd                   3 FALSE    FALSE    TRUE                 20
+## 16   1141         903 Mottd                   4 FALSE    FALSE    TRUE                 20
+## # … with 1 more variable: Station &lt;chr&gt;
 </code></pre>
 
 <h3>FerPy</h3>
@@ -1183,20 +1199,21 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 </code></pre>
 
 <pre><code>## # A tibble: 12 x 9
-##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID Station
-##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;  
-##  1     84          52 Specd                   1 FALSE    FALSE    TRUE                 16 N1.1   
-##  2     88          59 Specd                   2 FALSE    FALSE    TRUE                 16 N1.8   
-##  3     89          59 Specd                   3 FALSE    FALSE    TRUE                 16 N1.8   
-##  4     91          60 Specd                   2 TRUE     TRUE     TRUE                 16 N1.9   
-##  5     92          60 Specd                   3 TRUE     TRUE     TRUE                 16 N1.9   
-##  6     93          60 Specd                   4 TRUE     TRUE     TRUE                 16 N1.9   
-##  7     94          61 Specd                   1 FALSE    TRUE     TRUE                 16 N1.10  
-##  8     95          61 Specd                   2 FALSE    TRUE     TRUE                 16 N1.10  
-##  9     96          61 Specd                   3 FALSE    TRUE     TRUE                 16 N1.10  
-## 10     97          61 Specd                   4 FALSE    TRUE     TRUE                 16 N1.10  
-## 11     98          61 Specd                   5 FALSE    TRUE     TRUE                 16 N1.10  
-## 12   1127          53 Specd                   1 FALSE    FALSE    TRUE                 16 N1.2
+##    Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12` Survey_ID
+##     &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;             &lt;dbl&gt;
+##  1     84          52 Specd                   1 FALSE    FALSE    TRUE                 16
+##  2     88          59 Specd                   2 FALSE    FALSE    TRUE                 16
+##  3     89          59 Specd                   3 FALSE    FALSE    TRUE                 16
+##  4     91          60 Specd                   2 TRUE     TRUE     TRUE                 16
+##  5     92          60 Specd                   3 TRUE     TRUE     TRUE                 16
+##  6     93          60 Specd                   4 TRUE     TRUE     TRUE                 16
+##  7     94          61 Specd                   1 FALSE    TRUE     TRUE                 16
+##  8     95          61 Specd                   2 FALSE    TRUE     TRUE                 16
+##  9     96          61 Specd                   3 FALSE    TRUE     TRUE                 16
+## 10     97          61 Specd                   4 FALSE    TRUE     TRUE                 16
+## 11     98          61 Specd                   5 FALSE    TRUE     TRUE                 16
+## 12   1127          53 Specd                   1 FALSE    FALSE    TRUE                 16
+## # … with 1 more variable: Station &lt;chr&gt;
 </code></pre>
 
 <hr/>
@@ -1234,7 +1251,7 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -1244,22 +1261,19 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-09-19                  
+##  date     2020-10-15                  
 ## 
-## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
-##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
 ##  backports      1.1.8   2020-06-17 [1] CRAN (R 4.0.2)
 ##  base64enc      0.1-3   2015-07-28 [1] CRAN (R 4.0.2)
-##  boot           1.3-25  2020-04-26 [1] CRAN (R 4.0.2)
 ##  callr          3.4.3   2020-03-28 [1] CRAN (R 4.0.2)
 ##  cellranger     1.1.0   2016-07-27 [1] CRAN (R 4.0.2)
 ##  checkmate      2.0.0   2020-02-06 [1] CRAN (R 4.0.2)
 ##  chron        * 2.3-56  2020-08-18 [1] CRAN (R 4.0.2)
 ##  cli            2.0.2   2020-02-28 [1] CRAN (R 4.0.2)
 ##  cluster        2.1.0   2019-06-19 [1] CRAN (R 4.0.2)
-##  coda         * 0.19-3  2019-07-05 [1] CRAN (R 4.0.2)
 ##  colorspace     1.4-1   2019-03-18 [1] CRAN (R 4.0.2)
 ##  crayon         1.3.4   2017-09-16 [1] CRAN (R 4.0.2)
 ##  data.table     1.13.0  2020-07-24 [1] CRAN (R 4.0.2)
@@ -1271,7 +1285,6 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
 ##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
 ##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
-##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
 ##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
 ##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
 ##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
@@ -1279,7 +1292,6 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -1294,16 +1306,13 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
 ##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
 ##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
-##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
 ##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
 ##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
 ##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
 ##  lubridate    * 1.7.9   2020-06-08 [1] CRAN (R 4.0.2)
 ##  magrittr       1.5     2014-11-22 [1] CRAN (R 4.0.2)
-##  markdown       1.1     2019-08-07 [1] CRAN (R 4.0.2)
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
@@ -1318,14 +1327,11 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  R.methodsS3    1.8.0   2020-02-14 [1] CRAN (R 4.0.2)
 ##  R.oo           1.23.0  2019-11-03 [1] CRAN (R 4.0.2)
 ##  R.utils        2.9.2   2019-12-08 [1] CRAN (R 4.0.2)
-##  R2jags       * 0.6-1   2020-04-27 [1] CRAN (R 4.0.2)
-##  R2WinBUGS      2.1-21  2015-07-30 [1] CRAN (R 4.0.2)
 ##  R6             2.4.1   2019-11-12 [1] CRAN (R 4.0.2)
 ##  RColorBrewer   1.1-2   2014-12-07 [1] CRAN (R 4.0.2)
 ##  Rcpp           1.0.5   2020-07-06 [1] CRAN (R 4.0.2)
 ##  readxl       * 1.3.1   2019-03-13 [1] CRAN (R 4.0.2)
 ##  remotes        2.2.0   2020-07-21 [1] CRAN (R 4.0.2)
-##  rjags        * 4-10    2019-11-06 [1] CRAN (R 4.0.2)
 ##  rJava          0.9-13  2020-07-06 [1] CRAN (R 4.0.2)
 ##  rlang          0.4.7   2020-07-09 [1] CRAN (R 4.0.2)
 ##  RODBC        * 1.3-17  2020-05-11 [1] CRAN (R 4.0.2)
@@ -1335,11 +1341,10 @@ specd.master &lt;- left_join(x = tab.owls.specd, y = tab.stations, by = &quot;St
 ##  scales         1.1.1   2020-05-11 [1] CRAN (R 4.0.2)
 ##  sessioninfo    1.1.1   2018-11-05 [1] CRAN (R 4.0.2)
 ##  stringi        1.4.6   2020-02-17 [1] CRAN (R 4.0.2)
-##  stringr      * 1.4.0   2019-02-10 [1] CRAN (R 4.0.2)
+##  stringr        1.4.0   2019-02-10 [1] CRAN (R 4.0.2)
 ##  survival     * 3.1-12  2020-04-10 [1] CRAN (R 4.0.2)
 ##  testthat       2.3.2   2020-03-02 [1] CRAN (R 4.0.2)
 ##  tibble         3.0.3   2020-07-10 [1] CRAN (R 4.0.2)
-##  tidyr        * 1.1.1   2020-07-31 [1] CRAN (R 4.0.2)
 ##  tidyselect     1.1.0   2020-05-11 [1] CRAN (R 4.0.2)
 ##  usethis      * 1.6.1   2020-04-29 [1] CRAN (R 4.0.2)
 ##  utf8           1.1.4   2018-05-24 [1] CRAN (R 4.0.2)
