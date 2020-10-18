@@ -50,16 +50,16 @@ model.occ <- function(){
             
             # Logistic regression equation
             logit.p[hh,tt,ii,jj,kk] <- 
-              beta.prebroad*ks.prebroad[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.pacific*ks.pacific[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.mottled*ks.mottled[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.crested*ks.crested[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.bw*ks.bw[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.spectacled*ks.spectacled[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.whiskered*ks.whiskered[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.gbarred*ks.gbarred[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.stygian*ks.stygian[jj,kk,lookup.hhttii.array[hh,tt,ii]]+
-              beta.ghorned*ks.ghorned[jj,kk,lookup.hhttii.array[hh,tt,ii]]
+              beta.prebroad*ks.prebroad[hh,tt,ii,jj,kk]+
+              beta.pacific*ks.pacific[hh,tt,ii,jj,kk]+
+              beta.mottled*ks.mottled[hh,tt,ii,jj,kk]+
+              beta.crested*ks.crested[hh,tt,ii,jj,kk]+
+              beta.bw*ks.bw[hh,tt,ii,jj,kk]+
+              beta.spectacled*ks.spectacled[hh,tt,ii,jj,kk]+
+              beta.whiskered*ks.whiskered[hh,tt,ii,jj,kk]+
+              beta.gbarred*ks.gbarred[hh,tt,ii,jj,kk]+
+              beta.stygian*ks.stygian[hh,tt,ii,jj,kk]+
+              beta.ghorned*ks.ghorned[hh,tt,ii,jj,kk]
             
           }
         }
@@ -82,7 +82,7 @@ model.occ <- function(){
             # Detection by route, year, survey station, and broadcast period
             
             # Binary observations by route, year, survey, station, pre/post broadcast
-            y[jj,kk,lookup.hhttii.array[hh,tt,ii]] ~ 
+            y[hh,tt,ii,jj,kk] ~ 
               dbern(eff.p[hh,tt,ii,jj,kk])
             
             # Effective p(detection), which depends on occupany (z) = 1 for 
