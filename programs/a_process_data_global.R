@@ -182,6 +182,41 @@ table(data.jags$year)
 table(data.jags$yearIndex)
 
 
+#' ### Process broadcast species data
+#' 
+#' Each station should always have the same broadcast species, which are listed
+#' in "tab.stations"
+#' 
+#' 
+stationIDs <- unique(tab.stations$Station)
+for(jj in 1:length(stationIDs)){
+  temp.ks <- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
+  if(length(temp.ks)==1){
+    print(paste0("Station ", stationIDs[jj], " had broadcast species ", temp.ks))
+  }else{
+    print(paste0("Station ", stationIDs[jj], " has >1 broadcast species listed:", temp.ks))
+  }
+}
+
+#' Stations N2.6, N2.8, and N2.9 were not surveyed on a couple occasions, 
+#' and got values of "NA" for those broadcast species. 
+#' 
+surveys.NAs <- tab.stations$Survey_ID[is.na(tab.stations$Broadcast_Species)]
+(stations.NAs <- tab.stations$Station[is.na(tab.stations$Broadcast_Species)])
+# Note: These stations will need to be replaced with NAs in the Ys below, NOT ZEROS
+#' 
+#' Now, replace NAs with "correct" broadcast species for covariate purposes
+#' 
+for(xx in 1:length(stations.NAs)){
+  owlnames <- tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]]
+  temp.k <- unique(owlnames[!is.na(owlnames)])
+  tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]] <- temp.k
+}
+unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
+
+
+
+
 #' _____________________________________________________________________________
 #' ## Save files
 #' 

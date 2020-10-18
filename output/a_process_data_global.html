@@ -577,6 +577,113 @@ table(data.jags$year)
 ##  8  9 11  9 10  7  8 10  8  4
 </code></pre>
 
+<h3>Process broadcast species data</h3>
+
+<p>Each station should always have the same broadcast species, which are listed
+in &ldquo;tab.stations&rdquo;</p>
+
+<pre><code class="r">stationIDs &lt;- unique(tab.stations$Station)
+for(jj in 1:length(stationIDs)){
+  temp.ks &lt;- unique(tab.stations$Broadcast_Species[tab.stations$Station==stationIDs[jj]])
+  if(length(temp.ks)==1){
+    print(paste0(&quot;Station &quot;, stationIDs[jj], &quot; had broadcast species &quot;, temp.ks))
+  }else{
+    print(paste0(&quot;Station &quot;, stationIDs[jj], &quot; has &gt;1 broadcast species listed:&quot;, temp.ks))
+  }
+}
+</code></pre>
+
+<pre><code>## [1] &quot;Station EI1.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI1.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI1.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI1.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI1.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI1.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI1.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI1.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI2.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI2.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI2.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI2.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station EI2.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station EI2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station EI2.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station EI2.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station EI2.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N1.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N1.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N1.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N1.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N1.6 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N1.8 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N1.9 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N1.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N2.1 had broadcast species Pacific Screech Owl&quot;
+## [1] &quot;Station N2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N2.3 had broadcast species Crested Owl&quot;
+## [1] &quot;Station N2.4 had broadcast species Black and White Owl&quot;
+## [1] &quot;Station N2.5 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station N2.6 has &gt;1 broadcast species listed:Pacific Screech Owl&quot;
+## [2] &quot;Station N2.6 has &gt;1 broadcast species listed:NA&quot;                 
+## [1] &quot;Station N2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station N2.8 has &gt;1 broadcast species listed:Crested Owl&quot;
+## [2] &quot;Station N2.8 has &gt;1 broadcast species listed:NA&quot;         
+## [1] &quot;Station N2.9 has &gt;1 broadcast species listed:Black and White Owl&quot;
+## [2] &quot;Station N2.9 has &gt;1 broadcast species listed:NA&quot;                 
+## [1] &quot;Station N2.10 had broadcast species Spectacled Owl&quot;
+## [1] &quot;Station M2.1 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M2.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M2.3 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M2.4 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M2.5 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M2.6 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M2.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M2.8 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M2.9 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M2.10 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M1.1 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M1.2 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M1.3 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M1.4 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M1.5 had broadcast species Great Horned Owl&quot;
+## [1] &quot;Station M1.6 had broadcast species Whiskered Screech Owl&quot;
+## [1] &quot;Station M1.7 had broadcast species Mottled Owl&quot;
+## [1] &quot;Station M1.8 had broadcast species Guat. Barred Owl&quot;
+## [1] &quot;Station M1.9 had broadcast species Stygian Owl&quot;
+## [1] &quot;Station M1.10 had broadcast species Great Horned Owl&quot;
+</code></pre>
+
+<p>Stations N2.6, N2.8, and N2.9 were not surveyed on a couple occasions, 
+and got values of &ldquo;NA&rdquo; for those broadcast species. </p>
+
+<pre><code class="r">surveys.NAs &lt;- tab.stations$Survey_ID[is.na(tab.stations$Broadcast_Species)]
+(stations.NAs &lt;- tab.stations$Station[is.na(tab.stations$Broadcast_Species)])
+</code></pre>
+
+<pre><code>## [1] &quot;N2.8&quot; &quot;N2.9&quot; &quot;N2.6&quot;
+</code></pre>
+
+<pre><code class="r"># Note: These stations will need to be replaced with NAs in the Ys below, NOT ZEROS
+</code></pre>
+
+<p>Now, replace NAs with &ldquo;correct&rdquo; broadcast species for covariate purposes</p>
+
+<pre><code class="r">for(xx in 1:length(stations.NAs)){
+  owlnames &lt;- tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]]
+  temp.k &lt;- unique(owlnames[!is.na(owlnames)])
+  tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs[xx]] &lt;- temp.k
+}
+unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
+</code></pre>
+
+<pre><code>## [1] &quot;Pacific Screech Owl&quot; &quot;Crested Owl&quot;         &quot;Black and White Owl&quot;
+</code></pre>
+
 <hr/>
 
 <h2>Save files</h2>
