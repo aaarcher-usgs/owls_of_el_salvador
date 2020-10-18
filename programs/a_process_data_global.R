@@ -231,7 +231,10 @@ save(tab.owls, tab.route, tab.stations, tab.survey,
 save(data.jags,
      file = "data/processed_data/data_jags_global.Rdata")
 
-
+#' Supplemental JAGS table
+#' 
+save(survey_list,
+     file = "data/processed_data/survey_list_global.Rdata")
 
 
 #' _____________________________________________________________________________
