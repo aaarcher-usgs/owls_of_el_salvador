@@ -30,14 +30,14 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-load(file = "data/output_data/psi_posteriors_RtYr.Rdata")
+load(file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-load(file = "data/output_data/psi_posteriors_RtSpp.Rdata")
+load(file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-load(file = "data/output_data/p_detection_posteriors.Rdata")
+load(file = "data/output_data/mottd_p_detection_posteriors.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
@@ -46,7 +46,7 @@ load(file = "data/output_data/p_detection_posteriors.Rdata")
 #' 
 #' Mottd
 #+ mottd_psi_byYr
-ggplot(data = psi.posteriors[psi.posteriors$Species=="Mottd",], 
+ggplot(data = psi.post.mottd, 
        aes(x = Year, y = Psi.median, group = Route, shape = Route))+
   geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
                   position = position_dodge(width = .1))+
@@ -59,41 +59,13 @@ ggplot(data = psi.posteriors[psi.posteriors$Species=="Mottd",],
   ylab("Probability of Occupancy")+
   ggtitle("Mottd")
 
-#' FerPy
-#+ ferpy_psi_byYr
-ggplot(data = psi.posteriors[psi.posteriors$Species=="FerPy",], 
-       aes(x = Year, y = Psi.median, group = Route, shape = Route))+
-  geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
-                  position = position_dodge(width = .1))+
-  geom_line(aes(color = Route))+
-  scale_color_manual(values = c("blue", "lightblue", "green", "lightgreen", "red", "pink"))+
-  scale_shape_manual(values = c(0, 16, 0, 16, 0, 16))+
-  facet_wrap(~Region, nrow = 3)+
-  theme_minimal()+
-  xlab("Year")+
-  ylab("Probability of Occupancy")+
-  ggtitle("FerPy")
-  
-#' Specd
-#+ specd_psi_byYr
-ggplot(data = psi.posteriors[psi.posteriors$Species=="Specd",], 
-       aes(x = Year, y = Psi.median, group = Route, shape = Route))+
-  geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
-                  position = position_dodge(width = .1))+
-  geom_line(aes(color = Route))+
-  scale_color_manual(values = c("blue", "lightblue", "green", "lightgreen", "red", "pink"))+
-  scale_shape_manual(values = c(0, 16, 0, 16, 0, 16))+
-  facet_wrap(~Region, nrow = 3)+
-  theme_minimal()+
-  xlab("Year")+
-  ylab("Probability of Occupancy")+
-  ggtitle("Specd")
+
 
 
 #' ### By Route, averages
 #'
 #+ psi_means
-ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = Species))+
+ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median, group = Species))+
   geom_bar(stat = "identity", aes(fill = Species), position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
   facet_wrap(~Region, nrow = 3,scales = "free_x")+
@@ -111,15 +83,17 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = Species))+
 #' 
 #' 
 #+ p_detection
-ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
+ggplot(data = p.det.post.mottd, 
+       aes(y = median.plogis, x = Broadcast, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
-  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
+  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
+                 position = position_dodge(0.9))+
   scale_fill_manual(values = c("blue", "darkgreen", "red"))+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = median.plogis))+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = LL05.plogis), color = "grey")+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = UL95.plogis), color = "grey")+
   facet_wrap(~Species, nrow = 3)+
   ylab("Probability of Detection")+
