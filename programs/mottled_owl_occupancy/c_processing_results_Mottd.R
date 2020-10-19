@@ -65,7 +65,7 @@ year.index <- 1:length(year.names)
 #' 
 #' For all analysis, remove years and routes that were not surveyed
 (exclude.byrow <- c(3,4,9,15,19:24,27,33,40,44,56,63,64))
-all.rows <- 1:66
+all.rows <- 1:(length(route.index)*length(year.index))
 (include.byrow <- all.rows[!all.rows %in% exclude.byrow])
 #' 
 
@@ -76,8 +76,8 @@ psi.post.mottd <- MCMCsummary(mottd.jagsout,
                               Rhat = TRUE,
                               n.eff = TRUE,
                               probs = c(0.05, 0.5, 0.95))
-psi.post.mottd$Year <- rep(1:11, each = 6)
-psi.post.mottd$Route <- rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), 11)
+psi.post.mottd$Year <- rep(1:length(year.index), each = length(route.names))
+psi.post.mottd$Route <- rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), length(year.index))
 psi.post.mottd$Species <- "Mottd"
 psi.post.mottd <- psi.post.mottd[include.byrow,]
 
@@ -106,7 +106,7 @@ colnames(psi.post.mottd) <- c("Psi.mean", "Psi.sd", "Psi.LL05", "Psi.median",
 #' 
 #' Need to delete a few years by route:
 #' 
-all.years <- 1:11
+all.years <- 1:length(year.index)
 exc.EI.1 <- 4
 inc.EI.1 <- all.years[!all.years %in% exc.EI.1]
 exc.EI.2 <- c(4,8,10)
@@ -132,9 +132,9 @@ mottd.chains <- MCMCpstr(mottd.jagsout,
 
 #' Calculate by species and route
 #' 
-psi.means.mottd <- as.data.frame(matrix(NA, ncol = 5, nrow = 6))
+psi.means.mottd <- as.data.frame(matrix(NA, ncol = 5, nrow = length(route.names)))
 colnames(psi.means.mottd) <- c("Species", "Route", "Psi.LL05", "Psi.median", "Psi.UL95")
-psi.means.mottd$Species <- rep("Mottd", 6)
+psi.means.mottd$Species <- "Mottd"
 psi.means.mottd$Route <- route.names
 
 #' Populate quantile results
