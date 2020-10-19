@@ -131,5 +131,5 @@ save(ferpy.jagsout, file = "data/output_data/ferpy_jagsout.Rdata")
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/ferpy_occupancy/b_occupancy_analysis_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/d01_occupancy_analysis_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

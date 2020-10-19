@@ -128,5 +128,5 @@ save(mottd.jagsout, file = "data/output_data/mottd_jagsout.Rdata")
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/mottd_owl_occupancy/b_occupancy_analysis_Mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/d02_occupancy_analysis_mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

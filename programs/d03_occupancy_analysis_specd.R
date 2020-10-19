@@ -131,5 +131,5 @@ save(specd.jagsout, file = "data/output_data/specd_jagsout.Rdata")
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/specd_occupancy/b_occupancy_analysis_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/d03_occupancy_analysis_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

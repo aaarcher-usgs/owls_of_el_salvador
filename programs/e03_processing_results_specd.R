@@ -225,5 +225,5 @@ save(p.det.post.specd, file = "data/output_data/specd_p_detection_posteriors.Rda
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/specd_occupancy/c_processing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/e03_processing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

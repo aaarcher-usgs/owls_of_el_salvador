@@ -225,5 +225,5 @@ save(p.det.post.ferpy, file = "data/output_data/ferpy_p_detection_posteriors.Rda
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/ferpy_occupancy/c_processing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/e01_processing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

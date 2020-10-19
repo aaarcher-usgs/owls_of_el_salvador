@@ -363,22 +363,22 @@ table(tab.survey$year)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3  10  10  10 
-##  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65 
-##  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93 
-##  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  94  95  96  97  98  99 100 101 102 
-##  10  10  10  10  10  10  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3  10  10 
+##  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63 
+##  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90 
+##  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  91  92  93  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <pre><code class="r">(station_id_2002 &lt;- tab.stations$Stations_ID[tab.stations$Survey_ID %in% survey_id_2002])
 </code></pre>
 
-<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202
-## [27] 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230 231 232 233 234 235 236
-## [53] 237
+<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201
+## [26] 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230 231 232 233 234
+## [51] 235 236 237
 </code></pre>
 
 <pre><code class="r">tab.stations &lt;- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
@@ -386,14 +386,14 @@ table(tab.stations$Survey_ID)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41  42  43  44 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10  10  10  10 
-##  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  71  72 
-##  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 
-##   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-## 100 101 102 
-##  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41  42  43 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10  10  10 
+##  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69 
+##  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96 
+##  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  97  98  99 100 101 102 
+##  10  10  10  10  10  10
 </code></pre>
 
 <h3>Owls Table</h3>
@@ -528,11 +528,12 @@ head(tab.survey$hRt_tYr_iSvy)
 <pre><code class="r">colnames(data.jags)
 </code></pre>
 
-<pre><code>##  [1] &quot;Survey_ID&quot;               &quot;Route_ID&quot;                &quot;Surveyor_ID&quot;             &quot;Surveyor_Assistant_ID_1&quot;
-##  [5] &quot;Surveyor_Assistant_ID_2&quot; &quot;Survey_Date&quot;             &quot;Survey_Start_Time&quot;       &quot;Survey_Finish_Time&quot;     
-##  [9] &quot;Cloud_Cover_Start&quot;       &quot;Cloud_Cover_Finish&quot;      &quot;Precipitation&quot;           &quot;Moon_Phase&quot;             
-## [13] &quot;Survey_Comments&quot;         &quot;year&quot;                    &quot;hRt_tYr&quot;                 &quot;order&quot;                  
-## [17] &quot;hRt_tYr_iSvy&quot;
+<pre><code>##  [1] &quot;Survey_ID&quot;               &quot;Route_ID&quot;                &quot;Surveyor_ID&quot;            
+##  [4] &quot;Surveyor_Assistant_ID_1&quot; &quot;Surveyor_Assistant_ID_2&quot; &quot;Survey_Date&quot;            
+##  [7] &quot;Survey_Start_Time&quot;       &quot;Survey_Finish_Time&quot;      &quot;Cloud_Cover_Start&quot;      
+## [10] &quot;Cloud_Cover_Finish&quot;      &quot;Precipitation&quot;           &quot;Moon_Phase&quot;             
+## [13] &quot;Survey_Comments&quot;         &quot;year&quot;                    &quot;hRt_tYr&quot;                
+## [16] &quot;order&quot;                   &quot;hRt_tYr_iSvy&quot;
 </code></pre>
 
 <pre><code class="r">temp.names.keep &lt;- c(&quot;Survey_ID&quot;, &quot;Route_ID&quot;, &quot;Survey_Date&quot;, 
@@ -715,7 +716,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -725,9 +726,9 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-18                  
+##  date     2020-10-19                  
 ## 
-## ─ Packages ─────────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -752,6 +753,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
 ##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
 ##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
+##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
 ##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
 ##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
 ##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
@@ -759,6 +761,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
+##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -773,6 +776,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
 ##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
 ##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
+##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
 ##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
 ##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
 ##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
@@ -782,6 +786,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
+##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)

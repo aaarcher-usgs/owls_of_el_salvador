@@ -232,5 +232,5 @@ save(p.det.post.mottd, file = "data/output_data/mottd_p_detection_posteriors.Rda
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/mottled_owl_occupancy/c_processing_results_Mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/e02_processing_results_mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

@@ -224,7 +224,7 @@ save(ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/mottled_owl_occupancy/a_process_data_Mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/c02_process_data_mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
 #' 
 #' 

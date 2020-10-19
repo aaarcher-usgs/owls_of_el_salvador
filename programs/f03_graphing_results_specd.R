@@ -117,5 +117,5 @@ ggplot(data = p.det.post.specd,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezknitr::ezspin(file = "programs/specd_occupancy/d_graphing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/f03_graphing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

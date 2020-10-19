@@ -117,5 +117,5 @@ ggplot(data = p.det.post.ferpy,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezknitr::ezspin(file = "programs/ferpy_occupancy/d_graphing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/f01_graphing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
