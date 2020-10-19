@@ -30,45 +30,50 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-load(file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
+load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-load(file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
+load(file = "data/output_data/ferpy_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-load(file = "data/output_data/mottd_p_detection_posteriors.Rdata")
+load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
 #' 
 #' ### By Route and Year
 #' 
-#' Mottd
-#+ mottd_psi_byYr
-ggplot(data = psi.post.mottd, 
+#' Ferpy
+#+ ferpy_psi_byYr
+ggplot(data = psi.post.ferpy, 
        aes(x = Year, y = Psi.median, group = Route, shape = Route))+
   geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
                   position = position_dodge(width = .1))+
   geom_line(aes(color = Route))+
-  scale_color_manual(values = c("blue", "lightblue", "green", "lightgreen", "red", "pink"))+
+  scale_color_manual(values = c("blue", "lightblue", "lightgreen", "red", "pink"))+
   scale_shape_manual(values = c(0, 16, 0, 16, 0, 16))+
   facet_wrap(~Region, nrow = 3)+
   theme_minimal()+
   xlab("Year")+
   ylab("Probability of Occupancy")+
-  ggtitle("Mottd")
+  ggtitle("FerPy")
 
 
 
 
 #' ### By Route, averages
 #'
-#+ mottd_psi_means
-ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median))+
+#' Add blank route for M1 for aesthetics balance
+psi.means.ferpy <- rbind(psi.means.ferpy, 0)
+psi.means.ferpy$Route[max(nrow(psi.means.ferpy))] <- "M1"
+psi.means.ferpy$Region[max(nrow(psi.means.ferpy))] <- "Montecristo"
+#'
+#+ ferpy_psi_means
+ggplot(data = psi.means.ferpy, aes(x = Route, y = Psi.median))+
   geom_bar(stat = "identity", position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
-  facet_wrap(~Region, nrow = 3,scales = "free_x")+
+  facet_wrap(~Region, nrow = 3, scales = "free_x")+
   ylim(c(0,1))+
   theme_minimal()+
   ylab("Probability of Occupancy")+
@@ -81,17 +86,18 @@ ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median))+
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ mottd_p_detection
-ggplot(data = p.det.post.mottd, 
-       aes(y = median.plogis, x = Broadcast))+
-  geom_bar(stat = "identity", position = position_dodge())+
+#+ ferpy_p_detection
+ggplot(data = p.det.post.ferpy, 
+       aes(y = median.plogis, x = Broadcast, group = Species))+
+  geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
-  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
+  scale_fill_manual(values = c("blue", "darkgreen", "red"))+
+  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
              aes(yintercept = median.plogis))+
-  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
              aes(yintercept = LL05.plogis), color = "grey")+
-  geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
              aes(yintercept = UL95.plogis), color = "grey")+
   facet_wrap(~Species, nrow = 3)+
   ylab("Probability of Detection")+
@@ -111,5 +117,5 @@ ggplot(data = p.det.post.mottd,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezknitr::ezspin(file = "programs/mottled_owl_occupancy/d_graphing_results_Mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/ferpy_occupancy/d_graphing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

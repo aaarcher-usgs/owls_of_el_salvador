@@ -62,7 +62,7 @@ year.index <- 1:length(year.names)
 #' and year
 #' 
 #' For all analysis, remove years and routes that were not surveyed
-(exclude.byrow <- c(3,16-20,33,37,47))
+(exclude.byrow <- c(3,16:20,33,37,47))
 all.rows <- 1:(length(route.names)*length(year.index))
 (include.byrow <- all.rows[!all.rows %in% exclude.byrow])
 #' 
