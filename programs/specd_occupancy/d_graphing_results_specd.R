@@ -30,14 +30,14 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
+load(file = "data/output_data/specd_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-load(file = "data/output_data/ferpy_psi_posteriors_RtSpp.Rdata")
+load(file = "data/output_data/specd_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
+load(file = "data/output_data/specd_p_detection_posteriors.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
@@ -45,8 +45,8 @@ load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
 #' ### By Route and Year
 #' 
 #' Ferpy
-#+ ferpy_psi_byYr
-ggplot(data = psi.post.ferpy, 
+#+ specd_psi_byYr
+ggplot(data = psi.post.specd, 
        aes(x = Year, y = Psi.median, group = Route, shape = Route))+
   geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
                   position = position_dodge(width = .1))+
@@ -57,7 +57,7 @@ ggplot(data = psi.post.ferpy,
   theme_minimal()+
   xlab("Year")+
   ylab("Probability of Occupancy")+
-  ggtitle("FerPy")
+  ggtitle("Specd")
 
 
 
@@ -65,12 +65,12 @@ ggplot(data = psi.post.ferpy,
 #' ### By Route, averages
 #'
 #' Add blank route for M1 for aesthetics balance
-psi.means.ferpy <- rbind(psi.means.ferpy, 0)
-psi.means.ferpy$Route[max(nrow(psi.means.ferpy))] <- "M1"
-psi.means.ferpy$Region[max(nrow(psi.means.ferpy))] <- "Montecristo"
+psi.means.specd <- rbind(psi.means.specd, 0)
+psi.means.specd$Route[max(nrow(psi.means.specd))] <- "M1"
+psi.means.specd$Region[max(nrow(psi.means.specd))] <- "Montecristo"
 #'
-#+ ferpy_psi_means
-ggplot(data = psi.means.ferpy, aes(x = Route, y = Psi.median))+
+#+ specd_psi_means
+ggplot(data = psi.means.specd, aes(x = Route, y = Psi.median))+
   geom_bar(stat = "identity", position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
   facet_wrap(~Region, nrow = 3, scales = "free_x")+
@@ -86,18 +86,18 @@ ggplot(data = psi.means.ferpy, aes(x = Route, y = Psi.median))+
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ ferpy_p_detection
-ggplot(data = p.det.post.ferpy, 
+#+ specd_p_detection
+ggplot(data = p.det.post.specd, 
        aes(y = median.plogis, x = Broadcast, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
   scale_fill_manual(values = c("blue", "darkgreen", "red"))+
-  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.specd[p.det.post.specd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = median.plogis))+
-  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.specd[p.det.post.specd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = LL05.plogis), color = "grey")+
-  geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
+  geom_hline(data = p.det.post.specd[p.det.post.specd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = UL95.plogis), color = "grey")+
   facet_wrap(~Species, nrow = 3)+
   ylab("Probability of Detection")+
@@ -117,5 +117,5 @@ ggplot(data = p.det.post.ferpy,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezknitr::ezspin(file = "programs/ferpy_occupancy/d_graphing_results_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezknitr::ezspin(file = "programs/specd_occupancy/d_graphing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
