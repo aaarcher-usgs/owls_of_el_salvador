@@ -160,7 +160,7 @@ for(hh in 1:n.route){
           temp.route,temp.year,ii, sep = ".")]
       if(length(temp.surveyID) == 0){ # No survey for this year/route/survey combo
         
-        print(c("No survey ", year.names[tt], route.names[hh], ii))
+        print(paste("No survey ", year.names[tt], route.names[hh], ii, sep = " "))
         
         # Ys will be NA because no survey
         ferpy.ys[hh,tt,ii,,] <- NA
@@ -172,7 +172,7 @@ for(hh in 1:n.route){
                                        tab.stations$Survey_ID == temp.surveyID]
           
           if(length(temp.stationID) == 0){ # no survey at that station
-            print(c("No survey at station ", year.names[tt], route.names[hh], ii, jj))
+            print(paste("No survey at station", year.names[tt], route.names[hh], ii, jj, sep =" "))
             ferpy.ys[hh,tt,ii,jj,] <- NA
           }else{
             temp.owls <- ferpy.data[ferpy.data$Stations_ID == temp.stationID,]
