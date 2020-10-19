@@ -82,8 +82,7 @@ year.names <- min(data.jags$year):max(data.jags$year)
 n.survey <- max(data.jags$order) # ii
 n.station <- 10 # jj
 n.broadcast <- 2 # kk
-n.species <- length(unique(tab.owls$Owl_Species_ID)) # ss
-n.aug <- 20 # number of "undetected species of owls" where n.aug = M >> N
+
 
 
 #' ### Create Broadcast arrays
