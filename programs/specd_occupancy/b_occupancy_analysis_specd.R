@@ -28,11 +28,11 @@ set.seed(1770562)
 #' ## Load Data
 #' 
 #' 
-#' Ferpy Owl Ys
-load(file = "data/processed_data/ferpy_jags_ys.Rdata")
+#' Specd Owl Ys
+load(file = "data/processed_data/specd_jags_ys.Rdata")
 
-#' Ferpy Owl Ks
-load(file = "data/processed_data/ferpy_jags_ks.Rdata")
+#' Specd Owl Ks
+load(file = "data/processed_data/specd_jags_ks.Rdata")
 
 #' Global JAGS data
 load(file = "data/processed_data/data_jags_global.Rdata")
@@ -40,7 +40,7 @@ load(file = "data/processed_data/data_jags_global.Rdata")
 #' _____________________________________________________________________________
 #' ## Define variables
 #' 
-#' **FerPy was not technically surveyed for at M1, remove from analysis**
+#' **Specd was not technically surveyed for at M1, remove from analysis**
 #' 
 #' Observations
 n.route <- length(unique(data.jags$Route_ID[data.jags$Route_ID != "M1"])) # hh
@@ -66,9 +66,9 @@ source(file = "programs/b_occupancy_model_global.R")
 
 
 #' _____________________________________________________________________________
-#' ## Compile data for Ferpy model
+#' ## Compile data for Specd model
 #' 
-ferpy.jag.data <- list(
+specd.jag.data <- list(
   ks.prebroad = ks.prebroad,
   ks.pacific = ks.pacific,
   ks.mottled = ks.mottled,
@@ -79,7 +79,7 @@ ferpy.jag.data <- list(
   ks.gbarred = ks.gbarred,
   ks.stygian = ks.stygian,
   ks.ghorned = ks.ghorned,
-  y = ferpy.ys,
+  y = specd.ys,
   n.route = n.route,
   n.year = n.year,
   n.survey = n.survey,
@@ -93,8 +93,8 @@ z.init <- array(as.numeric(1),
 
 #' ## Run models
 #' 
-#' Ferpy
-ferpy.jagsout <- jags(data = ferpy.jag.data, 
+#' Specd
+specd.jagsout <- jags(data = specd.jag.data, 
                       inits = function(){list(z = z.init)}, 
                       parameters.to.save = c("psi",
                                              "beta.prebroad",
@@ -119,8 +119,8 @@ ferpy.jagsout <- jags(data = ferpy.jag.data,
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-#' Jagsout Ferpy
-save(ferpy.jagsout, file = "data/output_data/ferpy_jagsout.Rdata")
+#' Jagsout Specd
+save(specd.jagsout, file = "data/output_data/specd_jagsout.Rdata")
 
 
 
@@ -131,5 +131,5 @@ save(ferpy.jagsout, file = "data/output_data/ferpy_jagsout.Rdata")
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/ferpy_occupancy/b_occupancy_analysis_ferpy.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/specd_occupancy/b_occupancy_analysis_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
