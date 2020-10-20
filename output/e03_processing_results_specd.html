@@ -294,8 +294,8 @@ set.seed(258854)
 (include.byrow &lt;- all.rows[!all.rows %in% exclude.byrow])
 </code></pre>
 
-<pre><code>##  [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29 30 31 32 34 35 36 38 39 40 41 42
-## [35] 43 44 45 46 48 49 50 51 52 53 54 55
+<pre><code>##  [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29 30 31 32 34 35 36 38
+## [31] 39 40 41 42 43 44 45 46 48 49 50 51 52 53 54 55
 </code></pre>
 
 <p>Specd</p>
@@ -322,8 +322,8 @@ psi.post.specd$Region[psi.post.specd$Route == &quot;M.1&quot; |
 colnames(psi.post.specd)
 </code></pre>
 
-<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;   &quot;Species&quot;
-## [11] &quot;Region&quot;
+<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;  
+## [10] &quot;Species&quot; &quot;Region&quot;
 </code></pre>
 
 <pre><code class="r">colnames(psi.post.specd) &lt;- c(&quot;Psi.mean&quot;, &quot;Psi.sd&quot;, &quot;Psi.LL05&quot;, &quot;Psi.median&quot;,
@@ -407,17 +407,17 @@ p.det.post.specd$broadcast.param &lt;- grep(&quot;^beta&quot;,
 p.det.post.specd
 </code></pre>
 
-<pre><code>##                         mean          sd           5%         50%        95% Rhat n.eff Species
-## beta.prebroad    -1.22775362   0.2878788   -1.6797519 -1.24275415 -0.7334534 1.03   293   Specd
-## beta.pacific     -0.41069045   0.4650902   -1.1369431 -0.43198108  0.3804195 1.01   769   Specd
-## beta.mottled     -0.10974418   0.7833798   -1.0099480 -0.21524307  1.0713287 1.07   536   Specd
-## beta.crested     -0.20935720   0.5790729   -1.0557745 -0.25953493  0.7952785 1.02   649   Specd
-## beta.bw           0.03231024   0.5370103   -0.7633736 -0.01053447  0.9764330 1.02   574   Specd
-## beta.spectacled   0.35304545   0.6651379   -0.5437161  0.26319341  1.5560301 1.02   377   Specd
-## beta.whiskered  -10.39263556  27.2530906  -46.0956539 -3.21848463  1.6926977 1.10   253   Specd
-## beta.gbarred      2.00103075   6.6090843   -2.3565262  0.38603810 11.2424939 1.06  1469   Specd
-## beta.stygian     -5.83945971  14.7209495  -26.7948886 -2.59791093  3.5085499 1.00   897   Specd
-## beta.ghorned    -54.35558248 154.7497962 -498.7637480 -3.08813858  3.1788567 1.95   481   Specd
+<pre><code>##                        mean         sd         5%        50%         95% Rhat n.eff Species
+## beta.prebroad    -2.1113117  0.1750468  -2.406669 -2.1064266 -1.83050668 1.00 14560   Specd
+## beta.pacific     -1.3467939  0.3017111  -1.858212 -1.3364556 -0.86636748 1.00 15661   Specd
+## beta.mottled     -1.3832932  0.3024999  -1.898543 -1.3735218 -0.90281580 1.00 15030   Specd
+## beta.crested     -1.4427324  0.3108610  -1.973434 -1.4359354 -0.94965390 1.00 16454   Specd
+## beta.bw          -1.1682649  0.2902195  -1.656389 -1.1606596 -0.70643493 1.00 16338   Specd
+## beta.spectacled  -1.0047250  0.2777652  -1.472366 -0.9997830 -0.56202042 1.00 16047   Specd
+## beta.whiskered  -10.2901242 25.3166564 -36.915795 -3.9028332 -0.31905302 1.12   393   Specd
+## beta.gbarred     -0.4186743  1.4004528  -2.733076 -0.3988351  1.85185362 1.00  9794   Specd
+## beta.stygian     -9.9661008 27.6154558 -35.666006 -3.5843705 -0.10212806 1.22   670   Specd
+## beta.ghorned     -8.3965375 15.2039616 -34.011304 -3.6431398 -0.09784733 1.01  1226   Specd
 ##                 broadcast.param
 ## beta.prebroad     beta.prebroad
 ## beta.pacific       beta.pacific
@@ -493,7 +493,7 @@ p.det.post.specd$UL95.plogis &lt;- plogis(p.det.post.specd$UL95)
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -503,9 +503,9 @@ p.det.post.specd$UL95.plogis &lt;- plogis(p.det.post.specd$UL95)
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-19                  
+##  date     2020-10-20                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ─────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -538,7 +538,6 @@ p.det.post.specd$UL95.plogis &lt;- plogis(p.det.post.specd$UL95)
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -563,7 +562,6 @@ p.det.post.specd$UL95.plogis &lt;- plogis(p.det.post.specd$UL95)
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)

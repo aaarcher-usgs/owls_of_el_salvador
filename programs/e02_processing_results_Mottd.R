@@ -35,8 +35,6 @@ set.seed(258854)
 load(file = "data/output_data/mottd_jagsout.Rdata")
 
 #' Survey list
-load(file = "data/processed_data/survey_list_global.Rdata")
-survey_list
 (route.names <- c("EI1", "EI2", "M1",  "M2",  "N1",  "N2") )
 route.index <- 1:length(route.names)
 (year.names <- 2003:2013)

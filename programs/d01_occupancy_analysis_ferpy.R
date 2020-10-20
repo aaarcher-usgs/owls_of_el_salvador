@@ -88,8 +88,19 @@ ferpy.jag.data <- list(
 )
 
 #' Initial values have 1s for each obs of z
-z.init <- array(as.numeric(1), 
-                dim = c(n.route, n.year, n.survey, n.station))
+z.init <- array(NA, 
+                dim = c(n.route, n.year, n.survey))
+for(hh in 1:n.route){
+  for(tt in 1:n.year){
+    for(ii in 1:n.survey){
+      if(sum(is.na(ferpy.ys[hh,tt,ii,,])==FALSE)==0){
+        z.init[hh,tt,ii] <- 0
+      }else {
+        z.init[hh,tt,ii] <- max(ferpy.ys[hh,tt,ii,,], na.rm = T)
+      } 
+    }
+  }
+}
 
 #' ## Run models
 #' 

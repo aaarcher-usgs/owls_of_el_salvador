@@ -73,11 +73,19 @@ model.occ <- function(){
   # Likelihood
   for(hh in 1:n.route){ # 6 routes
     for(tt in 1:n.year){ # all years
+      
+
+      
       for(ii in 1:n.survey){ # 1 to 3 surveys per year
+        
+        # Occupancy by route and year based on 
+        #     psi, probability of occupancy for each route/year
+        z[hh,tt,ii] ~ dbern(psi[hh,tt]) 
+        
+        
+        
         for(jj in 1:n.station){ # 10 stations per route
-          # Occupancy by route and year and survey and station based on 
-          #     psi, probability of occupancy for each route/year
-          z[hh,tt,ii,jj] ~ dbern(psi[hh,tt]) 
+
           
           for(kk in 1:n.broadcast){ # before or after broadcast
             # Detection by route, year, survey station, and broadcast period
@@ -88,7 +96,7 @@ model.occ <- function(){
             
             # Effective p(detection), which depends on occupany (z) = 1 for 
             #    that route/year/survey/station
-            eff.p[hh,tt,ii,jj,kk] <- p[hh,tt,ii,jj,kk]*z[hh,tt,ii,jj]
+            eff.p[hh,tt,ii,jj,kk] <- p[hh,tt,ii,jj,kk]*z[hh,tt,ii]
             
           }
         }

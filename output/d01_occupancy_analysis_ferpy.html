@@ -304,8 +304,19 @@ n.broadcast &lt;- 2 # kk
 
 <p>Initial values have 1s for each obs of z</p>
 
-<pre><code class="r">z.init &lt;- array(as.numeric(1), 
-                dim = c(n.route, n.year, n.survey, n.station))
+<pre><code class="r">z.init &lt;- array(NA, 
+                dim = c(n.route, n.year, n.survey))
+for(hh in 1:n.route){
+  for(tt in 1:n.year){
+    for(ii in 1:n.survey){
+      if(sum(is.na(ferpy.ys[hh,tt,ii,,])==FALSE)==0){
+        z.init[hh,tt,ii] &lt;- 0
+      }else {
+        z.init[hh,tt,ii] &lt;- max(ferpy.ys[hh,tt,ii,,], na.rm = T)
+      } 
+    }
+  }
+}
 </code></pre>
 
 <h2>Run models</h2>
@@ -337,8 +348,8 @@ n.broadcast &lt;- 2 # kk
 ##    Allocating nodes
 ## Graph information:
 ##    Observed stochastic nodes: 1488
-##    Unobserved stochastic nodes: 3637
-##    Total graph size: 48737
+##    Unobserved stochastic nodes: 2152
+##    Total graph size: 12942
 ## 
 ## Initializing model
 ## 
@@ -468,7 +479,7 @@ n.broadcast &lt;- 2 # kk
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -478,9 +489,9 @@ n.broadcast &lt;- 2 # kk
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-19                  
+##  date     2020-10-20                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ─────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -513,7 +524,6 @@ n.broadcast &lt;- 2 # kk
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -538,7 +548,6 @@ n.broadcast &lt;- 2 # kk
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
@@ -574,7 +583,6 @@ n.broadcast &lt;- 2 # kk
 ##  survival     * 3.1-12  2020-04-10 [1] CRAN (R 4.0.2)
 ##  testthat       2.3.2   2020-03-02 [1] CRAN (R 4.0.2)
 ##  tibble         3.0.3   2020-07-10 [1] CRAN (R 4.0.2)
-##  tidyr        * 1.1.1   2020-07-31 [1] CRAN (R 4.0.2)
 ##  tidyselect     1.1.0   2020-05-11 [1] CRAN (R 4.0.2)
 ##  usethis      * 1.6.1   2020-04-29 [1] CRAN (R 4.0.2)
 ##  utf8           1.1.4   2018-05-24 [1] CRAN (R 4.0.2)
