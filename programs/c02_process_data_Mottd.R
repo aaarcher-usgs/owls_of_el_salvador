@@ -86,54 +86,51 @@ n.broadcast <- 2 # kk
 
 
 #' ### Create Broadcast arrays
-ks <-  array(0, dim = c(n.route, n.year, n.survey, n.station, n.broadcast))
+#' 
+ks <-  array(0, dim = c(n.route, n.station, n.broadcast))
 ks.prebroad <- ks.mottled <- ks.pacific <- ks.crested <- ks.bw <- ks.spectacled <-
   ks.whiskered <- ks.gbarred <- ks.stygian <- ks.ghorned <- ks
 
 broadcast.array <- array(c(
   rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4), # routes EI1/EI2
-  rep(c("whiskered", "mottled", "gbarred", "stygian", "ghorned"),4), # routes M1/M2
+  rep(c("whiskered", "mottled", "gbarred", "stygian", "ghorned"),2), # routes M1/M2
   rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4)), # routes N1/N2
   dim = c(n.station, n.route))
 broadcast.array
 
 for(hh in 1:n.route){
-  for(tt in 1:n.year){
-    for(ii in 1:n.survey){
-      for(jj in 1:n.station){
-        ks.prebroad[hh,tt,ii,jj,1] <- 1
-        ks.prebroad[hh,tt,ii,jj,2] <- 0
-        
-        if(broadcast.array[jj,hh] == "pacific"){
-          ks.pacific[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "mottled"){
-          ks.mottled[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "crested"){
-          ks.crested[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "bw"){
-          ks.bw[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "spectacled"){
-          ks.spectacled[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "whiskered"){
-          ks.whiskered[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "gbarred"){
-          ks.gbarred[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "stygian"){
-          ks.stygian[hh,tt,ii,jj,2] <- 1
-        }else if(broadcast.array[jj,hh] == "ghorned"){
-          ks.ghorned[hh,tt,ii,jj,2] <- 1
-        }
-      }
+  for(jj in 1:n.station){
+    ks.prebroad[hh,jj,1] <- 1
+    ks.prebroad[hh,jj,2] <- 0
+    
+    if(broadcast.array[jj,hh] == "pacific"){
+      ks.pacific[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "mottled"){
+      ks.mottled[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "crested"){
+      ks.crested[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "bw"){
+      ks.bw[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "spectacled"){
+      ks.spectacled[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "whiskered"){
+      ks.whiskered[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "gbarred"){
+      ks.gbarred[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "stygian"){
+      ks.stygian[hh,jj,2] <- 1
+    }else if(broadcast.array[jj,hh] == "ghorned"){
+      ks.ghorned[hh,jj,2] <- 1
     }
   }
 }
 #' Check a couple examples:
 #' 
-ks.crested[1,1,1,,]
-ks.mottled[1,1,1,,]
-ks.mottled[5,1,1,,]
-ks.stygian[4,1,1,,]
-
+ks.crested[1,,] #EI1
+ks.mottled[1,,] #EI1
+ks.mottled[3,,] #M1
+ks.stygian[3,,] #M1
+ks.stygian[5,,] #N1
 
 
 #' ## OWL DATA

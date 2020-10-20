@@ -46,20 +46,21 @@ model.occ <- function(){
             
             # p = p(detection), which varies by route, year, survey, station, and 
             #       broadcast period (pre- or post-broadcast)
-            p[hh,tt,ii,jj,kk] <- exp(logit.p[hh,tt,ii,jj,kk])/(1+exp(logit.p[hh,tt,ii,jj,kk]))
+            p[hh,tt,ii,jj,kk] <- exp(logit.p[hh,tt,ii,jj,kk])/
+              (1+exp(logit.p[hh,tt,ii,jj,kk]))
             
             # Logistic regression equation
             logit.p[hh,tt,ii,jj,kk] <- 
-              beta.prebroad*ks.prebroad[hh,tt,ii,jj,kk]+
-              beta.pacific*ks.pacific[hh,tt,ii,jj,kk]+
-              beta.mottled*ks.mottled[hh,tt,ii,jj,kk]+
-              beta.crested*ks.crested[hh,tt,ii,jj,kk]+
-              beta.bw*ks.bw[hh,tt,ii,jj,kk]+
-              beta.spectacled*ks.spectacled[hh,tt,ii,jj,kk]+
-              beta.whiskered*ks.whiskered[hh,tt,ii,jj,kk]+
-              beta.gbarred*ks.gbarred[hh,tt,ii,jj,kk]+
-              beta.stygian*ks.stygian[hh,tt,ii,jj,kk]+
-              beta.ghorned*ks.ghorned[hh,tt,ii,jj,kk]
+              beta.prebroad*ks.prebroad[hh,jj,kk]+
+              beta.pacific*ks.pacific[hh,jj,kk]+
+              beta.mottled*ks.mottled[hh,jj,kk]+
+              beta.crested*ks.crested[hh,jj,kk]+
+              beta.bw*ks.bw[hh,jj,kk]+
+              beta.spectacled*ks.spectacled[hh,jj,kk]+
+              beta.whiskered*ks.whiskered[hh,jj,kk]+
+              beta.gbarred*ks.gbarred[hh,jj,kk]+
+              beta.stygian*ks.stygian[hh,jj,kk]+
+              beta.ghorned*ks.ghorned[hh,jj,kk]
             
           }
         }

@@ -286,7 +286,7 @@ n.broadcast &lt;- 2 # kk
 
 <h3>Create Broadcast arrays</h3>
 
-<pre><code class="r">ks &lt;-  array(0, dim = c(n.route, n.year, n.survey, n.station, n.broadcast))
+<pre><code class="r">ks &lt;-  array(0, dim = c(n.route, n.station, n.broadcast))
 ks.prebroad &lt;- ks.mottled &lt;- ks.pacific &lt;- ks.crested &lt;- ks.bw &lt;- ks.spectacled &lt;-
   ks.whiskered &lt;- ks.gbarred &lt;- ks.stygian &lt;- ks.ghorned &lt;- ks
 
@@ -312,32 +312,28 @@ broadcast.array
 </code></pre>
 
 <pre><code class="r">for(hh in 1:n.route){
-  for(tt in 1:n.year){
-    for(ii in 1:n.survey){
-      for(jj in 1:n.station){
-        ks.prebroad[hh,tt,ii,jj,1] &lt;- 1
-        ks.prebroad[hh,tt,ii,jj,2] &lt;- 0
+  for(jj in 1:n.station){
+    ks.prebroad[hh,jj,1] &lt;- 1
+    ks.prebroad[hh,jj,2] &lt;- 0
 
-        if(broadcast.array[jj,hh] == &quot;pacific&quot;){
-          ks.pacific[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;mottled&quot;){
-          ks.mottled[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;crested&quot;){
-          ks.crested[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;bw&quot;){
-          ks.bw[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;spectacled&quot;){
-          ks.spectacled[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;whiskered&quot;){
-          ks.whiskered[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;gbarred&quot;){
-          ks.gbarred[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;stygian&quot;){
-          ks.stygian[hh,tt,ii,jj,2] &lt;- 1
-        }else if(broadcast.array[jj,hh] == &quot;ghorned&quot;){
-          ks.ghorned[hh,tt,ii,jj,2] &lt;- 1
-        }
-      }
+    if(broadcast.array[jj,hh] == &quot;pacific&quot;){
+      ks.pacific[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;mottled&quot;){
+      ks.mottled[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;crested&quot;){
+      ks.crested[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;bw&quot;){
+      ks.bw[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;spectacled&quot;){
+      ks.spectacled[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;whiskered&quot;){
+      ks.whiskered[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;gbarred&quot;){
+      ks.gbarred[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;stygian&quot;){
+      ks.stygian[hh,jj,2] &lt;- 1
+    }else if(broadcast.array[jj,hh] == &quot;ghorned&quot;){
+      ks.ghorned[hh,jj,2] &lt;- 1
     }
   }
 }
@@ -345,7 +341,7 @@ broadcast.array
 
 <p>Check a couple examples:</p>
 
-<pre><code class="r">ks.crested[1,1,1,,] #EI1
+<pre><code class="r">ks.crested[1,,] #EI1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -361,7 +357,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.mottled[1,1,1,,] #EI1
+<pre><code class="r">ks.mottled[1,,] #EI1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -377,7 +373,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.mottled[3,1,1,,] #M1
+<pre><code class="r">ks.mottled[3,,] #M1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -393,7 +389,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.stygian[3,1,1,,] #M1
+<pre><code class="r">ks.stygian[3,,] #M1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -409,7 +405,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.stygian[4,1,1,,] #N1
+<pre><code class="r">ks.stygian[4,,] #N1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -708,7 +704,7 @@ table(specd.data$Owl_Species_ID)
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -720,7 +716,7 @@ table(specd.data$Owl_Species_ID)
 ##  tz       America/Chicago             
 ##  date     2020-10-19                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ─────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -745,7 +741,6 @@ table(specd.data$Owl_Species_ID)
 ##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
 ##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
 ##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
-##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
 ##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
 ##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
 ##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
@@ -753,7 +748,6 @@ table(specd.data$Owl_Species_ID)
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -768,7 +762,6 @@ table(specd.data$Owl_Species_ID)
 ##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
 ##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
 ##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
-##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
 ##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
 ##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
 ##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
@@ -776,9 +769,7 @@ table(specd.data$Owl_Species_ID)
 ##  magrittr       1.5     2014-11-22 [1] CRAN (R 4.0.2)
 ##  markdown       1.1     2019-08-07 [1] CRAN (R 4.0.2)
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
-##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
@@ -814,10 +805,8 @@ table(specd.data$Owl_Species_ID)
 ##  survival     * 3.1-12  2020-04-10 [1] CRAN (R 4.0.2)
 ##  testthat       2.3.2   2020-03-02 [1] CRAN (R 4.0.2)
 ##  tibble         3.0.3   2020-07-10 [1] CRAN (R 4.0.2)
-##  tidyr        * 1.1.1   2020-07-31 [1] CRAN (R 4.0.2)
 ##  tidyselect     1.1.0   2020-05-11 [1] CRAN (R 4.0.2)
 ##  usethis      * 1.6.1   2020-04-29 [1] CRAN (R 4.0.2)
-##  utf8           1.1.4   2018-05-24 [1] CRAN (R 4.0.2)
 ##  vctrs          0.3.2   2020-07-15 [1] CRAN (R 4.0.2)
 ##  withr          2.2.0   2020-04-20 [1] CRAN (R 4.0.2)
 ##  xfun           0.16    2020-07-24 [1] CRAN (R 4.0.2)
