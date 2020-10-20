@@ -81,7 +81,7 @@ ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median))+
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ mottd_p_detection
+#+ mottd_p_detection, fig.width = 12
 ggplot(data = p.det.post.mottd, 
        aes(y = median.plogis, x = Broadcast))+
   geom_bar(stat = "identity", position = position_dodge())+
@@ -93,7 +93,6 @@ ggplot(data = p.det.post.mottd,
              aes(yintercept = LL05.plogis), color = "grey")+
   geom_hline(data = p.det.post.mottd[p.det.post.mottd$broadcast.param == "beta.prebroad",], 
              aes(yintercept = UL95.plogis), color = "grey")+
-  facet_wrap(~Species, nrow = 3)+
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+
   theme_minimal()
