@@ -128,8 +128,8 @@ for(hh in 1:n.route){
 #' 
 ks.crested[1,,] #EI1
 ks.mottled[1,,] #EI1
-ks.mottled[3,,] #M1
-ks.stygian[3,,] #M1
+ks.mottled[3,,] #M2
+ks.stygian[3,,] #M2
 ks.stygian[4,,] #N1
 
 
