@@ -91,8 +91,7 @@ n.species <- length(species.names)
 
 #' We should augment with M >> n, where n = 10
 #' 
-#' *Could ask Jane for total number of owls in El Salvador to put a more 
-#' biological upper limit on species richness*
+#' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
 #' 
 n.aug <- 5 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
@@ -153,7 +152,12 @@ ks.stygian[5,,] #N1
 #' 
 #' 
 #' Create blank arrays
-ys.aug <- array(NA, dim = c(n.route, n.year, n.species.aug, n.survey, n.station, n.broadcast))
+ys.aug <- array(NA, dim = c(n.route, 
+                            n.year, 
+                            n.species.aug, 
+                            n.survey, 
+                            n.station, 
+                            n.broadcast))
 
 
 
@@ -229,7 +233,7 @@ for(hh in 1:n.route){
 #' Example data
 ys.aug[1,1,1,1,,] #EI1, 2003, Mottd, Survey 1
 ys.aug[1,1,3,1,,]
-# Corresponds with this data:
+# Corresponds with these data:
 tab.owls[tab.owls$Stations_ID %in% c(92:98,100:101),2:7]
 
 #' No survey in this year
@@ -239,7 +243,7 @@ ys.aug[1,1,1,3,,] #EI1, 2003, Mottd, Survey 3
 #' Surveys only for first three stations 
 #' 
 ys.aug[1,8,1,1,,] #EI1, 2010, Mottd, Survey 1
-# Corresponds with this data:
+# Corresponds with these data:
 tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 
 #' Results for augmented species
@@ -270,7 +274,7 @@ save(ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled,
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/c02_process_data_mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/c04_process_data_richness.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
 #' 
 #' 
