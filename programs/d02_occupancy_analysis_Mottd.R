@@ -52,7 +52,24 @@ n.station <- 10 # jj
 n.broadcast <- 2 # kk
 
 
-
+#' Deal with surveys that were not conducted
+#' 
+years.include <- list(
+  EI1 <- c(1:3, 5:11),
+  EI2 <- c(1:3, 5:7, 9, 11),
+  M1 <- 7:10,
+  M2 <- c(2:3, 5:6, 8:10),
+  N1 <- c(1:3, 5:11),
+  N2 <- c(1:3, 5:11)
+)
+surveys.byRtYr <- as.data.frame(matrix(0, nrow = n.route, ncol = n.year))
+for(hh in 1:n.route){
+  for(tt in years.include[[hh]]){
+    surveys.byRtYr[hh,tt] <- 
+      max(data.jags$order[data.jags$year == year.names[tt] &
+                            data.jags$Route_ID == route.names[hh]], na.rm = T)
+  }
+}
 
 
 
@@ -80,6 +97,8 @@ mottd.jag.data <- list(
   n.route = n.route,
   n.year = n.year,
   n.survey = n.survey,
+  #years.include = 1:11,#years.include,
+  #surveys.byRtYr = surveys.byRtYr,
   n.station = n.station,
   n.broadcast = n.broadcast
 )
