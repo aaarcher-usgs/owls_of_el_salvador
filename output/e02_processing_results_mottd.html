@@ -294,8 +294,8 @@ set.seed(258854)
 (include.byrow &lt;- all.rows[!all.rows %in% exclude.byrow])
 </code></pre>
 
-<pre><code>##  [1]  1  2  5  6  7  8 10 11 12 13 14 16 17 18 25 26 28 29 30 31 32 34 35 36 37 38 39 41 42 43
-## [31] 45 46 47 48 49 50 51 52 53 54 55 57 58 59 60 61 62 65 66
+<pre><code>##  [1]  1  2  5  6  7  8 10 11 12 13 14 16 17 18 25 26 28 29 30 31 32 34 35 36 37 38 39 41 42 43 45 46 47 48 49 50
+## [37] 51 52 53 54 55 57 58 59 60 61 62 65 66
 </code></pre>
 
 <p>Mottd</p>
@@ -322,8 +322,8 @@ psi.post.mottd$Region[psi.post.mottd$Route == &quot;M.1&quot; |
 colnames(psi.post.mottd)
 </code></pre>
 
-<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;  
-## [10] &quot;Species&quot; &quot;Region&quot;
+<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;   &quot;Species&quot;
+## [11] &quot;Region&quot;
 </code></pre>
 
 <pre><code class="r">colnames(psi.post.mottd) &lt;- c(&quot;Psi.mean&quot;, &quot;Psi.sd&quot;, &quot;Psi.LL05&quot;, &quot;Psi.median&quot;,
@@ -413,28 +413,28 @@ p.det.post.mottd$broadcast.param &lt;- grep(&quot;^beta&quot;,
 p.det.post.mottd
 </code></pre>
 
-<pre><code>##                          mean           sd           5%          50%         95% Rhat n.eff
-## beta.prebroad    -1.313235956   0.09446089   -1.4695932 -1.312986952 -1.15930661 1.00 15892
-## beta.pacific     -0.169093028   0.17557936   -0.4603008 -0.169033639  0.11868490 1.00 15333
-## beta.mottled     -0.005398497   0.17313755   -0.2893438 -0.005507609  0.27839301 1.00 17022
-## beta.crested     -0.197639048   0.17341859   -0.4852223 -0.196935441  0.08674836 1.00 17324
-## beta.bw          -0.261265946   0.17493750   -0.5503884 -0.261985932  0.02681437 1.00 17091
-## beta.spectacled  -0.311691261   0.17595654   -0.6032444 -0.310721562 -0.02131774 1.00 16964
-## beta.whiskered   -0.011685633   1.37583131   -2.2556166 -0.011902243  2.21885787 1.00 14625
-## beta.gbarred     -9.714570941  25.68262981  -34.9454757 -3.334035942  0.06202205 1.22   641
-## beta.stygian    -11.801249673  32.89525482  -47.3687761 -3.361013465  0.07470579 1.04   460
-## beta.ghorned    -72.605205811 179.90347250 -522.7629215 -4.105388183 -0.03485872 2.02   126
-##                 Species broadcast.param
-## beta.prebroad     Mottd   beta.prebroad
-## beta.pacific      Mottd    beta.pacific
-## beta.mottled      Mottd    beta.mottled
-## beta.crested      Mottd    beta.crested
-## beta.bw           Mottd         beta.bw
-## beta.spectacled   Mottd beta.spectacled
-## beta.whiskered    Mottd  beta.whiskered
-## beta.gbarred      Mottd    beta.gbarred
-## beta.stygian      Mottd    beta.stygian
-## beta.ghorned      Mottd    beta.ghorned
+<pre><code>##                          mean           sd           5%          50%         95% Rhat n.eff Species
+## beta.prebroad    -1.313235956   0.09446089   -1.4695932 -1.312986952 -1.15930661 1.00 15892   Mottd
+## beta.pacific     -0.169093028   0.17557936   -0.4603008 -0.169033639  0.11868490 1.00 15333   Mottd
+## beta.mottled     -0.005398497   0.17313755   -0.2893438 -0.005507609  0.27839301 1.00 17022   Mottd
+## beta.crested     -0.197639048   0.17341859   -0.4852223 -0.196935441  0.08674836 1.00 17324   Mottd
+## beta.bw          -0.261265946   0.17493750   -0.5503884 -0.261985932  0.02681437 1.00 17091   Mottd
+## beta.spectacled  -0.311691261   0.17595654   -0.6032444 -0.310721562 -0.02131774 1.00 16964   Mottd
+## beta.whiskered   -0.011685633   1.37583131   -2.2556166 -0.011902243  2.21885787 1.00 14625   Mottd
+## beta.gbarred     -9.714570941  25.68262981  -34.9454757 -3.334035942  0.06202205 1.22   641   Mottd
+## beta.stygian    -11.801249673  32.89525482  -47.3687761 -3.361013465  0.07470579 1.04   460   Mottd
+## beta.ghorned    -72.605205811 179.90347250 -522.7629215 -4.105388183 -0.03485872 2.02   126   Mottd
+##                 broadcast.param
+## beta.prebroad     beta.prebroad
+## beta.pacific       beta.pacific
+## beta.mottled       beta.mottled
+## beta.crested       beta.crested
+## beta.bw                 beta.bw
+## beta.spectacled beta.spectacled
+## beta.whiskered   beta.whiskered
+## beta.gbarred       beta.gbarred
+## beta.stygian       beta.stygian
+## beta.ghorned       beta.ghorned
 </code></pre>
 
 <p>Merge data together and change column names</p>
@@ -442,8 +442,8 @@ p.det.post.mottd
 <pre><code class="r">colnames(p.det.post.mottd)
 </code></pre>
 
-<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;            
-## [6] &quot;Rhat&quot;            &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
+<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;             &quot;Rhat&quot;           
+## [7] &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
 </code></pre>
 
 <pre><code class="r">colnames(p.det.post.mottd) &lt;- c(&quot;mean&quot;, &quot;sd&quot;, &quot;LL05&quot;, &quot;median&quot;, &quot;UL95&quot;, &quot;Rhat&quot;,
@@ -499,7 +499,7 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -509,9 +509,9 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-20                  
+##  date     2020-11-03                  
 ## 
-## ─ Packages ─────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -536,7 +536,6 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
 ##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
 ##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
-##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
 ##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
 ##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
 ##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
@@ -544,7 +543,6 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -559,7 +557,6 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
 ##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
 ##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
-##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
 ##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
 ##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
 ##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
@@ -569,7 +566,6 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)

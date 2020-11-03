@@ -278,7 +278,7 @@ set.seed(587453)
 <pre><code class="r">ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median))+
   geom_bar(stat = &quot;identity&quot;, position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
-  facet_wrap(~Region, nrow = 3,scales = &quot;free_x&quot;)+
+  facet_wrap(~Region, nrow = 3, scales = &quot;free_x&quot;)+
   ylim(c(0,1))+
   theme_minimal()+
   ylab(&quot;Probability of Occupancy&quot;)+
@@ -325,7 +325,7 @@ with a constant probability of detection for all pre-broadcast time periods.</p>
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -335,9 +335,9 @@ with a constant probability of detection for all pre-broadcast time periods.</p>
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-20                  
+##  date     2020-11-03                  
 ## 
-## ─ Packages ─────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)

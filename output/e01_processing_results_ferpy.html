@@ -294,8 +294,8 @@ set.seed(258854)
 (include.byrow &lt;- all.rows[!all.rows %in% exclude.byrow])
 </code></pre>
 
-<pre><code>##  [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29 30 31 32 34 35 36 38
-## [31] 39 40 41 42 43 44 45 46 48 49 50 51 52 53 54 55
+<pre><code>##  [1]  1  2  4  5  6  7  8  9 10 11 12 13 14 15 21 22 23 24 25 26 27 28 29 30 31 32 34 35 36 38 39 40 41 42 43 44
+## [37] 45 46 48 49 50 51 52 53 54 55
 </code></pre>
 
 <p>Ferpy</p>
@@ -322,8 +322,8 @@ psi.post.ferpy$Region[psi.post.ferpy$Route == &quot;M.1&quot; |
 colnames(psi.post.ferpy)
 </code></pre>
 
-<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;  
-## [10] &quot;Species&quot; &quot;Region&quot;
+<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;   &quot;Species&quot;
+## [11] &quot;Region&quot;
 </code></pre>
 
 <pre><code class="r">colnames(psi.post.ferpy) &lt;- c(&quot;Psi.mean&quot;, &quot;Psi.sd&quot;, &quot;Psi.LL05&quot;, &quot;Psi.median&quot;,
@@ -407,28 +407,17 @@ p.det.post.ferpy$broadcast.param &lt;- grep(&quot;^beta&quot;,
 p.det.post.ferpy
 </code></pre>
 
-<pre><code>##                        mean          sd           5%         50%         95% Rhat n.eff
-## beta.prebroad    -1.5370679   0.1390036   -1.7667287 -1.53520925 -1.31098546 1.00 16602
-## beta.pacific     -0.2926143   0.2377787   -0.6886045 -0.28876677  0.09529803 1.00 17100
-## beta.mottled     -0.8160920   0.2549630   -1.2380563 -0.81267376 -0.40542716 1.00 16206
-## beta.crested     -1.4311015   0.2999288   -1.9414165 -1.42249099 -0.95137784 1.00 17040
-## beta.bw          -1.6149457   0.3164828   -2.1521890 -1.60465850 -1.11245732 1.00 16202
-## beta.spectacled  -1.1797467   0.2750546   -1.6487387 -1.17207678 -0.74225169 1.00 17171
-## beta.whiskered  -71.9164741 254.3231045 -715.9690350 -0.92951099 10.89961929 1.07   576
-## beta.gbarred     -3.4437881  26.6791086  -25.1775249 -0.30552148 13.55867806 1.23   476
-## beta.stygian      9.8446990  69.6160498  -14.9242141  0.03692921 24.53730704 1.32  1077
-## beta.ghorned     -2.8664052  30.0317242  -19.5112007 -0.14552288 13.39259126 1.23   826
-##                 Species broadcast.param
-## beta.prebroad     FerPy   beta.prebroad
-## beta.pacific      FerPy    beta.pacific
-## beta.mottled      FerPy    beta.mottled
-## beta.crested      FerPy    beta.crested
-## beta.bw           FerPy         beta.bw
-## beta.spectacled   FerPy beta.spectacled
-## beta.whiskered    FerPy  beta.whiskered
-## beta.gbarred      FerPy    beta.gbarred
-## beta.stygian      FerPy    beta.stygian
-## beta.ghorned      FerPy    beta.ghorned
+<pre><code>##                        mean          sd           5%         50%         95% Rhat n.eff Species broadcast.param
+## beta.prebroad    -1.5370679   0.1390036   -1.7667287 -1.53520925 -1.31098546 1.00 16602   FerPy   beta.prebroad
+## beta.pacific     -0.2926143   0.2377787   -0.6886045 -0.28876677  0.09529803 1.00 17100   FerPy    beta.pacific
+## beta.mottled     -0.8160920   0.2549630   -1.2380563 -0.81267376 -0.40542716 1.00 16206   FerPy    beta.mottled
+## beta.crested     -1.4311015   0.2999288   -1.9414165 -1.42249099 -0.95137784 1.00 17040   FerPy    beta.crested
+## beta.bw          -1.6149457   0.3164828   -2.1521890 -1.60465850 -1.11245732 1.00 16202   FerPy         beta.bw
+## beta.spectacled  -1.1797467   0.2750546   -1.6487387 -1.17207678 -0.74225169 1.00 17171   FerPy beta.spectacled
+## beta.whiskered  -71.9164741 254.3231045 -715.9690350 -0.92951099 10.89961929 1.07   576   FerPy  beta.whiskered
+## beta.gbarred     -3.4437881  26.6791086  -25.1775249 -0.30552148 13.55867806 1.23   476   FerPy    beta.gbarred
+## beta.stygian      9.8446990  69.6160498  -14.9242141  0.03692921 24.53730704 1.32  1077   FerPy    beta.stygian
+## beta.ghorned     -2.8664052  30.0317242  -19.5112007 -0.14552288 13.39259126 1.23   826   FerPy    beta.ghorned
 </code></pre>
 
 <p>Merge data together and change column names</p>
@@ -436,8 +425,8 @@ p.det.post.ferpy
 <pre><code class="r">colnames(p.det.post.ferpy)
 </code></pre>
 
-<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;            
-## [6] &quot;Rhat&quot;            &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
+<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;             &quot;Rhat&quot;           
+## [7] &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
 </code></pre>
 
 <pre><code class="r">colnames(p.det.post.ferpy) &lt;- c(&quot;mean&quot;, &quot;sd&quot;, &quot;LL05&quot;, &quot;median&quot;, &quot;UL95&quot;, &quot;Rhat&quot;,
@@ -493,7 +482,7 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -503,9 +492,9 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-20                  
+##  date     2020-11-03                  
 ## 
-## ─ Packages ─────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -530,7 +519,6 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 ##  evaluate       0.14    2019-05-28 [1] CRAN (R 4.0.1)
 ##  ezknitr      * 0.6     2016-09-16 [1] CRAN (R 4.0.2)
 ##  fansi          0.4.1   2020-01-08 [1] CRAN (R 4.0.2)
-##  farver         2.0.3   2020-01-16 [1] CRAN (R 4.0.2)
 ##  forcats        0.5.0   2020-03-01 [1] CRAN (R 4.0.2)
 ##  foreign        0.8-80  2020-05-24 [1] CRAN (R 4.0.2)
 ##  Formula      * 1.2-3   2018-05-03 [1] CRAN (R 4.0.2)
@@ -538,7 +526,6 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 ##  gdata        * 2.18.0  2017-06-06 [1] CRAN (R 4.0.2)
 ##  generics       0.0.2   2018-11-29 [1] CRAN (R 4.0.2)
 ##  ggplot2      * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)
-##  ggthemes     * 4.2.0   2019-05-13 [1] CRAN (R 4.0.2)
 ##  glue           1.4.1   2020-05-13 [1] CRAN (R 4.0.2)
 ##  gridExtra      2.3     2017-09-09 [1] CRAN (R 4.0.2)
 ##  gtable         0.3.0   2019-03-25 [1] CRAN (R 4.0.2)
@@ -553,7 +540,6 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 ##  ImportExport * 1.1     2015-09-19 [1] CRAN (R 4.0.2)
 ##  jpeg           0.1-8.1 2019-10-24 [1] CRAN (R 4.0.2)
 ##  knitr        * 1.29    2020-06-23 [1] CRAN (R 4.0.2)
-##  labeling       0.3     2014-08-23 [1] CRAN (R 4.0.2)
 ##  lattice      * 0.20-41 2020-04-02 [1] CRAN (R 4.0.2)
 ##  latticeExtra   0.6-29  2019-12-19 [1] CRAN (R 4.0.2)
 ##  lifecycle      0.2.0   2020-03-06 [1] CRAN (R 4.0.2)
@@ -563,7 +549,6 @@ p.det.post.ferpy$UL95.plogis &lt;- plogis(p.det.post.ferpy$UL95)
 ##  Matrix         1.2-18  2019-11-27 [1] CRAN (R 4.0.2)
 ##  MCMCvis      * 0.14.0  2020-03-25 [1] CRAN (R 4.0.2)
 ##  memoise        1.1.0   2017-04-21 [1] CRAN (R 4.0.2)
-##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
