@@ -46,7 +46,7 @@ year.index <- 1:length(year.names)
 #' Create traceplots of parameters (creates PDF)
 #'
 #' Mottd
-# MCMCtrace(mottd.jagsout, 
+# MCMCtrace(mottd.jagsout,
 #           pdf = TRUE,
 #           open_pdf = FALSE,
 #           filename = "mottdTrace",

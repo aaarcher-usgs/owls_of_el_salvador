@@ -89,7 +89,7 @@ ggplot(data = psi.means.specd, aes(x = Route, y = Psi.median))+
 #+ specd_p_detection, fig.width = 12
 ggplot(data = p.det.post.specd, 
        aes(y = median.plogis, x = Broadcast))+
-  geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
+  geom_bar(stat = "identity", position = position_dodge())+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
   geom_hline(data = p.det.post.specd[p.det.post.specd$broadcast.param == "beta.prebroad",], 

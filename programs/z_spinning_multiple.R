@@ -1,5 +1,20 @@
 library(ezknitr)
 
+ezspin(file = "programs/a_process_data_global.R", 
+       out_dir = "output", fig_dir = "figures", keep_md = F)
+
+ 
+ezspin(file = "programs/b_occupancy_model_global.R", 
+       out_dir = "output", fig_dir = "figures", keep_md = F)
+
+ezspin(file = "programs/c01_process_data_ferpy.R", 
+       out_dir = "output", fig_dir = "figures", keep_md = F)
+ezspin(file = "programs/c02_process_data_mottd.R", 
+       out_dir = "output", fig_dir = "figures", keep_md = F)
+ezspin(file = "programs/c03_process_data_specd.R", 
+       out_dir = "output", fig_dir = "figures", keep_md = F)
+
+
 ezspin(file = "programs/d01_occupancy_analysis_ferpy.R", 
        out_dir = "output", fig_dir = "figures", keep_md = F)
 

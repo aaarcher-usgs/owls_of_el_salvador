@@ -68,7 +68,7 @@ ggplot(data = psi.post.mottd,
 ggplot(data = psi.means.mottd, aes(x = Route, y = Psi.median))+
   geom_bar(stat = "identity", position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
-  facet_wrap(~Region, nrow = 3,scales = "free_x")+
+  facet_wrap(~Region, nrow = 3, scales = "free_x")+
   ylim(c(0,1))+
   theme_minimal()+
   ylab("Probability of Occupancy")+

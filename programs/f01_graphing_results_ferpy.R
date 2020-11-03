@@ -89,7 +89,7 @@ ggplot(data = psi.means.ferpy, aes(x = Route, y = Psi.median))+
 #+ ferpy_p_detection, fig.width = 12
 ggplot(data = p.det.post.ferpy, 
        aes(y = median.plogis, x = Broadcast))+
-  geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
+  geom_bar(stat = "identity", position = position_dodge())+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
   geom_hline(data = p.det.post.ferpy[p.det.post.ferpy$broadcast.param == "beta.prebroad",], 
