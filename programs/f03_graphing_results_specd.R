@@ -1,4 +1,4 @@
-#' # Graphing Occupancy Analysis
+#' # Graphing Occupancy Analysis: Spectacled
 #' 
 #' Description: This program graphs occupancy analysis results for owls of El 
 #' Salvador. Plots show the posteriors of Psi and P(detection). 
@@ -57,7 +57,7 @@ ggplot(data = psi.post.specd,
   theme_minimal()+
   xlab("Year")+
   ylab("Probability of Occupancy")+
-  ggtitle("Specd")
+  scale_x_continuous(breaks = 2003:2013)
 
 
 

@@ -74,7 +74,7 @@ psi.post.ferpy <- MCMCsummary(ferpy.jagsout,
                               Rhat = TRUE,
                               n.eff = TRUE,
                               probs = c(0.05, 0.5, 0.95))
-psi.post.ferpy$Year <- rep(1:length(year.index), each = length(route.index))
+psi.post.ferpy$Year <- rep(year.names, each = length(route.index))
 psi.post.ferpy$Route <- rep(c("EI.1", "EI.2", "M.2", "N.1", "N.2"), length(year.index))
 psi.post.ferpy$Species <- "FerPy"
 psi.post.ferpy <- psi.post.ferpy[include.byrow,]

@@ -74,7 +74,7 @@ psi.post.specd <- MCMCsummary(specd.jagsout,
                               Rhat = TRUE,
                               n.eff = TRUE,
                               probs = c(0.05, 0.5, 0.95))
-psi.post.specd$Year <- rep(1:length(year.index), each = length(route.index))
+psi.post.specd$Year <- rep(year.names, each = length(route.index))
 psi.post.specd$Route <- rep(c("EI.1", "EI.2", "M.2", "N.1", "N.2"), length(year.index))
 psi.post.specd$Species <- "Specd"
 psi.post.specd <- psi.post.specd[include.byrow,]
