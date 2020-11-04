@@ -168,7 +168,7 @@ richness.jagsout <- jags(data = richness.jags.data,
 #' ## Save files
 #' 
 #' Jagsout Mottd
-save(mottd.jagsout, file = "data/output_data/mottd_jagsout.Rdata")
+save(richness.jagsout, file = "data/output_data/richness_jagsout.Rdata")
 
 
 
