@@ -285,8 +285,7 @@ n.broadcast &lt;- 2 # kk
 <pre><code class="r">(species.names &lt;- unique(tab.owls$Owl_Species_ID))
 </code></pre>
 
-<pre><code>##  [1] &quot;Mottd&quot;   &quot;PacSc&quot;   &quot;FerPy&quot;   &quot;Specd&quot;   &quot;Barn&quot;    &quot;Unk&quot;     &quot;Styg&quot;    &quot;Whisk&quot;   &quot;GrHor&quot;  
-## [10] &quot;Fulvous&quot;
+<pre><code>##  [1] &quot;Mottd&quot;   &quot;PacSc&quot;   &quot;FerPy&quot;   &quot;Specd&quot;   &quot;Barn&quot;    &quot;Unk&quot;     &quot;Styg&quot;    &quot;Whisk&quot;   &quot;GrHor&quot;   &quot;Fulvous&quot;
 </code></pre>
 
 <pre><code class="r">n.species &lt;- length(species.names)
@@ -294,10 +293,9 @@ n.broadcast &lt;- 2 # kk
 
 <p>We should augment with M &gt;&gt; n, where n = 10</p>
 
-<p><em>Could ask Jane for total number of owls in El Salvador to put a more 
-biological upper limit on species richness</em></p>
+<p>Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)</p>
 
-<pre><code class="r">n.aug &lt;- 5 #number of species that may have been present but were undetected
+<pre><code class="r">n.aug &lt;- 4 #number of species that may have been present but were undetected
 n.species.aug &lt;- n.species + n.aug
 </code></pre>
 
@@ -360,7 +358,7 @@ broadcast.array
 
 <p>Check a couple examples:</p>
 
-<pre><code class="r">ks.crested[1,,] #EI1
+<pre><code class="r">ks.crested[1,,] #EI1, Crested
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -376,7 +374,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.mottled[1,,] #EI1
+<pre><code class="r">ks.mottled[1,,] #EI1, Mottled
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -392,7 +390,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.mottled[3,,] #M1
+<pre><code class="r">ks.mottled[3,,] #M1, Mottled
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -408,7 +406,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.stygian[3,,] #M1
+<pre><code class="r">ks.stygian[3,,] #M1, Stygian
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -424,7 +422,7 @@ broadcast.array
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ks.stygian[5,,] #N1
+<pre><code class="r">ks.stygian[5,,] #N1, Stygian
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -695,7 +693,7 @@ for(hh in 1:n.route){
 ## [10,]    1    0
 </code></pre>
 
-<pre><code class="r">ys.aug[1,1,3,1,,]
+<pre><code class="r">ys.aug[1,1,3,1,,] #EI1, 2003, FerPy, Survey 1
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -803,7 +801,7 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 ## [10,]    0    0
 </code></pre>
 
-<pre><code class="r">ys.aug[1,8,11,1,,]
+<pre><code class="r">ys.aug[1,8,11,1,,] #EI1, 2010, Augmented Species 1, Survey 1 
 </code></pre>
 
 <pre><code>##       [,1] [,2]
@@ -845,7 +843,7 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -855,9 +853,9 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-10-20                  
+##  date     2020-11-03                  
 ## 
-## ─ Packages ─────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -940,6 +938,7 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 ##  rjags        * 4-10    2019-11-06 [1] CRAN (R 4.0.2)
 ##  rJava          0.9-13  2020-07-06 [1] CRAN (R 4.0.2)
 ##  rlang          0.4.7   2020-07-09 [1] CRAN (R 4.0.2)
+##  rmarkdown      2.3     2020-06-18 [1] CRAN (R 4.0.2)
 ##  RODBC        * 1.3-17  2020-05-11 [1] CRAN (R 4.0.2)
 ##  rpart          4.1-15  2019-04-12 [1] CRAN (R 4.0.2)
 ##  rprojroot      1.3-2   2018-01-03 [1] CRAN (R 4.0.2)
@@ -960,6 +959,7 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 ##  xfun           0.16    2020-07-24 [1] CRAN (R 4.0.2)
 ##  xlsx         * 0.6.4.2 2020-09-12 [1] CRAN (R 4.0.2)
 ##  xlsxjars       0.6.1   2014-08-22 [1] CRAN (R 4.0.2)
+##  yaml           2.2.1   2020-02-01 [1] CRAN (R 4.0.2)
 ## 
 ## [1] /Library/Frameworks/R.framework/Versions/4.0/Resources/library
 </code></pre>

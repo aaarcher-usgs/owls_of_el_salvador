@@ -93,7 +93,7 @@ n.species <- length(species.names)
 #' 
 #' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
 #' 
-n.aug <- 5 #number of species that may have been present but were undetected
+n.aug <- 4 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
 
 
@@ -140,11 +140,11 @@ for(hh in 1:n.route){
 }
 #' Check a couple examples:
 #' 
-ks.crested[1,,] #EI1
-ks.mottled[1,,] #EI1
-ks.mottled[3,,] #M1
-ks.stygian[3,,] #M1
-ks.stygian[5,,] #N1
+ks.crested[1,,] #EI1, Crested
+ks.mottled[1,,] #EI1, Mottled
+ks.mottled[3,,] #M1, Mottled
+ks.stygian[3,,] #M1, Stygian
+ks.stygian[5,,] #N1, Stygian
 
 
 
@@ -232,7 +232,7 @@ for(hh in 1:n.route){
 #' 
 #' Example data
 ys.aug[1,1,1,1,,] #EI1, 2003, Mottd, Survey 1
-ys.aug[1,1,3,1,,]
+ys.aug[1,1,3,1,,] #EI1, 2003, FerPy, Survey 1
 # Corresponds with these data:
 tab.owls[tab.owls$Stations_ID %in% c(92:98,100:101),2:7]
 
@@ -248,7 +248,7 @@ tab.owls[tab.owls$Stations_ID %in% c(615:617),2:7]
 
 #' Results for augmented species
 ys.aug[1,1,11,1,,] #EI1, 2003, Augmented Species 1, Survey 1
-ys.aug[1,8,11,1,,]
+ys.aug[1,8,11,1,,] #EI1, 2010, Augmented Species 1, Survey 1 
 
 
 

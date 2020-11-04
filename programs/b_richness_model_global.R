@@ -49,7 +49,8 @@ model.richness <- function(){
         b.psi[hh,tt,ss] <- rho.psi-(mu.psi[hh,tt]*rho.psi)
         
         
-        # Prior for Psi, which will vary by route (hh) and year (tt) and species (ss)
+        # Prior for Psi, which will vary by route (hh) and year (tt) and species (ss),
+        #   but based on shared mean probability of occupancy for each route/year (mu.psi)
         psi[hh,tt,ss] ~ dbeta(a.psi[hh,tt,ss], b.psi[hh,tt,ss])%_%T(0.0001,0.99)
 
         

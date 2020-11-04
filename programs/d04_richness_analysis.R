@@ -71,7 +71,7 @@ n.species <- length(species.names)
 #' 
 #' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
 #' 
-n.aug <- 5 #number of species that may have been present but were undetected
+n.aug <- 4 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
 
 
@@ -159,7 +159,7 @@ richness.jagsout <- jags(data = richness.jags.data,
                       n.chains = 3,
                       n.iter = 10000, #10000
                       n.burnin = 1000, #1000
-                      n.thin = 1)
+                      n.thin = 10)
 
 
 
