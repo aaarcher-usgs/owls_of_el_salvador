@@ -145,6 +145,9 @@ richness.jagsout <- jags(data = richness.jags.data,
                       parameters.to.save = c("mu.psi",
                                              "rho.psi",
                                              "omega",
+                                             "spp.occ",
+                                             "Nsmall",
+                                             "richness",
                                              "beta.prebroad",
                                              "beta.pacific",
                                              "beta.mottled",
@@ -157,9 +160,9 @@ richness.jagsout <- jags(data = richness.jags.data,
                                              "beta.ghorned"), 
                       model.file = model.richness, 
                       n.chains = 3,
-                      n.iter = 10000, #10000
-                      n.burnin = 1000, #1000
-                      n.thin = 10)
+                      n.iter = 100000, #10000
+                      n.burnin = 10000, #1000
+                      n.thin = 20)
 
 
 

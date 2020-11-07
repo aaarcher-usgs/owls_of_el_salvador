@@ -50,7 +50,7 @@ model.richness <- function(){
         
         
         # Prior for Psi, which will vary by route (hh) and year (tt) and species (ss),
-        #   but based on shared mean probability of occupancy for each route/year (mu.psi)
+        # but based on shared mean probability of occupancy for each route/year (mu.psi)
         psi[hh,tt,ss] ~ dbeta(a.psi[hh,tt,ss], b.psi[hh,tt,ss])%_%T(0.0001,0.99)
 
         
@@ -97,7 +97,7 @@ model.richness <- function(){
         
         for(ii in 1:n.survey){ # 1 to 3 surveys per year
           
-          # Occupancy by route and year based on 
+          # Occupancy by route and year and survey based on 
           #     psi, probability of occupancy for each route/year
           z[hh,tt,ss,ii] ~ dbern(psi[hh,tt,ss]*w[hh,tt,ss]) 
           
@@ -124,6 +124,18 @@ model.richness <- function(){
     }
   } # end likelihood
   
+  # Derived quantities
+  for(ss in 1:n.species.aug){
+    spp.occ[ss] <- sum(z[,,,ss]) # number of occupied routes/years among sampled
+    species.present[ss] <- ifelse(spp.occ[ss]>0, 1, 0) # if each species exists
+  }
+  Nsmall <- sum(species.present) # small estimate of number of species present
+  
+  for(hh in 1:n.route){
+    for(tt in 1:n.year){
+      richness[hh,tt] <- sum(z[hh,tt,,], na.rm = T) # number of species at each route/year
+    }
+  }
 }
 
 
