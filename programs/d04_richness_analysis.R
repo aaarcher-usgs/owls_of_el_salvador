@@ -139,7 +139,8 @@ z.init[5,6,,] # rows are different species, N1, 2008
 
 #' ## Run models
 #' 
-#' Richness
+#' Richness, 
+#+ jags, eval = FALSE
 richness.jagsout <- jags(data = richness.jags.data, 
                       inits = function(){list(z = z.init, w = w.init)}, 
                       parameters.to.save = c("mu.psi",
@@ -172,6 +173,7 @@ richness.jagsout <- jags(data = richness.jags.data,
 #' ## Save files
 #' 
 #' Jagsout Mottd
+#+ savejags, eval = F
 save(richness.jagsout, file = "data/output_data/richness_jagsout.Rdata")
 
 
@@ -183,5 +185,5 @@ save(richness.jagsout, file = "data/output_data/richness_jagsout.Rdata")
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/d02_occupancy_analysis_mottd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/d04_richness_analysis.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 
