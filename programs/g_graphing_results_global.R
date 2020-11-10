@@ -33,6 +33,7 @@ set.seed(587453)
 load(file = "data/output_data/specd_psi_posteriors_RtYr.Rdata")
 load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
 load(file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
+load(file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
 load(file = "data/output_data/specd_psi_posteriors_RtSpp.Rdata")
@@ -44,6 +45,11 @@ load(file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
 load(file = "data/output_data/specd_p_detection_posteriors.Rdata")
 load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
 load(file = "data/output_data/mottd_p_detection_posteriors.Rdata")
+load(file = "data/output_data/richness_p_detection_posteriors.Rdata")
+
+#' Species accounts
+#' 
+load(file = "data/output_data/richness_species_accounts.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
@@ -104,10 +110,92 @@ ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species)
         strip.text.x  = element_blank())
 
 #' _____________________________________________________________________________
-#' ## Save files
+#' ## Richness p = Probability of detection
 #' 
+#' Probability of detection was a function of what broadcast species was used, 
+#' with a constant probability of detection for all pre-broadcast time periods.
+#' 
+#' 
+#+ p_detection_richness, fig.height = 4
+ggplot(data = p.det.post.richness, aes(y = median.plogis, x = Broadcast))+
+  geom_bar(stat = "identity", position = position_dodge() )+
+  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
+  scale_fill_manual(values = c("#7fc97f", "#beaed4", "#fdc086"))+
+  geom_hline(data = p.det.post.richness[p.det.post.richness$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = median.plogis))+
+  geom_hline(data = p.det.post.richness[p.det.post.richness$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = LL05.plogis), color = "#ffff99")+
+  geom_hline(data = p.det.post.richness[p.det.post.richness$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = UL95.plogis), color = "#ffff99")+
+  ylab("Probability of Detection")+
+  xlab("Broadcast Species")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text.x  = element_blank())
 
+#' _____________________________________________________________________________
+#' ## Richness by Route and Year
+#' 
+#' 
+#' All 6 routes
+#+ richness_byRtYr
+ggplot(data = richness.post, 
+       aes(x = Year, y = Richness.median, group = Route))+
+  geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
+  geom_line()+
+  geom_point(aes(y = richness.detected), color = "red")+
+  facet_wrap(~Route, nrow = 3)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Species Richness")+
+  scale_x_continuous(breaks = 2003:2013)+
+  scale_y_continuous(breaks = seq(0,14,by=2))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+#' El Imposible
+#' 
+#+ richness_ElImposible
+ggplot(data = richness.post[richness.post$Region == "El Imposible",], 
+       aes(x = Year, y = Richness.median))+
+  geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
+  geom_line()+
+  geom_point(aes(y = richness.detected), color = "red")+
+  facet_wrap(~Route, nrow = 2)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Species Richness")+
+  scale_x_continuous(breaks = 2003:2013)+
+  scale_y_continuous(breaks = seq(0,14,by=2))
+
+#' Nancuchiname
+#' 
+#+ richness_Nancuchiname
+ggplot(data = richness.post[richness.post$Region == "Nancuchiname",], 
+       aes(x = Year, y = Richness.median))+
+  geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
+  geom_line()+
+  geom_point(aes(y = richness.detected), color = "red")+
+  facet_wrap(~Route, nrow = 2)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Species Richness")+
+  scale_x_continuous(breaks = 2003:2013)+
+  scale_y_continuous(breaks = seq(0,14,by=2))
+
+#' Montecristo
+#' 
+#+ richness_Montecristo
+ggplot(data = richness.post[richness.post$Region == "Montecristo",], 
+       aes(x = Year, y = Richness.median))+
+  geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
+  geom_line()+
+  geom_point(aes(y = richness.detected), color = "red")+
+  facet_wrap(~Route, nrow = 2)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Species Richness")+
+  scale_x_continuous(breaks = 2003:2013)+
+  scale_y_continuous(breaks = seq(0,14,by=2))
 
 #' _____________________________________________________________________________
 #' ### Footer

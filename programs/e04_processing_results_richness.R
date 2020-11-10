@@ -70,8 +70,8 @@ n.species <- length(species.names)
 #' and year
 #' 
 #' For all analysis, remove years and routes that were not surveyed
-(exclude.byrow <- c(3,16:20,33,37,47))
-all.rows <- 1:(length(route.names)*length(year.index))
+(exclude.byrow <- c(3,4,9,15,19:24,27,33,40,44,56,63,64))
+all.rows <- 1:(length(route.index)*length(year.index))
 (include.byrow <- all.rows[!all.rows %in% exclude.byrow])
 #' 
 
