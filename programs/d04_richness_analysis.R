@@ -139,7 +139,7 @@ z.init[5,6,,] # rows are different species, N1, 2008
 
 #' ## Run models
 #' 
-#' Mottd
+#' Richness
 richness.jagsout <- jags(data = richness.jags.data, 
                       inits = function(){list(z = z.init, w = w.init)}, 
                       parameters.to.save = c("mu.psi",
@@ -160,9 +160,10 @@ richness.jagsout <- jags(data = richness.jags.data,
                                              "beta.ghorned"), 
                       model.file = model.richness, 
                       n.chains = 3,
-                      n.iter = 100000, #10000
-                      n.burnin = 10000, #1000
+                      n.iter = 20000, #10000
+                      n.burnin = 2000, #1000
                       n.thin = 20)
+
 
 
 

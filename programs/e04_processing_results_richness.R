@@ -34,11 +34,19 @@ set.seed(258854)
 #' Jagsout Richness Model
 load(file = "data/output_data/richness_jagsout.Rdata")
 
+#' Access tables, in Rdata format
+#' 
+load(file = "data/processed_data/tables_global.Rdata")
+
 #' Survey list
 (route.names <- c("EI1", "EI2", "M1", "M2",  "N1",  "N2") )
 route.index <- 1:length(route.names)
 (year.names <- 2003:2013)
 year.index <- 1:length(year.names)
+
+#' #' There were 10 observed owls (if we pool all three unknown observations)
+(species.names <- unique(tab.owls$Owl_Species_ID))
+n.species <- length(species.names)
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
@@ -67,95 +75,69 @@ all.rows <- 1:(length(route.names)*length(year.index))
 (include.byrow <- all.rows[!all.rows %in% exclude.byrow])
 #' 
 
-#' Specd
+#' Richness
 #' 
-mupsi.post.richness <- MCMCsummary(richness.jagsout, 
-                              params = "mu.psi", 
+richness.post <- MCMCsummary(richness.jagsout, 
+                              params = "richness", 
                               Rhat = TRUE,
                               n.eff = TRUE,
                               probs = c(0.05, 0.5, 0.95))
-mupsi.post.richness$Year <- rep(year.names, each = length(route.index))
-mupsi.post.richness$Route <- 
-  rep(c("EI.1", "EI.2", "M.1", "M.2", "N.1", "N.2"), length(year.index))
-mupsi.post.richness <- mupsi.post.richness[include.byrow,]
+richness.post$Year <- rep(year.names, each = length(route.index))
+richness.post$Route <- 
+  rep(c("EI1", "EI2", "M1", "M2", "N1", "N2"), length(year.index))
+richness.post <- richness.post[include.byrow,]
 
 
 
 
 #' Populate Region
 #' 
-psi.post.specd$Region[psi.post.specd$Route == "EI.1" |
-                        psi.post.specd$Route == "EI.2"] <- "El Imposible"
-psi.post.specd$Region[psi.post.specd$Route == "N.1" |
-                        psi.post.specd$Route == "N.2"] <- "Nancuchiname"
-psi.post.specd$Region[psi.post.specd$Route == "M.1" |
-                        psi.post.specd$Route == "M.2"] <- "Montecristo"
-colnames(psi.post.specd)
-colnames(psi.post.specd) <- c("Psi.mean", "Psi.sd", "Psi.LL05", "Psi.median",
-                              "Psi.UL95", "Psi.Rhat", "Psi.neff", "Year", "Route",
-                              "Species", "Region")
+richness.post$Region[richness.post$Route == "EI1" |
+                       richness.post$Route == "EI2"] <- "El Imposible"
+richness.post$Region[richness.post$Route == "N1" |
+                       richness.post$Route == "N2"] <- "Nancuchiname"
+richness.post$Region[richness.post$Route == "M1" |
+                       richness.post$Route == "M2"] <- "Montecristo"
+colnames(richness.post)
+colnames(richness.post) <- c("Richness.mean", "Richness.sd", "Richness.LL05", 
+                              "Richness.median",
+                              "Richness.UL95", "Richness.Rhat", "Richness.neff", 
+                              "Year", "Route", "Region")
 
+#' _____________________________________________________________________________
+#' ## Calculate number of species detected in each year/route
+#' 
+#' Create a table to determine what species were detected in what routes/years
+species.accounts <- as.data.frame(matrix(
+  NA, nrow = nrow(richness.post), ncol = n.species
+))
+colnames(species.accounts) <- species.names
+species.accounts$Year <- richness.post$Year
+species.accounts$Route <- richness.post$Route
+species.accounts$Region <- richness.post$Region
 
 #' 
 #' 
-#' 
-#' ### Calculate average occupancy probability by route and species
-#' 
-#' 
-#' Need to delete a few years by route:
-#' 
-all.years <- 1:length(year.index)
-exc.EI.1 <- 4
-inc.EI.1 <- all.years[!all.years %in% exc.EI.1]
-exc.EI.2 <- c(4,8,10)
-inc.EI.2 <- all.years[!all.years %in% exc.EI.2]
-exc.M.2 <- c(1,4,7,11)
-inc.M.2 <- all.years[!all.years %in% exc.M.2]
-exc.N.1 <- 4
-inc.N.1 <- all.years[!all.years %in% exc.N.1]
-exc.N.2 <- 4
-inc.N.2 <- all.years[!all.years %in% exc.N.2]
-#' 
+richness.post$richness.detected <- NA
+for(rr in 1:nrow(richness.post)){
+  temp.route <- richness.post$Route[rr]
+  temp.year <- richness.post$Year[rr]
+  temp.surveys <- tab.survey$Survey_ID[tab.survey$Route_ID == temp.route &
+                                        tab.survey$year == temp.year]
+  temp.stations <- tab.stations$Stations_ID[tab.stations$Survey_ID %in% temp.surveys]
+  temp.owls.data <- tab.owls[tab.owls$Stations_ID %in% temp.stations,]
+  if(nrow(temp.owls.data)>0){
+    temp.n.species.detected <- length(unique(temp.owls.data$Owl_Species_ID))
+    richness.post$richness.detected[rr] <- temp.n.species.detected
+    for(ss in 1:temp.n.species.detected){
+      temp.species <- unique(temp.owls.data$Owl_Species_ID)[ss]
+      species.accounts[rr,temp.species] <- 1
+    }
+  }else{
+    richness.post$richness.detected[rr] <- 0
+  }
+}
 
-
-#' Psi posteriors for Specd
-#' 
-specd.chains <- MCMCpstr(specd.jagsout, 
-                         params = "psi",
-                         type = "chains")
-
-
-
-#' Calculate by species and route
-#' 
-psi.means.specd <- as.data.frame(matrix(NA, ncol = 5, nrow = length(route.names)))
-colnames(psi.means.specd) <- c("Species", "Route", "Psi.LL05", "Psi.median", "Psi.UL95")
-psi.means.specd$Species <- "Specd"
-psi.means.specd$Route <- route.names
-
-#' Populate quantile results
-#' 
-psi.means.specd[psi.means.specd$Route == "EI1",3:5] <- 
-  quantile(specd.chains$psi[1,inc.EI.1,], probs = c(0.05, 0.5, 0.95))
-psi.means.specd[psi.means.specd$Route == "EI2",3:5] <- 
-  quantile(specd.chains$psi[2,inc.EI.2,], probs = c(0.05, 0.5, 0.95))
-psi.means.specd[psi.means.specd$Route == "M2",3:5] <- 
-  quantile(specd.chains$psi[3,inc.M.2,], probs = c(0.05, 0.5, 0.95))
-psi.means.specd[psi.means.specd$Route == "N1",3:5] <- 
-  quantile(specd.chains$psi[4,inc.N.1,], probs = c(0.05, 0.5, 0.95))
-psi.means.specd[psi.means.specd$Route == "N2",3:5] <- 
-  quantile(specd.chains$psi[5,inc.N.2,], probs = c(0.05, 0.5, 0.95))
-
-
-
-#' Populate Region
-#' 
-psi.means.specd$Region[psi.means.specd$Route == "EI1" |
-                   psi.means.specd$Route == "EI2"] <- "El Imposible"
-psi.means.specd$Region[psi.means.specd$Route == "N1" |
-                   psi.means.specd$Route == "N2"] <- "Nancuchiname"
-psi.means.specd$Region[psi.means.specd$Route == "M1" |
-                   psi.means.specd$Route == "M2"] <- "Montecristo"
 
 
 #' _____________________________________________________________________________
@@ -164,36 +146,35 @@ psi.means.specd$Region[psi.means.specd$Route == "M1" |
 #' Probability of detection was a function of broadcast species
 #' 
 #' 
-p.det.post.specd <- MCMCsummary(specd.jagsout, 
+p.det.post.richness <- MCMCsummary(richness.jagsout, 
                                 params = grep("^beta", 
-                                              specd.jagsout$parameters.to.save, 
+                                              richness.jagsout$parameters.to.save, 
                                               value = T), 
                                 Rhat = TRUE,
                                 n.eff = TRUE,
                                 probs = c(0.05, 0.5, 0.95))
-p.det.post.specd$Species <- "Specd"
-p.det.post.specd$broadcast.param <- grep("^beta", 
-                                         specd.jagsout$parameters.to.save, 
+p.det.post.richness$broadcast.param <- grep("^beta", 
+                                         richness.jagsout$parameters.to.save, 
                                          value = T)
-p.det.post.specd
+p.det.post.richness
 
 
 
 #' Merge data together and change column names
 #' 
-colnames(p.det.post.specd)
-colnames(p.det.post.specd) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
-                          "n.eff", "Species", "broadcast.param")
+colnames(p.det.post.richness)
+colnames(p.det.post.richness) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
+                          "n.eff", "broadcast.param")
 
 #' Transform to probability scale
 #' 
-p.det.post.specd$LL05.plogis <- plogis(p.det.post.specd$LL05)
-p.det.post.specd$median.plogis <- plogis(p.det.post.specd$median)
-p.det.post.specd$UL95.plogis <- plogis(p.det.post.specd$UL95)
+p.det.post.richness$LL05.plogis <- plogis(p.det.post.richness$LL05)
+p.det.post.richness$median.plogis <- plogis(p.det.post.richness$median)
+p.det.post.richness$UL95.plogis <- plogis(p.det.post.richness$UL95)
 
 #' Save broadcast species as a factor, ordered by confidence
 #' 
-p.det.post.specd$Broadcast <- factor(p.det.post.specd$broadcast.param,
+p.det.post.richness$Broadcast <- factor(p.det.post.richness$broadcast.param,
                                   levels = c("beta.prebroad", "beta.mottled",
                                              "beta.pacific", "beta.crested",
                                              "beta.bw", "beta.spectacled",
@@ -208,15 +189,16 @@ p.det.post.specd$Broadcast <- factor(p.det.post.specd$broadcast.param,
 #' ## Save files
 #' 
 #' Psi Posteriors by year and route
-save(psi.post.specd, file = "data/output_data/specd_psi_posteriors_RtYr.Rdata")
+save(richness.post, file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
 
-#' Psi posteriors across years by species and route
-save(psi.means.specd, file = "data/output_data/specd_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-save(p.det.post.specd, file = "data/output_data/specd_p_detection_posteriors.Rdata")
+save(p.det.post.richness, file = "data/output_data/richness_p_detection_posteriors.Rdata")
 
+#' Species Accounts
+#' 
+save(species.accounts, file = "data/output_data/richness_species_accounts.Rdata")
 
 #' _____________________________________________________________________________
 #' ### Footer
@@ -225,5 +207,5 @@ save(p.det.post.specd, file = "data/output_data/specd_p_detection_posteriors.Rda
 devtools::session_info()
 #' This document was "spun" with:
 #' 
-#' ezspin(file = "programs/e03_processing_results_specd.R", out_dir = "output", fig_dir = "figures", keep_md = F)
+#' ezspin(file = "programs/e04_processing_results_richness.R", out_dir = "output", fig_dir = "figures", keep_md = F)
 #' 

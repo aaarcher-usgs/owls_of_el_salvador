@@ -126,14 +126,14 @@ model.richness <- function(){
   
   # Derived quantities
   for(ss in 1:n.species.aug){
-    spp.occ[ss] <- sum(z[,,,ss]) # number of occupied routes/years among sampled
+    spp.occ[ss] <- sum(z[,,ss,]) # number of occupied routes/years among sampled
     species.present[ss] <- ifelse(spp.occ[ss]>0, 1, 0) # if each species exists
   }
   Nsmall <- sum(species.present) # small estimate of number of species present
   
   for(hh in 1:n.route){
     for(tt in 1:n.year){
-      richness[hh,tt] <- sum(z[hh,tt,,], na.rm = T) # number of species at each route/year
+      richness[hh,tt] <- sum(z[hh,tt,,]) # number of species at each route/year
     }
   }
 }
