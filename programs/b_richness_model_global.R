@@ -133,7 +133,7 @@ model.richness <- function(){
   
   for(hh in 1:n.route){
     for(tt in 1:n.year){
-      richness[hh,tt] <- sum(z[hh,tt,,]) # number of species at each route/year
+      richness[hh,tt] <- sum(w[hh,tt,]) # number of species at each route/year
     }
   }
 }

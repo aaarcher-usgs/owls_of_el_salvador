@@ -163,7 +163,7 @@ richness.jagsout <- jags(data = richness.jags.data,
                       n.chains = 3,
                       n.iter = 20000, #10000
                       n.burnin = 2000, #1000
-                      n.thin = 20)
+                      n.thin = 2)
 
 
 
