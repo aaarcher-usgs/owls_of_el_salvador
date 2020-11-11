@@ -32,11 +32,15 @@ set.seed(258854)
 #' 
 #' 
 #' Jagsout Richness Model
-load(file = "data/output_data/richness_jagsout.Rdata")
+#load(file = "data/output_data/richness_jagsout.Rdata")
 
 #' Access tables, in Rdata format
 #' 
 load(file = "data/processed_data/tables_global.Rdata")
+
+#' Species accounts to summarize by route
+#' 
+load("../data/output_data/richness_species_accounts.Rdata")
 
 #' Survey list
 (route.names <- c("EI1", "EI2", "M1", "M2",  "N1",  "N2") )
@@ -62,15 +66,30 @@ n.species <- length(species.names)
 #           wd = "output")
 
 
-
-
-
-
+#' Species presence by route
+#' 
+species.accounts.byRt <- as.data.frame(matrix(
+  NA, nrow = length(unique(species.accounts$Route)), 
+  ncol = ncol(species.accounts)
+  ))
+colnames(species.accounts.byRt) <- colnames(species.accounts)
+species.accounts.byRt$Route <- unique(species.accounts$Route)
+species.accounts.byRt$Year <- c("2003-2013","2003-2013",
+                                "2003-2013","2003-2013",
+                                "2009-2012","2004-2012")
+species.accounts.byRt$Region <- rep(unique(species.accounts$Region),each=2)
+for(hh in 1:nrow(species.accounts.byRt)){
+  temp.route <- species.accounts.byRt$Route[hh]
+  temp.accounts <- species.accounts[species.accounts$Route == temp.route,]
+  for(ss in 1:10){ #across all 10 species
+    species.accounts.byRt[hh,ss] <- ifelse(sum(temp.accounts[,ss],na.rm = T)>0,1,0)
+  }
+}
 
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
-
+save(species.accounts.byRt, file = "data/output_data/richness_species_accounts_byRt.Rdata")
 
 #' _____________________________________________________________________________
 #' ### Footer

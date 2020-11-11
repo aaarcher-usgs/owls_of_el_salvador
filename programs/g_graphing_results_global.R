@@ -86,28 +86,32 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = Species))+
 #' ## p = Probability of detection
 #' 
 #' Merge data
-p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd, p.det.post.specd)
+p.det.post.richness$Species <- "All Species"
+#' 
+p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd, p.det.post.specd,p.det.post.richness)
 #' Probability of detection was a function of what broadcast species was used, 
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection, fig.height = 8
+#+ p_detection, fig.height = 10
 ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
   geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
-  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
-  scale_fill_manual(values = c("#7fc97f", "#beaed4", "#fdc086"))+
+  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
+                 position = position_dodge(0.9))+
+  scale_fill_manual(values = c("darkgrey", "#7fc97f", "#beaed4", "#fdc086"))+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
              aes(yintercept = median.plogis))+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
              aes(yintercept = LL05.plogis), color = "#ffff99")+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
              aes(yintercept = UL95.plogis), color = "#ffff99")+
-  facet_wrap(~Species, nrow = 3)+
+  facet_wrap(~Species, nrow = 4)+
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        strip.text.x  = element_blank())
+        #strip.text.x  = element_blank(),
+        legend.position = "none")
 
 #' _____________________________________________________________________________
 #' ## Richness p = Probability of detection
