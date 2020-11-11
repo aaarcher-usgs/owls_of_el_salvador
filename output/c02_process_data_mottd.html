@@ -703,7 +703,10 @@ table(mottd.data$Owl_Species_ID)
 
 <p>Save broadcast array for manuscript</p>
 
-<pre><code class="r">save(broadcast.array, file = &quot;data/output_data/broadcast_array.Rdata&quot;)
+<pre><code class="r">broadcast.array &lt;- as.data.frame(broadcast.array)
+colnames(broadcast.array) &lt;- c(&quot;EI1&quot;, &quot;EI2&quot;, &quot;M1&quot;, &quot;M2&quot;, &quot;N1&quot;, &quot;N2&quot;)
+broadcast.array$Station &lt;- 1:10
+save(broadcast.array, file = &quot;data/output_data/broadcast_array.Rdata&quot;)
 </code></pre>
 
 <hr/>
