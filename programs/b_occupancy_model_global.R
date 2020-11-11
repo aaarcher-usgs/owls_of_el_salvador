@@ -27,7 +27,8 @@ model.occ <- function(){
   for(hh in 1:n.route){
     for(tt in 1:n.year){
       #Hyperpriors for Psi ensure a flexible and uninformed prior
-      mu.psi[hh,tt] ~ dunif(0.01,0.99)
+      logit.mu.psi[hh,tt] ~ dnorm(0, 0.2)
+      mu.psi[hh,tt] <- exp(logit.mu.psi[hh,tt])/(1+exp(logit.mu.psi[hh,tt]))
       lnrho.psi[hh,tt] ~ dnorm(5,1)%_%T(0.01,10)
       rho.psi[hh,tt] <- exp(lnrho.psi[hh,tt])
       a.psi[hh,tt] <- mu.psi[hh,tt]*rho.psi[hh,tt]

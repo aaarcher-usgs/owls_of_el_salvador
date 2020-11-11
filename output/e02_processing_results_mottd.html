@@ -294,8 +294,8 @@ set.seed(258854)
 (include.byrow &lt;- all.rows[!all.rows %in% exclude.byrow])
 </code></pre>
 
-<pre><code>##  [1]  1  2  5  6  7  8 10 11 12 13 14 16 17 18 25 26 28 29 30 31 32 34 35 36 37 38 39 41 42 43 45 46 47 48 49 50
-## [37] 51 52 53 54 55 57 58 59 60 61 62 65 66
+<pre><code>##  [1]  1  2  5  6  7  8 10 11 12 13 14 16 17 18 25 26 28 29 30 31 32 34 35 36 37 38 39 41 42 43 45
+## [32] 46 47 48 49 50 51 52 53 54 55 57 58 59 60 61 62 65 66
 </code></pre>
 
 <p>Mottd</p>
@@ -322,8 +322,8 @@ psi.post.mottd$Region[psi.post.mottd$Route == &quot;M.1&quot; |
 colnames(psi.post.mottd)
 </code></pre>
 
-<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;   &quot;Species&quot;
-## [11] &quot;Region&quot;
+<pre><code>##  [1] &quot;mean&quot;    &quot;sd&quot;      &quot;5%&quot;      &quot;50%&quot;     &quot;95%&quot;     &quot;Rhat&quot;    &quot;n.eff&quot;   &quot;Year&quot;    &quot;Route&quot;  
+## [10] &quot;Species&quot; &quot;Region&quot;
 </code></pre>
 
 <pre><code class="r">colnames(psi.post.mottd) &lt;- c(&quot;Psi.mean&quot;, &quot;Psi.sd&quot;, &quot;Psi.LL05&quot;, &quot;Psi.median&quot;,
@@ -413,28 +413,28 @@ p.det.post.mottd$broadcast.param &lt;- grep(&quot;^beta&quot;,
 p.det.post.mottd
 </code></pre>
 
-<pre><code>##                          mean           sd           5%          50%         95% Rhat n.eff Species
-## beta.prebroad    -1.313235956   0.09446089   -1.4695932 -1.312986952 -1.15930661 1.00 15892   Mottd
-## beta.pacific     -0.169093028   0.17557936   -0.4603008 -0.169033639  0.11868490 1.00 15333   Mottd
-## beta.mottled     -0.005398497   0.17313755   -0.2893438 -0.005507609  0.27839301 1.00 17022   Mottd
-## beta.crested     -0.197639048   0.17341859   -0.4852223 -0.196935441  0.08674836 1.00 17324   Mottd
-## beta.bw          -0.261265946   0.17493750   -0.5503884 -0.261985932  0.02681437 1.00 17091   Mottd
-## beta.spectacled  -0.311691261   0.17595654   -0.6032444 -0.310721562 -0.02131774 1.00 16964   Mottd
-## beta.whiskered   -0.011685633   1.37583131   -2.2556166 -0.011902243  2.21885787 1.00 14625   Mottd
-## beta.gbarred     -9.714570941  25.68262981  -34.9454757 -3.334035942  0.06202205 1.22   641   Mottd
-## beta.stygian    -11.801249673  32.89525482  -47.3687761 -3.361013465  0.07470579 1.04   460   Mottd
-## beta.ghorned    -72.605205811 179.90347250 -522.7629215 -4.105388183 -0.03485872 2.02   126   Mottd
-##                 broadcast.param
-## beta.prebroad     beta.prebroad
-## beta.pacific       beta.pacific
-## beta.mottled       beta.mottled
-## beta.crested       beta.crested
-## beta.bw                 beta.bw
-## beta.spectacled beta.spectacled
-## beta.whiskered   beta.whiskered
-## beta.gbarred       beta.gbarred
-## beta.stygian       beta.stygian
-## beta.ghorned       beta.ghorned
+<pre><code>##                          mean          sd           5%          50%        95% Rhat n.eff
+## beta.prebroad    -1.315461347  0.09508564   -1.4746693 -1.314657100 -1.1606349 1.00 15950
+## beta.pacific     -0.053713752  0.18640958   -0.3665373 -0.051455065  0.2511337 1.00 15915
+## beta.mottled     -0.008514971  0.17241448   -0.2900835 -0.009343455  0.2747983 1.00 16206
+## beta.crested     -0.018185163  0.18247625   -0.3189769 -0.016522050  0.2817927 1.00 17210
+## beta.bw          -0.118954908  0.18634820   -0.4233218 -0.120721096  0.1884400 1.00 16996
+## beta.spectacled  -0.103756398  0.18325959   -0.4073224 -0.104140824  0.1980488 1.00 17470
+## beta.whiskered   -1.135788782  0.57480745   -2.1061108 -1.110845507 -0.2451375 1.00 16499
+## beta.gbarred     -2.776684892  1.09255862   -4.7711890 -2.616243851 -1.2962638 1.00 12026
+## beta.stygian     -1.947082696  0.77905108   -3.3540486 -1.868312999 -0.8074892 1.00 13942
+## beta.ghorned    -24.043768800 57.70094868 -106.3066468 -7.143117462 -2.4880284 1.13   113
+##                 Species broadcast.param
+## beta.prebroad     Mottd   beta.prebroad
+## beta.pacific      Mottd    beta.pacific
+## beta.mottled      Mottd    beta.mottled
+## beta.crested      Mottd    beta.crested
+## beta.bw           Mottd         beta.bw
+## beta.spectacled   Mottd beta.spectacled
+## beta.whiskered    Mottd  beta.whiskered
+## beta.gbarred      Mottd    beta.gbarred
+## beta.stygian      Mottd    beta.stygian
+## beta.ghorned      Mottd    beta.ghorned
 </code></pre>
 
 <p>Merge data together and change column names</p>
@@ -442,8 +442,8 @@ p.det.post.mottd
 <pre><code class="r">colnames(p.det.post.mottd)
 </code></pre>
 
-<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;             &quot;Rhat&quot;           
-## [7] &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
+<pre><code>## [1] &quot;mean&quot;            &quot;sd&quot;              &quot;5%&quot;              &quot;50%&quot;             &quot;95%&quot;            
+## [6] &quot;Rhat&quot;            &quot;n.eff&quot;           &quot;Species&quot;         &quot;broadcast.param&quot;
 </code></pre>
 
 <pre><code class="r">colnames(p.det.post.mottd) &lt;- c(&quot;mean&quot;, &quot;sd&quot;, &quot;LL05&quot;, &quot;median&quot;, &quot;UL95&quot;, &quot;Rhat&quot;,
@@ -499,7 +499,7 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -509,9 +509,9 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-11-03                  
+##  date     2020-11-11                  
 ## 
-## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
@@ -572,6 +572,7 @@ p.det.post.mottd$UL95.plogis &lt;- plogis(p.det.post.mottd$UL95)
 ##  mime           0.9     2020-02-04 [1] CRAN (R 4.0.2)
 ##  munsell        0.5.0   2018-06-12 [1] CRAN (R 4.0.2)
 ##  nnet           7.3-14  2020-04-26 [1] CRAN (R 4.0.2)
+##  pander       * 0.6.3   2018-11-06 [1] CRAN (R 4.0.2)
 ##  pillar         1.4.6   2020-07-10 [1] CRAN (R 4.0.2)
 ##  pkgbuild       1.1.0   2020-07-13 [1] CRAN (R 4.0.2)
 ##  pkgconfig      2.0.3   2019-09-22 [1] CRAN (R 4.0.2)

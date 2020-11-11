@@ -93,7 +93,7 @@ ks.prebroad <- ks.mottled <- ks.pacific <- ks.crested <- ks.bw <- ks.spectacled 
 
 broadcast.array <- array(c(
   rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4), # routes EI1/EI2
-  rep(c("whiskered", "mottled", "gbarred", "stygian", "ghorned"),2), # routes M1/M2
+  rep(c("whiskered", "mottled", "gbarred", "stygian", "ghorned"),4), # routes M1/M2
   rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4)), # routes N1/N2
   dim = c(n.station, n.route))
 broadcast.array
