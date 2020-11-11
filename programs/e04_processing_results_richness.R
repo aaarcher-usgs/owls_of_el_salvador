@@ -54,11 +54,11 @@ n.species <- length(species.names)
 #' Create traceplots of parameters (creates PDF)
 #'
 #' Richness
-# MCMCtrace(richness.jagsout,
-#           pdf = TRUE,
-#           open_pdf = FALSE,
-#           filename = "richnessTrace",
-#           wd = "output")
+MCMCtrace(richness.jagsout,
+          pdf = TRUE,
+          open_pdf = FALSE,
+          filename = "richnessTrace",
+          wd = "output")
 
 
 
