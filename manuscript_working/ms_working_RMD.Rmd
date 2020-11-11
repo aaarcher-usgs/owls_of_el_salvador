@@ -90,6 +90,11 @@ This model provides a consistent probability of detection for all surveys in the
 
 The broadcast species were consistent at each station across years, but varied by route. For stations $j = 1, 2, \ldots, 10$ at El Imposible and Nancachaname, the following broadcast species were used, respectively: Pacific, Mottled, Crested, Black and White, Spectacled, Mottled, Crested, Black and White, and Spectacled. At Montecristo, the following species were called at stations $j = 1, 2, \ldots, 10$, respectively: Whiskered, Mottled, Gaut Barred, Stygian, Great Horned, Whiskered, Mottled, Gaut Barred, Stygian, and Great Horned. Thus, the effective sample sizes of the different broadcast species varied. 
 
+``` {r}
+load(file = "../data/output_data/broadcast_array.Rdata")
+pander(broadcast.array)
+```
+
 ### Occupany Model Implementation
 
 We used the R2jags package in R [@R:2014,@Plummer:2013] to implement the occupancy model for three owl species: Mottled, Spectacled, and FerPy owls. These owls had enough positive detections to analyze occupancy, as Mottled, Spectacled, and FerPy owls had 542, 137, and 187 positive detections over the 11 year period, respectively. Based on our understanding of owl ecology, we assumed that Spectacled and FerPy owls would not occupy route M1 in Montecristo, so we removed M1 from those species' occupancy models. 
