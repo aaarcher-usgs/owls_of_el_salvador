@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Methods
 
-*Table 1XX. Species detection records by route. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador, although specific survey years varied by route (Year range in table).*
+*Table 1XX. Species detection records by route. Ones indicate that that species was detected during that route and year, and zeros indicated that those owls were not detected, although they may have been present and undetected. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador, although specific survey years varied by route, which was given in column "Year"*
 
 
 ``` {r}
@@ -35,8 +35,8 @@ Let
 
 \[
 \begin{aligned}
-t  &=  \text{the years of surveys (here }t = 1,2,\ldots,11)\\
-h  &=  \text{the individual routes (here }h = 1,2,\ldots,6)\\
+t  &=  \text{the years of surveys (here }t = 1,2,\ldots,11)\text{ corresponding with 2003-2013}\\
+h  &=  \text{the individual routes (here }h = 1,2,\ldots,6)\text{ corresponding with EI1, EI2, M1, M2, N1, N2}\\
 i  &=  \text{the individual surveys conducted in each year and route (here }i = 1,2,3)\\
 j  &=  \text{the individual stations along each route (here }j = 1,2,\ldots,10)\\
 k  &=  \text{the broadcast species (here }k = 1,2,\ldots,10)\\
@@ -88,7 +88,7 @@ where, generally, $\text{logit}(p_{t,h,i,j,k}) = \beta_kX_k$, or more specifical
 \end{aligned}
 \]
 
-This model provides a consistent probability of detection for all surveys in the first two minutes of each survey before the broadcast owl recording was played ($k = \text{Pre-broadcast}$). Then, the probability of detection for each post-broadcast time period would depend on the species of broadcast owl. This allowed species-specific behavior in response to the different broadcast owl species [@Baumgardt:2019]. We used means parameterization such that the coefficients were interpretable as the effect of that specific broadcast species $k$ (including the pre-broadcast time frame). The priors for every logistic model coefficient $\beta_k$ were chosen to be near uniform as recommended in @Gelman:2008. Specifically, we used the Cauchy prior as such: $\beta_k \sim \text{Cauchy}(\text{precision} = 0.16)$.
+This model provides a consistent probability of detection for all surveys in the first two minutes of each survey before the broadcast owl recording was played ($k = \text{Pre-broadcast}$). Then, the probability of detection for each post-broadcast time period would depend on the species of broadcast owl. This allowed species-specific behavior in response to the different broadcast owl species [@Baumgardt:2019]. We used means parameterization such that the coefficients were interpretable as the effect of that specific broadcast species $k$ (including the pre-broadcast time frame). The priors for every logistic model coefficient $\beta_k$ were chosen to be near uniform as recommended in @Gelman:2008. Specifically, we used the Cauchy prior such that: $\beta_k \sim \text{Cauchy}(\text{precision} = 0.16)$.
 
 The broadcast species were consistent at each station across years, but varied by route (Table 2XX).  Thus, the effective sample sizes of the different broadcast species varied. 
 
@@ -99,9 +99,9 @@ load(file = "../data/output_data/broadcast_array.Rdata")
 pander(broadcast.array)
 ```
 
-### Occupany Model Implementation
+### Occupancy Model Implementation
 
-We used the R2jags package in R [@R:2014,@Plummer:2013] to implement the occupancy model for three owl species: Mottled, Spectacled, and FerPy owls. These owls had enough positive detections to analyze occupancy, as Mottled, Spectacled, and FerPy owls had 542, 137, and 187 positive detections over the 11 year period, respectively. Based on our understanding of owl ecology, we assumed that Spectacled and FerPy owls would not occupy route M1 in Montecristo, so we removed M1 from those species' occupancy models. 
+We used the R2jags package in R [@R:2014,@Plummer:2013] to implement the occupancy model for three owl species: Mottled, Spectacled, and FerPy owls. These owls had enough positive detections to analyze occupancy, as Mottled, Spectacled, and FerPy owls had 542, 137, and 187 positive detections over the 11 year period, respectively. Based on our understanding of owl ecology, we assumed that Spectacled and FerPy owls would not occupy route M1 in Montecristo, so we removed M1 from those species' occupancy analyses. 
 
 For all three species' occupancy models, we ran 3 chains for 10,000 iterations and 1000 iterations discarded as burn-in, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i}$ were equivalent to one if an owl was detected in that survey $i$ and otherwise zero. We visually inspected traceplots to verify that chains mixed well (Supplemental information S1-3xx). 
 
@@ -112,7 +112,7 @@ To model species richness at each route in each year, we assumed that there were
 $$
 w_{t,h,s} \sim \text{Bernoulli}(\Omega_h)
 $$
-where $\Omega_h$ was the probability of species presence in each route $h$. Now, the presence of an owl species in any route, year, and survey, $z_{t,h,i,s}$, was conditional on the probability of occupancy for that route, year, and species $\psi_{t,h,s}$ *and* that species belong to that route's community ($w_{t,h,s}$):
+where $\Omega_h$ was the probability of species presence in each route $h$. In the richness model, the presence of an owl species in any route, year, and survey, $z_{t,h,i,s}$, was conditional on the probability of occupancy for that route, year, and species $\psi_{t,h,s}$ *and* that species belonging to that route's community ($w_{t,h,s}$):
 
 $$
 z_{t,h,i,s} \sim \text{Bernoulli}(w_{t,h,s}*\psi_{t,h,s})
@@ -153,11 +153,11 @@ We ran 3 chains for 20,000 iterations and 2000 iterations discarded as burn-in a
 
 # Results
 
-## Occupany Model Results
+## Occupancy Model Results
 
 Averaged across years, we found that the probability of occupancy was somewhat higher for Mottled owls than for FerPy or Spectacled owls in both routes of El Imposible and in M2 route of Montecristo (Fig. 1X). The probability of occupancy across all three species and both routes of Nancuchiname were relatively high (Fig. 1XX). We found that the probability of occupancy for Mottled owls was relatively consistent across time in El Imposible and in N2 route (Fig. 2XX), but that it seemed to increase in the last 6 or so years of the surveys in M2 and N1 routes (Fig. 2XX). The probability of occupancy in M1 seemed to have decreased through time for Mottled owls (Fig. 2XX). 
 
-The probability of occupancy for FerPy and Spectacled stayed relatively consistently low across time in routes EI1, EI2, and M2 other than a higher probability of occupancy for FerPy in EI1 in the early years of the surveys (Figs. 3XX and 4XX). FerPy probability of occupancy was relatively high in both routes of Nancuchaname except in 2008 and 2009 (Fig. 3XX), and the probability of occupany for the Spectacled owl slightly fluctuated year to year in the Nancuchaname routes (Fig. 4XX). 
+The probability of occupancy for FerPy and Spectacled stayed relatively consistently low across time in routes EI1, EI2, and M2 other than a higher probability of occupancy for FerPy in EI1 in the early years of the surveys (Figs. 3XX and 4XX). FerPy probability of occupancy was relatively high in both routes of Nancuchaname except in 2008 and 2009 (Fig. 3XX), and the probability of occupancy for the Spectacled owl slightly fluctuated year to year in the Nancuchaname routes (Fig. 4XX). 
 
 
 ## Richness Model Results
@@ -166,24 +166,24 @@ Median species richness varied from 1 to 5, depending on route and year (Fig. 5X
 
 ## Detection Results
 
-Adding in all detected species to one richness model increased the precision of the estimates of the effect of broadcast species on detection probability (i.e., compare All Species with individual occupany results in Fig. 6XXX). When incorporating all detected species, broadcasting calls from Mottled, Pacific, Crested, Black and White, and Spectacled Owls increased detection probability; whereas broadcasting the Great Horned owl calls decreased detection (Fig. 6XXX). 
+Adding in all detected species to one richness model increased the precision of the estimates of the effect of broadcast species on detection probability (i.e., compare All Species with individual occupancy results in Fig. 6XXX). When incorporating all owl species, broadcasting calls from Mottled, Pacific, Crested, Black and White, and Spectacled Owls increased detection probability; whereas broadcasting the Great Horned owl calls decreased detection (Fig. 6XXX). 
 
 The probability of detection when predicted through independent occupancy analyses varied little during the timeframe before broadcast recordings were played (Pre-broadcast); however, the probability of detecting owls after broadcast species were called varied by broadcast species and between Mottled, FerPy, and Spectacled owls (Fig. 6XX). The probability of detecting Mottled Owls increased after broadcasting Mottled, Pacific, Crested, Black and White, or Spectacled owls. The probability of detecting FerPy owls increased after broadcasting Mottled and Pacific owl calls, and the probability of detecting Spectacled owls increased after broadcasting Pacific, Black and White, and Spectacled owls (Fig. 6XX).
 
 # Figures
 
-![1XX. Probability of occupancy ($\psi_{t,h}$) averaged by route $h$ for Mottled, FerPy, and Spectacled Owls. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{psi_means}](../output/figures/psi_means-1.png)
+![1XX. Probability of occupancy ($\psi_{t,h}$) averaged by route for Mottled, FerPy, and Spectacled Owls. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{psi_means}](../output/figures/psi_means-1.png)
 
-![2XX. Probability of occupancy ($\psi_{t,h}$) by route $h$ and year $t$ for Mottled Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure2}](../output/figures/mottd_psi_byYr-1.png)
+![2XX. Probability of occupancy by route and year for Mottled Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure2}](../output/figures/mottd_psi_byYr-1.png)
 
 
 
-![3XX. Probability of occupancy ($\psi_{t,h}$) by route $h$ and year $t$ for FerPy Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure3}](../output/figures/ferpy_psi_byYr-1.png)
+![3XX. Probability of occupancy by route and year for FerPy Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure3}](../output/figures/ferpy_psi_byYr-1.png)
 
-![4XX. Probability of occupancy ($\psi_{t,h}$) by route $h$ and year $t$ for Spectacled Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure4}](../output/figures/specd_psi_byYr-1.png)
+![4XX. Probability of occupancy by route and year for Spectacled Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure4}](../output/figures/specd_psi_byYr-1.png)
 
 ![5XX. Species richness by route and year. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median (black dot) $\pm$ 90% credible intervals (black lines). The number of species detected at each route and year are indicated with a red dot. \label{figure5}](../output/figures/richness_byRtYr-1.png)
 
-![6XX. The logistic regression parameters that related the probability of detecting owls ($\p_{t,h,i,j,k}$) to the broadcast timeframe (pre-broadcast) or species. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure6}](../output/figures/p_detection-1.png)
+![6XX. The logistic regression parameters that related the probability of detecting owls to the broadcast timeframe (pre-broadcast) or species. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure6}](../output/figures/p_detection-1.png)
 
 # References
