@@ -111,12 +111,19 @@ summary(tab.owls$Owl_Number)
 #' How many of each species of owl are there?
 table(tab.owls$Owl_Species_ID)
 
-#' Make "None" and "NoID" match
+#' Remove "None" owls - these are records that don't have associated owls IDed at those surveys
 #' 
-tab.owls$Owl_Species_ID <- ifelse(test = tab.owls$Owl_Species_ID == "None" |
-                                    tab.owls$Owl_Species_ID == "NoID",
-                                  yes = "Unk",
-                                  no = tab.owls$Owl_Species_ID)
+tab.owls <- tab.owls[tab.owls$Owl_Species_ID != "None",]
+
+#' There is one NoID owl with no positive records, remove
+#' 
+tab.owls[tab.owls$Owl_Species_ID == "NoID",1:7]
+tab.owls <- tab.owls[tab.owls$Owl_ID != 468,]
+
+#' Rename NoID as "Unk"
+#' 
+tab.owls$Owl_Species_ID[tab.owls$Owl_Species_ID=="NoID"] <- "Unk"
+#' 
 table(tab.owls$Owl_Species_ID)
 
 

@@ -93,7 +93,7 @@ n.species <- length(species.names)
 #' 
 #' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
 #' 
-n.aug <- 4 #number of species that may have been present but were undetected
+n.aug <- 5 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
 
 
@@ -106,9 +106,9 @@ ks.prebroad <- ks.mottled <- ks.pacific <- ks.crested <- ks.bw <- ks.spectacled 
   ks.whiskered <- ks.gbarred <- ks.stygian <- ks.ghorned <- ks
 
 broadcast.array <- array(c(
-  rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4), # routes EI1/EI2
-  rep(c("whiskered", "mottled", "gbarred", "stygian", "ghorned"),4), # routes M1/M2
-  rep(c("pacific", "mottled", "crested", "bw", "spectacled"),4)), # routes N1/N2
+  rep(c("PacSc", "Mottd", "Crested", "BW", "Specd"),4), # routes EI1/EI2
+  rep(c("Whisk", "Mottd", "Guat Barred", "Styg", "GrHor"),4), # routes M1/M2
+  rep(c("PacSc", "Mottd", "Crested", "BW", "Specd"),4)), # routes N1/N2
   dim = c(n.station, n.route))
 broadcast.array
 
@@ -117,23 +117,23 @@ for(hh in 1:n.route){
     ks.prebroad[hh,jj,1] <- 1
     ks.prebroad[hh,jj,2] <- 0
     
-    if(broadcast.array[jj,hh] == "pacific"){
+    if(broadcast.array[jj,hh] == "PacSc"){
       ks.pacific[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "mottled"){
+    }else if(broadcast.array[jj,hh] == "Mottd"){
       ks.mottled[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "crested"){
+    }else if(broadcast.array[jj,hh] == "Crested"){
       ks.crested[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "bw"){
+    }else if(broadcast.array[jj,hh] == "BW"){
       ks.bw[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "spectacled"){
+    }else if(broadcast.array[jj,hh] == "Specd"){
       ks.spectacled[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "whiskered"){
+    }else if(broadcast.array[jj,hh] == "Whisk"){
       ks.whiskered[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "gbarred"){
+    }else if(broadcast.array[jj,hh] == "Guat Barred"){
       ks.gbarred[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "stygian"){
+    }else if(broadcast.array[jj,hh] == "Styg"){
       ks.stygian[hh,jj,2] <- 1
-    }else if(broadcast.array[jj,hh] == "ghorned"){
+    }else if(broadcast.array[jj,hh] == "GrHor"){
       ks.ghorned[hh,jj,2] <- 1
     }
   }
