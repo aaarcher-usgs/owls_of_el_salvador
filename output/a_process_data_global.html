@@ -287,8 +287,7 @@ dim(tab.stations)
 ## 4          15        11 EI1.4   1899-12-31 19:36:00          27      35.0     0          0
 ## 5          16        11 EI1.5   1899-12-31 19:55:00          26      35.0     0          0
 ## 6          17        11 EI1.6   1899-12-31 20:18:00          27      34.8     0          0
-## # … with 3 more variables: Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;,
-## #   Station_Comments &lt;chr&gt;
+## # … with 3 more variables: Broadcast_Species &lt;chr&gt;, Background_Noise &lt;dbl&gt;, Station_Comments &lt;chr&gt;
 </code></pre>
 
 <pre><code class="r">unique(tab.stations$Station)
@@ -364,22 +363,22 @@ table(tab.survey$year)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3 
-##  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59 
-##  10  10  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10 
-##  60  61  62  63  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84 
-##  10  10  10  10  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10 
-##  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   3  10   2   3  10 
+##  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61 
+##  10  10  10  10  10  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  62  63  64  65  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87 
+##  10  10  10  10  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <pre><code class="r">(station_id_2002 &lt;- tab.stations$Stations_ID[tab.stations$Survey_ID %in% survey_id_2002])
 </code></pre>
 
-<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199
-## [24] 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230
-## [47] 231 232 233 234 235 236 237
+<pre><code>##  [1] 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+## [25] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 218 219 220 228 229 230 231 232
+## [49] 233 234 235 236 237
 </code></pre>
 
 <pre><code class="r">tab.stations &lt;- tab.stations[!tab.stations$Survey_ID %in% survey_id_2002,]
@@ -387,14 +386,14 @@ table(tab.stations$Survey_ID)
 </code></pre>
 
 <pre><code>## 
-##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41 
-##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10 
-##  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65 
-##  10  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  66  67  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90 
-##  10  10  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
-##  91  92  93  94  95  96  97  98  99 100 101 102 
-##  10  10  10  10  10  10  10  10  10  10  10  10
+##  11  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  34  35  36  37  38  39  40  41  42 
+##  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10   2   3  10  10  10  10  10  10  10 
+##  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67 
+##  10  10  10  10  10   5  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  68  69  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93 
+##  10  10  10  10   3   3  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10  10 
+##  94  95  96  97  98  99 100 101 102 
+##  10  10  10  10  10  10  10  10  10
 </code></pre>
 
 <h3>Owls Table</h3>
@@ -465,18 +464,37 @@ summary(tab.owls$Owl_Number)
 ##      10     184      17       3     530       2       8      27     137       1       2
 </code></pre>
 
-<p>Make &ldquo;None&rdquo; and &ldquo;NoID&rdquo; match</p>
+<p>Remove &ldquo;None&rdquo; owls - these are records that don&#39;t have associated owls IDed at those surveys</p>
 
-<pre><code class="r">tab.owls$Owl_Species_ID &lt;- ifelse(test = tab.owls$Owl_Species_ID == &quot;None&quot; |
-                                    tab.owls$Owl_Species_ID == &quot;NoID&quot;,
-                                  yes = &quot;Unk&quot;,
-                                  no = tab.owls$Owl_Species_ID)
-table(tab.owls$Owl_Species_ID)
+<pre><code class="r">tab.owls &lt;- tab.owls[tab.owls$Owl_Species_ID != &quot;None&quot;,]
+</code></pre>
+
+<p>There is one NoID owl with no positive records, remove</p>
+
+<pre><code class="r">tab.owls[tab.owls$Owl_Species_ID == &quot;NoID&quot;,1:7]
+</code></pre>
+
+<pre><code>## # A tibble: 2 x 7
+##   Owl_ID Stations_ID Owl_Species_ID Owl_Number Minute_1 Minute_2 `Minute_6-12`
+##    &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;    &lt;lgl&gt;        
+## 1    468         344 NoID                    1 FALSE    FALSE    FALSE        
+## 2   1148         117 NoID                    3 FALSE    TRUE     FALSE
+</code></pre>
+
+<pre><code class="r">tab.owls &lt;- tab.owls[tab.owls$Owl_ID != 468,]
+</code></pre>
+
+<p>Rename NoID as &ldquo;Unk&rdquo;</p>
+
+<pre><code class="r">tab.owls$Owl_Species_ID[tab.owls$Owl_Species_ID==&quot;NoID&quot;] &lt;- &quot;Unk&quot;
+</code></pre>
+
+<pre><code class="r">table(tab.owls$Owl_Species_ID)
 </code></pre>
 
 <pre><code>## 
 ##    Barn   FerPy Fulvous   GrHor   Mottd   PacSc   Specd    Styg     Unk   Whisk 
-##      10     184      17       3     530      27     137       1      10       2
+##      10     184      17       3     530      27     137       1       1       2
 </code></pre>
 
 <hr/>
@@ -717,7 +735,7 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -727,9 +745,9 @@ unique(tab.stations$Broadcast_Species[tab.stations$Station %in% stations.NAs])
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-11-11                  
+##  date     2020-11-17                  
 ## 
-## ─ Packages ────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
