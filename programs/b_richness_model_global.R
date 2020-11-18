@@ -89,17 +89,21 @@ model.richness <- function(){
   
   # Likelihood
   for(hh in 1:n.route){ # 6 routes
+    
+
+    
+    
     for(tt in 1:n.year){ # all years
       for(ss in 1:n.species.aug){ # all augmented species
         
-        # Is each species present in that route and year?
-        w[hh,tt,ss] ~ dbern(omega[hh])
+        # Is each species present in that route's community?
+        w[hh,ss] ~ dbern(omega[hh])
         
         for(ii in 1:n.survey){ # 1 to 3 surveys per year
           
           # Occupancy by route and year and survey based on 
           #     psi, probability of occupancy for each route/year
-          z[hh,tt,ss,ii] ~ dbern(psi[hh,tt,ss]*w[hh,tt,ss]) 
+          z[hh,tt,ss,ii] ~ dbern(psi[hh,tt,ss]*w[hh,ss]) 
           
           
           
@@ -125,15 +129,29 @@ model.richness <- function(){
   } # end likelihood
   
   # Derived quantities
-  for(ss in 1:n.species.aug){
-    spp.occ[ss] <- sum(z[,,ss,]) # number of occupied routes/years among sampled
-    species.present[ss] <- ifelse(spp.occ[ss]>0, 1, 0) # if each species exists
+  for(hh in 1:n.route){
+    for(ss in 1:n.species.aug){
+      # number of occupied years
+      spp.occ[hh,ss] <- sum(z[hh,,ss,]) 
+      
+      # if each species exists by route
+      species.present[hh,ss] <- ifelse(spp.occ[hh,ss]>0, 1, 0) 
+    }
   }
-  Nsmall <- sum(species.present) # small estimate of number of species present
+
   
   for(hh in 1:n.route){
+    
+    richness[hh] <- sum(w[hh,]) # number of species at each route
+    
     for(tt in 1:n.year){
-      richness[hh,tt] <- sum(w[hh,tt,]) # number of species at each route/year
+      for(ss in 1:n.species.aug){
+        # If each species was present in each route/year
+        occ.RtYrSpp[hh,tt,ss] <- max(z[hh,tt,ss,])
+        
+      }
+      # Sum up if each species was present, to get richness estimates by route/year
+      richness.RtYr[hh,tt] <- sum(occ.RtYrSpp[hh,tt,])
     }
   }
 }

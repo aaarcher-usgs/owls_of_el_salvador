@@ -71,7 +71,7 @@ n.species <- length(species.names)
 #' 
 #' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
 #' 
-n.aug <- 4 #number of species that may have been present but were undetected
+n.aug <- 5 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
 
 
@@ -110,12 +110,12 @@ richness.jags.data <- list(
 z.init <- array(NA, 
                 dim = c(n.route, n.year, n.species.aug, n.survey))
 w.init <- array(NA,
-                dim = c(n.route, n.year, n.species.aug))
+                dim = c(n.route, n.species.aug))
 
 for(hh in 1:n.route){
   for(tt in 1:n.year){
     for(ss in 1:n.species.aug){
-      w.init[hh,tt,ss] <- ifelse(ss <= n.species, yes = 1, no = 0)
+
       
       for(ii in 1:n.survey){
         if(sum(is.na(ys.aug[hh,tt,ss,ii,,])==FALSE)==0){ # no survey conducted here
@@ -127,10 +127,22 @@ for(hh in 1:n.route){
     }
   }
 }
+for(hh in 1:n.route){
+    for(ss in 1:n.species){
+      w.init[hh,ss] <- max(z.init[hh,,ss,], na.rm = T)
+    }
+    for(ss in (n.species+1):n.species.aug){
+      w.init[hh,ss] <- 0
+    }
+}
+
 #' Check initials (should be summary of ys)
+#'
 #' 
-#' Owl names correspond with 1:10 rows
+#' Owl names correspond with 1:10 rows (z) or 1:10 cols (w)
 species.names
+#' 
+w.init
 #' 
 z.init[4,3,,] # rows are different species, M2, 2005
 z.init[3,9,,] # rows are different species, M1, 2011
@@ -149,6 +161,7 @@ richness.jagsout <- jags(data = richness.jags.data,
                                              "spp.occ",
                                              "Nsmall",
                                              "richness",
+                                             "richness.RtYr",
                                              "beta.prebroad",
                                              "beta.pacific",
                                              "beta.mottled",
@@ -158,7 +171,8 @@ richness.jagsout <- jags(data = richness.jags.data,
                                              "beta.whiskered",
                                              "beta.gbarred",
                                              "beta.stygian",
-                                             "beta.ghorned"), 
+                                             "beta.ghorned",
+                                             "species.present"), 
                       model.file = model.richness, 
                       n.chains = 3,
                       n.iter = 20000, #10000
@@ -197,7 +211,6 @@ richness.post <- richness.post[include.byrow,]
 
 
 
-
 #' Populate Region
 #' 
 richness.post$Region[richness.post$Route == "EI1" |
@@ -212,6 +225,13 @@ colnames(richness.post) <- c("Richness.mean", "Richness.sd", "Richness.LL05",
                              "Richness.UL95", "Richness.Rhat", "Richness.neff", 
                              "Year", "Route", "Region")
 
+#' Omega Post
+#' 
+omega.post <- MCMCsummary(richness.jagsout, 
+                          params = "omega", 
+                          Rhat = TRUE,
+                          n.eff = TRUE,
+                          probs = c(0.05, 0.5, 0.95))
 
 
 #' _____________________________________________________________________________
@@ -308,6 +328,12 @@ save(richness.post, file = "data/output_data/richness_psi_posteriors_RtYr.Rdata"
 #' Probability of detection by broadcast species and species of analysis
 #' 
 save(p.det.post.richness, file = "data/output_data/richness_p_detection_posteriors.Rdata")
+
+#' Omega Posteriors
+#' 
+save(omega.post, file = "data/output_data/richness_omega_posteriors.Rdata")
+
+
 
 #' Species Accounts
 #' 
