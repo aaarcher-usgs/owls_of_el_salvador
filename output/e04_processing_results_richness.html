@@ -248,14 +248,7 @@ set.seed(258854)
 
 <p>Species accounts to summarize by route</p>
 
-<pre><code class="r">load(&quot;../data/output_data/richness_species_accounts.Rdata&quot;)
-</code></pre>
-
-<pre><code>## Warning in readChar(con, 5L, useBytes = TRUE): cannot open compressed file &#39;../data/output_data/
-## richness_species_accounts.Rdata&#39;, probable reason &#39;No such file or directory&#39;
-</code></pre>
-
-<pre><code>## Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection
+<pre><code class="r">load(&quot;data/output_data/richness_species_accounts.Rdata&quot;)
 </code></pre>
 
 <p>Survey list</p>
@@ -319,7 +312,78 @@ for(hh in 1:nrow(species.accounts.byRt)){
   temp.route &lt;- species.accounts.byRt$Route[hh]
   temp.accounts &lt;- species.accounts[species.accounts$Route == temp.route,]
   for(ss in 1:10){ #across all 10 species
-    species.accounts.byRt[hh,ss] &lt;- ifelse(sum(temp.accounts[,ss],na.rm = T)&gt;0,1,0)
+    species.accounts.byRt[hh,ss] &lt;- sum(temp.accounts[,ss],na.rm = T)
+  }
+}
+
+full.species.list &lt;- c(colnames(species.accounts)[c(1,3:4,2,5,7:10)], 
+                       &quot;Crested&quot;,&quot;Burrowing&quot;, 
+                       &quot;BW&quot;,&quot;Striped&quot;, 
+                       &quot;Saw-whet&quot;, &quot;Unk&quot;)
+sci.names.list &lt;- c(&quot;Ciccaba virgata&quot;,#mottled
+                    &quot;Glaucidium brasilianum&quot;,#ferpy
+                    &quot;Pulsatrix perspicillata&quot;,#specd
+                    &quot;Megascops cooperi&quot;, #pacsc
+                    &quot;Tyto alba&quot;, #barn
+                    &quot;Asio stygius&quot;, #stygian
+                    &quot;M. trichopsis&quot;,#whiskered
+                    &quot;Bubo virginianus&quot;,#grhor
+                    &quot;Strix fulvescens&quot;,#fulvous
+                    &quot;Lophostrix cristata&quot;,#crested
+                    &quot;Athene cunicularia&quot;,#burrowing
+                    &quot;Ciccaba nigrolineata&quot;, #bw
+                    &quot;Pseudoscops clamator&quot;,#striped
+                    &quot;Aegolius ridgwayi&quot;,#unspotted saw-whet
+                    &quot;Unknown&quot;
+                    )
+common.names.list &lt;- c(&quot;Mottled&quot;,#mottled
+                       &quot;Ferruginous Pygmy&quot;,#ferpy
+                       &quot;Spectacled&quot;,#specd
+                       &quot;Pacific Screech&quot;, #pacsc
+                       &quot;Barn&quot;, #barn
+                       &quot;Stygian&quot;, #stygian
+                       &quot;Whiskered Screech&quot;,#whiskered
+                       &quot;Great Horned&quot;,#grhor
+                       &quot;Fulvous&quot;,#fulvous
+                       &quot;Lophostrix cristata&quot;,#crested
+                       &quot;Burrowing&quot;,#burrowing
+                       &quot;Black-and-white&quot;,#bw
+                       &quot;Striped&quot;,#striped
+                       &quot;Unspotted Saw-whet&quot;,#unspotted saw-whet
+                       &quot;Unknown&quot;
+)
+species.counts.long &lt;- as.data.frame(matrix(
+  c(full.species.list, sci.names.list, common.names.list),
+  ncol = 3,
+  nrow = 15,
+  byrow = F
+))
+colnames(species.counts.long) &lt;- c(&quot;ID&quot;, &quot;Scientific&quot;, &quot;Common&quot;)
+rownames(species.counts.long) &lt;- full.species.list
+species.counts.long$N2 &lt;- species.counts.long$N1 &lt;-
+  species.counts.long$M2 &lt;- species.counts.long$M1 &lt;-
+  species.counts.long$EI2 &lt;- species.counts.long$EI1 &lt;- 0
+
+
+for(hh in 1:6){
+  temp.route &lt;- species.accounts.byRt$Route[hh]
+  temp.surveys &lt;- tab.survey$Survey_ID[tab.survey$Route_ID==temp.route]
+  temp.stations &lt;- 
+    tab.stations$Stations_ID[tab.stations$Survey_ID %in% temp.surveys]
+  temp.accounts &lt;- tab.owls[tab.owls$Stations_ID %in% temp.stations,]
+  for(ss in 1:9){ #across all 13 species
+    temp.species &lt;- full.species.list[ss]
+    species.counts.long[temp.species,temp.route] &lt;- 
+      nrow(temp.accounts[temp.accounts$Owl_Species_ID==temp.species,])
+  }
+  for(ss in 10:14){
+    temp.species &lt;- full.species.list[ss]
+    species.counts.long[temp.species,temp.route] &lt;- 0
+  }
+  for(ss in 15){
+    temp.species &lt;- full.species.list[ss]
+    species.counts.long[temp.species,temp.route] &lt;- 
+      nrow(temp.accounts[temp.accounts$Owl_Species_ID==temp.species,])
   }
 }
 </code></pre>
@@ -328,7 +392,8 @@ for(hh in 1:nrow(species.accounts.byRt)){
 
 <h2>Save files</h2>
 
-<pre><code class="r">save(species.accounts.byRt, file = &quot;data/output_data/richness_species_accounts_byRt.Rdata&quot;)
+<pre><code class="r">save(species.accounts.byRt, species.counts.long,
+     file = &quot;data/output_data/richness_species_accounts_byRt.Rdata&quot;)
 </code></pre>
 
 <hr/>
@@ -340,7 +405,7 @@ for(hh in 1:nrow(species.accounts.byRt)){
 <pre><code class="r">devtools::session_info()
 </code></pre>
 
-<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 4.0.2 (2020-06-22)
 ##  os       macOS Mojave 10.14.6        
@@ -350,9 +415,9 @@ for(hh in 1:nrow(species.accounts.byRt)){
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/Chicago             
-##  date     2020-11-11                  
+##  date     2020-11-17                  
 ## 
-## ─ Packages ────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────
 ##  package      * version date       lib source        
 ##  abind          1.4-5   2016-07-21 [1] CRAN (R 4.0.2)
 ##  assertthat     0.2.1   2019-03-21 [1] CRAN (R 4.0.2)
