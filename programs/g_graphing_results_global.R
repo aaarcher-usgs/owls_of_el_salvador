@@ -143,7 +143,7 @@ ggplot(data = p.det.post.richness, aes(y = median.plogis, x = Broadcast))+
 #' 
 #' All 6 routes
 #+ richness_byRtYr
-ggplot(data = richness.post, 
+ggplot(data = richness.RtYr.post, 
        aes(x = Year, y = Richness.median, group = Route))+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+
@@ -159,7 +159,7 @@ ggplot(data = richness.post,
 #' El Imposible
 #' 
 #+ richness_ElImposible
-ggplot(data = richness.post[richness.post$Region == "El Imposible",], 
+ggplot(data = richness.RtYr.post[richness.RtYr.post$Region == "El Imposible",], 
        aes(x = Year, y = Richness.median))+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+
@@ -174,7 +174,7 @@ ggplot(data = richness.post[richness.post$Region == "El Imposible",],
 #' Nancuchiname
 #' 
 #+ richness_Nancuchiname
-ggplot(data = richness.post[richness.post$Region == "Nancuchiname",], 
+ggplot(data = richness.RtYr.post[richness.RtYr.post$Region == "Nancuchiname",], 
        aes(x = Year, y = Richness.median))+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+
@@ -189,7 +189,7 @@ ggplot(data = richness.post[richness.post$Region == "Nancuchiname",],
 #' Montecristo
 #' 
 #+ richness_Montecristo
-ggplot(data = richness.post[richness.post$Region == "Montecristo",], 
+ggplot(data = richness.RtYr.post[richness.RtYr.post$Region == "Montecristo",], 
        aes(x = Year, y = Richness.median))+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+

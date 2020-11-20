@@ -267,6 +267,13 @@ save(ks.prebroad, ks.pacific, ks.mottled, ks.crested, ks.bw, ks.spectacled,
   file = "data/processed_data/augmented_jags_ks.Rdata")
 
 
+#' Processed broadcast array
+#' 
+broadcast.array <- as.data.frame(broadcast.array)
+colnames(broadcast.array) <- c("EI1", "EI2", "M1", "M2", "N1", "N2")
+broadcast.array$Station <- 1:10
+save(broadcast.array, file = "data/output_data/broadcast_array.Rdata")
+
 #' _____________________________________________________________________________
 #' ### Footer
 #' 

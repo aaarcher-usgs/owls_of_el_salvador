@@ -91,13 +91,15 @@ model.richness <- function(){
   for(hh in 1:n.route){ # 6 routes
     
 
-    
+    for(ss in 1:n.species.aug){
+      # Is each species present in that route's community?
+      w[hh,ss] ~ dbern(omega[hh])
+    }
     
     for(tt in 1:n.year){ # all years
       for(ss in 1:n.species.aug){ # all augmented species
         
-        # Is each species present in that route's community?
-        w[hh,ss] ~ dbern(omega[hh])
+        
         
         for(ii in 1:n.survey){ # 1 to 3 surveys per year
           
