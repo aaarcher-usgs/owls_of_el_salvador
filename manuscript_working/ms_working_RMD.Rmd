@@ -109,17 +109,17 @@ For all three species' occupancy models, we ran 3 chains for 10,000 iterations a
 
 ## Richness Model Framework
 
-To model species richness at each route in each year, we assumed that there were 15 possible species present in El Salvador. This included the 10 species observed during our surveys (including unknown owl species) and an additional 5 species that we never observed during our surveys (Table 1XX). This upper limit to species richness relates directly to the 13 species known to inhabit El Salvador (cite Owls of El Salvador here) plus our unknown species and one species we identified (Stygian owl), which was previously undocumented in El Salvador. We thus augmented our owl detection data with 5 additional potential species with all-zero detection records [@Royle:2007]. For each species $s$ (where $s = 1,2, \ldots,15$), $w_{t,h,s}$ was a binary indicator of whether that owl species was present in each route and year:
+To model species richness at each route in each year, we assumed that there were 15 possible species present in El Salvador. This included the 10 species observed during our surveys (including unknown owl species) and an additional 5 species that we never observed during our surveys (Table 1XX). This upper limit to species richness relates directly to the 13 species known to inhabit El Salvador (cite Owls of El Salvador here) plus our unknown species and one species we identified (Stygian owl), which was previously undocumented in El Salvador. We thus augmented our owl detection data with 5 additional potential species with all-zero detection records [@Royle:2007]. For each species $s$ (where $s = 1,2, \ldots,15$), $w_{h,s}$ was a binary indicator of whether that owl species was present in each route:
 
 $$
-w_{t,h,s} \sim \text{Bernoulli}(\Omega_h)
+w_{h,s} \sim \text{Bernoulli}(\Omega_h)
 $$
 where $\Omega_h$ was the probability of species presence in each route $h$ [@Broms:2016]. We used prior recommended by @Broms:2016, @Guillera-Arroita:2019, and others for $\Omega_h$: $\Omega_h \sim \text{Beta}(0.001, 1)$.
 
-In the richness model, the presence of an owl species in any route, year, and survey, $z_{t,h,i,s}$, was conditional on the probability of occupancy for that route, year, and species $\psi_{t,h,s}$ *and* that species belonging to that route's community that year ($w_{t,h,s}$):
+In the richness model, the presence of an owl species in any route, year, and survey, $z_{t,h,i,s}$, was conditional on the probability of occupancy for that route, year, and species $\psi_{t,h,s}$ *and* that species belonging to that route's community that year ($w_{h,s}$):
 
 $$
-z_{t,h,i,s} \sim \text{Bernoulli}(w_{t,h,s}*\psi_{t,h,s})
+z_{t,h,i,s} \sim \text{Bernoulli}(w_{h,s}*\psi_{t,h,s})
 $$
 
 
@@ -138,10 +138,15 @@ b^\psi_{t,h,s} &= \rho^\psi - \mu^\psi_{t,h}\rho^\psi\\
 
 This parameterization allowed us to borrow strength across species in determining the mean probability of occupancy ($\mu^\psi_{t,h}$) for each route and year [@Guillera-Arroita:2019].
 
-Richness was conditional on each species' presence and was estimated as the sum of owl species present in each route and year:
+Richness of each route was conditional on each species' presence and was estimated as the sum of owl species present in that route:
 
 $$
-\text{Richness}_{t,h} = \sum_{s=1}^{14} w_{t,h,s} 
+\text{Richness}_{h} = \sum_{s=1}^{15} w_{h,s} 
+$$
+
+We also estimated year-to-year richness ($\text{Richness}^*_{t,h}$) by route by adding up the number of unique species that were present in each route, year, and survey. We first determined if a species was present in any of that route and year's set of surveys with a species-specific binary indicator $\vartheta_{t,h,s}$. Then, we summed up the number of species present in each year and route:
+$$
+\text{Richness}^*_{t,h} = \sum_{s=1}^{15} \vartheta_{t,h,s} 
 $$
 
 Consistent with our approach for the occupancy models, we assumed that detecting an owl depended on an individual of that species being present during that survey ($z_{t,h,i,s} = 1$) and the species-specific probability of detection $p_{t,h,i,j,k,s}$, which was related to the broadcast call:
@@ -154,7 +159,7 @@ where generally $\text{logit}(p_{t,h,i,j,k,s}) = \beta_kX_k$ for each broadcast 
 
 ### Richness Model Implementation
 
-We used the R2jags package in R [@R:2014] [@Plummer:2013] to implement the richness model. We ran 3 chains for 20,000 iterations with 2000 iterations discarded as burn-in and a thinning rate of 2, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i,s}$ were equivalent to one if that species of owl was detected in that survey and otherwise zero. Similarly, initial values for whether a species belonged to a route's community ($w_{t,h,s}$) were equivalent to one if that species of owl was detected in that route and year and otherwise zero. We visually inspected traceplots to verify that chains mixed well (Supplemental information S4xx). 
+We used the R2jags package in R [@R:2014] [@Plummer:2013] to implement the richness model. We ran 3 chains for 20,000 iterations with 2000 iterations discarded as burn-in and a thinning rate of 2, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i,s}$ were equivalent to one if that species of owl was detected in that survey and otherwise zero. Similarly, initial values for whether a species belonged to a route's community ($w_{h,s}$) were equivalent to one if that species of owl was detected in that route and otherwise zero. We visually inspected traceplots to verify that chains mixed well (Supplemental information S4xx). 
 
 # Results
 
@@ -167,7 +172,9 @@ For routes EI1, EI2, and M2, the probability of occupancy for Ferruginous Pygmy 
 
 ## Richness Model Results
 
-Median species richness varied from 1 to 5, depending on route and year (Fig. 5XXX). At most, the median species richness was one species higher than the number of species detected at any single route and year; however, the 90% credible intervals of richness added up to 4 new undetected species in several years of EI1 surveys and two years of M2 surveys (Fig. 5XXX). The shared information through random effects by route tended to smooth out the year-to-year variation in predicted richness, which in a few instances meant that the median predicted richness was less than the number of observed species in that route and year (Fig. 5XXX)
+Our estimates of each route's community richness (Richness$_{h}$) and 90% credible intervals were 4 (4,4), 5 (4,5), 3 (3,4), 4 (4,5), 5 (5,5), and 5 (5,5) for EI1, EI2, M1, M2, N1, and N2, respectively. These were equivalent to the number of species detected in each route (Table 1XX), indicating that the probability of occupancy for undetected species was low and no additional species were predicted to be present in a route's community, other than those deteced. 
+
+When analyzed by year, median species richness (Richness$^*_{t,h}$) varied from 0 to 4, depending on route and year (Fig. 5XXX). At most, the median species richness was one species higher than the number of species detected at any single route and year; however, the 90% credible intervals of richness added up to 3 new undetected species 2004 in M2 (Fig. 5XXX). .
 
 ## Detection Results
 
@@ -187,7 +194,7 @@ The probability of detection when analyzed with single-species occupancy models 
 
 ![4XX. Probability of occupancy by route and year for Spectacled Owl. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure4}](../output/figures/specd_psi_byYr-1.png)
 
-![5XX. Species richness by route and year. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median (black dot) $\pm$ 90% credible intervals (black lines). The number of species detected at each route and year are indicated with a red dot. \label{figure5}](../output/figures/richness_byRtYr-1.png)
+![5XX. Species richness (Richness*) by route and year. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median (black dot) $\pm$ 90% credible intervals (black lines). The number of species detected at each route and year are indicated with a red dot. \label{figure5}](../output/figures/richness_byRtYr-1.png)
 
 ![6XX. The logistic regression parameters that related the probability of detecting owls to the broadcast timeframe (pre-broadcast) or species. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Posteriors were summarized with median $\pm$ 90% credible intervals. \label{figure6}](../output/figures/p_detection-1.png)
 
