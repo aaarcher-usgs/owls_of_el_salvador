@@ -16,6 +16,7 @@ library(devtools) # documentation-related
 
 # analysis-related
 library(R2jags)
+library(MCMCvis)
 
 #' Clear environment and set seed
 #' 
@@ -292,7 +293,7 @@ species.present.chains <- MCMCchains(richness.jagsout,
 #+ savejags, eval = F
 #save(richness.post, file = "data/output_data/richness_jagsout_posteriors.Rdata")
 #' Richness Posteriors 
-# save(richness.post, richness.chains, 
+# save(richness.post, richness.chains,
 #      file = "data/output_data/richness_psi_posteriors.Rdata")
 # save(richness.RtYr.chains, richness.RtYr.post,
 #      file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
@@ -300,22 +301,22 @@ species.present.chains <- MCMCchains(richness.jagsout,
 #' Save posteriors
 #' 
 #' Mu(psi)
-# save(mu.psi.post, mu.psi.chains, 
+# save(mu.psi.post, mu.psi.chains,
 #      file = "data/output_data/richness_mu_psi_posteriors.Rdata")
 
 #' Rho(psi)
 #' 
-# save(rho.psi.chains, rho.psi.post, 
+# save(rho.psi.chains, rho.psi.post,
 #      file = "data/output_data/richness_rho_psi_posteriors.Rdata")
 
 #' Omega
 #' #' 
-#' save(omega.chains, omega.post, 
-#'      file = "data/output_data/richness_omega_posteriors.Rdata")
+# save(omega.chains, omega.post,
+#      file = "data/output_data/richness_omega_posteriors.Rdata")
 
 #' Spp.occ
 #' #' 
-# save(spp.occ.post, spp.occ.chains, 
+# save(spp.occ.post, spp.occ.chains,
 #      file = "data/output_data/richness_spp_occ_posteriors.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
@@ -325,15 +326,12 @@ species.present.chains <- MCMCchains(richness.jagsout,
 
 #' Species present
 #' 
-# save(species.present.chains, species.present.post, 
+# save(species.present.chains, species.present.post,
 #     file = "data/output_data/richness_species_present_posteriors.Rdata")
 
 
 
 
-#' Species Accounts
-#' 
-save(species.accounts, file = "data/output_data/richness_species_accounts.Rdata")
 
 
 #' _____________________________________________________________________________

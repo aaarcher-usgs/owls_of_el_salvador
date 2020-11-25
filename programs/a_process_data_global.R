@@ -113,17 +113,10 @@ table(tab.owls$Owl_Species_ID)
 
 #' Remove "None" owls - these are records that don't have associated owls IDed at those surveys
 #' 
-tab.owls <- tab.owls[tab.owls$Owl_Species_ID != "None",]
+tab.owls <- tab.owls[tab.owls$Owl_Species_ID != "None" &
+                       tab.owls$Owl_Species_ID != "NoID",]
 
-#' There is one NoID owl with no positive records, remove
-#' 
-tab.owls[tab.owls$Owl_Species_ID == "NoID",1:7]
-tab.owls <- tab.owls[tab.owls$Owl_ID != 468,]
 
-#' Rename NoID as "Unk"
-#' 
-tab.owls$Owl_Species_ID[tab.owls$Owl_Species_ID=="NoID"] <- "Unk"
-#' 
 table(tab.owls$Owl_Species_ID)
 
 

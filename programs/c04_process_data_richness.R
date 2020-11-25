@@ -91,7 +91,7 @@ n.species <- length(species.names)
 
 #' We should augment with M >> n, where n = 10
 #' 
-#' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401)
+#' Owls of El Salvador lists 13 total species recorded in El Salvador (Table 11.1, p401), so with Stygian, this should be 14
 #' 
 n.aug <- 5 #number of species that may have been present but were undetected
 n.species.aug <- n.species + n.aug
@@ -102,8 +102,8 @@ n.species.aug <- n.species + n.aug
 ks <-  array(0, dim = c(n.route, 
                         n.station, 
                         n.broadcast))
-ks.prebroad <- ks.mottled <- ks.pacific <- ks.crested <- ks.bw <- ks.spectacled <-
-  ks.whiskered <- ks.gbarred <- ks.stygian <- ks.ghorned <- ks
+ks.prebroad <- ks.mottled <- ks.pacific <- ks.crested <- ks.bw <- 
+  ks.spectacled <- ks.whiskered <- ks.gbarred <- ks.stygian <- ks.ghorned <- ks
 
 broadcast.array <- array(c(
   rep(c("PacSc", "Mottd", "Crested", "BW", "Specd"),4), # routes EI1/EI2

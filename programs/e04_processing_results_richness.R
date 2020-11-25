@@ -81,6 +81,7 @@ year.index <- 1:length(year.names)
 #' There were 10 observed owls (if we include unknown observations)
 (species.names <- unique(tab.owls$Owl_Species_ID))
 n.species <- length(species.names)
+n.species.aug <- n.species + 5
 
 #' _____________________________________________________________________________
 #' ## Post-process Psi = Probability of occupancy
@@ -90,6 +91,9 @@ n.species <- length(species.names)
 route.index <- 1:length(route.names)
 (year.names <- 2003:2013)
 year.index <- 1:length(year.names)
+n.route <- length(route.index)
+
+
 #' ### Calculate median, 95% quantile and 5% quantile of psi posteriors by route
 #' and year
 #' 
@@ -205,7 +209,7 @@ species.accounts.byRt$Region <- rep(unique(species.accounts$Region),each=2)
 for(hh in 1:nrow(species.accounts.byRt)){
   temp.route <- species.accounts.byRt$Route[hh]
   temp.accounts <- species.accounts[species.accounts$Route == temp.route,]
-  for(ss in 1:10){ #across all 10 species
+  for(ss in 1:n.species){ #across all 9 species
     species.accounts.byRt[hh,ss] <- sum(temp.accounts[,ss],na.rm = T)
   }
 }
@@ -213,7 +217,7 @@ for(hh in 1:nrow(species.accounts.byRt)){
 (full.species.list <- c(colnames(species.accounts)[c(1,3:4,2,5:9)], 
                        "Crested","Burrowing", 
                        "BW","Striped", 
-                       "Saw-whet", "Unk"))
+                       "Saw-whet"))
 
 sci.names.list <- c("Ciccaba virgata",#mottled
                     "Glaucidium brasilianum",#ferpy
@@ -228,8 +232,7 @@ sci.names.list <- c("Ciccaba virgata",#mottled
                     "Athene cunicularia",#burrowing
                     "Ciccaba nigrolineata", #bw
                     "Pseudoscops clamator",#striped
-                    "Aegolius ridgwayi",#unspotted saw-whet
-                    "Unknown"
+                    "Aegolius ridgwayi"#unspotted saw-whet
                     )
 common.names.list <- c("Mottled",#mottled
                        "Ferruginous Pygmy",#ferpy
@@ -244,13 +247,12 @@ common.names.list <- c("Mottled",#mottled
                        "Burrowing",#burrowing
                        "Black-and-white",#bw
                        "Striped",#striped
-                       "Unspotted Saw-whet",#unspotted saw-whet
-                       "Unknown"
+                       "Unspotted Saw-whet"#unspotted saw-whet
 )
 species.counts.long <- as.data.frame(matrix(
   c(full.species.list, sci.names.list, common.names.list),
   ncol = 3,
-  nrow = 15,
+  nrow = n.species.aug,
   byrow = F
 ))
 colnames(species.counts.long) <- c("ID", "Scientific", "Common")
@@ -260,33 +262,32 @@ species.counts.long$N2 <- species.counts.long$N1 <-
   species.counts.long$EI2 <- species.counts.long$EI1 <- 0
 
 
-for(hh in 1:6){
+for(hh in 1:n.route){
   temp.route <- species.accounts.byRt$Route[hh]
   temp.surveys <- tab.survey$Survey_ID[tab.survey$Route_ID==temp.route]
   temp.stations <- 
     tab.stations$Stations_ID[tab.stations$Survey_ID %in% temp.surveys]
   temp.accounts <- tab.owls[tab.owls$Stations_ID %in% temp.stations,]
-  for(ss in 1:9){ #across all 13 species
+  for(ss in 1:n.species){ #across all 13 species
     temp.species <- full.species.list[ss]
     species.counts.long[temp.species,temp.route] <- 
       nrow(temp.accounts[temp.accounts$Owl_Species_ID==temp.species,])
   }
-  for(ss in 10:14){
+  for(ss in (n.species+1):n.species.aug){
     temp.species <- full.species.list[ss]
     species.counts.long[temp.species,temp.route] <- 0
   }
-  for(ss in 15){
-    temp.species <- full.species.list[ss]
-    species.counts.long[temp.species,temp.route] <- 
-      nrow(temp.accounts[temp.accounts$Owl_Species_ID==temp.species,])
-  }
 }
-
+species.counts.long
 
 
 #' _____________________________________________________________________________
 #' ## Save files
 #' 
+#' Species Accounts
+#' 
+save(species.accounts, file = "data/output_data/richness_species_accounts.Rdata")
+
 save(species.accounts.byRt, species.counts.long,
      file = "data/output_data/richness_species_accounts_byRt.Rdata")
 
