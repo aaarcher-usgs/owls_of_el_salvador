@@ -45,15 +45,21 @@ load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
 #' ### By Route and Year
 #' 
 #' Ferpy
-#+ ferpy_psi_byYr
+#' 
+#' Add in 0 for M1
+psi.post.ferpy <- rbind(psi.post.ferpy, 0)
+psi.post.ferpy$Route[psi.post.ferpy$Psi.mean == 0] <- "M.1"
+psi.post.ferpy$Year[psi.post.ferpy$Psi.mean == 0] <- 2013
+#' 
+#+ ferpy_psi_byYr, fig.width = 2.8346, dpi = 600, fig.height = 4.5
 ggplot(data = psi.post.ferpy, 
        aes(x = Year, y = Psi.median, group = Route, shape = Route))+
   geom_pointrange(aes(ymin = Psi.LL05, ymax = Psi.UL95, color = Route),
                   position = position_dodge(width = .1))+
   geom_line(aes(color = Route))+
-  scale_color_manual(values = c("blue", "lightblue", "lightgreen", "red", "pink"))+
+  scale_color_manual(values = c("blue", "lightblue", "lightgreen", "red", "pink", "black"))+
   scale_shape_manual(values = c(0, 16, 0, 16, 0, 16))+
-  facet_wrap(~Region, nrow = 3)+
+  facet_wrap(~Route, nrow = 3)+
   theme_minimal()+
   xlab("Year")+
   ylab("Probability of Occupancy")+

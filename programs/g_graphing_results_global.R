@@ -69,18 +69,67 @@ psi.means.ferpy$Species[max(nrow(psi.means.ferpy))] <- "FerPy"
 #'
 #' Merge data
 psi.means <- rbind(psi.means.ferpy, psi.means.specd, psi.means.mottd)
-
+psi.means$code <- ifelse(psi.means$Species == "FerPy", "FEPO", 
+                         ifelse(psi.means$Species == "Mottd", "MOOW", "SPEO"))
 #'
-#+ psi_means
-ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = Species))+
-  geom_bar(stat = "identity", aes(fill = Species), position= position_dodge())+
+#+ psi_means, fig.width = 2.8346, dpi = 600, fig.height = 4.5
+ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = code))+
+  geom_bar(stat = "identity", aes(fill = code), position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
   facet_wrap(~Region, nrow = 3,scales = "free_x")+
   ylim(c(0,1))+
-  scale_fill_manual(values = c("#7fc97f", "#beaed4", "#fdc086"))+
+  scale_fill_manual(values = c("#cccccc", "#969696", "#525252"))+
   theme_minimal()+
   ylab("Probability of Occupancy")+
-  xlab("Route")
+  xlab("Route")+
+  theme(legend.position = "bottom")+
+  theme(legend.text=element_text(size=6), 
+        legend.title = element_blank(),
+        axis.text = element_text(size=6),
+        axis.title.y = element_text(size=8),
+        axis.title.x = element_blank(),
+        strip.text = element_blank(),
+        legend.key.size = unit(1, "line"))
+
+#' 
+#' ### By Route, and by year
+#'
+#' Merge psi posts
+#' 
+psi.post.all <- rbind(psi.post.ferpy, psi.post.mottd, psi.post.specd)
+psi.post.all <- rbind(psi.post.all, 0)
+psi.post.all$Year[psi.post.all$Psi.mean == 0] <- 2000
+psi.post.all$Species[psi.post.all$Psi.mean == 0] <- "FerPy"
+psi.post.all$Route[psi.post.all$Psi.mean == 0] <- "M.1"
+psi.post.all <- rbind(psi.post.all, 0.00001)
+psi.post.all$Year[psi.post.all$Psi.mean == 0.00001] <- 2000
+psi.post.all$Species[psi.post.all$Psi.mean == 0.00001] <- "Specd"
+psi.post.all$Route[psi.post.all$Psi.mean == 0.00001] <- "M.1"
+
+psi.post.all$code <- ifelse(psi.post.all$Species == "FerPy", "FEPO", 
+                            ifelse(psi.post.all$Species == "Mottd", "MOOW", "SPEO"))
+#'
+#+ psi_byYr, fig.width = 5, dpi = 600, fig.height = 4.6
+ggplot(data = psi.post.all, 
+       aes(x = Year, y = Psi.median))+
+  geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), color = "#b5b5b5")+
+  geom_line()+
+  geom_point()+
+  #facet_grid(code~Route)+
+  facet_grid(Route~code)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Probability of Occupancy")+
+  scale_x_continuous(breaks = 2003:2013, limits = c(2003,2013))+
+  theme(axis.text.x = element_text(size=6, angle = 90),
+        axis.text.y = element_text(size=6),
+        axis.title = element_text(size=8),
+        #axis.title.x = element_blank(),
+        panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
+        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+
 
 #' _____________________________________________________________________________
 #' ## p = Probability of detection
@@ -142,19 +191,29 @@ ggplot(data = p.det.post.richness, aes(y = median.plogis, x = Broadcast))+
 #' 
 #' 
 #' All 6 routes
-#+ richness_byRtYr
+#+ richness_byRtYr, fig.width = 2.8346, dpi = 600, fig.height = 4.6
 ggplot(data = richness.RtYr.post, 
        aes(x = Year, y = Richness.median, group = Route))+
+  geom_ribbon(aes(ymax = richness.detected, ymin = 0), fill = "#cccccc")+
+  geom_ribbon(aes(ymin = Richness.median, ymax = Richness.UL95), fill = "#808080")+
+  geom_ribbon(aes(ymin = richness.detected, ymax = Richness.median), fill = "#808080")+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+
-  geom_point(aes(y = richness.detected), color = "red")+
   facet_wrap(~Route, nrow = 3)+
   theme_minimal()+
   xlab("Year")+
   ylab("Species Richness")+
   scale_x_continuous(breaks = 2003:2013)+
-  scale_y_continuous(breaks = seq(0,14,by=2))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_y_continuous(breaks = seq(0,14,by=2), limits = c(0,6))+
+  #theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  theme(axis.text.x = element_text(size=6, angle = 90),
+        axis.text.y = element_text(size=6),
+        axis.title = element_text(size=8),
+        #axis.title.x = element_blank(),
+        panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
+        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
 
 #' El Imposible
 #' 
