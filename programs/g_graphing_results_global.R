@@ -45,7 +45,7 @@ load(file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
 load(file = "data/output_data/specd_p_detection_posteriors.Rdata")
 load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
 load(file = "data/output_data/mottd_p_detection_posteriors.Rdata")
-load(file = "data/output_data/richness_p_detection_posteriors.Rdata")
+load(file = "data/plotting_data/richness_p_detection_posteriors.Rdata")
 
 #' Species accounts
 #' 
@@ -109,7 +109,7 @@ psi.post.all$Route[psi.post.all$Psi.mean == 0.00001] <- "M.1"
 psi.post.all$code <- ifelse(psi.post.all$Species == "FerPy", "FEPO", 
                             ifelse(psi.post.all$Species == "Mottd", "MOOW", "SPEO"))
 #'
-#+ psi_byYr, fig.width = 5, dpi = 600, fig.height = 4.6
+#+ psi_byYr, fig.width = 5.67, dpi = 600, fig.height = 4.6
 ggplot(data = psi.post.all, 
        aes(x = Year, y = Psi.median))+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), color = "#b5b5b5")+
@@ -138,29 +138,48 @@ ggplot(data = psi.post.all,
 p.det.post.richness$Species <- "All Species"
 #' 
 p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd, p.det.post.specd,p.det.post.richness)
+table(p.det.post$Broadcast)
+
+table(p.det.post$Species)
+p.det.post$Species[p.det.post$Species == "FerPy"] <- "FEPO"
+p.det.post$Species[p.det.post$Species == "Mottd"] <- "MOOW"
+p.det.post$Species[p.det.post$Species == "Specd"] <- "SPEO"
+
+#' 
+#' 
 #' Probability of detection was a function of what broadcast species was used, 
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection, fig.height = 10
+#+ p_detection, fig.width = 2.8346, dpi = 600, fig.height = 3
 ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
-  geom_bar(stat = "identity", position = position_dodge(), aes(fill = Species))+
+  #geom_bar(stat = "identity", position = position_dodge(), 
+  #         color = "#dddddd", fill = "#dddddd")+
+  
+  scale_fill_manual(values = c("darkgrey", "#7fc97f", "#beaed4", "#fdc086"))+
+  #geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+  #           aes(yintercept = median.plogis), color = "#777777")+
+  #geom_rect(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",],
+  #            aes(ymin = LL05.plogis, max = UL95.plogis, xmin = -Inf, xmax = Inf), fill = "red")+
+  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = LL05.plogis), color = "#999999")+
+  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
+             aes(yintercept = UL95.plogis), color = "#999999")+
+  geom_point(size = 0.5)+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
-  scale_fill_manual(values = c("darkgrey", "#7fc97f", "#beaed4", "#fdc086"))+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
-             aes(yintercept = median.plogis))+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
-             aes(yintercept = LL05.plogis), color = "#ffff99")+
-  geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
-             aes(yintercept = UL95.plogis), color = "#ffff99")+
-  facet_wrap(~Species, nrow = 4)+
+  facet_wrap(~Species, nrow = 2)+
   ylab("Probability of Detection")+
   xlab("Broadcast Species")+
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        #strip.text.x  = element_blank(),
-        legend.position = "none")
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 5),
+        legend.position = "none",
+        axis.text.y = element_text(size=6),
+        axis.title = element_text(size=6),
+        panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
+        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
 
 #' _____________________________________________________________________________
 #' ## Richness p = Probability of detection
@@ -169,10 +188,11 @@ ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species)
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection_richness, fig.height = 4
+#+ p_detection_richness, fig.width = 2.8346, dpi = 600, fig.height = 4.4
 ggplot(data = p.det.post.richness, aes(y = median.plogis, x = Broadcast))+
   geom_bar(stat = "identity", position = position_dodge() )+
-  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), position = position_dodge(0.9))+
+  geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
+                 position = position_dodge(0.9))+
   scale_fill_manual(values = c("#7fc97f", "#beaed4", "#fdc086"))+
   geom_hline(data = p.det.post.richness[p.det.post.richness$broadcast.param == "beta.prebroad",], 
              aes(yintercept = median.plogis))+
@@ -191,12 +211,14 @@ ggplot(data = p.det.post.richness, aes(y = median.plogis, x = Broadcast))+
 #' 
 #' 
 #' All 6 routes
-#+ richness_byRtYr, fig.width = 2.8346, dpi = 600, fig.height = 4.6
+#+ richness_byRtYr, fig.width = 5.67, dpi = 600, fig.height = 4.4
 ggplot(data = richness.RtYr.post, 
        aes(x = Year, y = Richness.median, group = Route))+
   geom_ribbon(aes(ymax = richness.detected, ymin = 0), fill = "#cccccc")+
-  geom_ribbon(aes(ymin = Richness.median, ymax = Richness.UL95), fill = "#808080")+
-  geom_ribbon(aes(ymin = richness.detected, ymax = Richness.median), fill = "#808080")+
+  geom_ribbon(aes(ymin = Richness.median, 
+                  ymax = Richness.UL95), fill = "#999999")+
+  geom_ribbon(aes(ymin = richness.detected, 
+                  ymax = Richness.median), fill = "#999999")+
   geom_pointrange(aes(ymin = Richness.LL05, ymax = Richness.UL95))+
   geom_line()+
   facet_wrap(~Route, nrow = 3)+
@@ -205,12 +227,11 @@ ggplot(data = richness.RtYr.post,
   ylab("Species Richness")+
   scale_x_continuous(breaks = 2003:2013)+
   scale_y_continuous(breaks = seq(0,14,by=2), limits = c(0,6))+
-  #theme(axis.text.x = element_text(angle = 45, hjust = 1))+
   theme(axis.text.x = element_text(size=6, angle = 90),
         axis.text.y = element_text(size=6),
         axis.title = element_text(size=8),
-        #axis.title.x = element_blank(),
-        panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
+        panel.border = element_rect(linetype = "solid", 
+                                    fill = NA, color = "#969696"),
         strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
