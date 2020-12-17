@@ -38,7 +38,7 @@ set.seed(258854)
 load(file = "data/output_data/richness_psi_posteriors.Rdata")
 load(file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
 
-#' Save posteriors
+#' Posteriors
 #' 
 #' Mu(psi)
 load(file = "data/output_data/richness_mu_psi_posteriors.Rdata")
@@ -58,6 +58,11 @@ load(file = "data/output_data/richness_spp_occ_posteriors.Rdata")
 #' Probability of detection by broadcast species and species of analysis
 #' 
 load(file = "data/output_data/richness_p_detection_posteriors.Rdata")
+# delete spurious columns?
+p.det.post.richness <- p.det.post.richness[,!is.na(colnames(p.det.post.richness))]
+colnames(p.det.post.richness)
+
+
 
 #' Species present
 #' 
@@ -105,11 +110,13 @@ all.rows <- 1:(length(route.index)*length(year.index))
 
 #' Richness
 #' 
-richness.RtYr.post$Year <- rep(year.names, each = length(route.index))
-richness.RtYr.post$Route <- 
+tempYear <- rep(year.names, each = length(route.index))
+tempYear <- tempYear[include.byrow]
+tempRoute <- 
   rep(c("EI1", "EI2", "M1", "M2", "N1", "N2"), length(year.index))
-richness.RtYr.post <- richness.RtYr.post[include.byrow,]
-
+tempRoute <- tempRoute[include.byrow]
+richness.RtYr.post$Year <- tempYear
+richness.RtYr.post$Route <- tempRoute
 
 
 #' Populate Region
@@ -124,7 +131,7 @@ colnames(richness.RtYr.post)
 colnames(richness.RtYr.post) <- c("Richness.mean", "Richness.sd", "Richness.LL05", 
                              "Richness.median",
                              "Richness.UL95", "Richness.Rhat", "Richness.neff", 
-                             "Year", "Route", "Region")
+                             "Year", "Route", "Region", "richness.d", "richness.detected")
 
 
 
@@ -171,8 +178,8 @@ for(rr in 1:nrow(richness.RtYr.post)){
 #' Merge data together and change column names
 #' 
 colnames(p.det.post.richness)
-colnames(p.det.post.richness) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
-                                   "n.eff", "broadcast.param")
+#colnames(p.det.post.richness) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
+#                                   "n.eff", "broadcast.param")
 
 #' Transform to probability scale
 #' 
@@ -189,8 +196,8 @@ p.det.post.richness$Broadcast <- factor(p.det.post.richness$broadcast.param,
                                                    "beta.whiskered", "beta.gbarred",
                                                    "beta.stygian", "beta.ghorned"),
                                         labels = c("Pre-broadcast", "Mottled",
-                                                   "Pacific", "Crested", "Black and White",
-                                                   "Spectacled", "Whiskered", "Guat Barred",
+                                                   "Pacific Screech", "Crested", "Black-and-white",
+                                                   "Spectacled", "Whiskered Screech", "Fulvous",
                                                    "Stygian", "Great Horned"))
 
 
@@ -295,13 +302,13 @@ save(species.accounts.byRt, species.counts.long,
 #' 
 #' 
 save(p.det.post.richness, p.det.chains,
-    file = "data/output_data/richness_p_detection_posteriors.Rdata")
+    file = "data/plotting_data/richness_p_detection_posteriors.Rdata")
 
 #' Richness Posteriors 
 save(richness.post, richness.chains, 
-    file = "data/output_data/richness_psi_posteriors.Rdata")
+    file = "data/plotting_data/richness_psi_posteriors.Rdata")
 save(richness.RtYr.chains, richness.RtYr.post,
-    file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
+    file = "data/plotting_data/richness_psi_posteriors_RtYr.Rdata")
 
 #' _____________________________________________________________________________
 #' ### Footer

@@ -200,8 +200,8 @@ p.det.post.ferpy$Broadcast <- factor(p.det.post.ferpy$broadcast.param,
                                              "beta.whiskered", "beta.gbarred",
                                              "beta.stygian", "beta.ghorned"),
                                   labels = c("Pre-broadcast", "Mottled",
-                                             "Pacific", "Crested", "Black and White",
-                                             "Spectacled", "Whiskered", "Guat Barred",
+                                             "Pacific Screech", "Crested", "Black-and-white",
+                                             "Spectacled", "Whiskered Screech", "Fulvous",
                                              "Stygian", "Great Horned"))
 
 #' _____________________________________________________________________________
