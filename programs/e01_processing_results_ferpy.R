@@ -208,14 +208,14 @@ p.det.post.ferpy$Broadcast <- factor(p.det.post.ferpy$broadcast.param,
 #' ## Save files
 #' 
 #' Psi Posteriors by year and route
-save(psi.post.ferpy, file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
+save(psi.post.ferpy, file = "data/plotting_data/ferpy_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-save(psi.means.ferpy, file = "data/output_data/ferpy_psi_posteriors_RtSpp.Rdata")
+save(psi.means.ferpy, file = "data/plotting_data/ferpy_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-save(p.det.post.ferpy, file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
+save(p.det.post.ferpy, file = "data/plotting_data/ferpy_p_detection_posteriors.Rdata")
 
 
 #' _____________________________________________________________________________

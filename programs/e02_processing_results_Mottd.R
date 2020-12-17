@@ -213,14 +213,14 @@ p.det.post.mottd$Broadcast <- factor(p.det.post.mottd$broadcast.param,
 #' ## Save files
 #' 
 #' Psi Posteriors by year and route
-save(psi.post.mottd, file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
+save(psi.post.mottd, file = "data/plotting_data/mottd_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-save(psi.means.mottd, file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
+save(psi.means.mottd, file = "data/plotting_data/mottd_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-save(p.det.post.mottd, file = "data/output_data/mottd_p_detection_posteriors.Rdata")
+save(p.det.post.mottd, file = "data/plotting_data/mottd_p_detection_posteriors.Rdata")
 
 
 #' _____________________________________________________________________________
