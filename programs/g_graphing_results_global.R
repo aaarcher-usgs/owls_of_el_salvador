@@ -33,7 +33,7 @@ set.seed(587453)
 load(file = "data/output_data/specd_psi_posteriors_RtYr.Rdata")
 load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
 load(file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
-load(file = "data/output_data/richness_psi_posteriors_RtYr.Rdata")
+load(file = "data/plotting_data/richness_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
 load(file = "data/output_data/specd_psi_posteriors_RtSpp.Rdata")
