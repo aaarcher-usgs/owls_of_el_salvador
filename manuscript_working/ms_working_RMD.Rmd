@@ -23,11 +23,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
-Owls are a top predator in various habitats and as such, their role as a keystone species makes them an important, yet cryptic, bioindicator of ecosystem health. Top predators also often have long-lasting and wide-ranging effects through trophic cascades. The spotted owl species of North America have long been studied as an indicator species for the interactions between anthropogenic and environmental forces, demonstrating that even various sub-species of spotted owl have complex and contrasting behavior responses to environmental land use and management [e.g., @White:2013; @Wan:2018]. 
+Owls, as a keystone species, are an important, yet cryptic, bioindicator of ecosystem health. Top predators also often have long-lasting and wide-ranging effects through trophic cascades. The spotted owl species of North America have long been studied as an indicator species for the interactions between anthropogenic and environmental forces, demonstrating that even various sub-species of spotted owl have complex and contrasting behavior responses to environmental land use and management [e.g., @White:2013; @Wan:2018]. 
 
 Neotropical owls are less well-studied than temperate species, such as the spotted owls of North America, and we have limited understanding of their ecological requirements, population dynamics, reproductive behavior, or conservation status [@Enriquez:2006; @Clark:1978; @Perez-Leon:2017]. Yet, neotropical owls are reliant upon ecosystems under tremendous anthropogenic pressure and rapid and unpredictable responses to climate change [@Corlett:2012]. In the tropics, particularly in rain and cloud forests, owl studies are more difficult than in temperate regions, although there are more species living in the same habitat [@Konig:1999]. In general, while our knowledge about the conservation status of neotropical populations is limited, we do know that owl abundance and distribution is decreasing in several regions, where species have been added to endangered species lists or have become locally extirpated [@Enriquez:2006].
 
-The vocalization of crepuscular and cryptic animals such as owls are often leveraged for surveying, and vocal patterns are often considered more important than coloration of plumage as an aid to identification [@Springer:1978; @Forsman:1983; @Konig:1999].  Owls vocalize to communicate with the same species and to delimit territory [@Johnsgard:1988].  Spontaneous and provocation listening are two methods for auditory surveys that have been used with increasing frequency in surveys of nocturnal birds of prey [e.g., @Baumgardt:2019].  Spontaneous or passive surveys are based off of listening for animal calls with no prior stimulus whereas provocation surveys are conducted by listening after a period of playing animal vocalizations or "broadcast calls" that were previously recorded. One benefit of auditory surveys (including both spontaneous and broadcast) is being able to identify multiple species simultaneously. Adding in provocation to auditory surveys can increase the detection probability of owls, although the intra- and interspecific responses to broadcast calls could play a role in response patterns [@Enriquez:1997;@Baumgardt:2019]. 
+The vocalization of crepuscular and cryptic animals such as owls are often leveraged for surveying, and vocal patterns are often considered more important than coloration of plumage as an aid to identification [@Springer:1978; @Forsman:1983; @Konig:1999].  Owls vocalize to communicate with the same species and to delimit territory [@Johnsgard:1988].  Spontaneous and provocation listening are two methods for auditory surveys that have been used with increasing frequency in surveys of nocturnal birds of prey [e.g., @Baumgardt:2019].  Spontaneous or passive surveys are based off of listening for animal calls with no prior stimulus whereas provocation surveys are conducted by listening after a period of playing animal vocalizations or "broadcast calls." One benefit of auditory surveys (including both spontaneous and broadcast) is being able to identify multiple species simultaneously. Adding in provocation to auditory surveys can increase the detection probability of owls, although the intra- and interspecific responses to broadcast calls could play a role in response patterns [@Enriquez:1997;@Baumgardt:2019]. 
 
 The objective of our study was to monitor population dynamics of El Salvador owls through time to determine both individual species' population dynamics and species community composition. We surveyed owls on foot using passive listening and broadcast vocalizations in two transects each within the three largest protected areas of El Salvador from 2003 through 2013. 
 
@@ -37,15 +37,81 @@ The objective of our study was to monitor population dynamics of El Salvador owl
 
 # Methods
 
-*Table 1XX. Species detection records by route. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador, although specific survey years varied by route.*
+*Table 1XX. Route locations and habitats.*
+
+```{r}
+library(pander)
+Habitat <- c("Deciduous Forest with Reforestation",
+             "Semi-Deciduous Forest",
+             "Cloud Forest",
+             "Pine/Oak Forest",
+             "Alluvial Forest with Secondary Growth",
+             "Alluvial Forest")
+Latitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
+Longitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
+Route <- c("EI-1", "EI-2", "M-1", "M-2", "N-1", "N-2")
+Area <- c("El Imposible", "NP", 
+          "Montecristo", "NP", "Nancuchiname", "Forest")
+#parkTable <- as.data.frame(matrix(
+#  c(NamePark, NameRoute, Latitude, Longitude, Habitat), byrow = T, nrow = 5, ncol = 7))
+parkTable <- data.frame(Area, Route, Latitude, Longitude, Habitat)
+pander(parkTable)
+
+```
+
+*Table 2XX. Species detection records by route. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador, although specific survey years varied by route.*
 
 
 ``` {r}
 load("../data/output_data/richness_species_accounts_byRt.Rdata")
 library(pander)
-pander(species.counts.long[c(3:9)])
-```
+updated <- species.counts.long[,c(3:9)]
+updated$Common[updated$Common == "Lophostrix cristata"] <- "Crested"
+scientific <- species.counts.long[,c(2,4:9)]
+scientific[,c(2:7)] <- " "
+colnames(updated) <- names(scientific) <- c("NameBoth", "EI-1", "EI-2",
+                                            "M-1", "M-2", "N-1", "N-2")
 
+combo <- rbind(updated, scientific)
+
+
+combo$Name <- factor(x = combo$NameBoth,
+                           levels = c("Barn", "Tyto alba",
+                                      "Whiskered Screech", "M. trichopsis",
+                                      "Pacific Screech", "Megascops cooperi",
+                                      "Crested", "Lophostrix cristata",
+                                      "Spectacled", "Pulsatrix perspicillata",
+                                      "Great Horned", "Bubo virginianus",
+                                      "Ferruginous Pygmy", "Glaucidium brasilianum",
+                                      "Burrowing", "Athene cunicularia",
+                                      "Mottled", "Ciccaba virgata",
+                                      "Black-and-white", "Ciccaba nigrolineata",
+                                      "Fulvous", "Strix fulvescens",
+                                      "Stygian", "Asio stygius",
+                                      "Striped", "Pseudoscops clamator",
+                                      "Unspotted Saw-whet", "Aegolius ridgwayi"),
+                           labels = c("Barn Owl", "(Tyto alba)",
+                                      "Whiskered Screech-Owl", "(Megascops trichopsis)",
+                                      "Pacific Screech-Owl", "(Megascops cooperi)",
+                                      "Crested Owl", "(Lophostrix cristata)",
+                                      "Spectacled Owl**", "(Pulsatrix perspicillata)",
+                                      "Great Horned Owl", "(Bubo virginianus)",
+                                      "Ferruginous Pygmy-Owl", "(Glaucidium brasilianum)",
+                                      "Burrowing Owl", "(Athene cunicularia)",
+                                      "Mottled Owl", "(Ciccaba virgata)",
+                                      "Black-and-white Owl**", "(Ciccaba nigrolineata)",
+                                      "Fulvous Owl*", "(Strix fulvescens)",
+                                      "c.f. Stygian Owl", "(Asio stygius)",
+                                      "Striped Owl", "(Pseudoscops clamator)",
+                                      "Unspotted Saw-whet Owl", "(Aegolius ridgwayi)"
+                           ))
+
+row.names(combo) <- NULL
+final <- combo[order(combo$Name),c(8,2:7)]
+row.names(final) <- NULL
+pander(final)
+```
+*Note: \*\* = Endangered and \* = Threatened [@MARN:2015]*
 
 ## Single-Species Occupancy Model Framework
 
@@ -110,14 +176,9 @@ where, generally, $\text{logit}(p_{t,h,i,j,k}) = \beta_kX_k$, or more specifical
 
 This model provided a consistent probability of detection for all surveys in the first two minutes of each observation period, before the broadcast call was played ($k = \text{Pre-broadcast}$). Then, the probability of detection for each post-broadcast time period depended which call had been played. This allowed species-specific behavior in response to the different broadcast calls [@Baumgardt:2019]. We used means parameterization for the logistic regression model such that the coefficients were interpretable as the effect of that specific broadcast call $k$ (including the pre-broadcast time frame). The priors for every logistic model coefficient $\beta_k$ were chosen to be near uniform as recommended in @Gelman:2008: $\beta_k \sim \text{Cauchy}(\text{precision} = 0.16)$.
 
-The broadcast calls varied between routes, but were consistent at each route and station across years (Table 2XX).  Thus, the effective sample sizes of the different broadcast calls varied. 
+The broadcast calls varied between routes, but were consistent at each route and station across years. Specifically, we broadcasted the vocalizations of Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, Spectacled Owls, Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, and Spectacled Owls at stations 1 through 10, respectively, in all routes in El Imposible (EI-1 and EI-2) and Nancuchiname (N-1) and N-2). We broadcasted the vocalizations of Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, Great Horned Owls, Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, and Great Horned Owls at stations 1 through 10, respectively, in both routes of Montecristo (M-1 and M-2).  Thus, the effective sample sizes of the different broadcast calls varied. 
 
-*Table 2XX. Broadcast calls by route and station. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador. Pre-recorded owl calls were broadcast after 2 minutes of silent listening.*
 
-``` {r, echo = F}
-load(file = "../data/output_data/broadcast_array.Rdata")
-pander(broadcast.array)
-```
 
 ### Single-Species Occupancy Model Implementation
 
