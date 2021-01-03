@@ -31,17 +31,28 @@ The vocalization of crepuscular and cryptic animals such as owls are often lever
 
 The objective of our study was to monitor population dynamics of El Salvador owls through time to determine both individual species' population dynamics and species community composition. We surveyed owls on foot using passive listening and broadcast vocalizations in two transects each within the three largest protected areas of El Salvador from 2003 through 2013. 
 
-
+This project was carried out during the breeding season (March-May) for three weeks each year over a 10-year period in the three previously mentioned protected natural areas.  These areas were selected to represent different ecosystems found in the country and the transect routes were selected to represent the habitats in the protected natural areas.    
 
 
 
 # Methods
 
+## Study Area
+
+El Salvador is the smallest and most densely populated (approximately 6.5 million) Central American country with 13.6% of its land forested [@CIA:2020].  It is bordered by the Pacific Ocean, Guatemala and Honduras (Fig. 1XXX).  El Salvador is located in the heart of the Mesoamerican Biodiversity Hotspot (Conservation International 2009 in Komar and Ibarra-Portillo 2009).  This project includes three protected natural areas located at different elevations (high, mid and low elevations) and in different types of forest vegetation (alluvial, deciduous, semi-deciduous, pine-oak and cloud forest) that are representative of several of the country’s protected natural areas (Table 1XXX).
+
+El Imposible National Park (NP) is located 119 km southwest of San Salvador (Fig. 1XXX, Table 1XXX).  Its elevation ranges from 250 to 1425 m above sea level.  It is the largest NP in the country, covering 3792 ha.  The topography is extremely steep and broken, with many cliffs [@Alverez:2003].  The area contains deciduous and semi-deciduous forest, secondary growth vegetation on the edges and former pasture areas that were reforested with native species in 1997.  In the western portion of this NP, one survey transect (EI-1) was set up in the lower elevation deciduous in an area of reforestation and the other (EI-2) was located in semi-deciduous forest.
+
+Montecristo NP is located 125 km northwest of San Salvador (Fig. 1XXX; Table 1XXX).  Its altitude ranges from 730 to 2418 m above sea level and covers 1973 ha [@MARN:2010]. The higher elevations contain cloud forest, middle elevations contain pine/oak forest (with some pine and cypress plantations) and the lower elevations contain a semi-deciduous tropical forest [@MARN:2015b].  This NP is part of the Montecristo Tri-national Protected Area which includes extensive adjoining natural areas in Guatemala and Honduras [@Komar:2010].  In this NP, one transect (M-1) was set up in a cloud forest and another (M-2) was located at a lower elevation in a pine/oak forest.
+
+Nancuchiname Forest, a Protected Natural Area, is located 95 km southeast of San Salvador in the coastal alluvial plain along the Lempa River (Fig. 1XXX).  Its elevation ranges from 5 to 12 m above sea level and covers 797 ha.  Nancuchiname Forest represents the largest remaining patch of tropical forest on the alluvial plain of the country [@Restrepo:2001].  The area contains deciduous and semi-deciduous forest, second growth vegetation, native species reforestation and a dike.  In Nancuchiname Forest, one survey transect (N-1) was set up in alluvial forest along a dike surrounded by second growth vegetation and another (N-2) in a semi-deciduous alluvial forest.
+
+
 *Table 1XX. Route locations and habitats.*
 
 ```{r}
 library(pander)
-Habitat <- c("Deciduous Forest with Reforestation",
+Habitat <- c("Reforested Deciduous Forest",
              "Semi-Deciduous Forest",
              "Cloud Forest",
              "Pine/Oak Forest",
@@ -49,15 +60,26 @@ Habitat <- c("Deciduous Forest with Reforestation",
              "Alluvial Forest")
 Latitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
 Longitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
+Elevation <- c("xxx", "xxx", "xxx", "xxx", "xxx", "xxx")
 Route <- c("EI-1", "EI-2", "M-1", "M-2", "N-1", "N-2")
 Area <- c("El Imposible", "NP", 
           "Montecristo", "NP", "Nancuchiname", "Forest")
 #parkTable <- as.data.frame(matrix(
 #  c(NamePark, NameRoute, Latitude, Longitude, Habitat), byrow = T, nrow = 5, ncol = 7))
-parkTable <- data.frame(Area, Route, Latitude, Longitude, Habitat)
+parkTable <- data.frame(Area, Route, Latitude, Longitude, Elevation, Habitat)
 pander(parkTable)
 
 ```
+
+## Survey Methods
+
+
+We conducted foot surveys following the Guidelines for Nocturnaal Owl Monitoring [@Takats:2001] and a similar protocol developed for Costa Rica [@Enriquez:2001]. This study's survey protocol was an extension of previous research completed in the western half of El Imposible NP [@West:1988].  For our surveys, we created six 2-km long survey routes (transects) that each included 10 permanent survey stations at 200 m intervals. Two routes were established in each protected area (Table 1xxx). 
+
+Surveys were begun at local twilight and took approximately five hours to complete.  At each station, we measured and recorded environmental conditions (Brunton Sherpa, Brunton Incorporated) including temperature, precipitation, cloud cover, fog cover, wind speed, barometric pressure, moon phase, and noise level. The survey then began with passive listening for two minutes, followed by a three-minute broadcast call, and then seven minutes of silent listening. We recorded local owl vocalizations and used them for broadcast calls whenever possible. If an owl vocalized during broadcast playback, we stopped the broadcast and recorded the owl's vocalization. When we detected an owl, we noted its  location and angle relative to the station, and noted when the same owl was identified at consecutive stations. The broadcast calls varied between routes, but were consistent at each route and station across years. Specifically, we broadcasted the vocalizations of Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, Spectacled Owls, Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, and Spectacled Owls at stations 1 through 10, respectively, in all routes in El Imposible (EI-1 and EI-2) and Nancuchiname (N-1) and N-2). We broadcasted the vocalizations of Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, Great Horned Owls, Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, and Great Horned Owls at stations 1 through 10, respectively, in both routes of Montecristo (M-1 and M-2). Surveys were repeated at each route up to three times a year from 2003 through 2013, depending on site access and weather. We did not conduct any surveys in 2006. We georeferenced the owl detections for each survey and route  to eliminate double counting of the owl observations.
+
+
+
 
 *Table 2XX. Species detection records by route. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador, although specific survey years varied by route.*
 
@@ -115,7 +137,7 @@ pander(final)
 
 ## Single-Species Occupancy Model Framework
 
-We modeled occupancy within each route, year, and survey assuming that the probability of occupancy would be closed across surveys of a given route in a given year. In other words, for any single species of owl, we assumed that the probability of a route being occupied would not change between surveys within a year but that the probability of occupancy would vary between years. Let:
+We modeled occupancy within each route, year, and survey assuming that the probability of occupancy would be closed across surveys of a given route in a given year. In other words, for any single species of owl, we assumed that the probability of a route being occupied would not change between surveys within a year but could vary between years. Let:
 
 \[
 \begin{aligned}
@@ -124,7 +146,7 @@ h  &=  \text{the individual route (}h = 1,2,\ldots,6)\text{ representing EI1, EI
 i  &=  \text{the individual surveys conducted in each year and route (}i = 1,2,3)\\
 j  &=  \text{the individual stations along each route (}j = 1,2,\ldots,10)\\
 k  &=  \text{the broadcast call species (}k = 1,2,\ldots,10)\\
-z_{t,h,i} &= \text{a random variable equal to 1 when a survey was occupied and 0 otherwise}\\
+z_{t,h,i} &= \text{a random variable equal to 1 when a survey route was occupied and 0 otherwise}\\
 y_{t,h,i,j,k} &= \text{a random variable equal to 1 when an owl was detected and 0 otherwise}
 \end{aligned}
 \]
@@ -151,7 +173,7 @@ with hyperpriors for $a^\psi_{t,h}$ and $b^\psi_{t,h}$ such that the expected va
 
 
 
-We assumed that detecting an owl depended on an owl being present during that survey ($z_{t,h,i} = 1$) and the probability of detection, which was related to the species-specific broadcast call ($k$):
+We assumed that detecting an owl depended on an owl being present during that survey ($z_{t,h,i} = 1$) and the probability of detection, $p_{t,h,i,j,k}$, which was related to the species-specific broadcast call ($k$):
 
 $$
 y_{t,h,i,j,k} \sim \text{Bernoulli}(z_{t,h,i}*p_{t,h,i,j,k})
@@ -176,24 +198,20 @@ where, generally, $\text{logit}(p_{t,h,i,j,k}) = \beta_kX_k$, or more specifical
 
 This model provided a consistent probability of detection for all surveys in the first two minutes of each observation period, before the broadcast call was played ($k = \text{Pre-broadcast}$). Then, the probability of detection for each post-broadcast time period depended which call had been played. This allowed species-specific behavior in response to the different broadcast calls [@Baumgardt:2019]. We used means parameterization for the logistic regression model such that the coefficients were interpretable as the effect of that specific broadcast call $k$ (including the pre-broadcast time frame). The priors for every logistic model coefficient $\beta_k$ were chosen to be near uniform as recommended in @Gelman:2008: $\beta_k \sim \text{Cauchy}(\text{precision} = 0.16)$.
 
-The broadcast calls varied between routes, but were consistent at each route and station across years. Specifically, we broadcasted the vocalizations of Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, Spectacled Owls, Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, and Spectacled Owls at stations 1 through 10, respectively, in all routes in El Imposible (EI-1 and EI-2) and Nancuchiname (N-1) and N-2). We broadcasted the vocalizations of Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, Great Horned Owls, Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, and Great Horned Owls at stations 1 through 10, respectively, in both routes of Montecristo (M-1 and M-2).  Thus, the effective sample sizes of the different broadcast calls varied. 
 
 
 
-### Single-Species Occupancy Model Implementation
 
-We used the R2jags package in R [@R:2014] [@Plummer:2013] to implement the occupancy model for three owl species that had sufficient positive detections for analysis: Mottled, Spectacled, and Ferruginous Pygmy owls (Table 1XX). Based on our understanding of owl ecology, we assumed that Spectacled and Ferruginous Pygmy owls would not occupy route M1 in Montecristo, so we removed M1 from those species' occupancy analyses. 
 
-For all three species' occupancy models, we ran 3 chains for 10,000 iterations and 1000 iterations discarded as burn-in, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i}$ were equivalent to one if an owl was detected in that survey $i$ and otherwise zero. We visually inspected traceplots to verify that chains mixed well (Supplemental information S1-3xx). 
 
 ## Richness Model Framework
 
-To model species richness at each route in each year, we assumed that there were 14 possible species present in El Salvador. This included the 9 species observed during our surveys and an additional 5 species that we never observed (Table 1XX). This upper limit to species richness relates directly to the 13 species known to inhabit El Salvador (cite Owls of El Salvador here) plus one species we identified (Stygian owl), which was previously undocumented in El Salvador. We thus augmented our owl detection data with 5 additional potential species with all-zero detection records [@Royle:2007]. For each species $s$ (where $s = 1,2, \ldots,15$), $w_{h,s}$ was a binary indicator of whether that owl species was present in each route:
+To model species richness at each route in each year, we assumed that there were 14 possible species present in El Salvador. This included the 9 species observed during our surveys and an additional 5 species that we never observed (Table 1XX). This upper limit to species richness relates directly to the 13 species known to inhabit El Salvador (cite Owls of El Salvador here) plus one species we identified (Stygian owl), which was previously undocumented in El Salvador. We thus augmented our owl detection data with 5 additional potential species with all-zero detection records [@Royle:2007]. For each species $s$ (where $s = 1,2, \ldots,15$), $w_{h,s}$ was a binary indicator of whether that owl species was present in each route based on the probability of species presence in that route, $\Omega_h$ [@Broms:2016]:
 
 $$
 w_{h,s} \sim \text{Bernoulli}(\Omega_h)
 $$
-where $\Omega_h$ was the probability of species presence in each route $h$ [@Broms:2016]. We used prior distributions recommended by @Broms:2016, @Guillera-Arroita:2019, and others for $\Omega_h$: $\Omega_h \sim \text{Beta}(0.001, 1)$.
+We used prior distributions for $\Omega_h$: $\Omega_h \sim \text{Beta}(0.001, 1)$ [@Broms:2016; @Guillera-Arroita:2019].
 
 In the richness model, the presence of an owl species in any year, route, and survey, $z_{t,h,i,s}$, was conditional on the probability of occupancy for that route, year, and species $\psi_{t,h,s}$ *and* that species belonging to that route's community that year ($w_{h,s}$):
 
@@ -236,24 +254,30 @@ $$
 
 where generally $\text{logit}(p_{t,h,i,j,k,s}) = \beta_kX_k$ for each broadcast call $k$ as described above. The coefficients of the detection model were thus assumed to be consistent for all owl species, which allowed us to borrow information about the detection process for undetected owl species from those that were detected.
 
-### Richness Model Implementation
+### Model Implementation
 
-We used the R2jags package in R [@R:2014] [@Plummer:2013] to implement the richness model. We ran 3 chains for 20,000 iterations with 2000 iterations discarded as burn-in and a thinning rate of 2, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i,s}$ were equivalent to one if that species of owl was detected in that survey and otherwise zero. Similarly, initial values for whether a species belonged to a route's community ($w_{h,s}$) were equivalent to one if that species of owl was ever detected in that route and otherwise zero. We visually inspected traceplots to verify that chains mixed well (Supplemental information S4xx). 
+We used the R2jags package in R [@R:2014] [@Plummer:2013] to implement the Bayesian models. We verified that R-hats were lower than XXXX and visually inspected traceplots to verify that chains mixed well (Supplemental information S1-3xx). 
+
+We applied the single-species occupancy model for three owl species that had sufficient positive detections for analysis: Mottled Owl, Spectacled Owl, and Ferruginous Pygmy-Owl (Table 2XX). Based on our understanding of owl ecology, we assumed that Spectacled and Ferruginous Pygmy owls would not occupy route M1 in Montecristo, so we removed M1 from those species' occupancy analyses. For all three of the single-species occupancy models, we ran 3 chains for 10,000 iterations and 1000 iterations discarded as burn-in, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i}$ were equivalent to one if an owl was detected in that survey $i$ and otherwise zero. 
+
+To implement the richness model, we ran 3 chains for 20,000 iterations with 2000 iterations discarded as burn-in and a thinning rate of 2, for a total of 27,000 iterations comprising the posterior distributions for each model parameter. Initial values for $z_{t,h,i,s}$ were equivalent to one if that species of owl was detected in that survey and otherwise zero. Similarly, initial values for whether a species belonged to a route's community ($w_{h,s}$) were equivalent to one if that species of owl was ever detected in that route and otherwise zero. 
 
 # Results
 
 ## Single-Species Occupancy Model Results
 
-Mottled, Spectacled, and Ferruginous Pygmy owls had 542, 137, and 187 positive detections over the 11 year period, respectively (Table 1XX). No other owl species had enough detections to analyze species-specific occupancy (Table 1XX). Averaged across years, we found that the probability of occupancy was somewhat higher for Mottled owls than for Ferruginous Pygmy or Spectacled owls in both routes of El Imposible and in M2 route of Montecristo (Fig. 1X). Occupancy probabilities were relatively high across all three species for both routes of Nancuchiname (Fig. 1XX). We found that the probability of occupancy for Mottled owls was relatively consistent across time in the El Imposible routes and in N2 (Fig. 2XX), but that it seemed to increase in the last ~6 years in M2 and N1 (Fig. 2XX). The probability of occupancy in M1 seemed to have decreased through time for Mottled owls (Fig. 2XX). 
+We detected nine species of owls during our surveys: Barn Owl, Whiskered Screech-Owl, Pacific Screech-Owl, Spectacled Owl, Great Horned Owl, Ferruginous Pygmy-Owl, Mottled Owl, Fulvous Owl, and c.f. Stygian Owl (Table 2xXX).  We identified Whiskered Screech-Owlsin Montecristo NP, which had previously been undocumented in that protected area.  We also identified a c.f. Stygian Owl in Montecristo NP, which was a species not previously documented in the entire country of El Salvador.  
+
+Mottled Owls, Spectacled Owls, and Ferruginous Pygmy owls had 542, 137, and 187 positive detections over the 11 year period, respectively (Table 2XX). No other owl species had enough detections to analyze species-specific occupancy (Table 2XX). Averaged across years, we found that the probability of occupancy was somewhat higher for Mottled owls than for Ferruginous Pygmy or Spectacled owls in both routes of El Imposible and in M2 route of Montecristo (Fig. 1X). Occupancy probabilities were relatively high across all three species for both routes of Nancuchiname (Fig. 1XX). We found that the probability of occupancy for Mottled owls was relatively consistent across time in the El Imposible routes and in N2 (Fig. 2XX), but that it seemed to increase in the last ~6 years in M2 and N1 (Fig. 2XX). The probability of occupancy in M1 seemed to have decreased through time for Mottled owls (Fig. 2XX). 
 
 For routes EI1, EI2, and M2, the probability of occupancy for Ferruginous Pygmy and Spectacled stayed relatively low across time other than a higher probability of occupancy for Ferruginous Pygmy in EI1 in the early years of the surveys (Figs. 3XX and 4XX). The probability of occupancy for Ferruginous Pygmy owls was relatively high in both routes of Nancuchaname except in 2008 and 2009 (Fig. 3XX), and the probability of occupancy for the Spectacled owl  fluctuated slightly from year to year in the Nancuchaname routes (Fig. 4XX). 
 
 
 ## Richness Model Results
 
-Our estimates of each route's community richness ($\text{Richness}^*_{h}$) and 90% credible intervals were 4 (4,4), 5 (4,5), 3 (3,4), 4 (4,5), 5 (5,5), and 5 (5,5) for EI1, EI2, M1, M2, N1, and N2, respectively. These were equivalent to the number of species detected in each route (Table 1XX), indicating that the probability of occupancy for undetected species was low and no additional species were predicted to be present in a route's community, other than those that were detected. 
+Our estimates of each route's community richness ($\text{Richness}_{h}$) and 90% credible intervals were 4 (4,4), 5 (4,5), 3 (3,4), 4 (4,5), 5 (5,5), and 5 (5,5) for EI1, EI2, M1, M2, N1, and N2, respectively. These were equivalent to the number of species detected in each route (Table 1XX), indicating that the probability of occupancy for undetected species was low and no additional species were predicted to be present in a route's community, other than those that were detected. 
 
-When analyzed by year, median species richness ($\text{Richness}^*_{h}$) varied from 0 to 4, depending on route and year (Fig. 5XXX). At most, the median species richness was one species higher than the number of species detected at any single route and year; however, the 90% credible intervals of richness added up to 3 new undetected species in M2 during 2004 surveys (Fig. 5XXX).
+When analyzed by year, median species richness ($\text{Richness}^*_{t,h}$) varied from 0 to 5, depending on route and year (Fig. 5XXX). At most, the median species richness was one species higher than the number of species detected at any single route and year; however, the 90% credible intervals of richness added up to 4 new undetected species (e.g., in M-2 during 2004 where we detected zero species (Fig. 5XXX).
 
 ## Detection Results
 
