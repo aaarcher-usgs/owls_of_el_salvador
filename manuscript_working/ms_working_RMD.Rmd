@@ -1,7 +1,7 @@
 --- 
-title: "working owls methods"
-author: "Althea Archer"
-date: "11/17/2020"
+title: "Owl occupancy in three of El Salvador's protected areas from 2003 to 2013"
+author: "Jane West and Althea Archer"
+date: "1/2/2021"
 output:
   word_document:
     fig_caption: yes
@@ -16,6 +16,24 @@ bibliography: owl_references.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+
+
+# Abstract
+
+# Introduction
+
+Owls are a top predator in various habitats and as such, their role as a keystone species makes them an important, yet cryptic, bioindicator of ecosystem health. Top predators also often have long-lasting and wide-ranging effects through trophic cascades. The spotted owl species of North America have long been studied as an indicator species for the interactions between anthropogenic and environmental forces, demonstrating that even various sub-species of spotted owl have complex and contrasting behavior responses to environmental land use and management [e.g., @White:2013; @Wan:2018]. 
+
+Neotropical owls are less well-studied than temperate species, such as the spotted owls of North America, and we have limited understanding of their ecological requirements, population dynamics, reproductive behavior, or conservation status [@Enriquez:2006; @Clark:1978; @Perez-Leon:2017]. Yet, neotropical owls are reliant upon ecosystems under tremendous anthropogenic pressure and rapid and unpredictable responses to climate change [@Corlett:2012]. In the tropics, particularly in rain and cloud forests, owl studies are more difficult than in temperate regions, although there are more species living in the same habitat [@Konig:1999]. In general, while our knowledge about the conservation status of neotropical populations is limited, we do know that owl abundance and distribution is decreasing in several regions, where species have been added to endangered species lists or have become locally extirpated [@Enriquez:2006].
+
+The vocalization of crepuscular and cryptic animals such as owls are often leveraged for surveying, and vocal patterns are often considered more important than coloration of plumage as an aid to identification [@Springer:1978; @Forsman:1983; @Konig:1999].  Owls vocalize to communicate with the same species and to delimit territory [@Johnsgard:1988].  Spontaneous and provocation listening are two methods for auditory surveys that have been used with increasing frequency in surveys of nocturnal birds of prey [e.g., @Baumgardt:2019].  Spontaneous or passive surveys are based off of listening for animal calls with no prior stimulus whereas provocation surveys are conducted by listening after a period of playing animal vocalizations or "broadcast calls" that were previously recorded. One benefit of auditory surveys (including both spontaneous and broadcast) is being able to identify multiple species simultaneously. Adding in provocation to auditory surveys can increase the detection probability of owls, although the intra- and interspecific responses to broadcast calls could play a role in response patterns [@Enriquez:1997;@Baumgardt:2019]. 
+
+The objective of our study was to monitor population dynamics of El Salvador owls through time to determine both individual species' population dynamics and species community composition. We surveyed owls on foot using passive listening and broadcast vocalizations in two transects each within the three largest protected areas of El Salvador from 2003 through 2013. 
+
+
+
+
 
 # Methods
 
