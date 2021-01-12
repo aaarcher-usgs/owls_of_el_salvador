@@ -47,7 +47,7 @@ Montecristo NP was located 125 km northwest of San Salvador (Fig. 1XXX; Table 1X
 Nancuchiname Forest, a Protected Natural Area, was located 95 km southeast of San Salvador in the coastal alluvial plain along the Lempa River (Fig. 1XXX).  Its elevation ranged from 5 to 12 m above sea level and the protected area covered 797 ha.  Nancuchiname Forest represented the largest remaining patch of tropical forest on the alluvial plain of the country [@Restrepo:2001]xxx **we can't site a geocities website**.  The area contained deciduous and semi-deciduous forest, second growth vegetation, native species reforestation and a dike.  In Nancuchiname Forest, we set up one survey route (N-1) in alluvial forest along the dike, which was surrounded by secondary growth, and we set up the other route (N-2) in a semi-deciduous alluvial forest.
 
 
-*Table 1XX. Route locations and habitats.*
+*Table 1XX. Route locations and habitats. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador: El Imposible National Park (EI-1 and EI-2), Montecristo National Park (M-1 and M-2) and Nancuchiname Forest (N-1 and N-2). *
 
 ```{r}
 library(pander)
@@ -65,7 +65,7 @@ Area <- c("El Imposible", "NP",
           "Montecristo", "NP", "Nancuchiname", "Forest")
 #parkTable <- as.data.frame(matrix(
 #  c(NamePark, NameRoute, Latitude, Longitude, Habitat), byrow = T, nrow = 5, ncol = 7))
-parkTable <- data.frame(Area, Route, Latitude, Longitude, Elevation, Habitat)
+parkTable <- data.frame(Route, Latitude, Longitude, Elevation, Habitat)
 pander(parkTable)
 
 ```
@@ -73,7 +73,7 @@ pander(parkTable)
 ## Survey methods
 
 
-We conducted foot surveys following the Guidelines for Nocturnaal Owl Monitoring [@Takats:2001], a similar protocol developed for Costa Rica [@Enriquez:2001], and raptor research guidelines [@Fuller:1987]. This study's survey protocol was an extension of previous research completed in the western half of El Imposible NP [@West:1988].  For our surveys, we created six 2-km long survey routes (transects) that each included 10 permanent survey stations at 200 m intervals. Two routes were established in each protected area (Table 1xxx). 
+We conducted foot surveys following the Guidelines for Nocturnaal Owl Monitoring [@Takats:2001], a similar protocol developed for Costa Rica [@Enriquez:2001], and other raptor research guidelines [@Fuller:1987]. This study's survey protocol was an extension of previous research completed in the western half of El Imposible NP [@West:1988].  For our surveys, we created six 2-km long survey routes (transects) that each included 10 permanent survey stations set at 200 m intervals. Two routes were established in each protected area (Table 1xxx). 
 
 Surveys began at local twilight and took approximately five hours to complete.  At each station, we measured and recorded environmental conditions (Brunton Sherpa, Brunton Incorporated) including temperature, precipitation, cloud cover, fog cover, wind speed, barometric pressure, moon phase, and noise level. The survey then began with passive listening for two minutes, followed by a three-minute broadcast call, and then seven minutes of silent listening. We recorded local owl vocalizations and used them for broadcast calls whenever possible. If an owl vocalized during broadcast playback, we stopped the broadcast and recorded the owl's vocalization. When we detected an owl, we noted its  location and angle relative to the station, and we tracked when the same owl was identified at consecutive stations. The broadcast calls varied between routes, but were consistent at each route and station across years. Specifically, we broadcasted the vocalizations of Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, Spectacled Owls, Pacific Screech-Owls, Mottled Owls, Crested Owls, Black-and-white Owls, and Spectacled Owls at stations 1 through 10, respectively, in all routes in El Imposible (EI-1 and EI-2) and Nancuchiname (N-1) and N-2). We broadcasted the vocalizations of Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, Great Horned Owls, Whiskered Owls, Mottled Owls, Fulvous Owls, Stygian Owls, and Great Horned Owls at stations 1 through 10, respectively, in both routes of Montecristo (M-1 and M-2). Surveys were repeated at each route up to three times a year from 2003 through 2013, depending on site access and weather. We did not conduct any surveys in 2006. We georeferenced the owl detections for each survey and route  to eliminate double counting of the owl observations.
 
@@ -298,7 +298,7 @@ Ferruginous Pygmy-owls were the second most-often detected owls in this study. F
 
 
 
-Stygian Owl was listed as an expected owl in El Salvador [@Perez-Leon:2017). On 26 March 2002, after listening to recordings and viewing photographs, the Montecristo NP guards stated that they thought c.f. Stygian owl was present in the park (personal communication). While there was only one c.f. Stygian Owl detected during the course of our surveys, we did also hear a c.f. Stygian Owl between the survey points on 25 April XXXXyear. We also heard c.f. Stygian Owl twice on M-2 between station points on 20 March 2005 and once between stations in 2007. We did not record any of these vocalizations by c.f. Stygian Owls. Detections that occurred between stations or away from survey routes were not included in our results. So while we are confident that c.f. Stygian Owls are present in Montecristo NP, we believe that further documentation of the species would be beneficial for confirmation of the species in El Salvador. 
+Stygian Owl was listed as an expected owl in El Salvador [@Perez-Leon:2017). On 26 March 2002, after listening to recordings and viewing photographs, the Montecristo NP guards stated that they thought c.f. Stygian owl was present in the park (personal communication). While there was only one c.f. Stygian Owl detected during the course of our surveys, we did also hear a c.f. Stygian Owl between the survey stations on 25 April XXXXyear. We also heard c.f. Stygian Owl twice on M-2 between station points on 20 March 2005 and once between stations in 2007. We did not record any of these vocalizations by c.f. Stygian Owls. Detections that occurred between stations or away from survey routes were not included in our results. So while we are confident that c.f. Stygian Owls are present in Montecristo NP, we believe that further documentation of the species would be beneficial for confirmation of the species in El Salvador. 
 
 
 
