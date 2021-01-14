@@ -178,6 +178,7 @@ richness.jagsout <- jags(data = richness.jags.data,
                       n.iter = 20000, #10000
                       n.burnin = 2000, #1000
                       n.thin = 2)
+# began 2021-01-13 22:39
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
