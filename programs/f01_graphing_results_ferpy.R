@@ -30,14 +30,14 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
+load(file = "data/plotting_data/ferpy_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-load(file = "data/output_data/ferpy_psi_posteriors_RtSpp.Rdata")
+load(file = "data/plotting_data/ferpy_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
+load(file = "data/plotting_data/ferpy_p_detection_posteriors.Rdata")
 
 #' _____________________________________________________________________________
 #' ## Psi = Probability of occupancy
