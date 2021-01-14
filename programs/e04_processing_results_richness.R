@@ -195,10 +195,12 @@ p.det.post.richness$Broadcast <- factor(p.det.post.richness$broadcast.param,
                                                    "beta.bw", "beta.spectacled",
                                                    "beta.whiskered", "beta.gbarred",
                                                    "beta.stygian", "beta.ghorned"),
-                                        labels = c("Pre-broadcast", "Mottled",
-                                                   "Pacific Screech", "Crested", "Black-and-white",
-                                                   "Spectacled", "Whiskered Screech", "Fulvous",
-                                                   "Stygian", "Great Horned"))
+                                        labels = c("Pre-broadcast", "Mottled Owl",
+                                                   "Pacific Screech-owl", "Crested Owl", 
+                                                   "Black-and-white Owl",
+                                                   "Spectacled Owl", 
+                                                   "Whiskered Screech-owl", "Fulvous Owl",
+                                                   "Stygian Owl", "Great Horned Owl"))
 
 
 #' Species presence by route

@@ -158,7 +158,8 @@ ggplot(data = psi.post.all,
 #' Merge data
 p.det.post.richness$Species <- "All Species"
 #' 
-p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd, p.det.post.specd,p.det.post.richness)
+p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd, 
+                    p.det.post.specd,p.det.post.richness)
 table(p.det.post$Broadcast)
 
 table(p.det.post$Species)
