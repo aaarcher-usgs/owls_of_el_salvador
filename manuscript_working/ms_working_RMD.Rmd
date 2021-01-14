@@ -278,7 +278,7 @@ For routes EI-1, EI-2, and M-2, the probability of occupancy for Ferruginous Pyg
 
 ## Richness model results
 
-Our estimates of each route's community richness ($\text{Richness}_{h}$) and 90% credible intervals were 4 (4,4), 5 (4,5), 3 (3,4), 4 (4,5), 5 (5,5), and 5 (5,5) for EI-1, EI-2, M-1, M-2, N-1, and N-2, respectively. These median values were equivalent to the number of species detected in each route (Table 2XX), indicating that the probability of occupancy for undetected species was low and no additional species were predicted to be present in a route's community, other than those that were detected. 
+Our estimates of each route's community richness ($\text{Richness}_{h}$) and 90% credible intervals were 4 (4,4), 3 (3,3), 3 (3,4), 4 (4,5), 5 (5,5), and 5 (5,5) for EI-1, EI-2, M-1, M-2, N-1, and N-2, respectively. These median values were equivalent to the number of species detected in each route (Table 2XX), indicating that the probability of occupancy for undetected species was low and no additional species were predicted to be present in a route's community, other than those that were detected. 
 
 When analyzed by year, median species richness ($\text{Richness}^*_{t,h}$) varied from 0 to 5, depending on route and year (Fig. 4XXX). At most, the median species richness was one species higher than the number of species detected at any single route and year; however, the 90% credible intervals of richness added up to 4 new undetected species (e.g., in M-2 during 2004 where we detected zero species (Fig. 4XXX).
 
