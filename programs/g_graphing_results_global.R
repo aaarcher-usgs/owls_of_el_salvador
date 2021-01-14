@@ -91,7 +91,7 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = code))+
   ylim(c(0,1))+
   scale_fill_manual(values = c("#cccccc", "#969696", "#525252"))+
   theme_minimal()+
-  ylab("Probability of Occupancy")+
+  ylab("Probability of occupancy")+
   xlab("Route")+
   theme(legend.position = "bottom")+
   theme(legend.text=element_text(size=6), 
@@ -140,7 +140,7 @@ ggplot(data = psi.post.all,
   facet_grid(Route~code)+
   theme_minimal()+
   xlab("Year")+
-  ylab("Probability of Occupancy")+
+  ylab("Probability of occupancy")+
   scale_x_continuous(breaks = 2003:2013, limits = c(2003,2013))+
   theme(axis.text.x = element_text(size=6, angle = 90),
         axis.text.y = element_text(size=6),
@@ -186,8 +186,8 @@ ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species)
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
   facet_wrap(~Species, nrow = 2)+
-  ylab("Probability of Detection")+
-  xlab("Broadcast Species")+
+  ylab("Probability of detection")+
+  xlab("Broadcast species")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 5),
         legend.position = "none",
@@ -226,7 +226,7 @@ ggplot(data = richness.RtYr.post,
   facet_wrap(~Route, nrow = 3)+
   theme_minimal()+
   xlab("Year")+
-  ylab("Species Richness")+
+  ylab("Species richness")+
   scale_x_continuous(breaks = 2003:2013)+
   scale_y_continuous(breaks = seq(0,14,by=2), limits = c(0,6))+
   theme(axis.text.x = element_text(size=6, angle = 90),
