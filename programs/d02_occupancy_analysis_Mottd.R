@@ -22,7 +22,7 @@ library(R2jags)
 #' to be loaded, and setting the seed ensures that your analysis is 
 #' repeatable*
 remove(list = ls())
-set.seed(1770562)
+set.seed(64781)
 
 #' _____________________________________________________________________________
 #' ## Load Data
