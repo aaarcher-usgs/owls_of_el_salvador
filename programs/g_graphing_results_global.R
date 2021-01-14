@@ -30,21 +30,21 @@ set.seed(587453)
 #' 
 #' 
 #' Psi Posteriors by year and route
-load(file = "data/output_data/specd_psi_posteriors_RtYr.Rdata")
-load(file = "data/output_data/ferpy_psi_posteriors_RtYr.Rdata")
-load(file = "data/output_data/mottd_psi_posteriors_RtYr.Rdata")
+load(file = "data/plotting_data/specd_psi_posteriors_RtYr.Rdata")
+load(file = "data/plotting_data/ferpy_psi_posteriors_RtYr.Rdata")
+load(file = "data/plotting_data/mottd_psi_posteriors_RtYr.Rdata")
 load(file = "data/plotting_data/richness_psi_posteriors_RtYr.Rdata")
 
 #' Psi posteriors across years by species and route
-load(file = "data/output_data/specd_psi_posteriors_RtSpp.Rdata")
-load(file = "data/output_data/ferpy_psi_posteriors_RtSpp.Rdata")
-load(file = "data/output_data/mottd_psi_posteriors_RtSpp.Rdata")
+load(file = "data/plotting_data/specd_psi_posteriors_RtSpp.Rdata")
+load(file = "data/plotting_data/ferpy_psi_posteriors_RtSpp.Rdata")
+load(file = "data/plotting_data/mottd_psi_posteriors_RtSpp.Rdata")
 
 #' Probability of detection by broadcast species and species of analysis
 #' 
-load(file = "data/output_data/specd_p_detection_posteriors.Rdata")
-load(file = "data/output_data/ferpy_p_detection_posteriors.Rdata")
-load(file = "data/output_data/mottd_p_detection_posteriors.Rdata")
+load(file = "data/plotting_data/specd_p_detection_posteriors.Rdata")
+load(file = "data/plotting_data/ferpy_p_detection_posteriors.Rdata")
+load(file = "data/plotting_data/mottd_p_detection_posteriors.Rdata")
 load(file = "data/plotting_data/richness_p_detection_posteriors.Rdata")
 
 #' Species accounts
@@ -177,14 +177,7 @@ p.det.post$Species[p.det.post$Species == "Specd"] <- "SPEO"
 #' 
 #+ p_detection, fig.width = 2.8346, dpi = 600, fig.height = 3
 ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
-  #geom_bar(stat = "identity", position = position_dodge(), 
-  #         color = "#dddddd", fill = "#dddddd")+
-  
   scale_fill_manual(values = c("darkgrey", "#7fc97f", "#beaed4", "#fdc086"))+
-  #geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
-  #           aes(yintercept = median.plogis), color = "#777777")+
-  #geom_rect(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",],
-  #            aes(ymin = LL05.plogis, max = UL95.plogis, xmin = -Inf, xmax = Inf), fill = "red")+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
              aes(yintercept = LL05.plogis), color = "#999999")+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 

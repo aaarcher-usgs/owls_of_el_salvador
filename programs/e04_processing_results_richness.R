@@ -115,6 +115,7 @@ tempYear <- tempYear[include.byrow]
 tempRoute <- 
   rep(c("EI1", "EI2", "M1", "M2", "N1", "N2"), length(year.index))
 tempRoute <- tempRoute[include.byrow]
+richness.RtYr.post <- richness.RtYr.post[include.byrow,]
 richness.RtYr.post$Year <- tempYear
 richness.RtYr.post$Route <- tempRoute
 
@@ -131,7 +132,7 @@ colnames(richness.RtYr.post)
 colnames(richness.RtYr.post) <- c("Richness.mean", "Richness.sd", "Richness.LL05", 
                              "Richness.median",
                              "Richness.UL95", "Richness.Rhat", "Richness.neff", 
-                             "Year", "Route", "Region", "richness.d", "richness.detected")
+                             "Year", "Route", "Region")#, "richness.d", "richness.detected")
 
 
 
@@ -178,8 +179,8 @@ for(rr in 1:nrow(richness.RtYr.post)){
 #' Merge data together and change column names
 #' 
 colnames(p.det.post.richness)
-#colnames(p.det.post.richness) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
-#                                   "n.eff", "broadcast.param")
+colnames(p.det.post.richness) <- c("mean", "sd", "LL05", "median", "UL95", "Rhat",
+                                   "n.eff", "broadcast.param")
 
 #' Transform to probability scale
 #' 
