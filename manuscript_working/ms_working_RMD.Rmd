@@ -1,7 +1,7 @@
 --- 
 title: "Owl occupancy in three of El Salvador's protected areas from 2003 to 2013"
 author: "Jane West and Althea Archer"
-date: "1/11/2021"
+date: "1/19/2021"
 output:
   word_document:
     fig_caption: yes
