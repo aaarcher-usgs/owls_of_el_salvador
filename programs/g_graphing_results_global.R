@@ -15,6 +15,11 @@ library(devtools) # documentation-related
 # analysis-related
 library(ggplot2)
 library(ggthemes)
+library(maptools)
+library(plyr)
+library(rgdal)
+library(raster)
+library(mapproj)
 
 #' Clear environment and set seed
 #' 
@@ -238,6 +243,52 @@ ggplot(data = richness.RtYr.post,
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
 
+
+#' _____________________________________________________________________________
+#' ## Location map
+#' 
+#' Extract country data
+ElSalvador <- getData("GADM", country = "SV", level = 0)
+Guatemala <- getData("GADM", country = "GT", level = 0)
+Honduras <- getData("GADM", country = "HN", level = 0)
+
+# Process into df for ggplot
+ElSalvador <- fortify(ElSalvador)
+Guatemala <- fortify(Guatemala)
+Honduras <- fortify(Honduras)
+
+# Range for mapping
+range(ElSalvador$long)
+range(ElSalvador$lat)
+
+#' 
+#' Map of protected areas
+#+ map, fig.width = 5.67, dpi = 600, fig.height = 4.4
+ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
+  geom_polygon(fill = "grey", color = "darkgrey")+
+  geom_polygon(data = Honduras, aes(x = long, y = lat, group = group),
+               fill = "lightgrey", color = "darkgrey")+
+  geom_polygon(data = Guatemala, aes(x = long, y = lat, group = group),
+               fill = "lightgrey", color = "darkgrey")+
+  coord_map(xlim = c(-90.2, -87.2), ylim = c(13.0, 14.5))+
+  # El Imposible
+  annotate(geom = "text", y = 13.65, x = -89.6, label = "EINP", size = 4)+
+  annotate(geom = "segment", y = 13.85, yend = 13.75,
+           x = -89.9, xend = -89.7, color = "#999999")+
+  annotate(geom = "text", y = 13.85, x = -89.97, label = "*", size = 8)+
+  # Montecristo
+  annotate(geom = "text", y = 14.2, x = -89.2, label = "MNP", size = 4)+
+  annotate(geom = "text", y = 14.33, x = -89.36, label = "*", size = 8)+
+  annotate(geom = "segment", y = 14.38, yend = 14.3,
+           x = -89.36, xend = -89.3, color = "#999999")+
+  # Nancuchiname
+  annotate(geom = "text", y = 13.5, x = -88.7, label = "NF", size = 4)+
+  annotate(geom = "text", y = 13.35, x = -88.72, label = "*", size = 8)+
+  annotate(geom = "segment", y = 13.35, yend = 13.5,
+           x = -88.72, xend = -88.7)+
+  ylab("Latitude")+
+  xlab("Longitude")+
+  theme_bw()
 
 
 #' _____________________________________________________________________________

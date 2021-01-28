@@ -57,9 +57,13 @@ Habitat <- c("Reforested Deciduous Forest",
              "Pine/Oak Forest",
              "Alluvial Forest with Secondary Growth",
              "Alluvial Forest")
-Latitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
-Longitude <- c("xxx", "XXX", "XXX", "XXX", "XXX", "XXX")
-Elevation <- c("xxx", "xxx", "xxx", "xxx", "xxx", "xxx")
+Latitude <- c("13xx 50.75'", "13xx 51.38'", 
+              "14xx 24.88'", "14xx 23.19'", 
+              "13xx 19.95'", "13xx 22.03'")
+Longitude <- c("89xx 59.74'", "89xx 58.24'", 
+               "89xx 21.63'", "89xx 22.33'", 
+               "88xx 43.63'", "88xx 43.30'")
+Elevation <- c("609", "958", "2111", "1755", "3", "2")
 Route <- c("EI-1", "EI-2", "M-1", "M-2", "N-1", "N-2")
 Area <- c("El Imposible", "NP", 
           "Montecristo", "NP", "Nancuchiname", "Forest")
