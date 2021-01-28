@@ -324,7 +324,7 @@ We did not use spectogram analysis to determine any of the specific individuals 
 
 # Figures
 
-![1XX. Map of El Salvador. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador: El Imposible National Park (EI-1 and EI-2), Montecristo National Park (M-1 and M-2) and Nancuchiname Forest (N-1 and N-2).   \label{map}](../output/figures/map-1.png)
+![1XX. Map of El Salvador. Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador: El Imposible National Park (EINP), Montecristo National Park (MNP) and Nancuchiname Forest (NF).   \label{map}](../output/figures/map-1.png)
 
 ![2XX. Probability of occupancy ($\psi_{t,h}$) averaged by route for Ferruginous Pygmy-owl (FEPO), Mottled Owl (MOOW), and Spectacled Owl (SPEO). Owl surveys were conducted from 2003 to 2013 in three different protected areas within El Salvador: El Imposible National Park (EI-1 and EI-2), Montecristo National Park (M-1 and M-2) and Nancuchiname Forest (N-1 and N-2).  Posteriors were summarized with median $\pm$ 90% credible intervals. \label{psi_means}](../output/figures/psi_means-1.png)
 
