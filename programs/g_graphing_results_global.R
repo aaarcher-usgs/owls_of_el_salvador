@@ -273,20 +273,13 @@ ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
   coord_map(xlim = c(-90.2, -87.2), ylim = c(13.0, 14.5))+
   # El Imposible
   annotate(geom = "text", y = 13.74, x = -89.8, label = "EINP", size = 4)+
-  #annotate(geom = "segment", y = 13.85, yend = 13.75,
-   #        x = -89.9, xend = -89.7, color = "#999999")+
-  #annotate(geom = "text", y = 13.85, x = -89.97, label = "*", size = 8)+
   annotate(geom = "point", y = 13.83, x = -89.97, size = 5, shape = 21, fill = "lightgrey")+
   # Montecristo
-  annotate(geom = "text", y = 14.2, x = -89.2, label = "MNP", size = 4)+
-  annotate(geom = "text", y = 14.33, x = -89.36, label = "*", size = 8)+
-  annotate(geom = "segment", y = 14.33, yend = 14.27,
-           x = -89.31, xend = -89.26, color = "#999999")+
+  annotate(geom = "text", y = 14.23, x = -89.2, label = "MNP", size = 4)+
+  annotate(geom = "point", y = 14.33, x = -89.36, size = 5, shape = 21, fill = "lightgrey")+
   # Nancuchiname
-  annotate(geom = "text", y = 13.5, x = -88.7, label = "NF", size = 4)+
-  annotate(geom = "text", y = 13.35, x = -88.72, label = "*", size = 8)+
-  annotate(geom = "segment", y = 13.35, yend = 13.5,
-           x = -88.72, xend = -88.7)+
+  annotate(geom = "text", y = 13.45, x = -88.64, label = "NF", size = 4)+
+  annotate(geom = "point", y = 13.33, x = -88.72, size = 5, shape = 21, fill = "lightgrey")+
   ylab("Latitude")+
   xlab("Longitude")+
   theme_bw()
