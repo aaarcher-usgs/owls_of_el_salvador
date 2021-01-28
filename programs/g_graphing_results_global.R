@@ -265,11 +265,11 @@ range(ElSalvador$lat)
 #' Map of protected areas
 #+ map, fig.width = 5.67, dpi = 600, fig.height = 4.4
 ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
-  geom_polygon(fill = "grey", color = "darkgrey")+
+  geom_polygon(fill = "grey", color = "#848484")+
   geom_polygon(data = Honduras, aes(x = long, y = lat, group = group),
-               fill = "lightgrey", color = "darkgrey")+
+               fill = "lightgrey", color = "#848484")+
   geom_polygon(data = Guatemala, aes(x = long, y = lat, group = group),
-               fill = "lightgrey", color = "darkgrey")+
+               fill = "lightgrey", color = "#848484")+
   coord_map(xlim = c(-90.2, -87.2), ylim = c(13.0, 14.5))+
   # El Imposible
   annotate(geom = "text", y = 13.74, x = -89.8, label = "EINP", size = 4)+
@@ -280,6 +280,12 @@ ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
   # Nancuchiname
   annotate(geom = "text", y = 13.45, x = -88.64, label = "NF", size = 4)+
   annotate(geom = "point", y = 13.33, x = -88.72, size = 5, shape = 21, fill = "lightgrey")+
+  # Country & Ocean names
+  annotate(geom = "text", y = 13.8, x = -89.0, label = "EL SALVADOR", size = 3)+
+  annotate(geom = "text", y = 14.2, x = -90.0, label = "GUATEMALA", size = 3)+
+  annotate(geom = "text", y = 14.2, x = -87.8, label = "HONDURAS", size = 3)+
+  annotate(geom = "text", y = 13.3, x = -89.5, label = "Pacific Ocean", size = 2.5,
+           fontface = "italic")+
   ylab("Latitude")+
   xlab("Longitude")+
   theme_bw()
