@@ -51,12 +51,12 @@ Nancuchiname Forest, a Protected Natural Area, was located 95 km southeast of Sa
 
 ```{r}
 library(pander)
-Habitat <- c("Reforested Deciduous Forest",
-             "Semi-Deciduous Forest",
-             "Cloud Forest",
-             "Pine/Oak Forest",
-             "Alluvial Forest with Secondary Growth",
-             "Alluvial Forest")
+Habitat <- c("Reforested deciduous forest",
+             "Semi-deciduous forest",
+             "Cloud forest",
+             "Pine/oak forest",
+             "Alluvial forest with secondary growth",
+             "Alluvial forest")
 Latitude <- c("13xx 50.75'", "13xx 51.38'", 
               "14xx 24.88'", "14xx 23.19'", 
               "13xx 19.95'", "13xx 22.03'")
