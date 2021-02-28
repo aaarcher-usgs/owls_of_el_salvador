@@ -20,6 +20,7 @@ library(plyr)
 library(rgdal)
 library(raster)
 library(mapproj)
+library(stringr)
 
 #' Clear environment and set seed
 #' 
@@ -74,8 +75,8 @@ psi.means.ferpy$Species[max(nrow(psi.means.ferpy))] <- "FerPy"
 #'
 #' Merge data
 psi.means <- rbind(psi.means.ferpy, psi.means.specd, psi.means.mottd)
-psi.means$code <- ifelse(psi.means$Species == "FerPy", "FEPO", 
-                         ifelse(psi.means$Species == "Mottd", "MOOW", "SPEO"))
+psi.means$code <- ifelse(psi.means$Species == "FerPy", "Ferruginous Pygmy-Owl", 
+                         ifelse(psi.means$Species == "Mottd", "Mottled Owl", "Spectacled Owl"))
 
 #' Last minute fix to route names
 #' 
@@ -89,8 +90,8 @@ psi.means$Route <- ifelse(psi.means$Route == "EI1", "EI-1",
 
 #'
 #+ psi_means, fig.width = 2.8346, dpi = 600, fig.height = 4.5
-ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = code))+
-  geom_bar(stat = "identity", aes(fill = code), position= position_dodge())+
+ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = str_wrap(code,10)))+
+  geom_bar(stat = "identity", aes(fill = str_wrap(code,10)), position= position_dodge())+
   geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), position = position_dodge(width = 0.9))+
   facet_wrap(~Route, nrow = 3,scales = "free_x")+
   ylim(c(0,1))+
@@ -123,8 +124,8 @@ psi.post.all$Year[psi.post.all$Psi.mean == 0.00001] <- 2000
 psi.post.all$Species[psi.post.all$Psi.mean == 0.00001] <- "Specd"
 psi.post.all$Route[psi.post.all$Psi.mean == 0.00001] <- "M.1"
 
-psi.post.all$code <- ifelse(psi.post.all$Species == "FerPy", "FEPO", 
-                            ifelse(psi.post.all$Species == "Mottd", "MOOW", "SPEO"))
+psi.post.all$code <- ifelse(psi.post.all$Species == "FerPy", "Ferruginous Pygmy-Owl", 
+                            ifelse(psi.post.all$Species == "Mottd", "Mottled Owl", "Spectacled Owl"))
 #'
 #' Last minute fix for Route names
 psi.post.all$Route <- ifelse(psi.post.all$Route == "EI.1", "EI-1",
@@ -168,9 +169,9 @@ p.det.post <- rbind(p.det.post.ferpy, p.det.post.mottd,
 table(p.det.post$Broadcast)
 
 table(p.det.post$Species)
-p.det.post$Species[p.det.post$Species == "FerPy"] <- "FEPO"
-p.det.post$Species[p.det.post$Species == "Mottd"] <- "MOOW"
-p.det.post$Species[p.det.post$Species == "Specd"] <- "SPEO"
+p.det.post$Species[p.det.post$Species == "FerPy"] <- "Ferruginous Pygmy-Owl"
+p.det.post$Species[p.det.post$Species == "Mottd"] <- "Mottled Owl"
+p.det.post$Species[p.det.post$Species == "Specd"] <- "Spectacled Owl"
 
 
 
