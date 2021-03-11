@@ -1,0 +1,860 @@
+Stations_ID,Survey_ID,Station,Station_Start_Time,Temperature,Barometer,Fog,Wind_Speed,Broadcast_Species,Background_Noise,Station_Comments
+12,11,EI1.1,18:30:00,28,34.94,0,0,Pacific Screech Owl,2,Cicadas.
+13,11,EI1.2,18:58:00,27,34.94,0,0,Mottled Owl,0,
+14,11,EI1.3,19:16:00,27,34.94,0,0,Crested Owl,2,Cicadas.
+15,11,EI1.4,19:36:00,27,34.96,0,0,Black and White Owl,0,
+16,11,EI1.5,19:55:00,26,34.96,0,0,Spectacled Owl,0,Falda de Mt. de Guyuval.
+17,11,EI1.6,20:18:00,27,34.85,0,0,Pacific Screech Owl,1,Muous.
+18,11,EI1.7,20:38:00,26,34.84,0,0,Mottled Owl,0,Mottled owl on way from point 6 to 7.
+19,11,EI1.8,21:02:00,26,34.79,0,0,Crested Owl,0,Road.
+20,11,EI1.9,21:27:00,25,34.78,0,0,Black and White Owl,0,Road.
+21,11,EI1.10,21:52:00,26,34.59,0,0,Spectacled Owl,0,Road
+22,13,EI1.1,18:28:00,27,34.98,0,0,Pacific Screech Owl,2,Cicadas;5-6:30 pm at pt.1 & no Fer. Pygmy Owl vocalizations - usually hear
+23,13,EI1.2,18:47:00,26,34.94,0,0,Mottled Owl,0,Caballero & cicadas;moonlight can see well
+24,13,EI1.3,19:04:00,26,35.01,0,0,Crested Owl,0,Pucuyo; all of a sudden got dark-clouds&can hear thunder
+25,13,EI1.4,19:32:00,26,34.99,0,0,Black and White Owl,0,Pacific Screech Owl on path to pt. 4 ~ 5 m. from path -only vocalized once & not record
+26,13,EI1.5,19:51:00,26,34.93,0,0,Spectacled Owl,0,looks like rain in clouds; can see a few stars
+27,13,EI1.6,20:12:00,26,34.88,0,0,Pacific Screech Owl,0,Muyuo
+28,13,EI1.7,20:38:00,26,34.85,0,0,Mottled Owl,0,Heard Micoleon just as leaving point.
+29,13,EI1.8,21:13:00,25,34.85,0,0,Crested Owl,0,
+30,13,EI1.9,21:31:00,26,34.72,0,0,Black and White Owl,0,Muyo
+31,13,EI1.10,21:52:00,26,34.68,0,0,Spectacled Owl,0,
+32,14,EI2.1,18:52:00,25,33.19,75,0,Pacific Screech Owl,0,
+33,14,EI2.2,19:09:00,23,0,75,0,Mottled Owl,0,
+34,14,EI2.3,19:27:00,23,0,75,0,Crested Owl,0,
+35,14,EI2.4,19:46:00,23,33.38,0,0,Black and White Owl,0,
+36,14,EI2.5,20:08:00,24,0,0,0,Spectacled Owl,0,Can see by light of moon
+37,14,EI2.6,20:24:00,24,33.46,0,0,Pacific Screech Owl,0,
+38,14,EI2.7,20:48:00,24,33.53,0,0,Mottled Owl,0,
+39,14,EI2.8,21:09:00,24,33.59,0,0,Crested Owl,1,dogs barking; Micleon at 2119hrs.
+40,14,EI2.9,21:31:00,23,33.83,0,0,Black and White Owl,0,
+41,14,EI2.10,21:53:00,24,33.85,0,0,Spectacled Owl,0,Muyuos (2 different vocalizations)
+42,15,EI2.1,18:33:00,25,33.18,0,0,Pacific Screech Owl,0,Dogs Naranjito; clear - lots of moon light
+43,15,EI2.2,18:48:00,23,33.18,0,0,Mottled Owl,0,Dogs Naranjito
+44,15,EI2.3,19:03:00,23,33.24,0,0,Crested Owl,0,Dogs Naranjito
+45,15,EI2.4,19:18:00,22,33.32,0,0,Black and White Owl,0,
+46,15,EI2.5,19:36:00,22,33.39,0,0,Spectacled Owl,0,
+47,15,EI2.6,19:52:00,24,33.48,0,0,Pacific Screech Owl,0,
+48,15,EI2.7,20:18:00,23,33.59,0,0,Mottled Owl,0,Micoleon
+49,15,EI2.8,20:34:00,23,33.64,0,0,Crested Owl,0,
+50,15,EI2.9,20:57:00,23,33.71,0,0,Black and White Owl,0,
+51,15,EI2.10,21:20:00,23,33.95,0,0,Spectacled Owl,0,
+52,16,N1.1,19:00:00,30,37.14,0,0,Pacific Screech Owl,2,Pucuyos at river area; loud frogs in river; urone -same family as tasquisine; burn area
+53,16,N1.2,19:18:00,29,0,0,0,Mottled Owl,2,Pucuyos &  loud frogs in river area; burn area
+54,16,N1.3,19:34:00,28,0,0,0,Crested Owl,2,Loud frogs in river area; burn area
+55,16,N1.4,19:49:00,28,37.18,0,0,Black and White Owl,2,Guase 1951 hrs. - 200 m. south; burn area
+56,16,N1.5,20:09:00,28,37.19,0,0,Spectacled Owl,2,pucyos; out of burn area
+57,16,N1.6,20:27:00,28,37.2,0,0,Pacific Screech Owl,0,recorded pucuyos
+58,16,N1.7,20:44:00,28,37.22,0,0,Mottled Owl,0,pucuyo
+59,16,N1.8,21:01:00,27,37.23,0,0,Crested Owl,0,two chacalacas
+60,16,N1.9,21:18:00,27,0,0,0,Black and White Owl,0,
+61,16,N1.10,21:33:00,27,37.25,0,0,Spectacled Owl,0,people camping on river
+62,17,N1.1,18:45:00,30,37.11,0,0,Pacific Screech Owl,1,"Frogs loud, Pucuyos; burn area"
+63,17,N1.2,19:02:00,28,37.13,0,0,Mottled Owl,1,Frogs loud; burn area
+64,17,N1.3,19:18:00,28,37.14,0,0,Crested Owl,2,Frogs loud; chacalacas; burn area
+65,17,N1.4,19:38:00,28,37.14,0,0,Black and White Owl,2,Frogs loud; Pucuyos; burn area
+66,17,N1.5,19:59:00,28,37.14,0,0,Spectacled Owl,2,Frogs loud; Pucuyos; out of the burn area
+67,17,N1.6,20:28:00,27,37.15,0,0,Pacific Screech Owl,1,Pucuyos
+68,17,N1.7,20:37:00,27,37.16,0,0,Mottled Owl,1,
+69,17,N1.8,20:56:00,26,37.18,0,0,Crested Owl,1,Laughing Falcon 30 m. east
+70,17,N1.9,21:14:00,26,37.18,0,0,Black and White Owl,1,Pucuyo
+71,17,N1.10,21:29:00,26,37.19,0,0,Spectacled Owl,1,Pucuyo
+72,18,N2.1,18:45:00,30,37.08,0,0,Pacific Screech Owl,0,
+73,18,N2.2,19:04:00,30,37.08,0,0,Mottled Owl,0,
+74,18,N2.3,19:24:00,30,37.09,0,0,Crested Owl,0,
+75,18,N2.4,19:45:00,30,37.11,0,0,Black and White Owl,1,Can hear people and radio a distance.
+76,18,N2.5,20:02:00,28,37.13,0,0,Spectacled Owl,0,
+77,18,N2.6,20:23:00,28,37.12,0,0,Pacific Screech Owl,0,
+78,18,N2.7,20:43:00,28,37.12,0,0,Mottled Owl,0,
+79,18,N2.8,21:04:00,28,37.13,0,0,Crested Owl,0,Recorded owls
+80,18,N2.9,21:25:00,28,37.15,0,0,Black and White Owl,0,Recorded owls; Pucuyo
+81,18,N2.10,21:47:00,28,37.15,0,0,Spectacled Owl,0,
+82,19,N2.1,18:45:00,32,37.13,0,0,Pacific Screech Owl,0,
+83,19,N2.2,19:10:00,30,37.16,0,0,Mottled Owl,0,Heard Spectacled Owl between points # 1 & 2
+84,19,N2.3,19:31:00,30,37.16,0,0,Crested Owl,0,
+85,19,N2.4,19:48:00,29,37.16,0,0,Black and White Owl,0,Recorded owl
+86,19,N2.5,20:09:00,30,37.17,0,0,Spectacled Owl,0,
+87,19,N2.6,20:30:00,28,0,0,0,Pacific Screech Owl,1,Dogs; Recorded Mottled Owl
+88,19,N2.7,20:57:00,28,37.17,0,0,Mottled Owl,0,Recorded
+89,19,N2.8,21:21:00,28,37.17,0,0,Crested Owl,1,people on river at beginning; Pucuyo
+90,19,N2.9,21:40:00,27,37.18,0,0,Black and White Owl,0,pucuyo
+91,19,N2.10,22:04:00,27,37.18,0,0,Spectacled Owl,0,Heard a Pacific Screech Owl between points 9 & 10
+92,20,EI1.1,18:20:00,28,0,0,0,Pacific Screech Owl,1,Chicharas - occasional; Muos 300 m. south at 8 minutes
+93,20,EI1.2,18:41:00,28,0,0,0,Mottled Owl,1,Chichara
+94,20,EI1.3,18:56:00,27,0,0,0,Crested Owl,0,Muos after 5 minutes
+95,20,EI1.4,19:14:00,27,0,0,0,Black and White Owl,1,
+96,20,EI1.5,19:33:00,26,0,0,0,Spectacled Owl,0,Cleared up - can see the stars; problems with original tape
+97,20,EI1.6,20:01:00,26,0,0,0,Pacific Screech Owl,0,
+98,20,EI1.7,20:28:00,26,0,0,0,Mottled Owl,1,
+100,20,EI1.9,20:45:00,26,0,0,0,Black and White Owl,0,
+101,20,EI1.10,21:20:00,26,0,0,0,Spectacled Owl,0,Had problems with the duplicate tape
+102,21,EI1.1,18:23:00,27,945,0,0,Pacific Screech Owl,0,Cerca casa de Manuel Vasquez
+103,21,EI1.2,18:47:00,26,944,0,0,Mottled Owl,0,Cerca casa donde vivio Francisco Vasquez; Recorded before observation period (2 screech Owls & 1 Pygmy Owl)
+104,21,EI1.3,19:08:00,26,944,0,0,Crested Owl,0,Cerca de aguate donde vivio Francisco Vasquez
+105,21,EI1.4,19:30:00,27,945,0,0,Black and White Owl,0,Cerca arbol de Cedro - that had a nest in it in the past
+106,21,EI1.5,19:52:00,26,0,0,0,Spectacled Owl,0,El Potrero Lome de Paja
+107,21,EI1.6,20:13:00,26,0,0,0,Pacific Screech Owl,0,La Montana Narjano Limo
+108,21,EI1.7,20:39:00,26,0,0,0,Mottled Owl,0,Mt. de Rancho Quemado
+109,21,EI1.8,21:12:00,27,941,0,0,Crested Owl,0,Montana de Rancho Quemado - por mango
+110,21,EI1.9,21:33:00,25,938,0,0,Black and White Owl,0,El dentro del queva del Pedradron
+111,21,EI1.10,21:53:00,25,933,0,0,Spectacled Owl,0,Cerca del arbol de Copenol de Pedradron
+112,22,EI2.1,18:58:00,25,0,0,0,Pacific Screech Owl,0,Radio a long ways out
+113,22,EI2.2,19:14:00,25,0,0,0,Mottled Owl,0,
+114,22,EI2.3,19:31:00,24,0,0,0,Crested Owl,0,On way to point 3 heard a Mottled Owl close to Pt. 3 to 250 m. south
+115,22,EI2.4,19:52:00,23,0,0,0,Black and White Owl,0,Dark colored opossum (tasquisine negra) 50 m North of pt.5
+116,22,EI2.5,20:11:00,24,0,0,0,Spectacled Owl,1,2 Muyos to north 600 meters vocalizing ; a little noise from house
+117,22,EI2.6,20:29:00,24,0,0,0,Pacific Screech Owl,0,Heard a single hoot a long wasys to the west during minute 2
+118,22,EI2.7,20:50:00,24,0,0,0,Mottled Owl,2,Dogs at a distiance - Vidal thought in Naranjito
+119,22,EI2.8,21:13:00,24,0,0,0,Crested Owl,0,
+120,22,EI2.9,21:25:00,25,0,0,0,Black and White Owl,0,Mt. Vineal
+121,22,EI2.10,22:00:00,25,0,0,0,Spectacled Owl,0,
+122,23,EI2.1,18:25:00,25,896,0,0,Pacific Screech Owl,1,3 people walking by survey point@ min.8
+123,23,EI2.2,18:42:00,24,896,0,0,Mottled Owl,1,one person walked by just as 2 min listening period ended; Muyuos at over 200 meters northeast
+124,23,EI2.3,18:59:00,24,898,0,0,Crested Owl,0,heard a Mottled Owl at 7:12 pm on way to point # 4 above road on right
+125,23,EI2.4,19:16:00,23,902,0,0,Black and White Owl,0,
+126,23,EI2.5,19:35:00,24,902,0,0,Spectacled Owl,2,can hear people in house down road
+127,23,EI2.6,19:53:00,26,905,0,0,Pacific Screech Owl,0,Mont. Ojo de agua
+128,23,EI2.7,20:15:00,25,905,0,0,Mottled Owl,1,dogs at a distance
+129,23,EI2.8,20:34:00,24,910,0,0,Crested Owl,0,
+130,23,EI2.9,20:58:00,25,911,0,0,Black and White Owl,0,
+131,23,EI2.10,21:20:00,24,917,0,0,Spectacled Owl,0,recorded; also recorded after the 12 min. survey period ended
+132,24,N1.1,18:30:00,30,1003,0,0,Pacific Screech Owl,0,Pucuyo
+133,24,N1.2,18:48:00,29,0,0,0,Mottled Owl,0,Pucuyo during first minute; ranas
+134,24,N1.3,19:05:00,28,1003,0,0,Crested Owl,0,ranas; pucuyo; lightening bugs everywhere
+135,24,N1.4,19:24:00,28,1003,0,0,Black and White Owl,1,Tarantula between pt. 3 and 4; ranas (frogs)
+136,24,N1.5,19:42:00,28,1004,0,0,Spectacled Owl,1,Frogs
+137,24,N1.6,19:59:00,29,1004,0,0,Pacific Screech Owl,1,Frogs
+138,24,N1.7,20:21:00,29,1004,0,0,Mottled Owl,1,Frogs
+139,24,N1.8,20:38:00,28,0,0,0,Crested Owl,1,Pucuyos/frogs
+140,24,N1.9,20:53:00,28,0,0,0,Black and White Owl,1,Dogs across river; Barn Owl on way to pt.9
+141,24,N1.10,21:15:00,28,1005,0,0,Spectacled Owl,1,Ranas; recorded frogs
+142,25,N1.1,18:30:00,30,1005,0,0,Pacific Screech Owl,0,
+143,25,N1.2,18:47:00,29,1005,0,0,Mottled Owl,0,laughing Falcon; Pucuyos; Barn Owl vocalized between points while we were  walking from point 1 to 2
+144,25,N1.3,19:04:00,28,1005,0,0,Crested Owl,0,Pucuyos;Mottled Owl vocalized (6 meters South) while we were walking between points 2 &3 at 7:00 pm.
+145,25,N1.4,19:21:00,28,1005,0,0,Black and White Owl,1,Some noise across the river - radio?
+146,25,N1.5,19:37:00,28,1005,0,0,Spectacled Owl,0,
+152,26,N2.1,18:30:00,29,0,0,0,Pacific Screech Owl,0,Burn area to the South; Heard Laughing Falcons vocalizing & insects
+153,26,N2.2,18:50:00,28,1005,0,0,Mottled Owl,1,Large trucks hauling; Heard a Pygmy Owl just as leaving point - 2 short chatters
+154,26,N2.3,19:07:00,29,1005,0,0,Crested Owl,0,
+155,26,N2.4,19:27:00,28,1005,0,0,Black and White Owl,0,
+156,26,N2.5,19:45:00,27,0,0,0,Spectacled Owl,0,
+157,26,N2.6,20:02:00,27,0,0,0,Pacific Screech Owl,0,Monkey vocalizations recorded; Spectacled Owl while walking to next pt.-after 12 min. time frame
+158,26,N2.7,20:36:00,28,0,0,0,Mottled Owl,1,Insects - noise; Recorded Mottled Owls
+159,26,N2.8,20:55:00,27,0,0,0,Crested Owl,0,
+160,26,N2.9,21:11:00,26,1006,0,0,Black and White Owl,0,
+161,26,N2.10,21:26:00,25,0,0,0,Spectacled Owl,0,
+162,25,N1.6,19:53:00,28,1006,0,0,Pacific Screech Owl,0,Spectacled Owl between points 6 & 7
+163,25,N1.7,20:14:00,28,1006,0,0,Mottled Owl,0,
+164,25,N1.8,20:30:00,27,1006,0,0,Crested Owl,0,
+165,25,N1.9,20:47:00,27,1006,0,0,Black and White Owl,0,
+166,25,N1.10,21:03:00,28,0,0,0,Spectacled Owl,0,
+167,27,N2.1,18:30:00,31,0,0,0,Pacific Screech Owl,0,Noise - None; A few dogs ocassionally barking
+168,27,N2.2,18:47:00,30,1005,0,0,Mottled Owl,0,Noise - None; A few dogs ocassionally barking
+169,27,N2.3,19:05:00,29,0,0,0,Crested Owl,0,
+170,27,N2.4,19:23:00,29,1006,0,0,Black and White Owl,0,
+171,27,N2.5,19:48:00,28,0,0,0,Spectacled Owl,0,
+172,27,N2.6,20:07:00,29,0,0,0,Pacific Screech Owl,0,
+173,27,N2.7,20:26:00,0,0,0,0,Mottled Owl,2,Insects vocalizing - louder than other points
+174,27,N2.8,20:45:00,28,1006,0,0,Crested Owl,0,Insects
+175,27,N2.9,21:01:00,27,1007,0,0,Black and White Owl,0,"Pucuyo; One min. after data recording session heard a Ferg. Pygmy Owl, 150 m. south"
+176,27,N2.10,21:19:00,27,1007,0,0,Spectacled Owl,0,
+177,28,M1.1,19:00:00,18,0,0,0,,0,Chacha Negra perched & vocalizing & when flew to another perch; Oyuo vocaliz. & another in background
+178,28,M1.2,19:15:00,18,0,0,0,,0,one oyuo vocal. At a distance
+179,28,M1.3,19:30:00,18,0,0,5,,0,cloud cover changed to 10%; can see stars & moon
+180,28,M1.4,19:44:00,17,0,0,9,,2,noise from wind
+181,28,M1.5,20:00:00,17,0,0,6,,0,
+182,28,M1.6,20:15:00,16,0,0,0,,0,Oyuo vocalizing
+183,28,M1.7,20:30:00,17,0,0,5,,2,"At about 6 min. heard sound to the SE very long ways off - not able to hear clearly - only heard when breeze lessens, 10 min. poss.; soft hoot only"
+184,28,M1.8,20:46:00,17,0,0,0,,0,Quiet except for occas. breeze - couls hear an owl but so far off that I didn't count it
+185,28,M1.9,21:02:00,18,0,0,0,,0,One Oyuo during first min.
+186,28,M1.10,21:17:00,20,0,0,0,,0,One oyuo during first min.
+187,29,M2.1,19:00:00,20,0,0,0,,0,
+188,29,M2.2,19:19:00,21,0,0,4,,0,
+189,29,M2.3,19:36:00,21,0,0,0,,0,
+190,29,M2.4,19:51:00,24,0,0,0,,0,
+191,29,M2.5,20:06:00,21,0,0,0,,0,
+192,29,M2.6,20:24:00,21,0,0,0,,0,
+193,29,M2.7,20:40:00,21,0,0,0,,0,Mottled Owl  between points 6 & 7 to the NW
+194,29,M2.8,20:56:00,21,0,0,0,,0,heard deer
+195,29,M2.9,21:11:00,20,0,0,0,,0,
+196,29,M2.10,21:27:00,0,0,0,0,,0,
+197,30,EI2.1,19:00:00,23,0,20,0,,1,
+198,30,EI2.2,19:17:00,25,0,0,0,,1,
+199,30,EI2.3,19:33:00,25,0,0,0,,2,wind picked up at tree top level in spirts
+200,30,EI2.4,19:49:00,25,0,0,0,,2,wind in canopy
+201,30,EI2.5,20:06:00,25,0,0,0,,2,dogs barking - moved point down hill away from the dogs; wind in canopy
+202,30,EI2.6,20:22:00,26,0,0,5,,2,Wind in canopy
+203,30,EI2.7,20:41:00,25,0,0,0,,2,wind in canopy
+204,30,EI2.8,21:04:00,25,0,0,0,,2,wind in canopy
+205,30,EI2.9,21:23:00,25,0,0,0,,2,wind in canopy
+206,30,EI2.10,21:41:00,25,0,0,0,,2,wind in canopy
+207,31,EI1.1,19:00:00,27,0,0,0,,0,
+208,31,EI1.2,19:15:00,27,0,0,0,,0,
+209,31,EI1.3,19:33:00,27,0,0,0,,0,
+210,31,EI1.4,19:53:00,27,0,0,0,,0,cloud cover changed to 50%
+211,31,EI1.5,20:10:00,27,0,0,0,,0,
+212,31,EI1.6,20:29:00,27,0,0,0,,2,
+213,31,EI1.7,20:45:00,26,0,0,0,,0,
+214,31,EI1.8,21:03:00,27,0,0,0,,0,
+215,31,EI1.9,21:21:00,27,0,0,0,,0,
+216,31,EI1.10,21:46:00,26,0,0,0,,0,
+218,32,N1.1,19:00:00,32,0,0,0,,0,
+219,32,N1.2,19:34:00,30,0,0,0,,3,Lots of wind in tree tops & lightening - hard to hear
+220,32,N1.3,19:52:00,28,0,0,0,,2,Lightnening and wind in tree tops; could not hear much with storm moving through & ended transect
+228,33,N2.1,18:55:00,0,0,0,0,,1,
+229,33,N2.2,19:10:00,29,0,0,0,,1,Chacalaca vocalizing at 7:20 PM in 4 diff. locations; one Spectacled Owl after the 10 min. obs. Period at min. 11
+230,33,N2.3,19:34:00,29,0,0,0,,1,
+231,33,N2.4,19:53:00,28,0,0,0,,1,
+232,33,N2.5,20:10:00,28,0,0,0,,1,Heard Laughing Falcon at 8:12 PM.
+233,33,N2.6,20:38:00,28,0,0,0,,2,
+234,33,N2.7,20:51:00,28,0,0,0,,1,8:55 PM heard frogs similar to owl vocalizaton; at 9 PM heard a laughing falcon vocalizing 200 m. north
+235,33,N2.8,21:11:00,28,0,0,0,,1,Pucuyo & chachalaca
+236,33,N2.9,21:30:00,28,0,0,0,,1,Heard Laughing Falcon 500 m. to the north at 9:31
+237,33,N2.10,21:48:00,28,0,0,0,,1,
+239,34,M2.1,19:00:00,19,30.27,5,0,Whiskered Screech Owl,3,Gusty wind in canopy
+240,34,M2.2,19:30:00,19,30.25,5,5,Mottled Owl,3,Gusty wind in canopy
+242,35,M2.1,18:00:00,23,0,45,0,Whiskered Screech Owl,0,Can hear wind in tree tops; About 500 m W Laughing Falcon; Fog moved in
+243,35,M2.2,18:23:00,22,0,45,0,Mottled Owl,0,Light rain; Pucuyo @ end of silent listening period; Cusuco in brush
+244,35,M2.3,18:43:00,22,0,45,0,Guat. Barred Owl,0,"Heard occasional hoot (bark like) to SE long way off - edge of forest when approaching pt. 3; light rain, thunder & some lightening; Heard same sound same direction when traveling to pt. 4."
+251,36,M2.1,18:15:00,21,33.19,45,0,Whiskered Screech Owl,2,Wind in tree tops; one Paraque (Great Potoo)
+252,36,M2.2,18:43:00,20,0,50,5,Mottled Owl,1,
+253,36,M2.3,19:04:00,21,0,60,0,Guat. Barred Owl,2,"Could see moon thru clouds, fog in lower areas; Jet noise during 2nd min. - used extra time to not count jet"
+254,36,M2.4,19:26:00,21,0,65,0,Stygian Owl,1,
+255,36,M2.5,19:48:00,20,0,65,0,Great Horned Owl,0,
+256,36,M2.6,20:13:00,21,0,70,0,Whiskered Screech Owl,0,
+257,36,M2.7,20:35:00,20,0,75,0,Mottled Owl,0,
+258,36,M2.8,20:56:00,20,0,80,0,Guat. Barred Owl,0,
+259,36,M2.9,21:16:00,20,0,90,0,Stygian Owl,0,
+260,36,M2.10,21:34:00,19,0,100,0,Great Horned Owl,0,Fog/Mist thick
+261,37,M2.1,18:15:00,21,0,45,0,Whiskered Screech Owl,2,Wind in tree tops; Laughing Falcon at start of transect
+262,37,M2.2,18:49:00,22,0,45,0,Mottled Owl,1,Looked like it would pour so packed away gear & at pt 2 took it out - reason for longer time between points
+263,37,M2.3,19:07:00,22,0,45,0,Guat. Barred Owl,1,
+264,37,M2.4,19:30:00,22,0,45,0,Stygian Owl,1,
+265,37,M2.5,19:47:00,21,0,45,0,Great Horned Owl,1,
+266,37,M2.6,20:06:00,20,0,60,0,Whiskered Screech Owl,1,Valley filled with fog
+267,37,M2.7,20:24:00,20,0,60,0,Mottled Owl,1,heard: whitt whitt whitt - 3 close succession?
+268,37,M2.8,20:38:00,20,0,60,0,Guat. Barred Owl,1,
+269,37,M2.9,20:54:00,20,0,60,0,Stygian Owl,1,Surprised a deer
+270,37,M2.10,21:08:00,20,0,100,0,Great Horned Owl,1,Pucuyo; change in fog - can hardly see in front of yourself
+271,38,EI2.1,18:30:00,26,0,85,0,Pacific Screech Owl,2,Ciciadas
+272,38,EI2.2,18:48:00,25,0,85,0,Mottled Owl,1,
+273,38,EI2.3,19:06:00,25,0,85,0,Crested Owl,1,
+274,38,EI2.4,19:25:00,25,33.34,85,0,Black and White Owl,1,Recorded owl & Muyu (up to 110 on tape)
+275,38,EI2.5,19:44:00,26,33.41,85,0,Spectacled Owl,2,House nearby - Plan de Matasanos
+276,38,EI2.6,20:01:00,26,33.46,85,0,Pacific Screech Owl,1,Thunder
+277,38,EI2.7,20:16:00,26,33.44,85,0,Mottled Owl,1,Thunder & lightening
+278,38,EI2.8,20:34:00,26,33.57,85,0,Crested Owl,1,Thunder & lightening
+279,38,EI2.9,20:56:00,26,33.8,85,0,Black and White Owl,1,Thunder & lightening
+280,38,EI2.10,21:14:00,26,33.93,85,0,Spectacled Owl,1,Thunder & lightening
+281,39,EI1.1,18:28:00,26,34.97,0,0,Pacific Screech Owl,3,"Chicharas; thought I hard a Mottled Owl, but lot of background noise"
+282,39,EI1.2,18:47:00,27,34.92,50,0,Mottled Owl,2,Muyos & Chicharas
+283,39,EI1.3,19:05:00,26,0,60,0,Crested Owl,2,Muyos & Chicharas
+284,39,EI1.4,19:26:00,25,34.96,60,0,Black and White Owl,1,
+285,39,EI1.5,19:43:00,25,34.84,60,0,Spectacled Owl,1,
+286,39,EI1.6,20:05:00,26,34.84,40,0,Pacific Screech Owl,1,Can see stars
+287,39,EI1.7,20:29:00,26,34.81,40,0,Mottled Owl,1,
+288,39,EI1.8,20:52:00,25,34.83,30,0,Crested Owl,1,
+289,39,EI1.9,21:11:00,25,34.77,20,0,Black and White Owl,1,
+290,39,EI1.10,21:43:00,26,34.6,20,0,Spectacled Owl,1,
+291,40,EI2.1,18:32:00,24,0,80,0,Pacific Screech Owl,1,Chichara; Laughing Falcon vocalizing in valley below during 1st two minutes of survey
+292,40,EI2.2,18:49:00,24,33.15,50,0,Mottled Owl,2,Chichara & occasional dog barking
+293,40,EI2.3,19:07:00,23,0,20,0,Crested Owl,1,
+294,40,EI2.4,19:24:00,23,0,80,0,Black and White Owl,1,
+295,40,EI2.5,19:41:00,23,0,20,0,Spectacled Owl,1,
+296,40,EI2.6,19:57:00,23,33.56,0,0,Pacific Screech Owl,1,
+297,40,EI2.7,20:15:00,23,33.56,0,0,Mottled Owl,1,
+298,40,EI2.8,20:35:00,22,0,0,0,Crested Owl,1,
+299,40,EI2.9,20:56:00,22,0,0,0,Black and White Owl,1,
+300,40,EI2.10,21:15:00,23,0,0,0,Spectacled Owl,1,
+301,41,EI1.1,18:30:00,26,34.92,0,0,Pacific Screech Owl,3,"Muyos (2), Chichara & some background music"
+302,41,EI1.2,18:47:00,26,0,0,0,Mottled Owl,2,Chichara
+303,41,EI1.3,19:03:00,27,0,0,0,Crested Owl,2,Chicara
+304,41,EI1.4,19:24:00,27,34.87,0,0,Black and White Owl,1,Muyu
+305,41,EI1.5,19:41:00,27,34.87,0,0,Spectacled Owl,2,Music; Slight breeze
+306,41,EI1.6,19:59:00,27,34.87,0,0,Pacific Screech Owl,1,Music below; Slight breeze
+307,41,EI1.7,20:21:00,26,34.79,0,0,Mottled Owl,1,Music
+308,41,EI1.8,20:43:00,27,0,0,0,Crested Owl,1,
+309,41,EI1.9,21:02:00,26,34.71,0,0,Black and White Owl,1,Slight breeze
+310,41,EI1.10,21:34:00,26,34.5,0,0,Spectacled Owl,1,
+312,42,N1.1,18:48:00,28,37.12,0,0,Pacific Screech Owl,1,Ranas & Pucuyos; Laughing Falcon other side of river Minute 7
+313,42,N1.2,19:08:00,28,37.13,0,0,Mottled Owl,1,Ranas & Pucuyos; Burning sugar cane other side of river; Fire this year - burn area
+314,42,N1.3,19:23:00,28,37.15,0,0,Crested Owl,1,Ranas & Pucuyos; Burning sugar cane other side of river; Fire this year - burn area
+315,42,N1.4,19:47:00,28,37.16,0,0,Black and White Owl,1,Rana; burn area
+316,42,N1.5,20:03:00,28,37.16,0,0,Spectacled Owl,1,Ranas; burn area
+317,42,N1.6,20:19:00,0,37.16,0,0,Pacific Screech Owl,1,"Ranas/ music to SE, Caballaro (Pucuyos); burn area"
+318,42,N1.7,20:33:00,28,37.17,0,0,Mottled Owl,1,Mottled Owl just before 8:33 PM. Ranas/Pucuyos/noise; out of burn area
+319,42,N1.8,20:49:00,28,37.18,0,0,Crested Owl,1,Music/ranas
+320,42,N1.9,21:05:00,28,37.18,0,0,Black and White Owl,1,"Ranas, pucuyos/music"
+321,42,N1.10,21:35:00,28,37.19,0,0,Spectacled Owl,1,
+322,43,N2.1,18:30:00,30,37.15,0,0,Pacific Screech Owl,1,Laughing Falcon during 1st 2 minutes
+323,43,N2.2,18:50:00,29,0,0,0,Mottled Owl,1,
+324,43,N2.3,20:00:00,27,0,0,0,Crested Owl,1,Lost trail & flashlight problems - 1 hour later; can hear some mechanized equipment
+325,43,N2.4,20:15:00,26,37.19,0,0,Black and White Owl,1,
+326,43,N2.5,20:33:00,26,37.21,0,0,Spectacled Owl,1,Recorded
+327,43,N2.6,20:55:00,26,0,0,0,Pacific Screech Owl,1,
+328,43,N2.7,21:18:00,26,0,0,0,Mottled Owl,1,
+329,43,N2.8,21:41:00,26,37.22,0,0,Crested Owl,1,
+330,43,N2.9,22:05:00,26,37.23,0,0,Black and White Owl,1,Recorded
+331,43,N2.10,22:27:00,26,0,0,0,Spectacled Owl,1,Recorded
+332,44,N1.1,18:45:00,29,0,0,0,Pacific Screech Owl,2,"Laughing Falcon x river; Music; Pucuyo, Ranas"
+333,44,N1.2,18:58:00,29,37.17,0,0,Mottled Owl,2,"Ligntening; Music; Pucuyo, Ranas"
+334,44,N1.3,19:13:00,30,37.17,0,0,Crested Owl,2,Ranas Sapos; music other side of river
+335,44,N1.4,19:27:00,30,0,0,0,Black and White Owl,1,Ranas/Pucuyos; heard 2 Spec Owls & 1 Ferrug. Pygmy Owl between pt 4 & 5
+336,44,N1.5,19:44:00,29,37.17,0,0,Spectacled Owl,1,Pucuyo & Rana; Lightening; Burning  sugar cane fields across rv; 1st 2 min no music/after tape music
+337,44,N1.6,19:57:00,29,37.17,0,0,Pacific Screech Owl,1,Music/Pucuyo & Ranas
+338,44,N1.7,20:11:00,28,37.2,0,0,Mottled Owl,2,Music (Fiesta)
+339,44,N1.8,20:27:00,27,37.2,0,0,Crested Owl,2,Music; lightening
+340,44,N1.9,20:41:00,26,37.21,0,0,Black and White Owl,2,Music
+341,44,N1.10,20:57:00,27,37.21,0,0,Spectacled Owl,1,Music
+342,45,N2.1,18:30:00,31,37.12,0,0,Pacific Screech Owl,1,Pucuyo/crickets
+343,45,N2.2,18:48:00,30,37.13,0,0,Mottled Owl,1,
+344,45,N2.3,19:05:00,31,37.13,0,0,Crested Owl,1,
+345,45,N2.4,19:21:00,31,37.15,0,0,Black and White Owl,1,
+346,45,N2.5,19:38:00,30,37.16,0,0,Spectacled Owl,1,Lightening but can see stars
+347,45,N2.6,19:59:00,30,0,0,0,Pacific Screech Owl,1,Lightening
+348,45,N2.7,20:18:00,30,0,0,0,Mottled Owl,1,Lightening & thunder
+349,45,N2.8,20:39:00,30,37.18,0,0,Crested Owl,1,Lightening
+350,45,N2.9,21:01:00,30,0,0,0,Black and White Owl,1,
+351,45,N2.10,21:18:00,29,0,0,0,Spectacled Owl,1,Lightening; Spectacled Owl heard @9:45 PM 10 m from pt. 10 (after survey)
+352,46,M2.1,18:32:00,17,24.22,0,7,Whiskered Screech Owl,3,Wind in tree tops
+353,46,M2.2,18:55:00,17,24.5,0,8,Mottled Owl,3,Strong gusts in tree tops
+354,46,M2.3,19:12:00,17,24.16,0,4,Guat. Barred Owl,3,Tree tops wind; 1/2 way between pts 3 & 4 @ 7:28 PM - one single hoot similar to single hoot of a Stygian Owl
+355,46,M2.4,19:33:00,17,24.08,0,0,Stygian Owl,3,Tree tops wind
+356,46,M2.5,19:49:00,17,24.15,0,0,Great Horned Owl,2,Wind in tree tops; skunk in road
+357,46,M2.6,20:07:00,17,24.15,0,0,Whiskered Screech Owl,2,Tree top wind - more protected this location; very clear can see stars; crickets
+358,46,M2.7,20:26:00,16,24.11,0,5,Mottled Owl,2,Gusts occassionally
+359,46,M2.8,20:48:00,16,24.12,0,8,Guat. Barred Owl,2,Gusts of wind
+360,46,M2.9,21:06:00,16,24.04,0,0,Stygian Owl,2,
+361,46,M2.10,21:25:00,16,23.39,0,0,Great Horned Owl,2,
+362,47,M2.1,18:01:00,20,24.19,0,6,Whiskered Screech Owl,1,Wind in tree tops
+363,47,M2.2,18:58:00,17,24.13,0,4,Mottled Owl,2,Wind in tree tops; stars & moon visable
+364,47,M2.3,19:13:00,17,24.15,0,0,Guat. Barred Owl,2,Wind in tree tops
+365,47,M2.4,19:29:00,18,24.15,0,0,Stygian Owl,1,Quiter; one Cusco
+366,47,M2.5,19:47:00,18,24.12,0,0,Great Horned Owl,1,Very lt. breeze in tree tops
+367,47,M2.6,20:09:00,18,24.09,0,7,Whiskered Screech Owl,1,Gusts of wind occasionally; lots of moon light
+368,47,M2.7,20:30:00,18,24.09,0,0,Mottled Owl,1,
+369,47,M2.8,20:48:00,18,24.02,0,0,Guat. Barred Owl,1,Can hear crickets
+370,47,M2.9,21:10:00,18,24.02,0,0,Stygian Owl,1,
+371,47,M2.10,21:29:00,18,24.02,0,0,Great Horned Owl,1,
+372,48,EI2.1,18:32:00,24,26.48,0,0,Pacific Screech Owl,1,Lightening can see but not hear; Cicadas
+373,48,EI2.2,18:50:00,24,26.48,0,0,Mottled Owl,1,Before play back recorded
+374,48,EI2.3,19:10:00,23,26.56,0,0,Crested Owl,1,Lightening w/ some thunder
+375,48,EI2.4,19:25:00,24,26.6,0,0,Black and White Owl,1,Lt. noise; cicadas; Jet
+376,48,EI2.5,19:42:00,24,26.56,0,0,Spectacled Owl,1,Wind picking up; Started pouring during broadcast - ended work @7:46 PM
+382,49,EI1.1,18:15:00,26,27.88,0,0,Pacific Screech Owl,2,Cicadas
+383,49,EI1.2,18:32:00,26,27.88,0,0,Mottled Owl,2,Cicadas
+384,49,EI1.3,18:49:00,27,27.88,0,0,Crested Owl,2,Cicadas
+385,49,EI1.4,19:07:00,26,27.88,0,0,Black and White Owl,2,Cicadas; Lightening
+386,49,EI1.5,19:24:00,26,27.79,0,0,Spectacled Owl,1,Cicadas; Lightening
+387,49,EI1.6,19:42:00,0,27.78,0,0,Pacific Screech Owl,1,Cicadas; Lightening; Muyo; Recorded after silent listening
+388,49,EI1.7,20:04:00,26,27.76,0,0,Mottled Owl,1,Recorded after silent listening & after broadcast; Chicharas
+389,49,EI1.8,20:25:00,26,27.76,0,0,Crested Owl,2,Chicaras
+390,49,EI1.9,20:42:00,26,27.73,0,0,Black and White Owl,2,Chicharas
+391,49,EI1.10,21:03:00,25,27.67,0,0,Spectacled Owl,1,
+392,50,EI1.1,18:30:00,26,27.9,0,0,Pacific Screech Owl,2,Chicharas strong
+393,50,EI1.2,18:48:00,26,27.9,0,0,Mottled Owl,2,Chicharas
+394,50,EI1.3,19:05:00,25,27.89,0,0,Crested Owl,2,Chicharas
+395,50,EI1.4,19:24:00,25,27.87,0,0,Black and White Owl,1,Chicharas/music
+396,50,EI1.5,19:41:00,25,27.84,0,0,Spectacled Owl,1,Chichara
+397,50,EI1.6,19:58:00,0,27.82,0,0,Pacific Screech Owl,1,
+398,50,EI1.7,20:25:00,25,27.78,0,0,Mottled Owl,1,Quiet
+399,50,EI1.8,20:44:00,25,27.79,0,0,Crested Owl,1,Muyuos (2)
+400,50,EI1.9,21:00:00,24,27.76,0,0,Black and White Owl,1,
+401,50,EI1.10,21:23:00,24,27.57,0,0,Spectacled Owl,1,Lightening but can see stars
+402,51,N1.1,18:30:00,29,29.72,0,0,Pacific Screech Owl,1,Laughing Falcon @ min. 5 to 10 - hard to hear much else
+403,51,N1.2,18:45:00,28,29.72,0,0,Mottled Owl,1,Sapos
+404,51,N1.3,19:00:00,28,29.72,0,0,Crested Owl,1,Lightening to N but can see stars; Sapos
+405,51,N1.4,19:16:00,27,29.73,0,0,Black and White Owl,1,Sapos
+406,51,N1.5,19:32:00,27,29.74,0,0,Spectacled Owl,1,Sapos & Pucuyos
+407,51,N1.6,19:47:00,27,29.75,0,0,Pacific Screech Owl,1,Sapos & Pucuyos
+408,51,N1.7,20:03:00,27,29.75,0,0,Mottled Owl,1,Sapos & Pucuyos
+409,51,N1.8,20:19:00,27,29.77,0,0,Crested Owl,1,Sapos & Pucuyos
+410,51,N1.9,20:34:00,26,29.77,0,0,Black and White Owl,1,Sapos & some kink og Heron in 1st min.
+411,51,N1.10,20:50:00,27,29.78,0,0,Spectacled Owl,1,Sapos
+412,52,N2.1,18:32:00,29,29.86,0,0,Pacific Screech Owl,1,
+413,52,N2.2,18:50:00,30,29.68,0,0,Mottled Owl,1,
+414,52,N2.3,19:09:00,29,29.69,0,0,Crested Owl,1,Sapos/greeos; Laughing Falcon Minute 2 & after broadcast
+415,52,N2.4,19:24:00,28,29.7,0,0,Black and White Owl,1,Sapos & Greeos; One Laughing Falcon
+416,52,N2.5,19:40:00,28,29.71,0,0,Spectacled Owl,1,Mottled Owl vocal between Pts 4 & 5; 1 Chachalaca vocal immed. after broadcast; Recorded Mottled owl
+417,52,N2.6,19:55:00,27,29.71,0,0,Pacific Screech Owl,1,Sapos/Greeos (crickets)
+418,52,N2.7,20:13:00,27,29.72,0,0,Mottled Owl,1,
+419,52,N2.8,20:30:00,27,29.73,0,0,Crested Owl,1,Sapos/Greeos & @ end pucuyo a long ways off
+420,52,N2.9,20:48:00,27,29.73,0,0,Black and White Owl,1,Dogs a long ways off; Opossom (geron - spanish) between pt 8  9.
+421,52,N2.10,21:05:00,26,29.74,0,0,Spectacled Owl,1,
+422,53,N1.1,18:30:00,28,29.68,0,0,Pacific Screech Owl,1,
+423,53,N1.2,18:46:00,27,29.68,0,0,Mottled Owl,1,"Sapos, Pucuyos"
+424,53,N1.3,19:03:00,27,29.69,0,0,Crested Owl,1,
+425,53,N1.4,19:20:00,27,29.69,0,0,Black and White Owl,1,Heard something moving in the river
+426,53,N1.5,19:38:00,27,29.7,0,0,Spectacled Owl,1,Pucuyo
+427,53,N1.6,19:53:00,26,29.71,0,0,Pacific Screech Owl,1,Sapos & Pucuyos
+428,53,N1.7,20:09:00,26,29.71,0,0,Mottled Owl,2,Sapos & a Rana (strange sound)
+429,53,N1.8,20:25:00,26,29.71,0,0,Crested Owl,1,Can see stars tonight
+430,53,N1.9,20:40:00,26,29.72,0,0,Black and White Owl,1,Dogs at a distance
+431,53,N1.10,20:56:00,26,29.72,0,0,Spectacled Owl,1,Heard something moving in the river
+432,54,N2.1,18:30:00,29,29.69,0,0,Pacific Screech Owl,1,
+433,54,N2.2,18:55:00,30,29.69,0,0,Mottled Owl,1,Poachers w/ flashlights in forest between pts 1 & 2.
+434,54,N2.3,19:15:00,29,29.71,0,0,Crested Owl,1,
+435,54,N2.4,19:31:00,28,29.72,0,0,Black and White Owl,1,
+436,54,N2.5,19:46:00,28,29.74,0,0,Spectacled Owl,1,
+437,54,N2.6,20:01:00,28,29.74,0,0,Pacific Screech Owl,1,
+438,54,N2.7,20:20:00,29,29.74,0,0,Mottled Owl,1,Chachalacas
+439,54,N2.8,20:40:00,29,29.74,0,0,Crested Owl,1,
+440,54,N2.9,20:55:00,28,29.74,0,0,Black and White Owl,1,
+441,54,N2.10,21:12:00,28,29.76,0,0,Spectacled Owl,1,
+442,55,M2.1,18:48:00,22,24.26,0,0,Whiskered Screech Owl,1,
+443,55,M2.2,19:06:00,19,24.19,0,0,Mottled Owl,1,
+444,55,M2.3,19:25:00,19,24.19,0,0,Guat. Barred Owl,1,
+445,55,M2.4,19:43:00,19,24.2,0,0,Stygian Owl,1,
+446,55,M2.5,20:00:00,18,24.21,0,0,Great Horned Owl,1,
+447,55,M2.6,20:16:00,18,24.25,0,0,Whiskered Screech Owl,1,
+448,55,M2.7,20:34:00,18,24.21,0,0,Mottled Owl,1,
+449,55,M2.8,20:53:00,17,24.18,0,0,Guat. Barred Owl,1,Caballero (1)
+450,55,M2.9,21:11:00,16,24.06,0,0,Stygian Owl,1,
+451,55,M2.10,21:32:00,16,24.04,0,0,Great Horned Owl,1,Can hear wind starting in tree tops
+452,56,M2.1,18:30:00,21,24.24,0,0,Whiskered Screech Owl,1,Caballeros
+453,56,M2.2,18:58:00,22,24.2,0,0,Mottled Owl,1,
+454,56,M2.3,19:18:00,20,24.19,0,0,Guat. Barred Owl,1,Wind in tree tops
+455,56,M2.4,19:36:00,19,24.19,0,0,Stygian Owl,1,
+456,56,M2.5,19:52:00,19,24.17,0,0,Great Horned Owl,1,Cusco (armadillo) in leaves
+457,56,M2.6,20:09:00,19,24.21,0,0,Whiskered Screech Owl,1,
+458,56,M2.7,20:26:00,20,24.14,0,0,Mottled Owl,1,
+459,56,M2.8,20:50:00,18,24.13,0,0,Guat. Barred Owl,1,
+460,56,M2.9,21:07:00,17,24.06,0,0,Stygian Owl,1,Perro @ distance
+461,56,M2.10,21:27:00,17,23.94,0,0,Great Horned Owl,1,
+462,57,EI2.1,19:00:00,22,26.5,0,0,Pacific Screech Owl,1,
+463,57,EI2.2,19:16:00,22,26.49,0,0,Mottled Owl,1,
+464,57,EI2.3,19:31:00,22,26.53,0,0,Crested Owl,1,
+465,57,EI2.4,19:48:00,21,26.59,0,0,Black and White Owl,1,
+466,57,EI2.5,20:07:00,21,26.65,0,0,Spectacled Owl,1,
+467,57,EI2.6,20:22:00,21,26.71,0,0,Pacific Screech Owl,1,
+468,57,EI2.7,20:39:00,22,26.75,0,0,Mottled Owl,1,
+469,57,EI2.8,20:57:00,22,26.86,0,0,Crested Owl,1,
+470,57,EI2.9,21:15:00,23,26.92,0,0,Black and White Owl,1,
+471,57,EI2.10,21:33:00,23,27.03,0,0,Spectacled Owl,1,Micoleon
+472,58,EI1.1,19:00:00,25,27.89,0,0,Pacific Screech Owl,2,Ciciadas - Chicharas
+473,58,EI1.2,19:18:00,26,27.89,0,0,Mottled Owl,2,Chichara
+474,58,EI1.3,19:35:00,25,27.88,0,0,Crested Owl,1,Mottled Owl between Pt 2 & 3.
+475,58,EI1.4,19:55:00,24,0,0,0,Black and White Owl,1,
+476,58,EI1.5,20:13:00,24,27.83,0,0,Spectacled Owl,1,Cloud cover change to 50 %.
+477,58,EI1.6,20:35:00,23,27.81,0,0,Pacific Screech Owl,1,
+478,58,EI1.7,20:55:00,24,27.79,0,0,Mottled Owl,1,
+479,58,EI1.8,21:14:00,23,27.78,0,0,Crested Owl,1,
+480,58,EI1.9,21:34:00,23,0,0,0,Black and White Owl,1,Muyuo
+481,58,EI1.10,22:00:00,23,27.61,0,0,Spectacled Owl,1,Recorded odd sound & sounded like a very soft vocalization of a Pacific Screech Owl
+482,59,EI2.1,19:00:00,23,26.47,0,0,Pacific Screech Owl,1,Bats
+483,59,EI2.2,19:17:00,23,26.48,0,0,Mottled Owl,1,
+484,59,EI2.3,19:33:00,22,26.52,0,0,Crested Owl,1,Muyo; Bank of clouds rolling through
+485,59,EI2.4,19:49:00,22,26.59,0,0,Black and White Owl,1,
+486,59,EI2.5,20:07:00,22,26.65,0,0,Spectacled Owl,2,Occasional dog barking.
+487,59,EI2.6,20:22:00,22,26.7,0,0,Pacific Screech Owl,1,
+488,59,EI2.7,20:39:00,22,26.79,0,0,Mottled Owl,1,
+489,59,EI2.8,20:58:00,22,26.84,0,0,Crested Owl,1,
+490,59,EI2.9,21:17:00,22,26.87,0,0,Black and White Owl,1,
+491,59,EI2.10,21:35:00,22,27.01,0,0,Spectacled Owl,1,Horse moving thru woods.
+492,60,EI1.1,18:56:00,25,27.92,0,0,Pacific Screech Owl,1,Chichara
+493,60,EI1.2,19:15:00,25,27.92,0,0,Mottled Owl,1,Recorded Mottled Owl between pt 1 & 2 @ 7:13 PM. (end # 265)
+494,60,EI1.3,19:35:00,24,27.92,0,0,Crested Owl,1,Muyo
+495,60,EI1.4,19:56:00,24,27.9,0,0,Black and White Owl,1,Rana in quebrada
+496,60,EI1.5,19:13:00,23,27.85,0,0,Spectacled Owl,1,Cusuco (Armadillo) ; Muyo across valley.
+497,60,EI1.6,20:32:00,23,27.83,0,0,Pacific Screech Owl,1,
+498,60,EI1.7,20:50:00,24,27.8,0,0,Mottled Owl,1,lite wind in tree tops
+499,60,EI1.8,21:07:00,24,27.8,0,0,Crested Owl,1,One wind gust of 2.8 m/s
+500,60,EI1.9,21:24:00,24,0,0,0,Black and White Owl,2,Wind in tree tops; Mt. de Cueva Pederon
+501,60,EI1.10,21:47:00,24,27.68,0,0,Spectacled Owl,2,Wind. Heared Mottled Owl between pts 9 & 10.
+502,61,N1.1,18:45:00,28,0,0,0,Pacific Screech Owl,1,
+503,61,N1.2,19:00:00,28,0,0,8,Mottled Owl,1,
+504,61,N1.3,19:16:00,28,29.73,0,2,Crested Owl,1,Cabillero/sapos
+505,61,N1.4,19:38:00,29,0,0,0,Black and White Owl,1,Recorded btw pts 3 & 4.
+506,61,N1.5,19:53:00,29,29.74,0,2,Spectacled Owl,1,Can hear hwy to N cutting sugar cane.
+507,61,N1.6,20:07:00,29,29.7,0,0,Pacific Screech Owl,1,Can hear hwy (trucks) cutting sugar cane.
+508,61,N1.7,20:22:00,28,0,0,0,Mottled Owl,1,Cusuco near pt below dike.
+509,61,N1.8,20:37:00,27,0,0,0,Crested Owl,1,Pucuyo. Loud other side of rv./vehicle/cutting sugar cane; decreased @ min. 11. Zorillo (Skunk) rv. Side below dike. Huron eyelevel in tree/Male/Grey 4-eyed Opossum (Philander opossum)
+510,61,N1.9,20:52:00,27,29.76,0,0,Black and White Owl,2,Pucuyo. Hwy/truck noise - cutting sugar cane.
+511,61,N1.10,21:10:00,27,29.77,0,0,Spectacled Owl,2,Noise changed from 1 to 2 w/ harvest trucks.
+512,62,N2.1,18:45:00,30,0,0,0,Pacific Screech Owl,1,
+513,62,N2.2,19:29:00,30,29.78,0,0,Mottled Owl,1,Took longer getting to point (lost route) to pt. 2.
+514,62,N2.3,20:00:00,28,29.79,0,0,Crested Owl,1,
+515,62,N2.4,20:16:00,29,29.8,0,0,Black and White Owl,1,
+516,62,N2.5,20:31:00,28,29.81,0,0,Spectacled Owl,1,
+517,62,N2.6,20:47:00,29,29.82,0,0,Pacific Screech Owl,1,Occasional wind in tree tops.
+518,62,N2.7,21:04:00,0,29.82,0,0,Mottled Owl,1,
+519,62,N2.8,,0,0,0,0,,0,Missed Point
+520,62,N2.9,,0,0,0,0,,0,Missed Point
+521,62,N2.10,21:22:00,28,29.82,0,0,Spectacled Owl,1,
+522,63,N1.1,18:53:00,29,0,0,0,Pacific Screech Owl,1,
+523,63,N1.2,19:09:00,28,29.7,0,0,Mottled Owl,1,Dogs barking other side of river
+524,63,N1.3,19:24:00,28,29.71,0,0,Crested Owl,1,
+525,63,N1.4,19:38:00,27,29.71,0,0,Black and White Owl,1,
+526,63,N1.5,19:53:00,29,29.71,0,0,Spectacled Owl,1,Cutting Cane
+527,63,N1.6,20:12:00,27,29.71,0,0,Pacific Screech Owl,1,Lt. wind in tree tops
+528,63,N1.7,20:26:00,28,29.72,0,1,Mottled Owl,1,Wind increasing
+529,63,N1.8,20:40:00,29,29.72,0,2,Crested Owl,1,Wind occasional
+530,63,N1.9,20:54:00,29,29.73,0,3,Black and White Owl,1,Wind occasional
+531,63,N1.10,21:12:00,29,29.74,0,1,Spectacled Owl,1,
+532,64,N2.1,18:47:00,29,29.65,0,0,Pacific Screech Owl,1,
+533,64,N2.2,19:10:00,27,29.64,0,0,Mottled Owl,1,
+534,64,N2.3,19:27:00,29,29.65,0,0,Crested Owl,1,
+535,64,N2.4,19:42:00,27,29.65,0,0,Black and White Owl,1,
+536,64,N2.5,19:58:00,26,29.65,0,0,Spectacled Owl,1,
+537,64,N2.6,20:14:00,27,29.67,0,0,Pacific Screech Owl,1,
+538,64,N2.7,20:29:00,27,29.67,0,0,Mottled Owl,1,
+539,64,N2.8,20:45:00,27,29.68,0,0,Crested Owl,1,Amate fruit keep falling from trees (deer eat them)
+540,64,N2.9,21:03:00,26,29.68,0,0,Black and White Owl,1,
+541,64,N2.10,21:20:00,25,29.69,0,0,Spectacled Owl,1,
+542,65,M1.1,18:05:00,170,22.97,0,0,Whiskered Screech Owl,1,"Wind in treetops, Chacha Negra occasionaly, Wind picked up"
+543,65,M1.2,18:24:00,16,23.01,0,0,Mottled Owl,1,Chacha Negra occasionally
+544,65,M1.3,18:50:00,17,23.01,0,0,Guat. Barred Owl,1,Wind in treetops
+545,65,M1.4,19:15:00,17,23.01,0,0,Stygian Owl,2,Wind
+546,65,M1.5,19:40:00,17,23.04,0,0,Great Horned Owl,2,Wind in treetops
+547,65,M1.6,20:03:00,17,23.17,0,0,Whiskered Screech Owl,2,
+548,65,M1.7,20:28:00,18,23.18,0,0,Mottled Owl,2,Occasional wind in treetops
+549,65,M1.8,20:51:00,17,23.16,0,0,Guat. Barred Owl,1,
+550,65,M1.9,21:12:00,17,23.18,0,0,Stygian Owl,1,wind treetops
+551,65,M1.10,21:33:00,17,23.21,0,0,Great Horned Owl,1,Muyo in distance
+555,66,EI1.1,18:30:00,26,27.93,0,0,Pacific Screech Owl,1,
+556,66,EI1.2,18:47:00,26,27.91,0,0,Mottled Owl,1,Heard Corta Cabeza at start of point.
+557,66,EI1.3,19:04:00,25,27.93,0,0,Crested Owl,1,
+558,66,EI1.4,19:25:00,25,27.94,0,0,Black and White Owl,1,
+559,66,EI1.5,19:43:00,25,27.87,0,0,Spectacled Owl,1,
+560,66,EI1.6,20:02:00,25,27.8,0,0,Pacific Screech Owl,1,
+561,66,EI1.7,20:27:00,27,27.81,0,0,Mottled Owl,1,
+562,66,EI1.8,20:57:00,25,27.81,0,0,Crested Owl,2,Fireworks
+563,66,EI1.9,21:14:00,25,27.79,0,0,Black and White Owl,1,
+564,66,EI1.10,21:38:00,25,27.65,0,0,Spectacled Owl,1,
+565,67,EI2.1,18:33:00,25,26.48,100,0,Pacific Screech Owl,1,Like a cloud - can't see far.
+566,67,EI2.2,18:48:00,23,26.51,100,0,Mottled Owl,1,
+567,67,EI2.3,19:09:00,23,26.54,0,0,Crested Owl,1,Change from cloud/mist to clear sky w/ moon
+568,67,EI2.4,19:27:00,23,26.59,0,0,Black and White Owl,1,
+569,67,EI2.5,19:49:00,23,26.68,50,0,Spectacled Owl,1,Thunder (cloud-mist)
+570,67,EI2.6,20:01:00,23,26.68,0,0,Pacific Screech Owl,1,Thunder & lightening
+571,67,EI2.7,20:17:00,23,26.8,0,0,Mottled Owl,1,One off strange vocaliz. too far off to record
+572,67,EI2.8,20:36:00,23,26.84,0,0,Crested Owl,1,Thunder
+573,67,EI2.9,20:55:00,23,26.9,0,0,Black and White Owl,2,Thunder & lightening
+574,67,EI2.10,21:11:00,23,27.02,0,0,Spectacled Owl,2,Thunder & lightening
+575,68,N2.1,18:14:00,31,0,0,0,Pacific Screech Owl,3,Grios/crickets. Construction noise on Borda while broadcast and after.
+576,68,N2.2,18:32:00,30,29.65,0,0,Mottled Owl,3,Machinery
+577,68,N2.3,18:44:00,30,29.62,0,0,Crested Owl,1,Crickets - no construction - shut down. Lightening.
+578,68,N2.4,19:00:00,29,0,0,0,Black and White Owl,1,
+579,68,N2.5,19:19:00,29,29.65,0,0,Spectacled Owl,1,Thunder
+580,68,N2.6,19:35:00,29,0,0,0,Pacific Screech Owl,1,
+581,68,N2.7,19:50:00,29,29.65,0,0,Mottled Owl,1,Coyotes - several vocalizing.
+582,68,N2.8,20:06:00,29,29.68,0,0,Crested Owl,1,
+583,68,N2.9,20:20:00,29,29.69,0,0,Black and White Owl,1,Thunder
+584,68,N2.10,20:40:00,29,0,0,0,Spectacled Owl,1,Thunder & wind.
+585,69,N1.1,18:44:00,30,29.65,0,0,Pacific Screech Owl,1,"Burn area. Pucuyos, grios, music"
+586,69,N1.2,18:58:00,30,29.64,0,0,Mottled Owl,1,Burn area. Lightening. Sapos
+587,69,N1.3,19:14:00,29,29.64,0,0,Crested Owl,1,"Burn area. Corta Cabeza (E 300 m)/sapos, Pucuyo, airplane"
+588,69,N1.4,19:29:00,29,29.64,0,0,Black and White Owl,1,Burn area. Sapos
+589,69,N1.5,19:44:00,29,29.66,0,0,Spectacled Owl,1,Out of  burn area. Sapos
+590,69,N1.6,19:58:00,28,29.67,0,0,Pacific Screech Owl,1,Sapos/grieos/music/Laughing Falcon/Corta Cabeza (Minute 6)
+591,69,N1.7,20:13:00,28,29.67,0,0,Mottled Owl,1,Anteater
+592,69,N1.8,20:30:00,29,29.68,0,0,Crested Owl,1,Two Gueron (opossums)
+593,69,N1.9,20:47:00,29,29.68,0,0,Black and White Owl,1,Pucuyos
+594,69,N2.10,21:05:00,29,29.68,0,0,Spectacled Owl,1,Dike construction noise
+595,71,N2.1,18:20:00,31,29.65,0,0,Pacific Screech Owl,1,Corta Cabeza
+596,71,N2.2,18:39:00,30,0,0,0,Mottled Owl,1,Corta Cabeza
+597,71,N2.3,18:53:00,30,29.66,0,0,Crested Owl,1,Crickets & bats. More cloud cover.
+598,71,N2.4,19:07:00,30,29.67,0,0,Black and White Owl,1,
+599,71,N2.5,19:22:00,29,29.68,0,0,Spectacled Owl,1,
+600,71,N2.6,19:38:00,29,0,0,0,Pacific Screech Owl,1,
+601,71,N2.7,19:52:00,29,29.7,0,0,Mottled Owl,1,Recorded (# 271-315)
+602,71,N2.8,20:15:00,29,29.7,0,0,Crested Owl,1,
+603,71,N2.9,20:33:00,28,29.71,0,0,Black and White Owl,1,Coyote
+604,71,N2.10,20:49:00,28,29.71,0,0,Spectacled Owl,1,
+605,72,N1.1,18:32:00,31,29.65,0,0,Pacific Screech Owl,1,Burn area.
+606,72,N1.2,18:49:00,30,29.65,0,0,Mottled Owl,1,Burn area. Airplane
+607,72,N1.3,19:05:00,30,29.66,0,0,Crested Owl,1,Burn area.
+608,72,N1.4,19:20:00,30,29.66,0,0,Black and White Owl,1,Burn area. River/sapos
+609,72,N1.5,19:38:00,30,29.68,0,0,Spectacled Owl,1,Outside burn area. Sapos & possibly anteater
+610,72,N1.6,19:57:00,29,29.67,0,0,Pacific Screech Owl,1,
+611,72,N1.7,20:14:00,29,0,0,0,Mottled Owl,1,
+612,72,N1.8,20:35:00,29,29.68,0,0,Crested Owl,1,Crickets
+613,72,N1.9,20:50:00,29,0,0,0,Black and White Owl,1,"Rana, Pucuyos"
+614,72,N1.10,21:07:00,29,0,0,0,Spectacled Owl,1,Lightening. Sapos & crickets. Can hear dike construction.
+615,73,EI1.1,18:34:00,29,29.69,0,0,Pacific Screech Owl,2,Chichara
+616,73,EI1.2,18:53:00,28,29.69,0,0,Mottled Owl,2,Chichara; Greos (crickets)
+617,73,EI1.3,19:11:00,26,29.72,0,0,Crested Owl,2,Chichara
+618,74,EI1.1,18:35:00,27,29.69,0,0,Pacific Screech Owl,2,Chicharas
+619,74,EI1.2,19:12:00,26,29.68,0,0,Mottled Owl,2,Chicharas
+620,74,EI1.3,19:30:00,26,0,0,0,Crested Owl,2,Chicharas
+621,75,M1.1,18:30:00,15,24.42,0,0,Whiskered Screech Owl,0,
+622,75,M1.2,18:52:00,16,24.43,0,0,Mottled Owl,0,Recorded Great Horned Owl as leaving pt.2. End #276.
+623,75,M1.3,19:20:00,16,24.48,0,0,Guat. Barred Owl,0,
+624,75,M1.4,19:37:00,15,24.45,0,0,Stygian Owl,0,Muyo
+625,75,M1.5,08:00:00,16,0,0,0,Great Horned Owl,0,Muyos; crickets
+626,75,M1.6,20:24:00,16,24.55,0,0,Whiskered Screech Owl,0,
+627,75,M1.7,20:45:00,17,0,0,0,Mottled Owl,0,
+628,75,M1.8,21:02:00,16,24.62,0,0,Guat. Barred Owl,0,
+629,75,M1.9,21:25:00,17,24.63,0,0,Stygian Owl,0,
+630,75,M1.10,21:46:00,16,0,0,0,Great Horned Owl,0,
+631,76,M2.1,18:30:00,22,0,10,0,Whiskered Screech Owl,1,Pucuyos & crickets; Chacha Negra; wind in tree tops occass.
+632,76,M2.2,18:51:00,22,25.78,0,0,Mottled Owl,0,Crickets. Lt. rain.
+633,76,M2.3,19:14:00,22,25.72,10,0,Guat. Barred Owl,0,Crickets. Lt. drizzle.
+634,76,M2.4,19:35:00,22,0,10,0,Stygian Owl,0,Lt. rain.
+635,76,M2.5,19:54:00,22,25.68,10,0,Great Horned Owl,0,Crickets. Heard flight but no vocalization.
+636,76,M2.6,20:13:00,21,0,10,0,Whiskered Screech Owl,0,Dog. Lightening; thunder.
+637,76,M2.7,20:30:00,21,25.69,10,0,Mottled Owl,0,
+638,76,M2.8,20:52:00,21,25.65,10,0,Guat. Barred Owl,0,Thunder.
+639,76,M2.9,21:14:00,21,25.65,10,0,Stygian Owl,0,Lt. rain.
+640,76,M2.10,21:35:00,21,0,10,0,Great Horned Owl,0,Lt. rain.
+641,77,N1.1,18:30:00,31,10700,0,0,Pacific Screech Owl,1,No burn this pt. Crickets;Collared Forest Falcon; Pucuyos
+642,77,N1.2,18:50:00,31,0,0,0,Mottled Owl,1,Mottled Owl perched at. Pt in Guyuermo. Burn area. Sapos
+643,77,N1.3,19:06:00,30,1070,0,0,Crested Owl,2,Burn area. Sapos
+644,77,N1.4,19:27:00,30,1071,0,0,Black and White Owl,2,Mottled Owl perched near point 4 - flew S. Burn area. Sapos; Pucuyos
+645,77,N1.5,19:44:00,29,1071,0,0,Spectacled Owl,2,Burn area. Sapos
+646,77,N1.6,20:02:00,29,1071,0,0,Pacific Screech Owl,2,Sapos
+647,77,N1.7,20:20:00,28,0,0,0,Mottled Owl,2,
+648,77,N1.8,20:45:00,28,1071,0,0,Crested Owl,1,
+649,77,N1.9,21:00:00,28,0,0,0,Black and White Owl,0,
+650,77,N1.10,21:17:00,28,0,0,0,Spectacled Owl,1,Pucuyos.
+651,78,N2.1,18:30:00,31,1070,0,0,Pacific Screech Owl,0,
+652,78,N2.2,18:51:00,29,1071,0,0,Mottled Owl,0,
+653,78,N2.3,19:06:00,29,0,0,0,Crested Owl,0,
+654,78,N2.4,19:22:00,30,0,0,0,Black and White Owl,0,Heard owl land but it did not vocalize.
+655,78,N2.5,19:38:00,30,1070,0,0,Spectacled Owl,0,
+656,78,N2.6,19:50:00,30,1071,0,0,Pacific Screech Owl,0,
+657,78,N2.7,20:08:00,29,0,0,0,Mottled Owl,0,
+658,78,N2.8,20:33:00,29,0,0,0,Crested Owl,0,
+659,78,N2.9,20:49:00,28,1071,0,0,Black and White Owl,0,
+660,78,N2.10,21:04:00,28,1071,0,0,Spectacled Owl,0,Corta Cabeza; Chacalaca tried to record - but no vocaliz. End #212.
+661,79,N1.1,18:30:00,31,0,0,0,Pacific Screech Owl,2,Not part of burn area. Guse - can't hear much else.
+662,79,N1.2,18:49:00,30,1068,0,0,Mottled Owl,0,Burn area. About 70 Pincheches passed overhead.About
+663,79,N1.3,19:04:00,30,1068,0,0,Crested Owl,0,Burn area. Pucuyos; Sapos.
+664,79,N1.4,19:26:00,29,1068,0,0,Black and White Owl,0,Burn Area.
+665,79,N1.5,19:42:00,30,1069,0,0,Spectacled Owl,0,Burn area.
+666,79,N1.6,19:58:00,30,0,0,0,Pacific Screech Owl,0,Burn area.
+667,79,N1.7,20:15:00,29,0,0,0,Mottled Owl,0,Not part of burn area.
+668,79,N1.8,20:31:00,29,1069,0,0,Crested Owl,0,
+669,79,N1.9,20:57:00,29,0,0,0,Black and White Owl,2,Music in background.
+670,79,N1.10,21:14:00,29,0,0,0,Spectacled Owl,0,
+671,80,N2.1,18:30:00,31,0,0,0,Pacific Screech Owl,0,
+672,80,N2.2,18:52:00,29,0,0,0,Mottled Owl,0,
+673,80,N2.3,19:11:00,29,1069,0,0,Crested Owl,0,
+674,80,N2.4,19:25:00,29,1069,0,0,Black and White Owl,0,
+675,80,N2.5,19:40:00,30,0,0,0,Spectacled Owl,0,
+676,80,N2.6,19:55:00,29,0,0,0,Pacific Screech Owl,0,
+677,80,N2.7,20:10:00,29,0,0,0,Mottled Owl,0,
+678,80,N2.8,20:25:00,29,0,0,0,Crested Owl,0,
+679,80,N2.9,20:40:00,28,0,0,0,Black and White Owl,0,Guase - 1500 N. Radio on other side of river.
+680,80,N2.10,20:55:00,29,1070,0,0,Spectacled Owl,0,
+681,81,M1.1,17:39:00,16,777,0,0,Whiskered Screech Owl,1,
+682,81,M1.2,18:00:00,17,776,0,0,Mottled Owl,1,
+683,81,M1.3,18:17:00,16,778,0,0,Guat. Barred Owl,1,Saw a Fulvous owl arrive & perched in tree 10 m W of point. Recorded but no vocal. Only sound w/ it flying off (#69-88).
+684,81,M1.4,18:38:00,15,778,0,0,Stygian Owl,1,Some wind higher in treetops
+685,81,M1.5,19:07:00,15,0,0,0,Great Horned Owl,1,Grios
+686,81,M2.6,19:28:00,15,0,0,0,Whiskered Screech Owl,1,Can see stars & moonlight
+687,81,M1.7,19:46:00,15,784,0,0,Mottled Owl,1,
+688,81,M1.8,20:01:00,15,784,0,0,Guat. Barred Owl,1,
+689,81,M2.9,20:20:00,16,784,0,0,Stygian Owl,1,
+690,81,M1.10,20:35:00,15,784,0,0,Great Horned Owl,1,
+691,82,M2.1,17:45:00,20,819,0,13,Whiskered Screech Owl,2,Wind decreased to 9 Km/h.
+692,82,M2.2,18:08:00,20,819,0,0,Mottled Owl,0,Wind in tree tops comes & goes.
+693,82,M2.3,18:25:00,20,819,0,0,Guat. Barred Owl,2,Wind
+694,82,M2.4,18:42:00,19,818,0,0,Stygian Owl,1,Wind tree tops.
+695,82,M2.5,18:59:00,20,818,0,0,Great Horned Owl,1,Lt. wind treetops; can see moon. Saw something fly into tree?
+696,82,M2.6,19:18:00,21,819,0,0,Whiskered Screech Owl,1,Win in treetops. Starts show through.
+697,82,M2.7,19:36:00,20,815,0,0,Mottled Owl,1,Wind in treetops.
+698,82,M2.8,19:53:00,17,817,0,0,Guat. Barred Owl,1,Wind in treetop - gentle.; quited down.
+699,82,M2.9,20:13:00,20,817,0,0,Stygian Owl,2,Gusts of wind in treetops.
+700,82,M2.10,20:30:00,18,815,0,0,Great Horned Owl,1,Lt. drizzle.
+702,84,EI2.1,18:35:00,21,895,0,0,Pacific Screech Owl,1,
+703,84,EI2.2,18:53:00,21,896,0,0,Mottled Owl,1,Occasional wind in tree tops
+704,84,EI2.3,19:10:00,22,898,0,0,Crested Owl,2,Wind in tree tops
+705,84,EI2.4,19:26:00,22,899,0,0,Black and White Owl,2,Wind in tree tops
+706,84,EI2.5,19:43:00,22,0,0,2,Spectacled Owl,2,Wind gusts from 2 up 18 Km/h
+707,84,EI2.6,19:58:00,22,902,0,4,Pacific Screech Owl,2,Wind gusts 0-4 Km/h; Wind in tree tops
+708,84,EI2.7,20:16:00,23,904,0,2,Mottled Owl,2,Wind gusts 0-2 Km/h; Wind in tree tops;
+709,84,EI2.8,20:35:00,23,905,0,0,Crested Owl,2,Wind in tree tops
+710,84,EI2.9,20:53:00,23,912,0,0,Black and White Owl,2,Wind in tree tops
+711,84,EI2.10,21:12:00,23,914,0,2,Spectacled Owl,2,Wind gusts to 0-2 Km/h; Wind in tree tops
+712,83,M1.1,17:51:00,15,0,30,0,Whiskered Screech Owl,1,Occasional wind in tree tops
+713,83,M1.2,18:09:00,17,779,30,0,Mottled Owl,1,Muyo at 12 min.
+714,83,M1.3,18:27:00,16,779,50,0,Guat. Barred Owl,1,Lt. Rain; 100% fog at end
+715,83,M1.4,18:45:00,16,778,100,0,Stygian Owl,1,
+716,83,M1.5,19:05:00,16,778,100,0,Great Horned Owl,1,Lt. breeze; Wind in tree tops
+717,83,M1.6,19:27:00,18,782,100,2,Whiskered Screech Owl,2,Occasionally wind & then calm; Gusts to 5 Km/h;Wind in tree tops
+718,83,M1.7,19:43:00,18,784,100,2,Mottled Owl,2,
+719,83,M1.8,19:57:00,18,784,100,2,Guat. Barred Owl,2,
+720,83,M1.9,20:12:00,18,784,100,0,Stygian Owl,2,Wind ocassionally in tree tops
+721,83,M1.10,20:28:00,18,785,100,0,Great Horned Owl,2,Wind ocassionally in tree tops
+722,85,EI1.1,18:30:00,25,944,0,0,Pacific Screech Owl,2,Chicara
+723,85,EI1.2,18:48:00,24,944,0,0,Mottled Owl,2,Chicara
+724,85,EI1.3,19:05:00,24,943,0,0,Crested Owl,2,Chicara; Mottled Owl vocalized as we were walking to pt. 4.
+725,85,EI1.4,19:26:00,23,943,0,0,Black and White Owl,1,
+726,85,EI1.5,19:45:00,23,942,0,0,Spectacled Owl,1,
+727,85,EI1.6,20:04:00,24,941,0,0,Pacific Screech Owl,1,Myuo
+728,85,EI1.7,20:24:00,24,940,0,0,Mottled Owl,1,Crickets
+729,85,EI1.8,20:42:00,23,0,0,0,Crested Owl,1,
+730,85,EI1.9,21:01:00,23,939,0,0,Black and White Owl,1,
+731,85,EI1.10,21:28:00,23,934,0,0,Spectacled Owl,1,
+732,86,EI2.1,18:35:00,23,894,0,0,Pacific Screech Owl,1,
+733,86,EI2.2,18:51:00,22,894,0,0,Mottled Owl,2,Dog barking.
+734,86,EI2.3,19:07:00,22,898,0,0,Crested Owl,1,Dog at a distance
+735,86,EI2.4,19:26:00,22,898,0,0,Black and White Owl,1,
+736,86,EI2.5,19:44:00,22,900,0,0,Spectacled Owl,1,
+737,86,EI2.6,20:01:00,22,902,0,0,Pacific Screech Owl,1,
+738,86,EI2.7,20:19:00,22,903,0,0,Mottled Owl,1,Dogs in background. Heard owl land but quiet. Tepe squiently same spot as the pecaries were other night.
+739,86,EI2.8,20:41:00,23,908,0,0,Crested Owl,1,Dogs in background.
+740,86,EI2.9,21:01:00,22,908,0,0,Black and White Owl,1,
+741,86,EI2.10,21:20:00,23,913,0,0,Spectacled Owl,1,Myuo.
+742,87,N1.1,18:30:00,28,1003,0,0,Pacific Screech Owl,1,Collared Forest Falcon
+743,87,N1.2,18:45:00,28,1003,0,0,Mottled Owl,1,Recored sapos & pacyuo (# 43-58) @ 6:50 PM.
+744,87,N1.3,19:03:00,28,1003,0,0,Crested Owl,2,Sapos
+745,87,N1.4,19:18:00,28,1004,0,0,Black and White Owl,2,Sapos
+746,87,N1.5,19:33:00,27,1004,0,0,Spectacled Owl,2,Sapos. Mottled Owl vocalized between pts 5&6.
+747,87,N1.6,19:49:00,26,1004,0,0,Pacific Screech Owl,2,Airplane
+748,87,N1.7,20:04:00,27,0,0,0,Mottled Owl,1,
+749,87,N1.8,20:21:00,27,1004,0,0,Crested Owl,1,Sapos
+750,87,N1.9,20:36:00,25,1005,0,0,Black and White Owl,1,Sapos/Airplane
+751,87,N1.10,20:52:00,26,1005,0,0,Spectacled Owl,1,Sapos
+752,88,N2.1,18:30:00,29,1005,0,0,Pacific Screech Owl,1,
+753,88,N2.2,18:46:00,29,1005,0,0,Mottled Owl,1,
+754,88,N2.3,19:00:00,28,1005,0,0,Crested Owl,1,
+755,88,N2.4,19:20:00,28,1005,0,0,Black and White Owl,1,Crickets. Recorded Geron (# 150-165
+756,88,N2.5,19:36:00,28,1005,0,0,Spectacled Owl,1,
+757,88,N2.6,19:51:00,28,1006,0,0,Pacific Screech Owl,1,
+758,88,N2.7,20:05:00,28,1006,0,0,Mottled Owl,1,Airplane
+759,88,N2.8,20:21:00,28,1006,0,0,Crested Owl,1,Dog @ distance.
+760,88,N2.9,20:37:00,27,1007,0,0,Black and White Owl,1,
+761,88,N2.10,20:53:00,27,1007,0,0,Spectacled Owl,1,
+762,89,N1.1,18:30:00,29,0,0,0,Pacific Screech Owl,1,Two Corta Cabezas (Collared Forest Falcons)
+763,89,N1.2,18:50:00,27,1004,0,0,Mottled Owl,2,Sapos
+764,89,N1.3,19:10:00,28,1004,0,0,Crested Owl,1,Sapos
+765,89,N1.4,19:25:00,29,1004,0,0,Black and White Owl,1,Sapos
+766,89,N1.5,19:43:00,29,1005,0,0,Spectacled Owl,1,
+767,89,N1.6,20:01:00,28,1005,0,0,Pacific Screech Owl,1,
+768,89,N1.7,20:16:00,27,1005,0,0,Mottled Owl,1,
+769,89,N1.8,20:33:00,29,1005,0,0,Crested Owl,2,Dogs across river.
+770,89,N1.9,20:48:00,27,1005,0,0,Black and White Owl,1,Pucuyos
+771,89,N1.10,21:04:00,26,0,0,0,Spectacled Owl,1,
+772,90,N2.1,18:30:00,29,1004,0,0,Pacific Screech Owl,1,Collared Forest Falcon inbackground.
+773,90,N2.2,18:46:00,28,1004,0,0,Mottled Owl,1,
+774,90,N2.3,19:02:00,28,1004,0,0,Crested Owl,1,
+775,90,N2.4,19:18:00,28,1004,0,0,Black and White Owl,1,
+776,90,N2.5,19:32:00,28,0,0,0,Spectacled Owl,1,
+777,90,N2.6,,0,0,0,0,,0,Missed Point.
+778,90,N2.7,19:49:00,27,1005,0,0,Mottled Owl,1,
+779,90,N2.8,20:02:00,27,1005,0,0,Crested Owl,1,
+780,90,N2.9,20:18:00,27,1005,0,0,Black and White Owl,1,Airplane
+781,90,N2.10,20:36:00,27,0,0,0,Spectacled Owl,1,
+782,91,EI1.1,18:30:00,27,0,0,0,Pacific Screech Owl,1,Chichara
+783,91,EI1.2,18:53:00,27,0,0,0,Mottled Owl,1,Chichara
+784,91,EI1.3,19:13:00,26,0,0,0,Crested Owl,1,Chichara/Crickets
+785,91,EI1.4,19:37:00,26,0,0,0,Black and White Owl,1,
+786,91,EI1.5,20:00:00,26,0,0,0,Spectacled Owl,0,Heard a deer
+787,91,EI1.6,20:19:00,25,941,0,0,Pacific Screech Owl,1,
+788,91,EI1.7,20:39:00,25,843,0,0,Mottled Owl,1,Heard/saw a Temsquintly
+789,91,EI1.8,20:59:00,24,940,0,0,Crested Owl,1,Saw an Armadillo.  Muyo in distance.
+790,91,EI1.9,21:17:00,24,939,0,0,Black and White Owl,1,Wind starting in tree tops.
+791,91,EI1.10,21:47:00,25,930,0,4,Spectacled Owl,0,
+792,92,M1.1,18:15:00,15,775,0,0,Whiskered Screech Owl,1,
+793,92,M1.2,18:34:00,16,775,0,0,Mottled Owl,1,
+794,92,M1.3,18:54:00,17,0,0,0,Guat. Barred Owl,1,Recorded 2 Fulvous Owls about 1/2 way btw. Pts 3 & 4 (# 284-300).
+795,92,M1.4,19:20:00,18,0,0,0,Stygian Owl,1,
+796,92,M1.5,19:39:00,16,0,0,0,Great Horned Owl,1,
+797,92,M1.6,19:56:00,18,0,0,0,Whiskered Screech Owl,1,
+798,92,M1.7,20:14:00,18,782,0,0,Mottled Owl,1,
+799,92,M1.8,20:29:00,17,781,0,0,Guat. Barred Owl,1,Fulvous Owl 40M E. recorded @ pt.8 as leaving (# 301-321).
+800,92,M1.9,20:50:00,18,782,0,0,Stygian Owl,1,
+801,92,M1.10,21:06:00,18,0,0,0,Great Horned Owl,1,
+802,93,M2.1,18:20:00,20,819,0,0,Whiskered Screech Owl,1,
+803,93,M2.2,18:49:00,20,818,0,0,Mottled Owl,1,
+804,93,M2.3,19:10:00,20,818,0,0,Guat. Barred Owl,1,
+805,93,M2.4,19:32:00,20,817,0,0,Stygian Owl,1,
+806,93,M2.5,19:53:00,20,817,0,0,Great Horned Owl,1,Lightening.
+807,93,M2.6,20:10:00,20,816,0,0,Whiskered Screech Owl,1,Lightening.
+808,93,M2.7,20:27:00,19,816,0,0,Mottled Owl,1,
+809,93,M2.8,20:51:00,20,815,0,0,Guat. Barred Owl,1,
+810,93,M2.9,21:08:00,19,813,0,0,Stygian Owl,1,
+811,93,M2.10,21:24:00,20,811,100,0,Great Horned Owl,1,"Light rain - and ""pea soup"" fog/mist."
+812,94,M1.1,18:00:00,16,774,0,2,Whiskered Screech Owl,2,Wind.
+813,94,M1.2,18:17:00,15,0,0,0,Mottled Owl,1,Wind.
+814,94,M1.3,18:33:00,15,777,0,2,Guat. Barred Owl,1,Wind.
+815,94,M1.4,18:48:00,15,775,0,2,Stygian Owl,2,Wind.
+816,94,M1.5,19:06:00,15,777,0,0,Great Horned Owl,1,
+817,94,M1.6,19:23:00,16,780,0,0,Whiskered Screech Owl,1,Wind occasionally in tree tops.
+818,94,M1.7,19:39:00,16,782,0,0,Mottled Owl,1,Wind in tree tops.
+819,94,M1.8,20:01:00,16,782,0,0,Guat. Barred Owl,2,Wind in tree tops - ocas. gusts.
+820,94,M1.9,20:16:00,16,0,0,0,Stygian Owl,2,Wind in tree tops - ocas. gusts.
+821,94,M1.10,20:31:00,0,783,0,0,Great Horned Owl,2,Wind in tree tops - ocas. gusts.
+822,95,N1.1,18:30:00,28,0,0,0,Pacific Screech Owl,1,
+823,95,N1.2,18:46:00,29,0,0,0,Mottled Owl,1,Sapos
+824,95,N1.3,19:03:00,29,0,0,0,Crested Owl,1,Sapos/Pucuyos-Caballos.
+825,95,N1.4,19:18:00,29,1004,0,0,Black and White Owl,1,Sapos
+826,95,N1.5,19:34:00,28,1005,0,0,Spectacled Owl,1,Sapos
+827,95,N1.6,19:52:00,29,0,0,0,Pacific Screech Owl,1,No sapos.
+828,95,N1.7,20:10:00,28,0,0,0,Mottled Owl,1,
+829,95,N1.8,20:26:00,28,1005,0,0,Crested Owl,1,
+830,95,N1.9,20:41:00,28,0,0,0,Black and White Owl,1,
+831,95,N1.10,20:57:00,27,0,0,0,Spectacled Owl,2,Sapos
+832,96,N2.1,18:30:00,29,1005,0,0,Pacific Screech Owl,1,
+833,96,N2.2,18:52:00,30,0,0,0,Mottled Owl,1,
+834,96,N2.3,19:09:00,29,1006,0,0,Crested Owl,1,Construction dike other side of river.
+835,96,N2.4,19:26:00,28,0,0,0,Black and White Owl,1,Construction dike other side of river.
+836,96,N2.5,19:42:00,28,0,0,0,Spectacled Owl,1,
+837,96,N2.6,20:06:00,28,0,0,0,Pacific Screech Owl,1,
+838,96,N2.7,20:22:00,28,1007,0,0,Mottled Owl,1,
+839,96,N2.8,20:40:00,29,0,0,0,Crested Owl,1,
+840,96,N2.9,20:58:00,27,0,0,0,Black and White Owl,1,
+841,96,N2.10,21:05:00,27,1007,0,0,Spectacled Owl,1,Working on dike across the river.
+842,97,N1.1,18:30:00,30,0,0,0,Pacific Screech Owl,1,Construction other side of river - on dike.
+843,97,N1.2,18:46:00,29,1004,0,0,Mottled Owl,1,
+844,97,N1.3,19:03:00,29,1004,0,0,Crested Owl,1,Can see cane field across rv. Burning-helicopter circling fire.
+845,97,N1.4,19:19:00,28,1004,0,0,Black and White Owl,1,
+846,97,N1.5,19:35:00,29,1004,0,0,Spectacled Owl,1,Recorded btw. pts. 5&6 Ferg. Pygmy (# _ to 181)@7:50 PM (closer to pt. 6)
+847,97,N1.6,19:55:00,28,1004,0,0,Pacific Screech Owl,1,
+848,97,N1.7,20:11:00,28,1004,0,0,Mottled Owl,1,
+849,97,N1.8,20:28:00,28,0,0,0,Crested Owl,1,
+850,97,N1.9,20:44:00,28,1005,0,0,Black and White Owl,1,
+851,97,N1.10,21:00:00,27,0,0,0,Spectacled Owl,1,
+852,98,N2.1,18:30:00,31,1004,0,0,Pacific Screech Owl,1,Pecuyo.
+853,98,N1.2,18:51:00,28,0,0,0,Mottled Owl,1,
+854,98,N2.3,19:12:00,27,1004,0,0,Crested Owl,1,
+855,98,N2.4,19:31:00,27,1004,0,0,Black and White Owl,1,Chacha.
+856,98,N2.5,19:46:00,27,1004,0,0,Spectacled Owl,1,
+857,98,N2.6,20:06:00,27,1005,0,0,Pacific Screech Owl,1,Can hear construction on dike other side river.
+858,98,N2.7,20:30:00,27,1005,0,0,Mottled Owl,1,
+859,98,N2.8,20:54:00,27,1005,0,0,Crested Owl,1,
+860,98,N2.9,21:12:00,26,0,0,0,Black and White Owl,1,
+861,98,N2.10,21:34:00,26,0,0,0,Spectacled Owl,1,Pucuyo.
+862,99,EI1.1,18:30:00,27,0,0,0,Pacific Screech Owl,1,Some chichara.
+863,99,EI1.2,18:51:00,26,0,0,0,Mottled Owl,1,Crickets.
+864,99,EI1.3,19:10:00,26,944,0,0,Crested Owl,1,Crickets - chicadas@ a distance.
+865,99,EI1.4,19:30:00,26,943,0,0,Black and White Owl,1,Two Collared Forest Falcons. Muyo.
+866,99,EI1.5,19:50:00,25,942,0,0,Spectacled Owl,1,Muyo.
+867,99,EI1.6,20:08:00,25,941,0,0,Pacific Screech Owl,1,
+868,99,EI1.7,20:30:00,25,940,0,0,Mottled Owl,1,One Mottled Owl vocalizing btw. Pts 8&9.
+869,99,EI1.8,20:56:00,25,940,0,0,Crested Owl,1,
+870,99,EI1.9,21:18:00,25,938,0,0,Black and White Owl,1,Muyo.Recorded Muyo (#199-208).
+871,99,EI1.10,21:51:00,25,935,0,0,Spectacled Owl,1,
+872,100,EI2.1,18:43:00,22,0,0,0,Pacific Screech Owl,1,
+873,100,EI2.2,19:00:00,23,898,0,0,Mottled Owl,1,Dogs at a distance.
+874,100,EI2.3,19:17:00,22,899,0,0,Crested Owl,1,
+875,100,EI2.4,19:35:00,22,0,0,0,Black and White Owl,1,
+876,100,EI2.5,19:53:00,22,901,0,0,Spectacled Owl,1,House noise at a distance.
+877,100,EI2.6,20:12:00,22,903,0,0,Pacific Screech Owl,1,
+878,100,EI2.7,20:30:00,23,905,0,0,Mottled Owl,1,
+879,100,EI2.8,20:50:00,23,907,0,0,Crested Owl,1,Two Miceleon.
+880,100,EI2.9,21:12:00,23,909,0,0,Black and White Owl,1,
+881,100,EI2.10,21:32:00,23,916,0,0,Spectacled Owl,1,As we walked to La Cascada one Mottled Owl E. 20 M.
+882,101,N1.1,18:30:00,30,1005,0,0,Pacific Screech Owl,1,
+883,101,N1.2,18:49:00,29,0,0,0,Mottled Owl,1,Pucuyo.
+884,101,N1.3,19:05:00,29,1005,0,0,Crested Owl,1,Sapos in river.
+885,101,N1.4,19:20:00,30,1004,0,2,Black and White Owl,2,River flowing. Sapos.
+886,101,N1.5,19:35:00,29,1006,0,0,Spectacled Owl,2,Sapos; Pucuyos.
+887,101,N1.6,19:50:00,29,1006,0,0,Pacific Screech Owl,2,Sapos; Pucuyos.
+888,101,N1.7,20:06:00,29,1006,0,0,Mottled Owl,1,Sapos.
+889,101,N1.8,20:23:00,28,1006,0,0,Crested Owl,1,
+890,101,N1.9,20:38:00,28,1006,0,0,Black and White Owl,1,
+891,101,N1.10,20:55:00,28,0,0,0,Spectacled Owl,1,Thunder & lightening - no rain.
+892,102,N2.1,18:30:00,31,0,0,0,Pacific Screech Owl,1,Drizzle
+893,102,N2.2,18:54:00,29,0,0,0,Mottled Owl,1,Grios (crickets).
+894,102,N2.3,19:12:00,29,1004,0,0,Crested Owl,1,Pucuyo.
+895,102,N2.4,19:27:00,29,1005,0,0,Black and White Owl,1,
+896,102,N2.5,19:45:00,28,1005,0,0,Spectacled Owl,1,Micelion.
+897,102,N2.6,20:07:00,28,1005,0,0,Pacific Screech Owl,1,
+898,102,N2.7,20:20:00,28,1006,0,0,Mottled Owl,1,
+899,102,N2.8,20:35:00,29,1006,0,0,Crested Owl,1,
+900,102,N2.9,20:52:00,28,1006,0,0,Black and White Owl,1,Pucuyo.
+901,102,N2.10,21:10:00,28,1006,0,0,Spectacled Owl,1,Pucuyo.
+903,20,EI1.8,20:38:00,26,0,0,0,Crested Owl,0,

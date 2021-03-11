@@ -1,0 +1,940 @@
+Owl_ID,Stations_ID,Owl_Species_ID,Owl_Number,Minute_1,Minute_2,Minute_6-12,Owl_Distance,Owl_Direction,Owl_Comments
+17,12,Mottd,1,TRUE,TRUE,TRUE,400,SE,"7,8 minutes plus."
+18,12,Mottd,2,FALSE,FALSE,TRUE,300,SW,9 minutes plus.
+19,13,PacSc,1,FALSE,TRUE,TRUE,20,SE,6 minutes plus. Recorded.
+20,13,Mottd,2,FALSE,FALSE,TRUE,200,NE,8 minutes.
+21,13,Mottd,3,FALSE,FALSE,TRUE,200,SE,9 minutes.
+22,14,Mottd,1,TRUE,TRUE,FALSE,400,SW,
+24,15,PacSc,1,TRUE,TRUE,TRUE,200,SW,6 minutes plus.
+25,16,Mottd,1,FALSE,FALSE,TRUE,300,SE,6 to 9 minutes.
+26,18,Mottd,1,FALSE,FALSE,TRUE,20,NW,9 minutes plus.  Heard it land on tree on hillside.  Mt. de Rancho Quamato.
+27,19,Mottd,1,FALSE,TRUE,FALSE,200,S,
+28,19,Mottd,2,FALSE,FALSE,TRUE,300,NE,11 minutes.
+29,21,Mottd,1,FALSE,TRUE,FALSE,400,S,
+31,22,Mottd,1,FALSE,TRUE,TRUE,100,S,12 min. plus
+32,22,Mottd,2,FALSE,FALSE,TRUE,200,S,8 min . Plus - heard during broadcast
+33,23,Mottd,1,FALSE,FALSE,TRUE,500,E,6 min plus
+34,23,Mottd,2,FALSE,FALSE,TRUE,200,N,7 min. plus
+35,23,Mottd,3,FALSE,FALSE,TRUE,200,NE,8 min plus
+36,24,Mottd,1,FALSE,FALSE,TRUE,300,W,8 min.
+37,24,PacSc,2,FALSE,FALSE,TRUE,30,SE,9 min. plus
+38,24,PacSc,3,FALSE,FALSE,TRUE,30,SE,10 min - recorded the 2 Screech Owls
+39,24,FerPy,4,FALSE,FALSE,TRUE,500,S,12 Min.
+40,25,PacSc,1,TRUE,TRUE,TRUE,200,W,10 min; 11 min. plus (moved closer to 150 meters West);Can see lightening; Pucuyos & muyos
+42,26,Mottd,1,FALSE,FALSE,TRUE,500,SW,8 min.and 11 min.
+43,27,Mottd,1,FALSE,TRUE,TRUE,400,SE,6 min. plus; oww cat like vocalization
+44,27,Mottd,2,FALSE,FALSE,TRUE,400,SE,11 min.
+45,28,Mottd,1,TRUE,TRUE,FALSE,50,E,Recorded
+46,28,Mottd,2,TRUE,TRUE,FALSE,75,SE,
+47,30,Mottd,1,FALSE,FALSE,TRUE,50,E,8 min. plus
+48,30,Mottd,2,FALSE,FALSE,TRUE,75,E,9 min. plus
+49,33,Mottd,1,FALSE,FALSE,TRUE,950,E,7 Min. - rougher vocalization than other Mottled Owl
+50,33,Mottd,2,FALSE,FALSE,TRUE,950,E,11 Min - finer vocalization - these two birds were also heard at point 3
+53,36,Mottd,1,TRUE,TRUE,TRUE,400,S,Heard an elongated owww - guard thought it was a MOOW in Los Oscuranos - long way off
+54,37,Mottd,1,FALSE,FALSE,TRUE,700,N,6 min - from Los Oscuranos
+56,39,Mottd,1,TRUE,TRUE,FALSE,50,W,
+57,39,Mottd,2,TRUE,TRUE,FALSE,80,W,
+58,40,Mottd,1,TRUE,TRUE,TRUE,60,S,7 Min.
+59,40,Mottd,2,TRUE,TRUE,FALSE,60,S,
+60,40,Mottd,3,FALSE,FALSE,TRUE,60,SW,9 Min.; Different location from previous two
+61,41,Mottd,1,FALSE,TRUE,TRUE,50,NE,10 Min.
+62,41,Mottd,2,FALSE,FALSE,TRUE,20,SE,9 Min.
+63,43,Mottd,1,FALSE,TRUE,TRUE,500,SE,9 min plus
+64,43,Mottd,2,FALSE,FALSE,TRUE,500,NE,10 min. plus
+65,44,Mottd,1,FALSE,FALSE,TRUE,300,E,6 min.
+66,45,Mottd,1,FALSE,FALSE,TRUE,400,NW,9 min. plus
+67,45,Mottd,2,FALSE,FALSE,TRUE,400,NW,"11 min. plus ""female"" type call close to #1 but not same bird"
+68,46,Mottd,1,FALSE,FALSE,TRUE,300,SW,6 min. plus
+69,46,Mottd,2,FALSE,FALSE,TRUE,100,S,8 min. plus
+71,48,Mottd,1,TRUE,TRUE,TRUE,100,N,6 min. plus; same bird-moved closer to 50 meters N; also heard during playback
+73,49,Mottd,1,TRUE,TRUE,FALSE,100,S,
+74,49,Mottd,2,FALSE,FALSE,TRUE,500,N,7 min.; can hardly hear
+75,50,Mottd,1,FALSE,FALSE,TRUE,50,SW,6 min.
+76,50,Mottd,2,FALSE,FALSE,TRUE,30,SW,"7 min.; ""owww"" sound"
+77,50,Mottd,3,FALSE,FALSE,TRUE,40,W,"9 min.; ""owww"" sound"
+78,51,Mottd,1,FALSE,FALSE,TRUE,100,NE,6 min. plus; all vocalized w/in the 6-12 min. time frame
+79,51,Mottd,2,FALSE,FALSE,TRUE,75,E,"6 min. plus; ""owww"" sound"
+80,51,Mottd,3,FALSE,FALSE,TRUE,50,S,6 min. plus
+81,51,Mottd,4,FALSE,FALSE,TRUE,50,NE,"7 min. plus; ""owww"" sound"
+82,51,Mottd,5,FALSE,FALSE,TRUE,50,E,8 min. plus
+83,51,Mottd,6,FALSE,FALSE,TRUE,250,NE,8 min. plus
+84,52,Specd,1,FALSE,FALSE,TRUE,300,E,9 min.
+85,58,FerPy,1,FALSE,FALSE,TRUE,150,S,
+87,59,FerPy,1,FALSE,FALSE,TRUE,100,W,6 min. plus; other side of river - on island
+88,59,Specd,2,FALSE,FALSE,TRUE,400,S,7 min. plus; pair (# 3 & 4)
+89,59,Specd,3,FALSE,FALSE,TRUE,400,S,8 min. plus; pair (# 3 & 4)
+90,60,FerPy,1,TRUE,TRUE,FALSE,25,N,
+91,60,Specd,2,TRUE,TRUE,TRUE,500,NE,6 min. plus
+92,60,Specd,3,TRUE,TRUE,TRUE,500,S,6 min. plus; pair (# 3& 4)
+93,60,Specd,4,TRUE,TRUE,TRUE,500,S,6 min. plus; pair (# 3 & 4)
+94,61,Specd,1,FALSE,TRUE,TRUE,500,NW,6 min. plus; the first three owls are on the other side of the river
+95,61,Specd,2,FALSE,TRUE,TRUE,500,NW,6 min. plus; the first three owls are on the other side of the river
+96,61,Specd,3,FALSE,TRUE,TRUE,500,NW,6 min. plus; the first three owls are on the other side of the river
+97,61,Specd,4,FALSE,TRUE,TRUE,500,S,7 min. plus
+98,61,Specd,5,FALSE,TRUE,TRUE,500,S,7 min. plus
+99,63,Mottd,1,FALSE,FALSE,TRUE,100,S,8 min. plus
+100,64,Mottd,1,TRUE,TRUE,TRUE,300,S,6 min. plus
+101,64,Specd,2,FALSE,TRUE,TRUE,150,S,6 min. plus
+103,66,Specd,1,FALSE,FALSE,TRUE,200,S,9 min. plus
+104,67,Mottd,1,FALSE,TRUE,TRUE,200,SW,6 min plus
+105,67,Mottd,2,FALSE,TRUE,FALSE,500,S,
+106,69,Specd,1,FALSE,FALSE,TRUE,500,W,8 min.; other side of the river
+107,69,FerPy,2,FALSE,FALSE,TRUE,500,W,9 min.; other side of the river
+108,70,Specd,1,TRUE,TRUE,TRUE,500,W,6 min. plus
+109,71,Specd,1,TRUE,TRUE,TRUE,500,W,7 min. plus
+110,71,FerPy,2,FALSE,FALSE,TRUE,300,W,6 min. plus
+111,72,FerPy,1,TRUE,TRUE,FALSE,200,W,
+112,74,Barn,1,FALSE,FALSE,TRUE,50,S,11 min.
+113,76,Mottd,1,TRUE,TRUE,FALSE,500,S,
+114,76,Specd,2,FALSE,FALSE,TRUE,300,NW,6 min. plus
+115,77,Specd,1,FALSE,FALSE,TRUE,400,E,6 min. plus
+116,77,FerPy,2,FALSE,FALSE,TRUE,200,W,10 min. plus
+117,79,Specd,1,TRUE,TRUE,TRUE,150,E,6 min. plus; both called during broadcast
+118,79,Specd,2,TRUE,TRUE,TRUE,150,E,6 min. plus; both called during broadcast
+123,81,Specd,1,TRUE,TRUE,TRUE,200,W,6 min. plus
+124,81,Specd,2,TRUE,TRUE,TRUE,200,W,6 min. plus
+125,81,FerPy,3,FALSE,FALSE,TRUE,150,N,6 min. plus
+126,81,FerPy,4,FALSE,FALSE,TRUE,150,E,6 min. plus
+127,82,FerPy,1,TRUE,TRUE,FALSE,150,W,
+128,83,Specd,1,TRUE,TRUE,TRUE,500,S,6 min.; vocalized during broadcast and then quit
+129,83,Specd,2,TRUE,TRUE,TRUE,500,S,6 min.; vocalized during broadcast and then quit
+130,84,Specd,1,FALSE,TRUE,TRUE,600,SE,"7-8 min., 9 min. plus; moved closer to 300 meters SE"
+132,85,Specd,1,TRUE,TRUE,FALSE,30,S,Moved up to us; vocalized during broadcast & not after - could hear it flying overhead
+133,87,Mottd,1,TRUE,TRUE,FALSE,300,W,all 4 entries of the same owl
+134,87,Mottd,2,FALSE,FALSE,TRUE,30,E,6 min. & moved
+135,87,Mottd,3,FALSE,FALSE,TRUE,40,E,7 min. and moved
+136,87,Mottd,4,FALSE,FALSE,TRUE,50,E,8 min. and moved
+138,88,Mottd,1,FALSE,FALSE,TRUE,30,N,6 min.
+139,88,Mottd,2,FALSE,FALSE,TRUE,25,N,"7 min.; ""Oww"" vocalization"
+140,92,FerPy,1,TRUE,FALSE,TRUE,250,S,10 min.
+141,92,FerPy,2,FALSE,FALSE,TRUE,200,SE,11 min.
+142,93,Mottd,1,FALSE,FALSE,TRUE,300,E,6 min.; close to last year's location
+143,93,Mottd,2,FALSE,FALSE,TRUE,250,N,6 min. & 10 min.
+144,95,Mottd,1,FALSE,FALSE,TRUE,200,S,"min. 6, 8, 9, 10; one soft cat like call at 6.5 min.; similar to last year's location"
+145,95,Mottd,2,FALSE,FALSE,TRUE,300,S,"Min. 7, 9, 11"
+146,96,Mottd,1,TRUE,FALSE,FALSE,150,E,1st observation of Mottled Owl; very different vocalization
+152,98,Mottd,1,TRUE,FALSE,FALSE,300,N,Mottled owl outside data recording time frme (@ 16 min.; 15 m. NW) Recorded - another Mottled Owl at 18 min.
+157,100,Mottd,1,FALSE,TRUE,TRUE,700,E,Min. 5-12; other side of quebrada
+158,100,Mottd,2,FALSE,FALSE,TRUE,5,N,Min. 6-12; recorded close (owl was above our heads)
+159,100,Mottd,3,FALSE,FALSE,TRUE,700,E,"Min. 6, 7, 8; near number 1"
+161,101,Mottd,1,FALSE,TRUE,FALSE,500,SW,
+162,102,FerPy,1,TRUE,TRUE,TRUE,210,SE,Recorded. Owl quite for several minutes after broadcast; heard flight into nearby tree - not sure if it was an owl as it did not vocalize
+163,103,PacSc,1,TRUE,TRUE,TRUE,10,S,12 Min.; Tried to record but missed last vocalization
+164,103,PacSc,2,TRUE,TRUE,TRUE,10,S,12 Min.
+165,104,Mottd,1,FALSE,FALSE,TRUE,200,SW,Min. 8
+166,104,Mottd,2,FALSE,FALSE,TRUE,100,N,Min. 9
+167,105,Mottd,1,FALSE,FALSE,TRUE,100,S,6 min. plus
+168,105,Mottd,2,FALSE,FALSE,TRUE,200,W,7 min. plus
+169,106,Mottd,1,TRUE,FALSE,TRUE,250,E,9 Min. plus; cat like - recorded
+170,106,Mottd,2,FALSE,FALSE,TRUE,10,S,9 min. plus; close - recorded
+171,107,Mottd,1,TRUE,FALSE,FALSE,150,NE,
+172,107,Mottd,2,FALSE,FALSE,TRUE,15,N,6 min. plus
+173,107,Mottd,3,FALSE,FALSE,TRUE,100,S,6 min. plus
+174,108,Mottd,1,FALSE,FALSE,TRUE,10,E,4 Min. plus; Came close to where we were and started vocalizing while the playback tape was still playing then moved to the north together; close together; continued while I recorded
+175,108,Mottd,2,FALSE,FALSE,TRUE,15,S,"4 min. plus; Continued from owl # 1- when finished recording, I tuned on the lamp and flew close overhead - can hear in the nearby trees"
+180,110,Mottd,1,TRUE,TRUE,FALSE,300,E,Min 6 moved to 100 m E; vocalized min 6 & on occasionally
+181,110,Mottd,2,FALSE,FALSE,TRUE,200,S,4 Min.
+183,111,Mottd,1,TRUE,TRUE,FALSE,200,S,
+184,111,Mottd,2,FALSE,FALSE,TRUE,15,NE,6 min. plus
+185,111,Mottd,3,FALSE,FALSE,TRUE,250,E,7 min. - seldom after
+186,114,Mottd,1,FALSE,FALSE,TRUE,600,S,Min. 11
+187,117,Mottd,1,FALSE,FALSE,TRUE,450,N,Min. 6 & 7
+188,117,Mottd,2,FALSE,FALSE,TRUE,600,E,Min. 11
+189,119,Mottd,1,FALSE,TRUE,TRUE,300,SE,7 min. plus; occasionaly vocalizing
+190,119,Mottd,2,FALSE,FALSE,TRUE,400,SE,8 min. plus; occasionaly vocalizing
+191,120,Mottd,1,FALSE,FALSE,TRUE,300,N,# 1 moved right after recording was played & was within 25 m. then to further away; recorded the bird
+192,120,Mottd,2,FALSE,FALSE,TRUE,600,N,
+193,120,Mottd,3,FALSE,FALSE,TRUE,700,S,
+194,121,Mottd,1,TRUE,TRUE,TRUE,400,NE,Min. 5-12 - occasionally vocalizing
+195,123,Mottd,1,FALSE,FALSE,TRUE,500,E,7 Min.; Nixtepe location
+196,125,Mottd,1,TRUE,FALSE,FALSE,300,NW,
+197,125,Mottd,2,FALSE,TRUE,FALSE,150,SE,
+198,125,Mottd,3,FALSE,FALSE,TRUE,300,SE,6 min. plus
+199,125,Mottd,4,FALSE,FALSE,TRUE,300,S,11 min.
+200,126,Mottd,1,TRUE,TRUE,TRUE,350,S,Min. 9 plus
+201,126,Mottd,2,FALSE,FALSE,TRUE,25,E,Min 11
+202,127,Mottd,1,TRUE,TRUE,TRUE,350,E,9 min. plus
+203,127,Mottd,2,FALSE,TRUE,TRUE,300,N,10 min. plus; bird number 2 moved closer to 200 Meters North
+205,128,Mottd,1,TRUE,TRUE,TRUE,400,S,Min. 4 vocalized - during broadcast
+206,128,Mottd,2,FALSE,FALSE,TRUE,500,SE,Min. 9
+208,129,Mottd,1,TRUE,TRUE,TRUE,200,S,6 min. plus
+209,129,Mottd,2,FALSE,TRUE,TRUE,450,S,10 min. plus
+210,129,Mottd,3,FALSE,FALSE,TRUE,400,S,7 min. plus; cat like call - female
+211,130,Mottd,1,TRUE,FALSE,TRUE,350,N,7 min. plus
+214,131,Mottd,1,TRUE,TRUE,TRUE,150,E,6 min. plus; started vocalizing after two min. wait
+215,131,Mottd,2,FALSE,TRUE,FALSE,200,S,
+216,131,Mottd,3,FALSE,FALSE,TRUE,100,N,6 min. plus
+217,131,Mottd,4,FALSE,FALSE,TRUE,20,S,7 min. plus
+218,131,Mottd,5,FALSE,FALSE,TRUE,100,N,8 min. plus
+219,132,FerPy,1,FALSE,FALSE,TRUE,50,S,Min. 3 - while broadcasting and min. 12
+220,134,Mottd,1,FALSE,FALSE,TRUE,350,S,min. 9 plus;  moved to 100 M South Min. 7; an owl flew over observers when tape was playing and perched nearby
+222,135,Mottd,1,TRUE,TRUE,TRUE,300,S,7 min.
+223,135,Mottd,2,FALSE,FALSE,TRUE,500,N,6 min. plus; other side of river
+224,136,Mottd,1,FALSE,TRUE,TRUE,550,S,6 min. plus
+225,137,Specd,1,FALSE,FALSE,TRUE,325,SE,8 min. plus; recorded
+226,138,Specd,1,TRUE,TRUE,TRUE,300,SE,6 min. plus
+227,138,Specd,2,TRUE,TRUE,TRUE,350,SE,6 min. plus
+228,139,Specd,1,FALSE,TRUE,TRUE,500,SE,6 min. plus
+229,142,FerPy,1,TRUE,TRUE,TRUE,100,S,3 min. plus till 7 min. then quiet
+230,142,FerPy,2,TRUE,TRUE,FALSE,10,S,Perched in tree; Flew away to the east after 2nd min.
+231,142,FerPy,3,TRUE,TRUE,FALSE,10,S,short vocalizations between the three pygmy owls during broadcast
+232,142,FerPy,4,TRUE,TRUE,FALSE,10,S,
+233,142,Specd,5,FALSE,FALSE,FALSE,10,S,Could see shape in tree and owl as it flew off
+234,143,FerPy,1,TRUE,TRUE,FALSE,250,SE,
+235,143,Mottd,2,TRUE,TRUE,FALSE,75,S,
+236,144,Mottd,1,FALSE,FALSE,TRUE,50,SW,Min 10
+238,146,Mottd,1,FALSE,FALSE,TRUE,400,N,across the river
+253,152,FerPy,1,TRUE,TRUE,TRUE,250,SE,Min. 6-12
+254,152,FerPy,2,FALSE,FALSE,TRUE,75,S,Minute 3
+255,152,FerPy,3,FALSE,FALSE,TRUE,40,S,Minute 3
+256,152,FerPy,4,FALSE,FALSE,TRUE,50,N,Min 6-9
+258,153,FerPy,1,TRUE,TRUE,FALSE,300,NW,
+259,153,FerPy,2,FALSE,FALSE,TRUE,100,N,Three minutes to 8 minutes - could hear during broadcast
+260,157,Mottd,1,FALSE,FALSE,TRUE,15,W,10 Min.; Changed location to 5 meters East @ 11 min.
+262,158,Mottd,1,FALSE,TRUE,FALSE,200,W,
+263,158,Mottd,2,FALSE,FALSE,TRUE,10,E,6 min. plus
+264,158,Mottd,3,FALSE,FALSE,TRUE,15,E,6 min. plus
+265,158,Mottd,4,FALSE,FALSE,TRUE,12,E,6 min. plus
+266,160,Mottd,1,FALSE,FALSE,TRUE,250,SW,7 min
+267,167,FerPy,1,TRUE,TRUE,FALSE,100,SW,
+268,167,FerPy,2,FALSE,TRUE,TRUE,100,N,Short vocalizations and flew west to 150 meters; min.5-8
+270,167,FerPy,3,FALSE,FALSE,TRUE,10,N,Min. 10
+271,167,FerPy,4,FALSE,FALSE,TRUE,200,E,Min. 11
+272,168,FerPy,1,FALSE,FALSE,TRUE,75,SE,Min. 3 vocalized just as I was getting ready to broadcast
+274,170,Mottd,1,TRUE,TRUE,TRUE,150,S,Min. 5
+275,170,Specd,2,FALSE,FALSE,TRUE,50,N,Min 5 plus; Recorded end of side A and start of side B
+276,170,Specd,3,FALSE,FALSE,TRUE,50,N,Min 7 pluss;  Recorded end of side A and start of side B
+277,170,Specd,4,FALSE,FALSE,TRUE,125,NW,Min. 10 plus; Recorded end of side A and start of side B
+278,170,Specd,5,FALSE,FALSE,TRUE,125,NW,After min. 12; Recorded end of side A and start of side B
+279,171,Specd,1,TRUE,TRUE,FALSE,200,N,
+280,171,Specd,2,TRUE,TRUE,FALSE,200,N,
+281,171,Mottd,3,FALSE,TRUE,TRUE,150,SW,5 Min.; Heard owl fly in above and to the SW
+282,171,Specd,4,FALSE,FALSE,TRUE,30,SE,10 Min.
+283,171,Specd,5,FALSE,FALSE,TRUE,35,SE,10 Min.
+284,172,Specd,1,TRUE,TRUE,FALSE,175,N,
+285,172,Specd,2,TRUE,TRUE,FALSE,175,N,
+286,172,Mottd,3,FALSE,FALSE,TRUE,150,S,7 min. plus
+287,172,Mottd,4,FALSE,FALSE,TRUE,20,W,"9 min., recorded"
+288,173,Specd,1,TRUE,TRUE,TRUE,375,N,
+289,173,Specd,2,TRUE,TRUE,TRUE,375,N,
+290,173,Mottd,3,FALSE,FALSE,TRUE,10,E,Heard them flying as they changed perches around area
+291,173,Mottd,4,FALSE,FALSE,TRUE,10,E,"""          ""         ""     ""    """
+294,174,Mottd,1,FALSE,FALSE,TRUE,200,SW,Min 10
+295,175,Specd,1,FALSE,FALSE,TRUE,400,N,11 min
+296,175,Specd,2,FALSE,FALSE,TRUE,400,N,
+298,176,FerPy,1,TRUE,TRUE,TRUE,25,N,3 min plus;  recorded
+299,183,NoID,1,TRUE,FALSE,FALSE,200,SW,soft vocalization
+300,191,Mottd,1,FALSE,FALSE,TRUE,200,E,At 6 min. one hoot
+301,193,Mottd,1,FALSE,FALSE,TRUE,300,NW,Mottled Owl @ 8:43; Pucuyo
+302,195,Mottd,1,FALSE,FALSE,TRUE,1000,SE,About 1 k. away - vocal. Very faint @ 9:17; pucuyo
+303,202,Mottd,1,FALSE,FALSE,TRUE,300,W,Owl in Ojo de agua at  6 min.
+306,208,Mottd,1,TRUE,FALSE,TRUE,200,E,At.6.3 min. Mottled Owl about 2 k. to the east; 8.1 min. again; 9.53 min. again
+307,210,Mottd,1,FALSE,FALSE,TRUE,2000,SW,"At min. 3.13 heard a Mottled Owl about 2 k to the SW. Heard again at 7.56 min, at 8.37 min. and at 8.83 min."
+308,211,Mottd,1,TRUE,FALSE,TRUE,75,S,
+309,211,Mottd,2,FALSE,FALSE,TRUE,250,E,"Heard at 2.5 min., 7.22 min and at 8.00 min.oww oww to the east"
+310,215,Mottd,1,TRUE,TRUE,TRUE,200,E,"At 5.26 min. vocaliz. Oww, owww, from same direction; at 7.08 min. same direction cat like oww, oww"
+311,215,Mottd,2,TRUE,FALSE,FALSE,100,S,
+312,216,Mottd,1,FALSE,TRUE,TRUE,400,W,heard throughout obs. Period
+313,216,Mottd,2,FALSE,FALSE,TRUE,100,S,heard at 9.3 min
+314,218,NoID,1,FALSE,FALSE,TRUE,100,N,single hoot at min. 7.09 - sp. Not identified
+315,218,FerPy,2,FALSE,FALSE,TRUE,200,SW,At min 10 heard the pygmy owl
+317,233,FerPy,1,FALSE,FALSE,TRUE,200,S,Heard at 8:39 PM
+318,233,NoID,2,FALSE,FALSE,TRUE,100,N,Heard at 8:41 PM
+319,237,FerPy,1,FALSE,FALSE,TRUE,500,N,heard at 9:57 PM
+357,242,None,1,FALSE,FALSE,FALSE,0,,
+358,243,None,1,FALSE,FALSE,FALSE,0,,
+359,244,None,1,FALSE,FALSE,FALSE,0,,
+361,252,Mottd,1,FALSE,TRUE,TRUE,300,NE,"Spectacled Owl SE btw pt 2&3, in valley below, surprised to hear, but know it was distinctly this sp."
+363,254,Mottd,1,FALSE,FALSE,TRUE,150,NW,minute 6 plus
+364,254,Mottd,2,FALSE,FALSE,TRUE,100,N,minute 8
+365,254,Mottd,3,FALSE,FALSE,TRUE,300,W,minute 10
+366,254,Mottd,4,FALSE,FALSE,TRUE,300,W,minute 12; Female - cat like call
+367,255,Styg,1,TRUE,TRUE,TRUE,300,W,soft hoot; one/min; soft hoot - one at minute 10
+369,256,Mottd,1,FALSE,FALSE,TRUE,150,E,Minute 12 - last minute at site
+370,257,Mottd,1,FALSE,FALSE,TRUE,1000,W,Very far off - one kilometer
+371,262,Mottd,1,FALSE,FALSE,TRUE,800,N,
+372,263,Mottd,1,TRUE,TRUE,FALSE,400,N,
+373,263,Mottd,2,FALSE,TRUE,FALSE,600,W,
+374,263,Specd,3,FALSE,FALSE,TRUE,400,E,Sounds like it is down in the valley below - close to same location as previous night
+376,264,Mottd,2,FALSE,FALSE,TRUE,300,S,
+377,266,Mottd,1,FALSE,FALSE,TRUE,200,E,
+378,272,Mottd,1,FALSE,FALSE,TRUE,500,E,in valley below;  Minute 9 plus
+379,273,Mottd,1,FALSE,FALSE,TRUE,30,E,Minute 8
+380,274,Mottd,1,FALSE,FALSE,TRUE,40,W,Recorded owl and Muyo
+382,275,Mottd,1,FALSE,FALSE,TRUE,200,N,Minute 9 plus
+383,276,Mottd,1,TRUE,TRUE,TRUE,100,N,Minute 9
+384,277,Mottd,1,FALSE,FALSE,TRUE,300,N,Min 7 plus
+385,278,Mottd,1,FALSE,FALSE,TRUE,500,E,Minute 7 plus; Moved closer to 400 M East; Minute 9 plus
+387,279,Mottd,1,FALSE,FALSE,TRUE,300,W,Minute 7 plus
+388,280,Mottd,1,FALSE,FALSE,TRUE,100,N,Min 8
+389,282,Mottd,1,FALSE,FALSE,TRUE,550,N,Minute 7
+390,282,Mottd,2,FALSE,FALSE,TRUE,500,W,Minute 9
+391,283,Mottd,1,TRUE,TRUE,TRUE,500,SW,Minute 7 plus; other side of valley in Mt. side
+392,284,Mottd,1,FALSE,FALSE,TRUE,600,S,Minute 7
+393,285,Mottd,1,FALSE,FALSE,TRUE,50,S,Recorded both birds; Minute 7 plus
+394,285,Mottd,2,FALSE,FALSE,TRUE,400,E,Recorded both birds; Minute 7 plus; Female
+395,286,Mottd,1,FALSE,FALSE,TRUE,150,E,Recorded both birds; Minute 7 plus
+396,286,Mottd,2,FALSE,FALSE,TRUE,125,SE,Redorded both birds; Minute 7 plus
+397,287,Mottd,1,FALSE,FALSE,TRUE,10,E,Minute 7 plus; Recorded both birds; After close vocalizations moved to 125 meters E; Minute 12 plus
+398,287,Mottd,2,FALSE,FALSE,TRUE,10,E,Female vocalized; Minute 7 plus; Recorded both birds; After close vocalizations moved to 125 meters E; Minute 12 plus
+402,289,Mottd,1,FALSE,FALSE,TRUE,550,S,Minute 9 plus
+403,290,Mottd,1,FALSE,FALSE,TRUE,10,S,Minute 7 plus; Recorded; moved away to 25 meters SE; Minute 10 plus
+404,290,Mottd,2,FALSE,FALSE,TRUE,100,E,Minute 7 plus; Recorded
+406,292,Mottd,1,FALSE,FALSE,TRUE,500,E,Minute 8
+407,293,Mottd,1,TRUE,TRUE,TRUE,300,W,Could hear during broadcast; Minute 6 plus
+408,293,Mottd,2,FALSE,FALSE,TRUE,600,S,Minute 7
+409,295,Mottd,1,FALSE,TRUE,TRUE,600,S,Minute 8 plus
+410,295,Mottd,2,FALSE,FALSE,TRUE,600,N,Minute 7 plus
+411,295,Mottd,3,FALSE,FALSE,TRUE,350,W,Minute 9 plus: one time cat like vocalization
+412,296,Mottd,1,TRUE,TRUE,TRUE,800,W,Minute 7 plus
+413,296,Mottd,2,FALSE,FALSE,TRUE,800,W,Minute 7 plus; Cat like female call
+414,296,Specd,3,FALSE,FALSE,TRUE,500,N,Minute 11
+415,298,Mottd,1,TRUE,TRUE,TRUE,400,SE,Minute 7
+416,298,Mottd,2,FALSE,FALSE,TRUE,450,SE,Minute 8
+417,299,Mottd,1,FALSE,FALSE,TRUE,300,SE,Minute 9
+418,300,Mottd,1,FALSE,FALSE,TRUE,10,W,Minute 12; at end of data collection session; Recorded after finished transect @ 9:27 PM.
+419,302,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 6 @ end of broadcast
+420,303,Mottd,1,FALSE,FALSE,TRUE,900,N,Minute 9
+421,303,Mottd,2,FALSE,FALSE,TRUE,500,SW,Minute 11
+422,304,Mottd,1,FALSE,FALSE,TRUE,500,SE,Minute 9
+423,305,Mottd,1,FALSE,FALSE,TRUE,400,E,Minute 7 plus; below in valley
+424,307,Mottd,1,FALSE,FALSE,TRUE,400,S,"Minute 8; Thought I heard a bird fly into nearby trees, but if never vocalized."
+426,308,Mottd,1,FALSE,TRUE,TRUE,300,S,Minute 6 plus; Could hear during broadcast
+427,308,Mottd,2,FALSE,FALSE,TRUE,600,N,Minute 6 plus; Could hear during broadcast
+428,309,Mottd,1,TRUE,TRUE,FALSE,300,SW,
+429,309,Mottd,2,TRUE,TRUE,FALSE,150,N,
+430,309,Mottd,3,TRUE,TRUE,FALSE,400,S,
+431,309,Mottd,4,FALSE,FALSE,TRUE,10,S,This might be the same bird as number one but moved closer; Then number 4 moved to 50 m South min.5-12.
+432,309,Mottd,5,FALSE,FALSE,TRUE,20,N,This might be the same bird as number two but moved closer;
+434,310,Mottd,1,FALSE,TRUE,TRUE,300,SE,Minute 7 plus
+435,315,FerPy,1,FALSE,FALSE,TRUE,500,NE,Minute 8
+436,320,Specd,1,TRUE,TRUE,TRUE,500,N,Minute 7 plus; [problem with speaker]
+438,322,Specd,1,TRUE,FALSE,FALSE,400,E,
+439,322,FerPy,2,FALSE,TRUE,FALSE,400,SE,
+440,322,FerPy,3,FALSE,FALSE,TRUE,200,SE,
+441,322,FerPy,4,FALSE,FALSE,TRUE,300,N,
+442,325,FerPy,1,FALSE,FALSE,TRUE,500,N,Minute 9
+443,326,Specd,1,FALSE,FALSE,TRUE,10,N,Heard it land - Bolador tree; Minute 8 plus; recorded
+444,326,FerPy,2,FALSE,FALSE,TRUE,30,N,Minute 8; recorded
+445,327,Mottd,1,FALSE,FALSE,TRUE,50,S,Minute 5 - during broadcast; female cat like vocalization
+446,328,FerPy,1,FALSE,FALSE,TRUE,600,E,Minute 7
+447,328,Mottd,2,FALSE,FALSE,TRUE,10,E,Minute 12; heard it move in trees; one soft vocalization
+448,329,Mottd,1,TRUE,TRUE,TRUE,600,N,Minute 6 plus; one of 2 did cat like female vocalization
+449,329,Mottd,2,FALSE,FALSE,TRUE,400,N,Minute 6 plus; one about 10 m but did not vocalize
+450,330,Specd,1,TRUE,TRUE,TRUE,400,N,Moved closer to 200 meters N and again movd to 10 meters N; Minute 6 plus
+452,330,Specd,2,FALSE,FALSE,TRUE,200,N,Minute 8 plus; another joined; moved closer to 10 meters N
+455,331,Specd,1,TRUE,TRUE,TRUE,100,N,Moved closer to 10 meters N; Minute 7 plus
+456,331,Specd,2,TRUE,TRUE,TRUE,100,N,Moved closer to 10 meters N; Minute 7 plus
+457,331,FerPy,3,FALSE,FALSE,TRUE,200,W,Minute 7 plus
+461,332,FerPy,1,FALSE,FALSE,TRUE,300,S,Minute 6
+462,334,FerPy,1,FALSE,TRUE,FALSE,300,W,
+463,335,Specd,1,FALSE,FALSE,TRUE,200,E,Minute 8
+465,336,Specd,1,TRUE,TRUE,FALSE,200,SE,
+466,341,Specd,1,FALSE,FALSE,TRUE,10,E,Saw it fly overhead to tree next to me; when broadcasting then flew other side of Dike 10 m away & found it w/ flashlight; recorded
+467,343,Mottd,1,FALSE,FALSE,TRUE,300,W,Minute 6; Another flew in but did not vocalize
+468,344,NoID,1,FALSE,FALSE,FALSE,0,,Owl flew overhead but did not vocalize
+469,345,Mottd,1,FALSE,TRUE,FALSE,400,W,
+470,347,FerPy,1,FALSE,FALSE,TRUE,300,NE,Minute 7
+471,347,FerPy,2,FALSE,FALSE,TRUE,300,N,Minute 8
+472,347,Mottd,3,FALSE,FALSE,TRUE,200,SW,Minute 7
+473,348,Mottd,1,TRUE,TRUE,TRUE,200,N,"Minute 6; Female cat like call; Moved closer to 100 meters N, Minute 9"
+474,348,Mottd,2,FALSE,FALSE,TRUE,200,N,Minute 7; Male; Moved closer to 100 meters N; Minute 9;
+477,348,Mottd,3,FALSE,FALSE,TRUE,50,N,Minute12; also heard a person immitating female vocalization
+478,349,Mottd,1,TRUE,TRUE,TRUE,300,N,Minute 7 plus; Female cat like call
+479,349,Mottd,2,FALSE,FALSE,TRUE,300,N,Minute 9
+480,350,Specd,1,FALSE,FALSE,TRUE,600,N,Minute 7; two times only
+481,372,Mottd,1,TRUE,TRUE,FALSE,50,S,
+482,373,Mottd,1,TRUE,TRUE,TRUE,15,N,Minute 1 and 2  and then moved to 80 meters N and called during playback; Minute 3-10;
+484,373,Mottd,2,FALSE,FALSE,TRUE,400,S,Minute 8-10
+485,374,Mottd,1,FALSE,FALSE,TRUE,450,S,Possibly same owl (number 2) from pt. 2; Minute 9-11
+486,384,Mottd,1,FALSE,FALSE,TRUE,600,S,Minute 5-12
+487,384,PacSc,2,FALSE,FALSE,TRUE,200,W,Minute 8
+488,385,Mottd,1,FALSE,FALSE,TRUE,700,N,Other side of Mt.; Minute 6-9
+489,386,Mottd,1,TRUE,TRUE,TRUE,350,S,Minute 5-12
+490,386,Mottd,2,FALSE,FALSE,TRUE,200,S,Minute 5-12
+491,386,Specd,3,FALSE,FALSE,TRUE,800,E,Minute 8-11
+492,387,PacSc,1,TRUE,TRUE,FALSE,200,W,Recorded after silent listening (end #253)
+493,387,Mottd,2,TRUE,TRUE,TRUE,350,S,Minute 6-12
+494,387,Mottd,3,TRUE,TRUE,TRUE,200,S,Minute 6-12
+495,387,Mottd,4,FALSE,FALSE,TRUE,230,N,Minute 6-12
+496,387,Mottd,5,FALSE,FALSE,TRUE,180,W,Minute 11-12
+497,388,Mottd,1,TRUE,TRUE,TRUE,45,N,Minute 5-12; Great response to broadcast; Moved to 10 Meters N
+498,388,Mottd,2,TRUE,TRUE,TRUE,50,S,Minute 5-12; Great response to broadcast; Moved to 12 Meters S
+501,389,Mottd,1,FALSE,FALSE,TRUE,200,E,Minute 5-12
+502,389,Mottd,2,FALSE,FALSE,TRUE,200,E,Minute 6-12
+503,389,Mottd,3,FALSE,FALSE,TRUE,325,S,Minute 8-10
+504,389,Mottd,4,FALSE,FALSE,TRUE,610,N,Minute 11-12
+505,389,Mottd,5,FALSE,FALSE,TRUE,420,N,Minute 12
+506,390,Mottd,1,FALSE,FALSE,TRUE,375,S,Minute 5-12
+507,390,Mottd,2,FALSE,FALSE,TRUE,800,S,Minute 6-7
+508,391,Mottd,1,FALSE,FALSE,TRUE,675,SE,Minute 10
+509,391,Mottd,2,FALSE,FALSE,TRUE,850,N,Minute 11
+510,393,Mottd,1,FALSE,FALSE,TRUE,25,S,Minute 6-12; Recorded after broadcast (# 320-343)
+511,392,Mottd,1,FALSE,FALSE,TRUE,500,S,Minute 12
+513,394,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 10-12
+514,395,Mottd,1,TRUE,TRUE,TRUE,200,W,Minute 5-6
+515,395,Mottd,2,FALSE,FALSE,TRUE,400,SW,Minute 7-12
+516,395,Mottd,3,FALSE,FALSE,TRUE,500,S,Minute 9-10; Cat like vocal.
+517,396,Mottd,1,TRUE,TRUE,FALSE,700,SE,
+518,396,Mottd,2,FALSE,TRUE,TRUE,650,SE,Minute 6-12
+519,396,Mottd,3,FALSE,FALSE,TRUE,800,SE,Minute 5-12; Cat like call
+520,397,Mottd,1,TRUE,TRUE,TRUE,36,E,Minute 5-12; Recorded
+521,397,Mottd,2,TRUE,TRUE,TRUE,300,N,Minute 5-12
+522,397,Mottd,3,FALSE,FALSE,TRUE,350,N,Minute 5-12
+523,397,Mottd,4,FALSE,FALSE,TRUE,45,E,Odd vocalization of Mottled Owl; Recorded to end of tape (#344-399)
+524,397,PacSc,5,FALSE,FALSE,TRUE,50,E,Vocal after recorded prior Mottled Owl
+525,398,Mottd,1,FALSE,FALSE,TRUE,40,SW,Minute 7
+526,398,Mottd,2,FALSE,FALSE,TRUE,200,SW,Minute 11
+527,399,Mottd,1,FALSE,FALSE,TRUE,680,SW,Minute 10-12
+528,400,Mottd,1,TRUE,TRUE,TRUE,600,N,Minute 5-12
+529,400,Mottd,2,TRUE,TRUE,TRUE,850,NE,Minute 7-12
+530,400,Mottd,3,FALSE,FALSE,TRUE,800,S,Minute 9-12
+531,401,Mottd,1,FALSE,FALSE,TRUE,950,S,Minute 5-12
+532,402,FerPy,1,TRUE,FALSE,FALSE,10,SW,
+533,402,FerPy,2,FALSE,TRUE,TRUE,200,S,Minute 10-12
+534,402,FerPy,3,FALSE,TRUE,FALSE,15,NW,
+535,403,FerPy,1,TRUE,TRUE,FALSE,100,N,
+536,403,FerPy,2,TRUE,TRUE,FALSE,100,NE,
+537,412,FerPy,1,TRUE,TRUE,TRUE,50,N,Minute 5-12
+538,412,FerPy,2,FALSE,TRUE,TRUE,100,N,Minute 5-12
+539,412,FerPy,3,FALSE,TRUE,FALSE,30,S,Minute 5-12
+540,415,Mottd,1,FALSE,FALSE,TRUE,300,W,Minute 9-12
+541,416,Mottd,1,FALSE,FALSE,TRUE,50,S,Minute 6-12; Recorded
+542,417,Mottd,1,FALSE,FALSE,TRUE,200,N,Minute 5-10
+543,417,Specd,2,FALSE,FALSE,TRUE,300,NE,Minute 11
+544,419,FerPy,1,TRUE,TRUE,TRUE,400,N,Minute 12
+545,422,FerPy,1,FALSE,TRUE,TRUE,300,S,Minute 6-10
+546,422,FerPy,2,FALSE,FALSE,TRUE,400,NW,Other side of the river; Minute 7-11
+547,424,Specd,1,FALSE,FALSE,TRUE,400,S,Only vocal once
+548,425,Mottd,1,FALSE,FALSE,TRUE,350,S,Minute 8-10
+549,432,FerPy,1,TRUE,FALSE,FALSE,50,NE,
+550,432,FerPy,2,FALSE,FALSE,TRUE,100,N,Minute 7-12
+551,432,FerPy,3,FALSE,FALSE,TRUE,200,NE,Minute 9-12
+552,432,FerPy,4,FALSE,FALSE,TRUE,100,N,Minute 10-12
+553,434,Specd,1,TRUE,TRUE,TRUE,150,N,Minute 5-10
+554,434,Specd,2,TRUE,TRUE,TRUE,150,N,Minute 5-10
+555,434,Specd,3,FALSE,FALSE,TRUE,200,S,Minute 5-12
+557,435,Mottd,1,FALSE,FALSE,TRUE,400,SW,Minute 5-12
+558,437,Mottd,1,FALSE,FALSE,TRUE,400,W,Minute 6-12
+559,437,Mottd,2,FALSE,FALSE,TRUE,200,W,Minute 8-12
+560,437,Specd,3,FALSE,FALSE,TRUE,300,SE,Minute 10-12
+561,438,Specd,1,TRUE,TRUE,TRUE,100,E,Minute 5-9
+562,438,Specd,2,TRUE,TRUE,TRUE,100,E,Minute 5-9
+563,438,Mottd,3,FALSE,TRUE,FALSE,200,N,
+564,438,Specd,4,FALSE,FALSE,TRUE,300,NE,Minute 6-9
+565,438,Mottd,5,FALSE,FALSE,TRUE,50,E,Minute 10-12; Recorded
+566,439,Mottd,1,TRUE,TRUE,TRUE,200,N,Minute 5-12
+567,439,Mottd,2,FALSE,FALSE,TRUE,400,N,Minute 9-12
+568,440,Mottd,1,FALSE,FALSE,TRUE,400,NW,Minute 5-12
+569,443,Mottd,1,FALSE,FALSE,TRUE,25,W,Minute 5-12
+570,452,Whisk,1,FALSE,FALSE,TRUE,300,W,Minutes 5-12; Moved closer to 200 meters W
+572,458,Mottd,1,FALSE,FALSE,TRUE,4000,W,Minute 5-12; Long ways off - next ridge
+573,470,Mottd,1,FALSE,FALSE,TRUE,175,N,Minute 8-11 (9:23 PM end) Male
+574,470,Mottd,2,FALSE,FALSE,TRUE,175,N,Minute 8-11 (9:23 PM end) Female cat like call
+575,469,Mottd,1,TRUE,TRUE,FALSE,150,W,
+576,473,Mottd,1,FALSE,FALSE,TRUE,40,E,Minute 5-12. Recorded
+577,473,Mottd,2,FALSE,FALSE,TRUE,1000,E,Minute 5-12.
+578,474,Mottd,1,TRUE,TRUE,FALSE,1000,E,
+579,474,Mottd,2,FALSE,FALSE,TRUE,1300,E,Minute 5-12.
+580,474,Mottd,3,FALSE,FALSE,TRUE,1000,S,Minute 6-12.
+581,475,Mottd,1,TRUE,TRUE,TRUE,1200,S,Minute 5-12.
+582,475,Mottd,2,FALSE,FALSE,TRUE,1500,SW,Minute 7-12.
+583,476,Mottd,1,FALSE,TRUE,FALSE,45,E,Female cat like call. Recorded.
+584,476,Mottd,2,FALSE,FALSE,TRUE,1400,S,Minute 5-8.
+585,476,Mottd,3,FALSE,FALSE,TRUE,1000,S,Minute 6-8.
+586,478,Mottd,1,TRUE,TRUE,FALSE,75,E,
+587,478,Mottd,2,FALSE,FALSE,TRUE,25,W,Minute 5-10. Recorded
+588,483,Mottd,1,FALSE,FALSE,TRUE,2000,SE,Minute 7-9.
+589,492,Mottd,1,FALSE,FALSE,TRUE,1200,E,Minute 5 plus
+590,492,Mottd,2,FALSE,FALSE,TRUE,1500,S,Minute 7 plus.
+591,493,Mottd,1,TRUE,TRUE,TRUE,300,E,Minute 5-7.
+592,493,Mottd,2,TRUE,TRUE,FALSE,800,W,
+593,493,PacSc,3,TRUE,TRUE,TRUE,100,E,Minute 6. Recorded (ended # 296)
+594,493,Mottd,4,FALSE,TRUE,FALSE,300,E,Recorded (ended # 296)
+595,494,Mottd,1,FALSE,FALSE,TRUE,1800,W,Minute 10-12.
+596,495,Mottd,1,TRUE,TRUE,TRUE,1600,S,Minute 5 plus.
+597,495,Mottd,2,FALSE,FALSE,TRUE,1700,E,Minute 8 plus.
+598,496,Mottd,1,FALSE,TRUE,FALSE,1900,S,
+599,497,Mottd,1,FALSE,FALSE,TRUE,800,N,Minute 5-10. Female
+600,499,Mottd,1,FALSE,FALSE,TRUE,1500,W,Minute 7. Female
+601,500,Mottd,1,FALSE,TRUE,TRUE,800,N,Female?; Mt.de Cueva Pederon; Moving closer to 15 meters N for Minute 5-7 (above head); Moved to 25 meters N for minutes 8-12.
+604,503,Mottd,1,FALSE,FALSE,TRUE,300,E,Minute 8. One time only vocalized.
+605,502,FerPy,1,FALSE,FALSE,TRUE,1500,W,Vocaliz. During broadcast - other side of river.
+606,504,Mottd,1,FALSE,FALSE,TRUE,200,N,Minute 7-12
+607,504,Barn,2,FALSE,FALSE,TRUE,50,N,Minute 6. One vocalization.
+608,505,Mottd,1,TRUE,TRUE,TRUE,40,N,Minute 5-12 & during broadcast. Recorded end # 110.
+609,506,Mottd,1,TRUE,TRUE,TRUE,200,E,Minute 9-12.
+610,506,Mottd,2,FALSE,TRUE,TRUE,200,S,Minute 5-12.
+611,507,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 7-10.
+612,510,Specd,1,FALSE,FALSE,TRUE,10,W,Minute 11. Flew past transect & perched nearby about sz. Of Spect. Owl
+613,511,FerPy,1,FALSE,FALSE,TRUE,200,W,Minute 7 plus.
+614,522,Specd,1,FALSE,FALSE,TRUE,300,E,Minute 5-11 (During broadcast)
+615,522,Mottd,2,FALSE,FALSE,TRUE,500,NE,Minute 9-10
+616,522,Specd,3,FALSE,FALSE,TRUE,500,E,Minute 5-11 (can hear 2nd Spec.Owl in recording)
+617,523,Mottd,1,FALSE,FALSE,TRUE,300,N,Minute 6-7
+618,524,Mottd,1,FALSE,FALSE,TRUE,300,N,Minute 5-12
+619,525,Mottd,1,TRUE,TRUE,TRUE,50,N,Minute 5-12 Recorded
+620,526,Mottd,1,TRUE,TRUE,TRUE,100,N,Minute 5-12. Bird moved to 25 meters E
+622,527,Mottd,1,FALSE,FALSE,TRUE,600,S,Minute 9-11.
+623,532,FerPy,1,TRUE,FALSE,FALSE,100,S,
+624,532,Mottd,2,FALSE,FALSE,TRUE,200,S,Minute 5
+625,533,Mottd,1,FALSE,FALSE,TRUE,25,S,Minute 5-12. Flew overhead during broadcast. Recorded (# 0-19)
+626,534,Mottd,1,TRUE,TRUE,TRUE,200,N,Minute 5-12
+627,534,Mottd,2,FALSE,FALSE,TRUE,200,S,Minute 5-12
+628,534,Mottd,3,FALSE,FALSE,TRUE,200,E,Minute 10-12
+629,535,Mottd,1,FALSE,FALSE,TRUE,300,N,Minute 5-12.
+630,541,Specd,1,FALSE,FALSE,TRUE,1000,E,Minute 12
+631,544,GrHor,1,FALSE,FALSE,TRUE,1000,N,Minute 5-12. Recorded (# 116-147)
+632,547,Mottd,1,FALSE,FALSE,TRUE,3000,S,Minute 10.
+633,555,Mottd,1,FALSE,FALSE,TRUE,1200,S,"Minute 7. Very long ways off, other side of valley & to South."
+634,556,Mottd,1,FALSE,FALSE,TRUE,950,S,Minute 5-10. In valley below.
+635,558,Mottd,1,FALSE,FALSE,TRUE,850,E,Minute 5-12. Occasional vocalization
+636,558,Mottd,2,FALSE,FALSE,TRUE,1000,S,Minute 8 plus. A long way down valley.
+637,558,Mottd,3,FALSE,FALSE,TRUE,1000,S,Minute 8 plus. A long way down valley.
+638,559,Mottd,1,FALSE,FALSE,TRUE,600,E,Minute 5-8. Female
+639,559,Mottd,2,FALSE,FALSE,TRUE,900,E,Minute 6-10.
+640,560,Mottd,1,FALSE,FALSE,TRUE,10,N,Minute 5 plus. Female. Recorded to # 176.
+641,560,Mottd,2,FALSE,FALSE,TRUE,25,N,Minute 6 plus. Male. Recorded to # 176.
+642,560,Mottd,3,FALSE,FALSE,TRUE,450,E,Male
+643,560,Mottd,4,FALSE,FALSE,TRUE,700,E,Female
+644,561,Mottd,1,FALSE,FALSE,TRUE,500,E,Minute 5-10. Recorded (end recording # 238).
+645,562,Mottd,1,FALSE,FALSE,TRUE,1000,N,Minute 8-12.
+646,563,Mottd,1,FALSE,FALSE,TRUE,15,N,Minute 5 plus.
+647,563,Mottd,2,FALSE,FALSE,TRUE,600,NE,Minute 7. Female.
+648,565,Mottd,1,FALSE,FALSE,TRUE,1200,S,Minute 6-12.
+649,566,Mottd,1,FALSE,FALSE,TRUE,30,E,Minute 12. Recorded # 308.
+650,567,Mottd,1,FALSE,FALSE,TRUE,1000,E,Minute 6-12.
+651,568,Mottd,1,FALSE,FALSE,TRUE,25,N,Minute 5-12. Bird moved. To 30 meters E.
+653,571,Mottd,1,FALSE,TRUE,TRUE,1000,E,"Minute 2, 6-10."
+654,571,Mottd,2,FALSE,FALSE,TRUE,800,E,Minute 6-9. Female - vocalization.
+655,574,Mottd,1,FALSE,FALSE,TRUE,800,W,Minute 9 plus. Mt. below
+656,574,Mottd,2,FALSE,FALSE,TRUE,600,E,Minute 9 plus. Female
+657,574,PacSc,3,FALSE,FALSE,TRUE,25,E,Minute 10.
+658,575,Specd,1,TRUE,TRUE,FALSE,200,S,"Construction noise during broadcast - no response after broadcast,"
+659,575,Specd,2,TRUE,TRUE,FALSE,200,S,"Construction noise during broadcast - no response after broadcast,"
+660,575,Specd,3,TRUE,TRUE,FALSE,200,W,"Construction noise during broadcast - no response after broadcast,"
+661,575,Specd,4,TRUE,TRUE,FALSE,200,N,"Construction noise during broadcast - no response after broadcast,"
+662,575,FerPy,5,FALSE,TRUE,FALSE,300,N,"Construction noise during broadcast - no response after broadcast,"
+664,577,PacSc,1,FALSE,FALSE,TRUE,30,E,Minute 6.
+665,577,Mottd,2,FALSE,FALSE,TRUE,15,S,Minute 10.
+666,578,PacSc,1,TRUE,TRUE,FALSE,50,N,Recorded both Pacific Screech owls (#88-103)
+667,578,Mottd,3,FALSE,FALSE,TRUE,500,N,Minute 5.
+668,578,Mottd,4,FALSE,FALSE,TRUE,200,W,Minute 6 plus.
+669,578,PacSc,2,FALSE,TRUE,FALSE,150,N,Recorded both Pacific Screech owls (#88-103)
+670,579,Mottd,1,FALSE,FALSE,TRUE,200,N,Minute 5-8.
+671,579,Mottd,2,FALSE,FALSE,TRUE,50,S,Minute 5 plus.Bird moved closer to 25 meters S. Minute 12.
+673,580,Mottd,1,TRUE,TRUE,FALSE,15,N,
+674,581,PacSc,1,FALSE,FALSE,TRUE,300,S,Minute 5.
+675,584,Mottd,1,TRUE,TRUE,FALSE,300,N,
+676,589,Mottd,1,FALSE,FALSE,TRUE,400,SE,Minute 5
+677,590,Mottd,1,FALSE,TRUE,FALSE,300,SE,
+678,590,Mottd,2,FALSE,FALSE,TRUE,350,SW,Minute 6 and 10.
+679,591,PacSc,1,FALSE,FALSE,TRUE,100,NE,Minute 5 plus. Recorded ended # 209.
+680,591,PacSc,2,FALSE,FALSE,TRUE,100,NE,Minute 5 plus. Recorded ended # 209.
+681,595,FerPy,1,TRUE,TRUE,TRUE,250,W,Minute 5-8.
+682,595,FerPy,2,FALSE,FALSE,TRUE,200,S,Minute 6-8.
+683,595,FerPy,3,FALSE,FALSE,TRUE,75,N,Minute 8.
+684,596,FerPy,1,FALSE,FALSE,TRUE,100,N,Minute 8.
+685,599,Mottd,1,FALSE,FALSE,TRUE,15,E,Minute 5-6. Odd voclization - recorded to #270.
+686,600,Mottd,1,FALSE,FALSE,TRUE,100,E,Minute 6.
+687,600,PacSc,2,FALSE,FALSE,TRUE,50,W,Minute 5.
+688,600,Mottd,3,FALSE,FALSE,TRUE,150,E,Minute 6.
+689,600,Mottd,4,FALSE,FALSE,TRUE,200,S,Minute 9.
+690,601,Mottd,1,TRUE,TRUE,FALSE,150,N,
+691,601,Mottd,2,FALSE,FALSE,TRUE,30,E,Minute 5.
+692,601,Mottd,3,FALSE,FALSE,TRUE,300,E,Minute 8. Young?
+693,601,Mottd,4,FALSE,FALSE,TRUE,300,E,Minute 10. Female.
+694,601,PacSc,5,FALSE,FALSE,TRUE,300,S,Minute 8.
+695,601,Mottd,6,FALSE,FALSE,TRUE,350,S,Minute 12.
+696,602,Mottd,1,FALSE,FALSE,TRUE,150,N,Minute 4 - during broadcast.
+697,602,Mottd,2,FALSE,FALSE,TRUE,100,N,Minute 6. Female.
+698,603,Specd,1,TRUE,TRUE,TRUE,400,W,Minute 5 plus.Recorded (#341-391).
+699,603,Specd,2,FALSE,FALSE,TRUE,300,SW,Minute 5 plus.Recorded (#341-391).
+700,603,Mottd,3,TRUE,TRUE,FALSE,200,N,
+701,604,Specd,1,TRUE,TRUE,TRUE,400,N,Minute 5 plus.
+702,604,Mottd,2,FALSE,FALSE,TRUE,400,E,Minute 5. Young.
+703,604,Specd,3,FALSE,FALSE,TRUE,400,N,Minute 5.
+704,605,PacSc,1,FALSE,FALSE,TRUE,50,S,Minute 5-8.
+705,609,Mottd,1,TRUE,TRUE,TRUE,100,N,Minute 5 plus.
+706,610,Mottd,1,TRUE,TRUE,TRUE,50,N,Minute 5 plus.
+707,611,Mottd,1,TRUE,TRUE,TRUE,70,W,Minute 5 plus. Recorded (#200-261).
+708,611,Mottd,2,FALSE,FALSE,TRUE,15,E,Saw this one fly overhead.
+709,611,PacSc,3,FALSE,FALSE,TRUE,50,NW,Minute 10 plus. Recorded 2nd time to capture sp.
+710,611,PacSc,4,FALSE,FALSE,TRUE,60,NW,Minute 10 plus. Recorded 2nd time to capture sp.
+711,612,Mottd,1,TRUE,TRUE,TRUE,200,S,Minute 5 plus.
+712,614,Specd,1,FALSE,FALSE,TRUE,300,N,Minute 5 plus.
+713,615,Mottd,1,FALSE,FALSE,TRUE,40,S,Minute 6.
+714,615,Mottd,2,FALSE,FALSE,TRUE,300,E,Minute 7.
+715,615,Mottd,3,FALSE,FALSE,TRUE,200,SE,Minute 8. Female.
+716,616,Mottd,1,FALSE,FALSE,TRUE,300,N,Minute 8.
+717,616,Mottd,2,FALSE,FALSE,TRUE,500,S,Minute 11.
+718,617,Mottd,1,FALSE,TRUE,FALSE,500,S,Rain @ end of silent listening. Ended transect @7:14 PM.
+719,618,Mottd,1,TRUE,TRUE,FALSE,300,S,
+720,618,Mottd,2,FALSE,FALSE,TRUE,300,S,Minute 7 plus.
+721,624,GrHor,1,FALSE,FALSE,TRUE,1000,S,Minute 7. Tried to record but only hooted 2 series.
+722,628,Fulvous,1,FALSE,FALSE,TRUE,15,W,Minute 3 plus 12. Responded during broadcast. Moved to 40 meters E. Recorded - airplane interruption.
+724,629,Fulvous,1,FALSE,FALSE,TRUE,200,NE,Minute 5-12.
+726,632,Mottd,1,FALSE,FALSE,TRUE,400,N,Minute 7.
+729,636,Mottd,1,TRUE,TRUE,TRUE,225,E,Minute 5 plus. Cat like - female vocalization.
+730,637,Mottd,1,FALSE,FALSE,TRUE,350,SE,Minute 11.
+731,641,FerPy,1,TRUE,TRUE,TRUE,200,S,
+732,641,FerPy,2,TRUE,FALSE,FALSE,50,W,
+733,641,Specd,3,FALSE,FALSE,TRUE,300,N,Minute 12.
+734,642,Specd,1,FALSE,FALSE,TRUE,400,E,Minute 10-12. Recorded
+735,645,Mottd,1,FALSE,FALSE,TRUE,800,E,Long ways off!
+736,646,Mottd,1,TRUE,TRUE,TRUE,800,E,Minute 5-12. Recorded -ended # 339.
+737,646,Specd,2,FALSE,FALSE,TRUE,500,SE,Minute 11-12. Recorded - ended # 339.
+738,647,FerPy,1,TRUE,TRUE,TRUE,300,N,Minute 5-12. Recorded ended #351.
+739,647,FerPy,2,TRUE,TRUE,TRUE,300,N,Minute 5-12.
+740,647,Specd,3,TRUE,TRUE,TRUE,600,W,Minute 5-12. Other side of the river.
+741,647,Specd,4,TRUE,TRUE,TRUE,500,N,Minute 5-12.
+742,647,Mottd,5,FALSE,FALSE,TRUE,200,E,Minute 5-12.
+743,647,Mottd,6,FALSE,FALSE,TRUE,100,E,Recorded - ended # 369. Minute 5-12.
+744,647,Specd,7,FALSE,FALSE,TRUE,300,N,Minute 12.
+745,647,Specd,8,FALSE,FALSE,TRUE,500,S,Minute 12.
+746,647,Specd,9,FALSE,FALSE,TRUE,300,E,Minute 12.
+747,648,FerPy,1,TRUE,TRUE,TRUE,20,W,Recorded. Minute 5-12.
+748,648,Specd,2,TRUE,TRUE,TRUE,500,N,Minute 5-12.
+749,648,Specd,3,TRUE,TRUE,TRUE,500,N,Minute 5-12.
+750,648,Mottd,4,FALSE,TRUE,TRUE,300,S,Minute 5-12.
+755,649,Specd,1,FALSE,FALSE,TRUE,500,W,Minute 5-12.
+756,649,Barn,2,FALSE,FALSE,TRUE,50,NW,Minute 12.
+757,650,FerPy,1,TRUE,TRUE,TRUE,200,NE,Minute 5-12
+758,650,FerPy,2,TRUE,TRUE,TRUE,200,NE,Minute 5-12.
+759,651,FerPy,1,TRUE,TRUE,FALSE,10,E,Recorded # 1-61. Minute 9. Moved to 100 meters E.
+760,651,Mottd,2,FALSE,FALSE,TRUE,650,S,"Minute 8, 11."
+761,651,FerPy,3,FALSE,FALSE,TRUE,200,SE,Minute 9.
+763,651,Mottd,4,FALSE,FALSE,TRUE,50,SE,Minute 12.
+764,652,Mottd,1,TRUE,TRUE,TRUE,80,SE,Minute 5-12.
+765,653,Mottd,1,TRUE,TRUE,TRUE,40,SW,Minute 5-12.
+766,653,Mottd,2,FALSE,TRUE,FALSE,130,W,
+767,653,Mottd,3,FALSE,FALSE,TRUE,200,N,Minute 12.
+768,654,Mottd,1,TRUE,TRUE,TRUE,40,NW,Minute 5-12.
+769,655,Mottd,1,TRUE,TRUE,TRUE,20,NW,Minute 5+12.
+775,657,Mottd,1,TRUE,TRUE,TRUE,450,N,Recorded # 126-151. Minute 5-12.
+776,657,Specd,2,FALSE,FALSE,TRUE,25,N,Recorded #152-177. Minute 8-12.
+777,657,FerPy,3,FALSE,FALSE,TRUE,200,E,Recorded # 126-151. Minute 11-12.
+778,657,FerPy,4,FALSE,FALSE,TRUE,200,E,Recorded # 126-151. Minute 12.
+779,658,FerPy,1,FALSE,FALSE,TRUE,100,S,Recorded - ended # 193. Minute 4+8.
+780,658,Specd,2,FALSE,FALSE,TRUE,200,N,Recorded - ended # 193. Minute 5+12.
+781,658,Specd,3,FALSE,FALSE,TRUE,150,S,Recorded - ended # 193. Minute 10+12.
+782,659,Specd,1,FALSE,TRUE,FALSE,100,E,
+784,659,Mottd,2,FALSE,FALSE,TRUE,200,N,Minute 7. Female.
+785,659,FerPy,3,FALSE,FALSE,TRUE,150,E,Minute 7+12.
+786,659,FerPy,4,FALSE,FALSE,TRUE,150,E,Minute 7+12.
+787,660,FerPy,1,FALSE,TRUE,FALSE,250,N,
+789,661,FerPy,1,TRUE,TRUE,FALSE,200,S,
+790,662,FerPy,1,FALSE,FALSE,TRUE,400,S,Minute 6-10.
+791,663,Barn,1,FALSE,FALSE,TRUE,50,NW,Minute 9-10.
+792,664,FerPy,1,FALSE,FALSE,TRUE,300,NE,Minute 5-12.
+793,664,Barn,2,FALSE,FALSE,TRUE,100,N,Minute 6. Perched in Tempesque tree.
+794,664,FerPy,3,FALSE,FALSE,TRUE,300,NE,Minute 9-10.
+795,664,Mottd,4,FALSE,FALSE,TRUE,400,N,Minute 8.
+796,665,Mottd,1,FALSE,TRUE,TRUE,600,N,Minute 6-10. Same bird as Point 6.
+798,667,Mottd,1,TRUE,TRUE,TRUE,200,W,Minute 5-12.
+799,667,FerPy,2,FALSE,FALSE,TRUE,250,E,Minute 5-12.
+800,667,FerPy,3,FALSE,FALSE,TRUE,250,E,Minute 5-12.
+801,667,FerPy,4,FALSE,FALSE,TRUE,250,N,Minute 5-12.
+802,668,Mottd,1,TRUE,TRUE,TRUE,100,W,Recorded @ 8:31 PM # 295-310. Minute 5-12.
+803,668,FerPy,2,FALSE,FALSE,TRUE,50,NW,Recorded @ 8:36 PM # 311-322. Minute 5-12.
+804,668,Specd,3,FALSE,FALSE,TRUE,400,N,Minute 7-12.
+805,668,FerPy,4,FALSE,FALSE,TRUE,200,E,Minute 7-12.
+806,669,Specd,1,FALSE,FALSE,TRUE,500,E,Minute 6-12.
+808,670,FerPy,1,TRUE,TRUE,TRUE,25,N,At 9:14 PM Recorded - # 323-336. Minute 5-12.
+809,670,FerPy,2,FALSE,FALSE,TRUE,200,W,Minute 7-12.
+810,671,FerPy,1,TRUE,TRUE,TRUE,200,N,Minute 5-6.
+811,671,Mottd,2,FALSE,FALSE,TRUE,300,S,minute 10-11.
+812,672,Mottd,1,TRUE,TRUE,TRUE,200,S,Minute 5.
+813,672,Specd,2,FALSE,FALSE,TRUE,25,S,Recorded - end # 367. Minute 6-12.
+814,672,Specd,3,FALSE,FALSE,TRUE,150,N,Minute 6-8.
+815,672,Mottd,4,FALSE,FALSE,TRUE,50,W,Minute 6.
+816,672,FerPy,5,FALSE,FALSE,TRUE,200,NE,Minute 12.
+818,673,Mottd,1,TRUE,TRUE,TRUE,30,N,Recorded # 368-384. Minute 5-12.
+819,673,Specd,2,TRUE,TRUE,FALSE,20,N,Recorded # 368-384.
+820,673,Specd,3,TRUE,TRUE,FALSE,200,N,Recorded # 368-384.
+821,673,FerPy,4,TRUE,TRUE,TRUE,150,NE,Recorded # 368-384. Minute 8-12.
+822,673,FerPy,5,FALSE,FALSE,TRUE,300,NW,Recorded # 368-384. Minute 5-12.
+823,674,FerPy,1,TRUE,TRUE,TRUE,300,S,Minute 5.
+824,674,Mottd,2,FALSE,FALSE,TRUE,100,E,Minute 5.
+825,674,Mottd,3,FALSE,FALSE,TRUE,200,NW,Minute 5.
+828,673,Mottd,6,FALSE,FALSE,TRUE,100,NW,Recorded # 368-384. Minute 6-12.
+829,675,Specd,1,TRUE,TRUE,TRUE,300,N,Minute 6.
+830,675,Mottd,2,FALSE,TRUE,TRUE,150,NW,Minute 9.
+831,675,FerPy,3,FALSE,FALSE,TRUE,150,W,"Minute 5-12. Same owls for next Pts, (6,7& 8)."
+832,675,FerPy,4,FALSE,FALSE,TRUE,150,W,"Minute 5-12. Same owls for next Pts, (6,7& 8)"
+833,676,FerPy,1,TRUE,TRUE,TRUE,400,W,"Minute 5-12. Same owls for Pts, (5,7& 8)."
+834,676,FerPy,2,TRUE,TRUE,TRUE,400,W,"Minute 5-12. Same owls for Pts, (5,7& 8)."
+837,677,FerPy,1,TRUE,TRUE,TRUE,600,W,"Minute 5-12. Same owls for Pts, (5,6 & 8)."
+838,677,FerPy,2,TRUE,TRUE,TRUE,600,W,"Minute 5-12. Same owls for Pts, (5,6 & 8)."
+839,677,FerPy,3,FALSE,FALSE,TRUE,35,NW,Minute 5-7.
+840,677,Barn,4,FALSE,FALSE,TRUE,25,NE,Minute 6.
+841,678,FerPy,1,TRUE,TRUE,TRUE,800,W,"Minute 7. Same owls for Pts, (5,6 & 7)."
+842,678,FerPy,2,TRUE,TRUE,TRUE,800,W,"Minute 7. Same owls for Pts, (5,6 & 7)."
+843,678,Mottd,3,FALSE,FALSE,TRUE,400,N,Minute 5.
+844,679,FerPy,1,FALSE,FALSE,TRUE,250,W,Minute 7-8.
+845,679,FerPy,2,FALSE,FALSE,TRUE,250,W,Minute 7-8.
+846,680,FerPy,1,FALSE,FALSE,TRUE,200,E,Minute 5-10.
+847,680,FerPy,2,FALSE,FALSE,TRUE,200,W,Minute 7.
+848,682,Fulvous,1,FALSE,FALSE,TRUE,50,W,One time only vocal. Minute 10.
+850,684,Fulvous,1,FALSE,FALSE,TRUE,100,E,Recorded #89-153. Minute 6. Owl moved closer to 50 meters E. Minute 12+.
+852,684,Fulvous,2,FALSE,FALSE,TRUE,50,E,Recorded #89-153. Minute 12+.
+853,688,Fulvous,1,FALSE,FALSE,TRUE,25,W,Recorded #177-214.
+854,688,Fulvous,2,FALSE,FALSE,TRUE,35,E,Recorded #177-214.
+855,688,Fulvous,3,FALSE,FALSE,TRUE,250,N,Recorded #177-214.
+856,689,Fulvous,1,TRUE,TRUE,TRUE,75,N,Recorded #215-229. Minute 5-10.
+857,698,Mottd,1,FALSE,TRUE,FALSE,200,S,
+858,713,GrHor,1,TRUE,FALSE,FALSE,100,W,
+859,702,Mottd,1,FALSE,FALSE,TRUE,2000,S,Minute 6 plus. Mistepe direction of vocalization
+860,704,Mottd,1,FALSE,FALSE,TRUE,100,E,Minute 8-11
+861,724,Mottd,1,FALSE,FALSE,TRUE,500,SW,Minute 7-11
+862,725,Mottd,1,FALSE,TRUE,FALSE,500,SW,
+863,725,Mottd,2,FALSE,FALSE,TRUE,700,S,Minute 6.
+864,725,Mottd,3,FALSE,FALSE,TRUE,900,NW,"Minute 10, 11, 12."
+865,726,Mottd,1,TRUE,FALSE,TRUE,400,NE,Min 10 plus
+866,726,Mottd,2,FALSE,FALSE,TRUE,2000,S,Minute 7.
+867,727,Mottd,1,FALSE,FALSE,TRUE,400,N,Minute 5 plus. Recorded (#0-28).
+868,727,Mottd,2,FALSE,FALSE,TRUE,600,N,Minute 5 plus. Female. Recorded (#0-28).
+869,728,Mottd,1,FALSE,FALSE,TRUE,300,W,Minute 5 plus. Recorded (#29-73).
+870,728,Mottd,2,FALSE,FALSE,TRUE,500,W,Minute 5 plus. Female. Recorded (#29-73).
+873,730,Mottd,1,FALSE,FALSE,TRUE,700,S,Minute 5 plus. This one is the same location as Point 8.
+874,730,Mottd,2,FALSE,FALSE,TRUE,300,N,Minute 11-12.
+875,731,Mottd,1,FALSE,FALSE,TRUE,400,SW,Minute 11.
+876,732,Mottd,1,FALSE,FALSE,TRUE,2500,SE,Minute 6. Both in MixtepeValley.
+877,732,Mottd,2,FALSE,FALSE,TRUE,2500,SE,Minute 8. Both in MixtepeValley. Female cat like vocalizaton.
+878,736,Mottd,1,FALSE,FALSE,TRUE,75,S,Minute 6-7. At min 8 plus moved to 100 m South.Female cat like vocalization.
+880,737,Mottd,1,TRUE,TRUE,TRUE,250,S,Minute 9 plus.All three female cat like vocalization.
+881,737,Mottd,2,FALSE,FALSE,TRUE,600,S,Minute 5-9. All three female cat like vocalization.
+882,737,Mottd,3,FALSE,FALSE,TRUE,500,NE,Minute 9 plus. All three female cat like vocalization.
+883,740,Mottd,1,FALSE,FALSE,TRUE,500,N,Minute 8 plus.
+884,741,Mottd,1,FALSE,FALSE,TRUE,150,S,Minute 6 plus.
+885,741,Mottd,2,FALSE,FALSE,TRUE,600,S,Minute 7.
+886,742,FerPy,1,TRUE,TRUE,TRUE,100,NE,Minute 6.
+887,742,FerPy,2,TRUE,TRUE,FALSE,150,SE,
+888,743,FerPy,1,TRUE,TRUE,TRUE,200,SE,Minute 6.
+889,743,Barn,2,FALSE,FALSE,TRUE,50,NE,Minute 10. Vocalized on time.
+890,746,Mottd,1,FALSE,FALSE,TRUE,300,NE,Minute 6 plus.
+891,746,Barn,2,FALSE,FALSE,TRUE,25,SW,Minute 7. Vocalized one time.
+892,747,Mottd,1,TRUE,TRUE,TRUE,200,S,Minute 10 plus.
+893,747,FerPy,2,FALSE,TRUE,FALSE,100,S,
+894,747,Specd,3,FALSE,TRUE,TRUE,400,S,Minute 6 plus.
+895,747,Specd,4,FALSE,FALSE,TRUE,400,S,Minute 11 plus.
+898,748,Mottd,1,FALSE,TRUE,TRUE,200,SE,Minute 6-8. Moved to 100 meters S. Recorded Spec & Mottled Owls (#59-87).
+900,749,Mottd,1,TRUE,TRUE,FALSE,200,SE,
+901,752,FerPy,1,FALSE,TRUE,TRUE,300,SE,Minute 6 plus.
+902,752,Mottd,2,FALSE,FALSE,TRUE,300,N,Minute 8.
+903,753,Mottd,1,FALSE,TRUE,TRUE,300,W,Minute 5 plus.
+904,753,Mottd,2,FALSE,FALSE,TRUE,200,W,Minute 6 plus.
+905,754,Mottd,1,FALSE,FALSE,TRUE,250,W,Minute 6 plus.
+906,754,Mottd,2,FALSE,FALSE,TRUE,300,E,Minute 6 plus
+907,754,PacSc,3,FALSE,FALSE,TRUE,75,E,Minute 8. Tried to record Pac. Screech but not success. (# 88-149).
+908,755,Mottd,1,TRUE,TRUE,TRUE,150,W,Minute 5.
+909,755,Mottd,2,FALSE,TRUE,TRUE,200,E,Minute 6.
+910,756,Mottd,1,FALSE,FALSE,TRUE,300,W,Minute 5 plus.
+911,757,Mottd,1,FALSE,FALSE,TRUE,400,W,Minute 5-8.
+912,758,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 5 plus.
+913,758,FerPy,2,FALSE,FALSE,TRUE,350,N,Minute 6 & 8.
+914,760,Mottd,1,FALSE,FALSE,TRUE,200,SE,Minute 9.
+915,762,FerPy,1,TRUE,TRUE,TRUE,100,SE,Minute 7. Recorded 2 owl sp. & Corta Cabeza @6:32 PM (# 195-216). Normal Cadence & short one - recorded @ same pt. on 3/28/11.
+916,762,Specd,2,FALSE,TRUE,FALSE,200,SE,Recorded 2 owl sp. & Corta Cabeza @6:32 PM (# 195-216).
+917,764,Mottd,1,TRUE,TRUE,FALSE,200,E,
+918,766,FerPy,1,FALSE,FALSE,TRUE,300,S,Minute 12.
+919,766,Mottd,2,FALSE,FALSE,TRUE,400,S,Minute 12.
+920,767,Mottd,1,FALSE,FALSE,TRUE,150,E,Minute 6 plus. Recorded (# 229-251) @ 8:07 PM..
+923,769,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 10.
+925,772,FerPy,1,TRUE,TRUE,FALSE,100,S,
+926,772,Mottd,2,FALSE,TRUE,TRUE,300,SW,Minute 11.
+927,772,Specd,3,FALSE,FALSE,TRUE,50,N,Minute 9.
+928,772,FerPy,4,FALSE,FALSE,TRUE,50,N,Minute 10 plus.
+929,773,Mottd,1,TRUE,TRUE,TRUE,400,S,Minute 6 plus. Recorded (# 280-298).
+930,773,FerPy,2,FALSE,FALSE,TRUE,200,N,Minute 7. Recorded (# 280-298).
+931,773,Specd,3,FALSE,FALSE,TRUE,300,N,Minute 8. Recorded (# 280-298).
+932,773,Mottd,4,FALSE,FALSE,TRUE,30,W,Minute9. Recorded (# 280-298).
+933,773,Specd,5,FALSE,FALSE,TRUE,300,N,Minute 12. Recorded (# 280-298).
+934,774,Mottd,1,FALSE,TRUE,TRUE,600,SE,Minute 6 plus.
+935,775,Mottd,1,FALSE,FALSE,TRUE,450,NE,Minute 7.
+936,776,Mottd,1,TRUE,TRUE,TRUE,150,W,Minute 5 plus.
+937,776,Mottd,2,FALSE,FALSE,TRUE,400,N,Minute 6 plus.
+938,778,Mottd,1,TRUE,TRUE,TRUE,200,N,Minute 5 plus.
+939,779,Mottd,1,FALSE,FALSE,TRUE,600,N,Minute 7.
+940,783,Mottd,1,FALSE,FALSE,TRUE,10,N,Minute 5 plus. Recorded (# 73-93)
+941,783,Mottd,2,FALSE,FALSE,TRUE,15,NW,Minute 7 plus.
+942,783,Mottd,3,FALSE,FALSE,TRUE,200,N,Minute 12. One owl had a long start to vocalization.
+943,783,Mottd,4,FALSE,FALSE,TRUE,300,S,
+944,784,Mottd,1,TRUE,FALSE,FALSE,100,W,
+945,784,Mottd,2,FALSE,TRUE,FALSE,200,SW,
+946,784,Mottd,3,FALSE,TRUE,TRUE,200,S,Minute 5 plus.
+947,784,Mottd,4,FALSE,FALSE,TRUE,1000,N,Minute 7.
+948,785,Mottd,1,FALSE,TRUE,TRUE,250,W,Minute 5 plus.
+949,785,Mottd,2,FALSE,FALSE,TRUE,200,N,Minute 6 plus.
+950,785,Mottd,3,FALSE,FALSE,TRUE,200,W,Minute 10 plus. Owl does not do complete vocalization.
+951,786,Mottd,1,TRUE,TRUE,TRUE,150,E,Minute 5 plus.
+952,786,Mottd,2,TRUE,TRUE,TRUE,150,E,Female - cat like vocalization. Recorded (# 94-108). Moved to 300 meters E. Minute 5 plus.
+953,786,Mottd,3,TRUE,TRUE,TRUE,150,E,Minute 5 plus.  Moved to 250 meters E.
+956,787,Mottd,1,TRUE,TRUE,FALSE,300,N,
+957,787,Mottd,2,FALSE,TRUE,TRUE,400,S,Minute 8 plus.
+958,787,Mottd,3,FALSE,FALSE,TRUE,150,S,Minute 5 plus.
+959,787,Mottd,4,FALSE,FALSE,TRUE,200,E,Minute 7 plus.
+960,788,Mottd,1,TRUE,TRUE,FALSE,200,S,
+961,788,Mottd,2,FALSE,FALSE,TRUE,20,E,Minute 5 plus. Recorded (# 108-134).
+962,788,Mottd,3,FALSE,FALSE,TRUE,100,E,Minute 7. Female.
+963,789,Mottd,1,TRUE,TRUE,TRUE,200,SW,"Minute 5-6, 11."
+964,782,Mottd,1,FALSE,FALSE,TRUE,1000,E,Minute 8-9.
+965,793,Fulvous,1,FALSE,FALSE,TRUE,150,NW,Minute 4. @ approx 4 min./2 diff. times. Moved to 20 meters NW. Recorded but owl did not vocalize (# 232-267).
+967,794,Fulvous,1,FALSE,FALSE,TRUE,15,E,Minute 3 plus. Moved at min. 5 plus to 15 meters W. Min. 7 plus moved to 25 meters NE.Problem w/ recorder & then up to # 283.   (#268-283)
+970,795,Fulvous,1,TRUE,TRUE,TRUE,115,E,Minute 6 plus. The 2 birds moved a lot. Min.9 plus moved to 115 meters E.  Min.11 plus moved to 180 meters NE.
+971,795,Fulvous,2,TRUE,TRUE,TRUE,150,SE,Minute 5 plus. The 2 birds moved a lot. Min. 9 plus moved to 180 meters SE.  Min. 11 plus moved to 180 meters E.
+976,800,Fulvous,1,FALSE,FALSE,TRUE,200,SE,Minute 6-9.
+980,802,Whisk,1,TRUE,FALSE,TRUE,300,E,Recorded at point (# 322-360). Recorded vocalization (# 338-340). Owl moved to 500 meters E at minute 5-7.
+983,803,Mottd,1,FALSE,FALSE,TRUE,150,N,Minute 6.
+984,804,Mottd,1,FALSE,TRUE,TRUE,100,SW,Minute 7 plus. Female cat like call.
+985,804,Mottd,2,FALSE,FALSE,TRUE,150,W,Minute 5 plus.
+987,808,Mottd,1,FALSE,TRUE,FALSE,50,N,Recorded ( # 360-390).
+988,814,Fulvous,1,FALSE,FALSE,TRUE,15,W,Minute 3 plus. Recorded (# 1-59). Moved to 20 meters S at minute 10 plus.
+994,815,Fulvous,1,TRUE,TRUE,TRUE,200,N,"Moved at Min. 3 to 250 Meters N, Moved at min.4 to 300 meters N.Moved at min. 10 plus to 400 meters NE. Both in same area now."
+997,815,Fulvous,2,FALSE,FALSE,TRUE,400,NE,Minute 10 plus. Both in same area.
+999,822,FerPy,1,TRUE,FALSE,TRUE,100,S,Minute 6 plus. Start vocalizing only.
+1000,822,FerPy,2,FALSE,FALSE,TRUE,300,S,Minute 6 plus.
+1001,822,FerPy,3,FALSE,FALSE,TRUE,150,SE,Minute 7 plus.
+1002,828,FerPy,1,FALSE,FALSE,TRUE,400,E,Minute 5-7.
+1003,830,Barn,1,FALSE,FALSE,TRUE,50,E,Minute 5. Passed dike.
+1004,831,Barn,1,FALSE,FALSE,TRUE,150,E,Minute 4.
+1005,836,Specd,1,FALSE,FALSE,TRUE,50,W,Minute 6-7. Tried to record (#141-150).
+1006,837,Mottd,1,FALSE,FALSE,TRUE,200,NW,"Minute 5, 6."
+1007,842,FerPy,1,FALSE,FALSE,TRUE,200,S,Minute 11.
+1008,843,FerPy,1,FALSE,FALSE,TRUE,500,W,Minute 5 plus. Other side of river.
+1009,844,FerPy,1,FALSE,FALSE,TRUE,500,W,Minute 5 plus.
+1010,845,FerPy,1,FALSE,FALSE,TRUE,200,E,Minute 6 plus.
+1011,845,FerPy,2,FALSE,FALSE,TRUE,200,E,Minute 6 plus.
+1012,846,FerPy,1,TRUE,TRUE,FALSE,300,SE,
+1013,846,FerPy,2,FALSE,FALSE,TRUE,150,E,Minute 5.
+1014,846,Mottd,3,FALSE,FALSE,TRUE,500,E,Minute 7.
+1015,846,FerPy,4,FALSE,FALSE,TRUE,500,W,Minute 10.
+1016,847,FerPy,1,TRUE,TRUE,TRUE,20,S,Minute 5 plus.
+1017,847,Mottd,2,FALSE,TRUE,TRUE,500,E,Minute 5 plus.
+1018,847,FerPy,3,FALSE,FALSE,TRUE,500,N,Minute 7.
+1019,848,Mottd,1,FALSE,TRUE,FALSE,400,E,
+1020,848,FerPy,2,FALSE,FALSE,TRUE,500,W,Minute 8.
+1021,848,FerPy,3,FALSE,FALSE,TRUE,500,W,Minute 9.
+1022,849,FerPy,1,TRUE,TRUE,TRUE,300,W,Minute 5 plus.
+1023,849,FerPy,2,TRUE,TRUE,TRUE,300,W,Minute 5 plus.
+1024,849,FerPy,3,TRUE,TRUE,TRUE,300,W,Minute 5 plus.
+1025,849,FerPy,4,FALSE,TRUE,FALSE,0,E,
+1026,850,FerPy,1,TRUE,TRUE,TRUE,100,W,Minute 11 plus.
+1027,850,FerPy,2,FALSE,FALSE,TRUE,300,S,Minute 5 plus.
+1028,851,FerPy,1,TRUE,TRUE,FALSE,200,W,
+1029,851,FerPy,2,TRUE,TRUE,FALSE,200,W,
+1030,851,FerPy,3,TRUE,TRUE,FALSE,150,N,
+1031,851,PacSc,4,FALSE,FALSE,TRUE,100,W,Minute 12.
+1032,852,FerPy,1,TRUE,TRUE,TRUE,100,S,Minute 9.
+1033,853,FerPy,1,FALSE,FALSE,TRUE,200,SW,Minute 7.
+1034,853,FerPy,2,FALSE,FALSE,TRUE,100,W,Minute 10.
+1035,853,Mottd,3,FALSE,FALSE,TRUE,500,E,Minute 12.
+1036,854,FerPy,1,FALSE,FALSE,TRUE,300,SW,Minute 8-9.
+1037,854,Mottd,2,FALSE,FALSE,TRUE,500,E,Minute 8.
+1038,855,FerPy,1,FALSE,FALSE,TRUE,300,W,Minute 5 plus.
+1039,855,FerPy,2,FALSE,FALSE,TRUE,300,W,Minute 6 plus.
+1040,855,FerPy,3,FALSE,FALSE,TRUE,300,E,Minute 7 plus.
+1041,856,FerPy,1,FALSE,FALSE,TRUE,300,S,Minute 5 plus.
+1042,857,FerPy,1,TRUE,TRUE,FALSE,100,E,
+1043,857,FerPy,2,TRUE,TRUE,FALSE,100,E,
+1044,857,FerPy,3,FALSE,FALSE,TRUE,400,E,Minute 7 plus.
+1045,857,Mottd,4,FALSE,FALSE,TRUE,600,N,Minute 12.
+1046,857,Specd,5,FALSE,FALSE,TRUE,50,S,Minute 12.Recorded (#182-205)
+1047,858,FerPy,1,TRUE,TRUE,TRUE,200,E,Minute 5.
+1048,859,FerPy,1,TRUE,TRUE,TRUE,300,E,Minute 7 plus.
+1049,860,FerPy,1,TRUE,TRUE,TRUE,250,E,Minute 6 plus. Recorded (#206-238).
+1050,860,FerPy,2,FALSE,FALSE,TRUE,250,E,Minute 6 plus. Recorded (#206-238).
+1051,860,Specd,3,FALSE,FALSE,TRUE,500,NW,Minute 6 plus. Recorded (#206-238).
+1052,860,Specd,4,FALSE,FALSE,TRUE,500,NW,Minute 6 plus. Recorded (#206-238).
+1053,864,Mottd,1,FALSE,FALSE,TRUE,250,W,Minute 6.
+1054,865,Mottd,1,FALSE,TRUE,TRUE,300,SW,Minute 6.
+1055,867,Mottd,1,FALSE,FALSE,TRUE,300,N,Minute 9-11.
+1056,868,Mottd,1,TRUE,TRUE,TRUE,225,S,Minute 5 plus. Female cat like call. Moved to 50 meters S.Recorded (#131-166). Both closer after broadcast.
+1057,868,Mottd,2,FALSE,FALSE,TRUE,45,W,Minute 5 plus. Male.  Recorded (#131-166).Both closer after broadcast.
+1059,869,Mottd,1,FALSE,FALSE,TRUE,200,E,Minute 6 plus.
+1061,869,Mottd,2,FALSE,FALSE,TRUE,60,E,Minute 12. Female.
+1062,870,Mottd,1,FALSE,FALSE,TRUE,200,S,Minute 6-8.
+1063,871,Mottd,1,FALSE,FALSE,TRUE,400,S,Minute 6 plus.
+1064,872,Mottd,1,FALSE,FALSE,TRUE,200,E,Minute 10 plus.
+1065,872,Mottd,2,FALSE,FALSE,TRUE,200,S,Minute 11.
+1066,874,Mottd,1,TRUE,TRUE,TRUE,350,S,Minute 5-10.Long ways off in the valley
+1067,876,Mottd,1,FALSE,FALSE,TRUE,150,S,Minute 10. Female cat like vocalization (one time).
+1068,877,Mottd,1,FALSE,FALSE,TRUE,100,N,Minute 5 plus.
+1069,877,Mottd,2,FALSE,FALSE,TRUE,400,N,Minute 10. Really a long ways off.
+1070,881,Mottd,1,FALSE,FALSE,TRUE,8,S,Minute 6-12. Recorded (#232-256).
+1071,881,Mottd,2,FALSE,FALSE,TRUE,200,S,Minute 6-8.
+1072,883,FerPy,1,TRUE,TRUE,TRUE,400,W,Minute 7-12.
+1075,882,FerPy,1,TRUE,FALSE,FALSE,50,S,
+1076,882,FerPy,2,TRUE,FALSE,FALSE,200,SE,
+1077,882,Mottd,3,FALSE,TRUE,FALSE,400,SE,
+1079,886,Specd,1,FALSE,FALSE,TRUE,300,E,Minute 7 plus.
+1080,886,Specd,2,FALSE,FALSE,TRUE,30,E,Minute 7 plus.
+1081,886,FerPy,3,FALSE,FALSE,TRUE,200,S,Minute 8 plus.
+1082,887,Mottd,1,FALSE,FALSE,TRUE,500,S,Minute 7 plus.
+1083,887,Specd,2,FALSE,FALSE,TRUE,500,E,Minute 7 plus.
+1084,888,FerPy,1,TRUE,TRUE,FALSE,100,E,
+1085,888,FerPy,2,TRUE,TRUE,TRUE,200,S,Minute 7 plus.
+1087,888,Specd,3,FALSE,FALSE,TRUE,350,S,Minute 12.
+1088,890,FerPy,1,TRUE,TRUE,TRUE,200,W,Minute 9 plus.
+1089,890,Specd,2,FALSE,FALSE,TRUE,300,E,Minute 7-8.
+1090,890,FerPy,3,FALSE,FALSE,TRUE,300,N,Minute 7 plus.
+1091,891,FerPy,1,TRUE,TRUE,TRUE,50,N,Minute 7 plus.Recorded (#19-42).
+1092,891,FerPy,2,FALSE,FALSE,TRUE,200,S,Minute 7 plus.
+1093,892,FerPy,1,TRUE,TRUE,TRUE,200,S,Minute 7.
+1094,892,FerPy,2,TRUE,TRUE,TRUE,400,NE,Minute 11 plus.
+1095,893,Specd,1,FALSE,TRUE,TRUE,400,NW,Minute 7 plus.
+1096,893,Specd,2,FALSE,TRUE,TRUE,400,NW,Minute 7 plus.
+1097,893,PacSc,3,FALSE,TRUE,FALSE,500,NW,
+1098,893,FerPy,4,FALSE,FALSE,TRUE,300,NW,Minute 9.
+1099,894,FerPy,1,TRUE,TRUE,FALSE,200,NW,
+1100,894,Mottd,2,FALSE,FALSE,TRUE,400,E,Minute 10-12.
+1101,896,FerPy,1,TRUE,TRUE,FALSE,400,S,
+1102,896,FerPy,2,FALSE,FALSE,TRUE,150,SE,Minute 8.
+1103,896,Specd,3,FALSE,FALSE,TRUE,100,W,Minute 10. Recorded (#55-91).
+1104,896,Specd,4,FALSE,FALSE,TRUE,100,W,Minute 10. Recorded (#55-91).
+1105,896,Mottd,5,FALSE,FALSE,TRUE,200,E,Minute 12.
+1106,897,Specd,1,TRUE,TRUE,TRUE,100,N,Minute 5 plus. Same owls as @ prior pt. Recorded (#92-107).
+1107,897,Specd,2,TRUE,TRUE,TRUE,100,N,Minute 5 plus. Same owls as @ prior pt. Recorded (#92-107).
+1108,897,FerPy,3,TRUE,TRUE,TRUE,300,E,Minute 5 plus.
+1109,898,Specd,1,TRUE,TRUE,TRUE,300,N,Moved to 500 meters N minutes 7-12.
+1110,898,Specd,2,TRUE,TRUE,TRUE,300,N,Moved to 500 meters N minutes 7-12.
+1113,898,FerPy,3,FALSE,FALSE,TRUE,200,W,Minute 8-12.
+1114,899,FerPy,1,TRUE,TRUE,TRUE,300,NW,Minute 5 plus.
+1115,899,Specd,2,FALSE,FALSE,TRUE,600,N,Minute 7 plus.
+1116,899,Specd,3,FALSE,FALSE,TRUE,600,N,Minute 7 plus.
+1117,900,FerPy,1,TRUE,TRUE,TRUE,150,NE,Minute 5 plus.
+1118,900,Specd,2,FALSE,FALSE,TRUE,700,NW,Minute 8.
+1119,901,FerPy,1,FALSE,FALSE,TRUE,200,S,Minute 5 plus.
+1120,901,FerPy,2,FALSE,FALSE,TRUE,300,N,Minute 5 plus.
+1126,88,PacSc,3,FALSE,FALSE,TRUE,25,N,
+1127,53,Specd,1,FALSE,FALSE,TRUE,300,E,
+1128,65,Mottd,1,FALSE,FALSE,TRUE,500,S,
+1134,97,Mottd,1,TRUE,TRUE,TRUE,350,N,Min. 6
+1135,97,Mottd,2,FALSE,FALSE,TRUE,300,NE,Minutes 7&7.5; moved to 20 meters NE @ 12 minutes
+1138,903,Mottd,1,FALSE,TRUE,TRUE,500,NE,Min. 6; Called 2 times
+1139,903,Mottd,2,FALSE,TRUE,FALSE,300,NE,
+1140,903,Mottd,3,FALSE,FALSE,TRUE,500,SE,Min. 7
+1141,903,Mottd,4,FALSE,FALSE,TRUE,600,S,Min. 8
+1142,239,None,1,FALSE,FALSE,FALSE,0,,
+1143,240,None,1,FALSE,FALSE,FALSE,0,,
+1144,352,None,1,FALSE,FALSE,FALSE,0,,No owls vocalizing at survey points.
+1145,362,None,1,FALSE,FALSE,FALSE,0,,No owls heard at survey points on transect.
+1146,512,None,1,FALSE,FALSE,FALSE,0,,No owls vocalized at survey points
+1148,117,NoID,3,FALSE,TRUE,FALSE,0,W,Single hoot long ways off
+1149,109,Mottd,1,FALSE,FALSE,TRUE,250,SW,Min. 11-12; started w/ normal vocalization
+1150,162,Mottd,1,FALSE,TRUE,TRUE,400,N,Min 6 plus; other side of the river
+1151,162,Mottd,2,FALSE,FALSE,TRUE,300,S,Min 8 plus;
+1152,163,Specd,1,TRUE,TRUE,TRUE,200,S,Min 6 plus
+1153,163,Mottd,2,TRUE,TRUE,FALSE,300,S,Min 5 plus
+1154,163,Mottd,3,FALSE,FALSE,TRUE,450,N,Min 5 plus; Across river
+1155,163,Specd,4,FALSE,FALSE,TRUE,200,S,Min 6 plus
+1156,164,Mottd,1,FALSE,TRUE,FALSE,200,S,
+1157,164,Mottd,2,FALSE,FALSE,TRUE,400,N,Min 5; Across river
+1158,164,Specd,3,FALSE,FALSE,TRUE,150,E,Min 6 plus; this opposite direction from pt. 7 toward pt.9
+1159,164,Specd,4,FALSE,FALSE,TRUE,250,S,Min 6 plus; one from point 7
+1160,165,Specd,1,TRUE,TRUE,TRUE,150,E,Min 5 plus
+1161,165,Specd,2,TRUE,TRUE,TRUE,150,S,Min 10 & 12
+1162,165,Mottd,3,FALSE,FALSE,TRUE,400,N,Min 5; across river
+1163,166,Specd,1,TRUE,TRUE,TRUE,75,E,Min 3 plus
+1164,297,Mottd,1,TRUE,TRUE,FALSE,0,,
+1165,297,Mottd,2,FALSE,TRUE,TRUE,0,,Min 7 plus

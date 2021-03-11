@@ -14,10 +14,8 @@ library(ezknitr) # documentation-related
 library(devtools) # documentation-related
 
 # analysis-related
-library(readxl)
 library(lubridate)
 library(dplyr)
-library(ImportExport)
 
 #' Clear environment and set seed
 #' 
@@ -38,8 +36,9 @@ set.seed(2583722)
 #' Routes are the six unique transects or routes with two per protected area (Forest).
 #' There are unique IDs that correspond with protected area, and six unique route
 #' names, as well.
-tab.route <- read_xlsx(path = "data/raw_data/Route_Table.xlsx",
-                       sheet = "Route_Table")
+tab.route <- read.csv(file = "data/raw_data/Route_Table.csv", 
+                      header = T, 
+                      stringsAsFactors = F)
 tab.route
 
 #' ### Stations Table
@@ -50,8 +49,9 @@ tab.route
 #' broadcast species, and background noise level (from 0 to 3). The
 #' link between these stations and the actual individual surveys is the field "Survey_ID".
 #' 
-tab.stations <- read_xlsx(path = "data/raw_data/Stations_Table.xlsx",
-                          sheet = "Stations_Table")
+tab.stations <- read.csv(file = "data/raw_data/Stations_Table.csv",
+                         header = T,
+                         stringsAsFactors = F)
 dim(tab.stations)
 head(tab.stations)
 unique(tab.stations$Station)
@@ -66,11 +66,16 @@ head(tab.stations$Station_Start_Time)
 #' ### Survey Table
 #' 
 #' This includes 2002 surveys that have to be deleted from analysis.
-tab.survey <- read_xlsx(path = "data/raw_data/Survey_Table.xlsx",
-                       sheet = "Survey_Table")
+tab.survey <- read.csv(file = "data/raw_data/Survey_Table.csv",
+                       header = T,
+                       stringsAsFactors = F)
 table(tab.survey$Route_ID)
+str(tab.survey)
+dim(tab.survey)
 
 #' Remove data for year = 2002
+# First, have to convert from MM/DD/YY to date structure
+tab.survey$Survey_Date <- lubridate::as_date(x = tab.survey$Survey_Date, format = "%m/%d/%y")
 tab.survey$year <- lubridate::year(tab.survey$Survey_Date)
 table(tab.survey$year)
 (survey_id_2002 <- tab.survey$Survey_ID[tab.survey$year==2002])
@@ -87,8 +92,9 @@ table(tab.stations$Survey_ID)
 #' ### Owls Table
 #' 
 #' This table has all observed owls.
-tab.owls <- read_xlsx(path = "data/raw_data/Owls_Table.xlsx",
-                      sheet = "Owls_Table")
+tab.owls <- read.csv(file = "data/raw_data/Owls_Table.csv", 
+                     header = T, 
+                     stringsAsFactors = F)
 # Dimensions of owls table (rows, columns)
 dim(tab.owls)
 # Head of owls table
@@ -161,7 +167,7 @@ survey_list <- sort(unique(tab.survey$hRt_tYr))
 #' Sort survey data by Route then survey date
 data.jags <- dplyr::arrange(tab.survey, Route_ID, Survey_Date)
 
-#' Drop unneccessary columns
+#' Drop unnecessary columns
 colnames(data.jags)
 temp.names.keep <- c("Survey_ID", "Route_ID", "Survey_Date", 
                      "year", "hRt_tYr", "order", "hRt_tYr_iSvy")
@@ -203,7 +209,7 @@ for(jj in 1:length(stationIDs)){
 #' 
 surveys.NAs <- tab.stations$Survey_ID[is.na(tab.stations$Broadcast_Species)]
 (stations.NAs <- tab.stations$Station[is.na(tab.stations$Broadcast_Species)])
-# Note: These stations will need to be replaced with NAs in the Ys below, NOT ZEROS
+# Note: These stations will need to be replaced with NAs in the Ys, NOT ZEROS
 #' 
 #' Now, replace NAs with "correct" broadcast species for covariate purposes
 #' 

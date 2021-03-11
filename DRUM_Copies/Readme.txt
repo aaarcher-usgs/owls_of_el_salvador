@@ -1,7 +1,3 @@
-# owls_of_el_salvador
-Data and analysis for owls of El Salvador project with Jane West
-
-
 This readme.txt file was generated on 2021-03-11 by Althea A. Archer.
 
 
@@ -145,13 +141,16 @@ DATA & FILE OVERVIEW
    W. Filename:        g_graphing_results_global.html
 	Short description: 	HTML showing R Program that creates graphs showing results for thesingle-species occupancy models, the multiple-species richness model, and the site locations. This program creates the figures shown in the manuscript.
 
+   X. Filename:       R_programs.zip
+	Short description: 	R programs that can be used to run all of the above analyses. 
+
 
 2. Relationship between files:        
 
 Raw data (Files A through D) are relationally connected in a nested way: Each owl detection record (rows in Owls_Table.csv) was found in one specific station during each survey (rows in Stations_Table.csv), and each station (rows in Stations_Table.csv) correspond to specific surveys (rows in Survey_Table.csv). Each survey (rows in Survey_Table.csv) was located in one of the six specific routes (rows in the Routes_Table.csv). Unique identifiers were used to relate tables, as described below in the file-specific details.
 
 
-Raw data (Files A through D) are imported into the first program, File E, and processed for use in all subsequent programs (Files F through W). The processed global data that is created by File E is used to create species-specific processed data in Files H through J and richness data in File K. Files F and G define the JAGS occupancy and richness models, respectively, that are read into Files L through O and used to analyze data created by Files H through K. Files P through S process the results of the JAGS models, and get them ready to cite in the results section of the paper and to create graphs, which are created with Files T through W.
+Raw data (Files A through D) are imported into the first program, File E, and processed for use in all subsequent programs (Files F through W). The processed global data that is created by File E is used to create species-specific processed data in Files H through J and richness data in File K. Files F and G define the JAGS occupancy and richness models, respectively, that are read into Files L through O and used to analyze data created by Files H through K. Files P through S process the results of the JAGS models, and get them ready to cite in the results section of the paper and to create graphs, which are created with Files T through W. The raw R programs are provided in File X.
 
 
 
