@@ -286,31 +286,6 @@ DATA-SPECIFIC INFORMATION FOR: Stations_Table.csv
 		Description: General comments made by survey crews at each station during acoustic surveys. Often describe the background noise or other observations. 
 
 
------------------------------------------
-DATA-SPECIFIC INFORMATION FOR: Route_Table.csv
------------------------------------------
-
-1. Number of variables: 3
-
-2. Number of cases/rows: 6
-
-3. Missing data codes:
-        None applicable
-
-4. Variable List
-         
-    A. Route_ID
-       Description: Unique route identifier, which corresponds with the field of the name name in Survey_Table.csv.
-
-    B. Route_Name
-       Description: Unique route name used by survey crews. 
-                    
-    C. Forest
-	Description: The protected area in which each route was located.
-		El Imposible = El Imposible National Park
-		Montecristo = Montecristo National Park
-		Nancuchiname = Nancuchiname Forest
-
 
 -----------------------------------------
 DATA-SPECIFIC INFORMATION FOR: Survey_Table.csv
@@ -363,64 +338,6 @@ DATA-SPECIFIC INFORMATION FOR: Survey_Table.csv
 
 	M. Survey_Comments
 		Description: General comments made by survey crews at each station during acoustic surveys. 
-
-
------------------------------------------
-DATA-SPECIFIC INFORMATION FOR: Stations_Table.csv
------------------------------------------
-
-1. Number of variables: 11
-
-2. Number of cases/rows: 859
-
-3. Missing data codes:
-        None applicable
-
-4. Variable List
-         
-    	A. Stations_ID
-       		Description: Unique station identifier, which corresponds with field of the same name in Owls_Table.csv.
-
-    	B. Survey_ID
-       		Description: Unique survey identifier, which corresponds with field of the same name from Survey_Table.csv.
-                    
-    	C. Station
-		Description: Station identifier which was concatenated Route ID plus Station number. Not unique. 
-		
-	D. Station_Start_Time
-		Description: The time of day (24-hour time) at which each station's acoustic survey began. 
-
-	E. Temperature
-		Description: The temperature (Celsius) at the time of each station's acoustic survey, as measured with a portable temperature monitor (Brunton Sherpa). 
-
-	F. Barometer
-		Description: The atmospheric pressure (ATM) at the time of each station's acoustic survey, as measured with a portable pressure monitor (Brunton Sherpa).
-
-	G. Fog
-		Description: The percentage of fog present at the time of each station's acoustic survey, measured on a scale from 0 to 100 by 5s. 
-
-	H. Wind_Speed
-		Description: The wind speed (kph) at the time of each station's acoustic survey, measured with a portable windspeed monitor (Brunton Sherpa)
-
-	I. Broadcast_Species
-		Description: The owl species that was used as a broadcast species at each station's acoustic survey. Owl species' broadcast calls were specific to the station and consistent across years. Some broadcast species names are missing from this dataset, but a_process_data_global.html shows how those missing values were completed, based on the known species used at each station.
-
-	Black and White Owl = Ciccaba nigrolineata
-	Crested Owl = Lophostrix cristata
-	Great Horned Owl = Bubo Virginianus
-	Guat. Barred Owl = Strix fulvescens
-	Mottled Owl = Ciccaba virgata
-	Pacific Screech Owl = Megascops cooperi
-	Spectacled Owl = Pulsatrix perspicillata
-	Stygian Owl = Asio stylus
-	Whiskered Screech Owl = Megascops trichopsis
-
-	J. Background_Noise
-		Description: Ambient noise level at the time of each station's acoustic survey, on a scale from 0 (no background noise) to 3 (steady and loud background noise). 
-
-	K. Station_Comments
-		Description: General comments made by survey crews at each station during acoustic surveys. Often describe the background noise or other observations. 
-
 
 
 
