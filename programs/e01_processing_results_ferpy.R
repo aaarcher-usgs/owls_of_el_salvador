@@ -200,10 +200,10 @@ p.det.post.ferpy$Broadcast <- factor(p.det.post.ferpy$broadcast.param,
                                              "beta.whiskered", "beta.gbarred",
                                              "beta.stygian", "beta.ghorned"),
                                   labels = c("Pre-broadcast", "Mottled Owl",
-                                             "Pacific Screech-owl", "Crested Owl", 
+                                             "Pacific Screech-Owl", "Crested Owl", 
                                              "Black-and-white Owl",
                                              "Spectacled Owl", 
-                                             "Whiskered Screech-owl", "Fulvous Owl",
+                                             "Whiskered Screech-Owl", "Fulvous Owl",
                                              "Stygian Owl", "Great Horned Owl"))
 
 #' _____________________________________________________________________________

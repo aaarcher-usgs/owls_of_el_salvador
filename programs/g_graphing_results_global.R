@@ -97,15 +97,15 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = str_wrap(code,10
   ylim(c(0,1))+
   scale_fill_manual(values = c("#cccccc", "#969696", "#525252"))+
   theme_minimal()+
-  ylab("Probability of occupancy")+
-  xlab("Route")+
+  ylab("Probability of Occupancy")+
+  xlab("Species")+
   theme(legend.position = "bottom")+
   theme(legend.text=element_text(size=6), 
         legend.title = element_blank(),
         axis.text.y = element_text(size=6),
         axis.text.x = element_blank(),
         axis.title.y = element_text(size=8),
-        axis.title.x = element_blank(),
+        axis.title.x = element_text(size = 8),
         strip.text = element_text(size = 6),
         legend.key.size = unit(1, "line"))
 
@@ -146,7 +146,7 @@ ggplot(data = psi.post.all,
   facet_grid(Route~code)+
   theme_minimal()+
   xlab("Year")+
-  ylab("Probability of occupancy")+
+  ylab("Probability of Occupancy")+
   scale_x_continuous(breaks = 2003:2013, limits = c(2003,2013))+
   theme(axis.text.x = element_text(size=6, angle = 90),
         axis.text.y = element_text(size=6),
@@ -181,7 +181,7 @@ p.det.post$Species[p.det.post$Species == "Specd"] <- "Spectacled Owl"
 #' with a constant probability of detection for all pre-broadcast time periods.
 #' 
 #' 
-#+ p_detection, fig.width = 2.8346, dpi = 600, fig.height = 3
+#+ p_detection, fig.width = 2.8346, dpi = 600, fig.height = 5
 ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species))+
   scale_fill_manual(values = c("darkgrey", "#7fc97f", "#beaed4", "#fdc086"))+
   geom_hline(data = p.det.post[p.det.post$broadcast.param == "beta.prebroad",], 
@@ -191,16 +191,16 @@ ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species)
   geom_point(size = 0.5)+
   geom_linerange(aes(ymin = LL05.plogis, ymax = UL95.plogis), 
                  position = position_dodge(0.9))+
-  facet_wrap(~Species, nrow = 2)+
-  ylab("Probability of detection")+
-  xlab("Broadcast species")+
+  facet_wrap(~Species, nrow = 4)+
+  ylab("Probability of Detection")+
+  xlab("Broadcast Species")+
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 5),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
         legend.position = "none",
-        axis.text.y = element_text(size=6),
-        axis.title = element_text(size=6),
+        axis.text.y = element_text(size=8),
+        axis.title = element_text(size=10),
         panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
-        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        strip.text = element_text(size =8, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
 
@@ -232,15 +232,15 @@ ggplot(data = richness.RtYr.post,
   facet_wrap(~Route, nrow = 3)+
   theme_minimal()+
   xlab("Year")+
-  ylab("Species richness")+
+  ylab("Species Richness")+
   scale_x_continuous(breaks = 2003:2013)+
   scale_y_continuous(breaks = seq(0,14,by=2), limits = c(0,6))+
-  theme(axis.text.x = element_text(size=6, angle = 90),
-        axis.text.y = element_text(size=6),
-        axis.title = element_text(size=8),
+  theme(axis.text.x = element_text(size=8, angle = 90),
+        axis.text.y = element_text(size=8),
+        axis.title = element_text(size=10),
         panel.border = element_rect(linetype = "solid", 
                                     fill = NA, color = "#969696"),
-        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        strip.text = element_text(size =8, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
 
