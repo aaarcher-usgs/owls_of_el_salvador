@@ -222,6 +222,8 @@ table(richness.RtYr.post$Route)
 #+ richness_byRtYr, fig.width = 5.67, dpi = 600, fig.height = 4.4
 ggplot(data = richness.RtYr.post, 
        aes(x = Year, y = Richness.median, group = Route))+
+  # tried vertical bar as shown below, commented out, per associate editor's suggestion
+  #geom_col(aes(y = richness.detected), fill = "#cccccc")+
   geom_ribbon(aes(ymax = richness.detected, ymin = 0), fill = "#cccccc")+
   geom_ribbon(aes(ymin = Richness.median, 
                   ymax = Richness.UL95), fill = "#999999")+
