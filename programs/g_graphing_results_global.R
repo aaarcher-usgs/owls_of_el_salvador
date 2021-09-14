@@ -109,6 +109,12 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = str_wrap(code,10
         strip.text = element_text(size = 6),
         legend.key.size = unit(1, "line"))
 
+
+#' 
+#' Table output for paper
+#' 
+psi.means
+
 #' 
 #' ### By Route, and by year
 #'
@@ -157,6 +163,139 @@ ggplot(data = psi.post.all,
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
 
+#' 
+#' Add in regression of median propability of occupancy versus time (logistic)
+#' 
+#+ psi_byYr_logistic, fig.width = 5.67, dpi = 600, fig.height = 4.6
+ggplot(data = psi.post.all, 
+       aes(x = Year, y = Psi.median))+
+  stat_smooth(method="glm", se=T, level = 0.90,
+              method.args = list(family=binomial),
+              color = "#a6a6a6", fill = "#cccccc") +
+  geom_linerange(aes(ymin = Psi.LL05, ymax = Psi.UL95), color = "#8c8c8c")+
+  geom_line()+
+  geom_point()+
+  facet_grid(Route~code)+
+  theme_minimal()+
+  xlab("Year")+
+  ylab("Probability of Occupancy")+
+  scale_x_continuous(breaks = 2003:2013, limits = c(2003,2013))+
+  theme(axis.text.x = element_text(size=6, angle = 90),
+        axis.text.y = element_text(size=6),
+        axis.title = element_text(size=8),
+        #axis.title.x = element_blank(),
+        panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
+        strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+
+#' 
+#' _____________________________________________________________________________
+#' ## Regression output by species and route
+#' 
+#' Corresponds with trends on graph
+#' 
+#' 
+#' 
+#' **Ferpy** 
+#' 
+#' EI-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.ferpy[psi.post.ferpy$Route == "EI.1",]))
+
+#' EI-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.ferpy[psi.post.ferpy$Route == "EI.2",]))
+
+#' M-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.ferpy[psi.post.ferpy$Route == "M.2",]))
+
+#' N-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.ferpy[psi.post.ferpy$Route == "N.1",]))
+
+#' N-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.ferpy[psi.post.ferpy$Route == "N.2",]))
+
+#' **Mottled Owl**
+#' 
+#' EI-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "EI.1",]))
+#' EI-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "EI.2",]))
+
+#' M-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "M.1",]))
+
+#' M-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "M.2",]))
+
+#' N-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "N.1",]))
+
+#' N-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.mottd[psi.post.mottd$Route == "N.2",]))
+
+#' **Spectacled Owl**
+#' 
+#' EI-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.specd[psi.post.specd$Route == "EI.1",]))
+#' EI-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.specd[psi.post.specd$Route == "EI.2",]))
+
+#' M-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.specd[psi.post.specd$Route == "M.2",]))
+
+#' N-1
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.specd[psi.post.specd$Route == "N.1",]))
+
+#' N-2
+#' 
+summary(glm(Psi.median ~ Year, 
+            family = binomial,
+            data = psi.post.specd[psi.post.specd$Route == "N.2",]))
 
 #' _____________________________________________________________________________
 #' ## p = Probability of detection
