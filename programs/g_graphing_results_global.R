@@ -107,7 +107,13 @@ ggplot(data = psi.means, aes(x = Route, y = Psi.median, group = str_wrap(code,10
         axis.title.y = element_text(size=8),
         axis.title.x = element_text(size = 8),
         strip.text = element_text(size = 6),
-        legend.key.size = unit(1, "line"))
+        legend.key.size = unit(1, "line"),
+        axis.line.x.bottom = element_line(colour = "black"),
+        axis.line.y.left = element_line(colour = "black"),
+        panel.grid.minor.y = element_blank(),
+        axis.ticks.y.left = element_line(colour = "black"))+
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf)+
+  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf)
 
 
 #' 
@@ -161,7 +167,13 @@ ggplot(data = psi.post.all,
         panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
         strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank(),
+        axis.line.x.bottom = element_line(colour = "black"),
+        axis.line.y.left = element_line(colour = "black"),
+        panel.grid.minor.y = element_blank(),
+        axis.ticks.y.left = element_line(colour = "black"))+
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf)+
+  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf)
 
 #' 
 #' Add in regression of median propability of occupancy versus time (logistic)
@@ -187,7 +199,13 @@ ggplot(data = psi.post.all,
         panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
         strip.text = element_text(size =6, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank(),
+        axis.line.x.bottom = element_line(colour = "black"),
+        axis.line.y.left = element_line(colour = "black"),
+        panel.grid.minor.y = element_blank(),
+        axis.ticks.y.left = element_line(colour = "black"))+
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf)+
+  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf)
 
 #' 
 #' _____________________________________________________________________________
@@ -341,7 +359,13 @@ ggplot(data = p.det.post, aes(y = median.plogis, x = Broadcast, group = Species)
         panel.border = element_rect(linetype = "solid", fill = NA, color = "#969696"),
         strip.text = element_text(size =8, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank(),
+        axis.line.x.bottom = element_line(colour = "black"),
+        axis.line.y.left = element_line(colour = "black"),
+        panel.grid.minor.y = element_blank(),
+        axis.ticks.y.left = element_line(colour = "black"))+
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf)+
+  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf)
 
 
 #' _____________________________________________________________________________
@@ -383,7 +407,13 @@ ggplot(data = richness.RtYr.post,
                                     fill = NA, color = "#969696"),
         strip.text = element_text(size =8, margin = margin(0,0.1,0.1,0.1, "cm")),
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank(),
+        axis.line.x.bottom = element_line(colour = "black"),
+        axis.line.y.left = element_line(colour = "black"),
+        panel.grid.minor.y = element_blank(),
+        axis.ticks.y.left = element_line(colour = "black"))+
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf)+
+  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf)
 
 
 #' _____________________________________________________________________________
