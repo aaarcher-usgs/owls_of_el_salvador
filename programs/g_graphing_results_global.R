@@ -21,6 +21,7 @@ library(rgdal)
 library(raster)
 library(mapproj)
 library(stringr)
+library(ggspatial)
 
 #' Clear environment and set seed
 #' 
@@ -433,10 +434,13 @@ Honduras <- fortify(Honduras)
 range(ElSalvador$long)
 range(ElSalvador$lat)
 
+#ElSalvador$y <- ElSalvador$lat
+#ElSalvador$x <- ElSalvador$long 
+
 #' 
 #' Map of protected areas
 #+ map, fig.width = 5.67, dpi = 600, fig.height = 4.4
-ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
+p <- ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
   geom_polygon(fill = "grey", color = "#848484")+
   geom_polygon(data = Honduras, aes(x = long, y = lat, group = group),
                fill = "lightgrey", color = "#848484")+
@@ -460,7 +464,15 @@ ggplot(data = ElSalvador, aes(x = long, y = lat, group = group))+
            fontface = "italic")+
   ylab("Latitude")+
   xlab("Longitude")+
+  ggsn::scalebar(ElSalvador, 
+                 transform = TRUE, dist_unit = "km",
+                 dist = 50, location = "topright",
+                 border.size = 0.5,
+                 st.dist = 0.08,
+                 st.bottom = T)+
   theme_bw()
+ggsn::north2(p, x = 0.9, y = 0.7, symbol = 5) 
+
 
 
 #' _____________________________________________________________________________
